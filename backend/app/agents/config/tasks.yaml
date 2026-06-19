@@ -1,0 +1,36 @@
+comprendre_demande:
+  description: >
+    Un citoyen décrit sa situation ainsi : "{demande_citoyen}"
+
+    Analyse cette demande et détermine :
+    1. Quelle démarche administrative est concernée (ex: acte de naissance, CNI, etc.)
+    2. S'il y a un cas particulier à signaler (document perdu, délai dépassé,
+       situation familiale atypique, ou autre complication)
+    3. S'il manque une information essentielle pour bien orienter le citoyen
+
+    Si la demande est ambiguë, formule clairement quelle clarification
+    serait nécessaire, mais propose tout de même ta meilleure interprétation.
+  expected_output: >
+    Une réponse structurée au format JSON exact demandé, sans texte
+    additionnel autour, avec des champs concis et factuels.
+  agent: accueil
+
+documenter_demarche:
+  description: >
+    L'agent précédent (Agent Accueil) a analysé la situation du citoyen et
+    transmis son analyse structurée (démarche identifiée, cas particulier
+    éventuel, résumé de la situation). Cette analyse est disponible dans
+    le contexte ci-dessus.
+
+    Consulte la base de connaissances pour la démarche identifiée via ton
+    outil. Si un cas particulier est signalé, vérifie s'il correspond à un
+    cas documenté et adapte ta réponse en conséquence. Si la démarche a des
+    démarches préalables requises, consulte-les aussi et explique l'ordre
+    à suivre.
+  expected_output: >
+    Une réponse structurée au format JSON exact demandé, sans texte
+    additionnel, listant : la démarche concernée, les documents requis,
+    le lieu, le délai, le coût, et les étapes préalables si applicables.
+  agent: documentaliste
+  context:
+    - comprendre_demande

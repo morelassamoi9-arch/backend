@@ -1,0 +1,46 @@
+{
+  "_meta": {
+    "statut": "DONNÉES DE TEST — à remplacer par les vraies procédures collectées par Joran",
+    "derniere_maj": "2026-06-19"
+  },
+  "demarches": {
+    "acte_naissance": {
+      "nom": "Acte de naissance",
+      "description": "Document officiel attestant la naissance d'une personne",
+      "documents_requis": [
+        "Déclaration de naissance faite par les parents ou un témoin",
+        "Certificat médical d'accouchement (délivré par l'hôpital ou la maternité)",
+        "Pièce d'identité du déclarant"
+      ],
+      "lieu": "Mairie du lieu de naissance de l'enfant",
+      "delai_legal": "3 mois après la naissance pour une déclaration gratuite",
+      "cout": "Gratuit dans le délai légal, sinon procédure de jugement supplétif payante",
+      "cas_particuliers": {
+        "acte_perdu": "Nécessite un jugement supplétif au Tribunal de Première Instance, avec deux témoins",
+        "naissance_hors_mariage": "La reconnaissance paternelle est une démarche distincte, possible après la déclaration de naissance",
+        "declaration_hors_delai": "Au-delà de 3 mois, une procédure judiciaire simplifiée est nécessaire"
+      }
+    },
+    "cni": {
+      "nom": "Carte Nationale d'Identité (CNI)",
+      "description": "Pièce d'identité officielle délivrée par l'ONECI",
+      "documents_requis": [
+        "Acte de naissance original ou copie certifiée",
+        "Certificat de nationalité ivoirienne",
+        "2 photos d'identité",
+        "Justificatif de domicile"
+      ],
+      "lieu": "Centre ONECI ou mairie agréée",
+      "delai_legal": "Délai de fabrication variable, généralement plusieurs semaines",
+      "cout": "Payant, montant fixé par l'ONECI",
+      "cas_particuliers": {
+        "acte_naissance_perdu": "La CNI ne peut pas être demandée sans acte de naissance valide. Il faut d'abord obtenir un jugement supplétif (voir démarche acte_naissance, cas_particulier acte_perdu) avant de poursuivre la demande de CNI.",
+        "premiere_demande": "Procédure standard pour un majeur n'ayant jamais eu de CNI",
+        "renouvellement": "Procédure simplifiée si l'ancienne CNI ou son numéro est connu"
+      }
+    }
+  },
+  "_dependances": {
+    "cni": ["acte_naissance"]
+  }
+}
