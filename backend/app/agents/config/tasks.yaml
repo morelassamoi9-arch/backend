@@ -34,3 +34,52 @@ documenter_demarche:
   agent: documentaliste
   context:
     - comprendre_demande
+
+rediger_reponse:
+  description: >
+    L'Agent Documentaliste a produit une fiche technique complète, disponible
+    dans le contexte ci-dessus, avec notamment deux champs CRITIQUES que tu
+    dois impérativement exploiter avant d'écrire ta réponse :
+
+    - "etapes_prealables" : si ce champ n'est pas vide, cela signifie que le
+      citoyen NE PEUT PAS effectuer directement la démarche demandée. Il doit
+      d'abord compléter une ou plusieurs démarches préalables. Ton plan
+      d'action DOIT commencer par ces démarches préalables, dans l'ordre,
+      AVANT les étapes de la démarche principale. Ne traite jamais une étape
+      préalable comme une simple formalité administrative si la fiche
+      technique indique qu'elle nécessite elle-même une procédure complexe
+      (par exemple un jugement supplétif au tribunal).
+
+    - "note_cas_particulier" : si ce champ contient du texte, il explique
+      EXACTEMENT pourquoi le cas du citoyen sort de la procédure standard.
+      Tu dois intégrer cette explication de façon explicite et concrète dans
+      ton plan d'action — pas la résumer vaguement. Si la note mentionne un
+      tribunal, un jugement, des témoins, ou toute démarche judiciaire, ton
+      plan d'action doit citer cette démarche comme une étape à part entière,
+      avec le lieu et les conditions précises si elles sont disponibles.
+
+    Une fois ces deux champs pleinement exploités, transforme l'ensemble en
+    réponse claire pour le citoyen :
+    1. Un résumé simple de sa situation, en 1-2 phrases, sans jargon, qui
+       mentionne explicitement la complication si elle existe
+    2. Un plan d'action numéroté et complet, étape par étape, dans l'ordre
+       réel à suivre (démarches préalables complexes incluses, pas juste
+       "obtenir le document" si ce document est justement celui qui manque)
+    3. Décide si une lettre de demande officielle est nécessaire. Une lettre
+       EST nécessaire si une démarche préalable implique une demande écrite
+       à une administration ou un tribunal (ex: demande de jugement
+       supplétif). Si oui, rédige-la entièrement, prête à être complétée
+       avec le nom du citoyen. Si non, justifie pourquoi elle ne l'est pas.
+
+    Erreur à ne jamais commettre : ne dis jamais "obtenez un acte de
+    naissance" sans préciser COMMENT, si la fiche technique indique que ce
+    document est précisément celui qui manque ou qui nécessite une procédure
+    spéciale.
+  expected_output: >
+    Une réponse structurée au format JSON exact demandé, sans texte
+    additionnel, avec un plan d'action qui reflète fidèlement les étapes
+    préalables et cas particuliers signalés par l'Agent Documentaliste,
+    et une décision motivée sur la nécessité d'une lettre.
+  agent: redacteur
+  context:
+    - documenter_demarche

@@ -21,7 +21,6 @@ load_dotenv()
 BASE_DIR = Path(__file__).parent
 
 
-# ── Sortie structurée de l'Agent Accueil ──
 class AnalyseDemande(BaseModel):
     demarche_identifiee: str = Field(
         description="Identifiant court en minuscules, ex: 'acte_naissance', 'cni'"
@@ -36,20 +35,33 @@ class AnalyseDemande(BaseModel):
     information_manquante: Optional[str] = Field(default=None)
 
 
-# ── Sortie structurée de l'Agent Documentaliste ──
 class FicheDemarche(BaseModel):
     demarche: str = Field(description="Nom de la démarche concernée")
     documents_requis: List[str] = Field(description="Liste des documents nécessaires")
     lieu: str = Field(description="Où effectuer la démarche")
     delai: str = Field(description="Délai légal ou de traitement")
     cout: str = Field(description="Coût de la démarche")
-    etapes_prealables: Optional[List[str]] = Field(
-        default=None,
-        description="Démarches à effectuer avant celle-ci, si applicable"
+    etapes_prealables: Optional[List[str]] = Field(default=None)
+    note_cas_particulier: Optional[str] = Field(default=None)
+
+
+class ReponseFinale(BaseModel):
+    resume_situation: str = Field(
+        description="Résumé simple en 1-2 phrases, sans jargon administratif"
     )
-    note_cas_particulier: Optional[str] = Field(
+    plan_action: List[str] = Field(
+        description="Étapes numérotées dans l'ordre logique"
+    )
+    documents_a_apporter: List[str] = Field(default_factory=list)
+    lieu: str = Field(description="Lieu où effectuer la démarche")
+    delai_estime: str = Field(description="Délai estimé pour le citoyen")
+    cout: str = Field(description="Coût pour le citoyen")
+    lettre_generee: bool = Field(
+        description="True si une lettre formelle a été générée pour ce cas"
+    )
+    contenu_lettre: Optional[str] = Field(
         default=None,
-        description="Précision si un cas particulier modifie la procédure standard"
+        description="Texte complet de la lettre si lettre_generee est True"
     )
 
 
@@ -77,6 +89,14 @@ class ECitoyenCrew:
             verbose=True
         )
 
+    @agent
+    def redacteur(self) -> Agent:
+        return Agent(
+            config=self.agents_config["redacteur"],
+            llm="groq/llama-3.3-70b-versatile",
+            verbose=True
+        )
+
     @task
     def comprendre_demande(self) -> Task:
         return Task(
@@ -94,6 +114,24 @@ class ECitoyenCrew:
             output_pydantic=FicheDemarche
         )
 
+    @task
+    def rediger_reponse(self) -> Task:
+        return Task(
+            config=self.tasks_config["rediger_reponse"],
+            agent=self.redacteur(),
+            context=[self.documenter_demarche()],
+            output_pydantic=ReponseFinale
+        )
+
+    # RISQUE RÉSIDUEL CONNU (observé une fois, non systématique sur 3 runs
+    # de test le 19/06) : Groq peut occasionnellement renvoyer un format de
+    # function-call non standard (<function=...></function> au lieu du
+    # format tool_calls natif) sur le schéma ReponseFinale, probablement à
+    # cause du champ texte libre contenu_lettre. CrewAI retry
+    # automatiquement (max_retry par défaut) et la 2e tentative a toujours
+    # réussi dans nos tests. Si ce comportement devient fréquent en démo,
+    # piste de correction : simplifier ReponseFinale ou augmenter explicitement
+    # le nombre de tentatives ci-dessous.
     @crew
     def crew(self) -> Crew:
         return Crew(
@@ -110,11 +148,17 @@ if __name__ == "__main__":
         inputs={"demande_citoyen": demande_test}
     )
 
-    print("\n=== RÉSULTAT FINAL (Agent Documentaliste) ===")
-    print(f"Démarche : {resultat.pydantic.demarche}")
-    print(f"Documents requis : {resultat.pydantic.documents_requis}")
+    print("\n=== RÉPONSE FINALE AU CITOYEN ===")
+    print(f"\nSituation : {resultat.pydantic.resume_situation}")
+    print(f"\nPlan d'action :")
+    for i, etape in enumerate(resultat.pydantic.plan_action, 1):
+        print(f"  {i}. {etape}")
+    print(f"\nDocuments à apporter : {resultat.pydantic.documents_a_apporter}")
     print(f"Lieu : {resultat.pydantic.lieu}")
-    print(f"Délai : {resultat.pydantic.delai}")
+    print(f"Délai estimé : {resultat.pydantic.delai_estime}")
     print(f"Coût : {resultat.pydantic.cout}")
-    print(f"Étapes préalables : {resultat.pydantic.etapes_prealables}")
-    print(f"Note cas particulier : {resultat.pydantic.note_cas_particulier}")
+    if resultat.pydantic.lettre_generee:
+        print(f"\n=== LETTRE GÉNÉRÉE ===")
+        print(resultat.pydantic.contenu_lettre)
+    else:
+        print("\nAucune lettre nécessaire pour ce cas.")
