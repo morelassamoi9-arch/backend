@@ -1,4 +1,6 @@
 import logging
+import re
+import time
 from fastapi import APIRouter, HTTPException
 
 from app.models.schemas import DemandeCitoyen, ReponseCitoyen
@@ -6,6 +8,22 @@ from app.agents.crew import ECitoyenCrew
 
 logger = logging.getLogger("e_citoyen_ci.api")
 router = APIRouter()
+
+MAX_TENTATIVES = 2
+ATTENTE_PAR_DEFAUT = 2.0
+ATTENTE_MAX = 10.0
+
+# Plafond gratuit Groq pour llama-3.3-70b-versatile (tokens par jour).
+# Ce compteur est en mémoire process uniquement: il repart a zero si le
+# serveur redemarre, et ne reflete donc pas le vrai compteur Groq cote
+# serveur si le serveur a ete relance entre deux sessions de test.
+# A utiliser comme indicateur de tendance pendant une session continue,
+# pas comme source de verite absolue sur le quota restant.
+PLAFOND_TPD_GROQ = 100_000
+SEUIL_ALERTE_TPD = 0.8  # alerte a partir de 80% du plafond
+
+_tokens_consommes_session = 0
+_requetes_reussies_session = 0
 
 
 @router.post(
@@ -18,21 +36,39 @@ def traiter_demande(demande: DemandeCitoyen) -> ReponseCitoyen:
     Reçoit le message du citoyen, le fait passer par le crew
     (Agent Accueil -> Agent Documentaliste -> Agent Rédacteur),
     et renvoie la réponse structurée finale.
+
+    Inclut un retry applicatif (MAX_TENTATIVES) et un suivi de
+    consommation de tokens en mémoire process, pour visibiliser
+    l'approche du plafond gratuit Groq (100000 tokens/jour) avant
+    qu'il ne bloque une démo.
     """
-    try:
-        resultat = ECitoyenCrew().crew().kickoff(
-            inputs={"demande_citoyen": demande.message}
-        )
-    except Exception as exc:
-        # On logue l'erreur complète côté serveur pour debug,
-        # mais on ne renvoie jamais le détail technique brut au frontend
-        # (ne jamais exposer un message d'erreur LLM interne au citoyen).
-        logger.exception("Échec du traitement de la demande citoyenne")
-        raise HTTPException(
-            status_code=500,
-            detail="Une erreur est survenue lors du traitement de votre demande. "
-                   "Veuillez réessayer dans un instant."
-        ) from exc
+    global _tokens_consommes_session, _requetes_reussies_session
+
+    derniere_erreur = None
+
+    for tentative in range(1, MAX_TENTATIVES + 1):
+        try:
+            resultat = ECitoyenCrew().crew().kickoff(
+                inputs={"demande_citoyen": demande.message}
+            )
+            break
+        except Exception as exc:
+            derniere_erreur = exc
+            logger.warning(
+                "Tentative %d/%d échouée pour le traitement de la demande citoyenne: %s",
+                tentative, MAX_TENTATIVES, exc
+            )
+            if tentative == MAX_TENTATIVES:
+                logger.exception("Échec du traitement de la demande citoyenne après %d tentatives", MAX_TENTATIVES)
+                raise HTTPException(
+                    status_code=500,
+                    detail="Une erreur est survenue lors du traitement de votre demande. "
+                           "Veuillez réessayer dans un instant."
+                ) from exc
+
+            delai = extraire_delai_attente(str(exc))
+            logger.info("Attente de %.2fs avant la tentative suivante", delai)
+            time.sleep(delai)
 
     if resultat.pydantic is None:
         logger.error("Le crew n'a pas produit de sortie structurée valide")
@@ -40,6 +76,27 @@ def traiter_demande(demande: DemandeCitoyen) -> ReponseCitoyen:
             status_code=500,
             detail="La réponse générée n'a pas pu être structurée correctement. "
                    "Veuillez réessayer."
+        )
+
+    # --- Suivi de consommation de tokens (cette requête + cumul session) ---
+    tokens_cette_requete = resultat.token_usage.total_tokens if resultat.token_usage else 0
+    _tokens_consommes_session += tokens_cette_requete
+    _requetes_reussies_session += 1
+
+    pourcentage_plafond = (_tokens_consommes_session / PLAFOND_TPD_GROQ) * 100
+
+    logger.info(
+        "TOKENS - Cette requête: %d | Cumul session: %d/%d (%.1f%% du plafond gratuit TPD) | Requêtes réussies cette session: %d",
+        tokens_cette_requete, _tokens_consommes_session, PLAFOND_TPD_GROQ,
+        pourcentage_plafond, _requetes_reussies_session
+    )
+
+    if pourcentage_plafond >= SEUIL_ALERTE_TPD * 100:
+        logger.warning(
+            "⚠️ ALERTE QUOTA - %.1f%% du plafond journalier Groq atteint sur cette session "
+            "(compteur en mémoire, peut sous-estimer si le serveur a déjà tourné aujourd'hui). "
+            "Espacez les tests ou activez le tier Developer Groq.",
+            pourcentage_plafond
         )
 
     return ReponseCitoyen(
@@ -52,3 +109,26 @@ def traiter_demande(demande: DemandeCitoyen) -> ReponseCitoyen:
         lettre_generee=resultat.pydantic.lettre_generee,
         contenu_lettre=resultat.pydantic.contenu_lettre,
     )
+
+
+def extraire_delai_attente(message_erreur: str) -> float:
+    """
+    Cherche un délai suggéré par Groq dans le message d'erreur, ex:
+    "Please try again in 6.97s" ou "Please try again in 430ms".
+    Pour les délais en minutes (ex: "7m6.816s", cas du plafond TPD),
+    retourne ATTENTE_MAX car il est inutile de faire patienter un
+    citoyen plusieurs minutes - mieux vaut échouer proprement.
+    Retourne ATTENTE_PAR_DEFAUT si rien n'est trouvé.
+    """
+    if re.search(r"try again in \d+m", message_erreur):
+        return ATTENTE_MAX
+
+    match_secondes = re.search(r"try again in ([\d.]+)s", message_erreur)
+    if match_secondes:
+        return min(float(match_secondes.group(1)) + 0.5, ATTENTE_MAX)
+
+    match_millisecondes = re.search(r"try again in ([\d.]+)ms", message_erreur)
+    if match_millisecondes:
+        return min((float(match_millisecondes.group(1)) / 1000) + 0.5, ATTENTE_MAX)
+
+    return ATTENTE_PAR_DEFAUT
