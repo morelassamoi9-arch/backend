@@ -1,10 +1,11 @@
 import logging
 import re
 import time
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Request
 
 from app.models.schemas import DemandeCitoyen, ReponseCitoyen
 from app.agents.crew import ECitoyenCrew
+from app.limiter import limiter
 
 logger = logging.getLogger("e_citoyen_ci.api")
 router = APIRouter()
@@ -31,7 +32,8 @@ _requetes_reussies_session = 0
     response_model=ReponseCitoyen,
     summary="Traite la demande d'un citoyen via le crew multi-agents",
 )
-def traiter_demande(demande: DemandeCitoyen) -> ReponseCitoyen:
+@limiter.limit("3/minute")
+def traiter_demande(request: Request, demande: DemandeCitoyen) -> ReponseCitoyen:
     """
     Reçoit le message du citoyen, le fait passer par le crew
     (Agent Accueil -> Agent Documentaliste -> Agent Rédacteur),

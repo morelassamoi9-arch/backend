@@ -1,8 +1,12 @@
 import logging
+import os
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from slowapi import _rate_limit_exceeded_handler
+from slowapi.errors import RateLimitExceeded
 
+from app.limiter import limiter
 from app.api.routes import router
 
 logging.basicConfig(level=logging.INFO)
@@ -13,11 +17,18 @@ app = FastAPI(
     version="0.1.0",
 )
 
-# CORS ouvert pour le MVP (web FastShorts + mobile FastShorts appellent
-# cette API depuis des domaines différents). À restreindre à des origines
-# précises avant toute mise en production réelle au-delà du Challenge.
-import os
+# Rate limiting par IP pour proteger le quota Groq partage (gratuit,
+# fragile - voir mémoire projet). La route /api/demande declenche un
+# appel LLM couteux a chaque requete: sans limite, un seul client
+# (volontaire ou par bug/double-clic) peut epuiser le quota journalier
+# avant la demo. Limites definies directement sur la route concernee
+# dans app/api/routes.py.
+app.state.limiter = limiter
+app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 
+# CORS restreint aux origines connues (web local + web deploye, mobile
+# si besoin) via la variable d'environnement CORS_ORIGINS (liste separee
+# par des virgules). Valeur par defaut: localhost de dev uniquement.
 origines_autorisees = os.getenv(
     "CORS_ORIGINS",
     "http://localhost:5173"

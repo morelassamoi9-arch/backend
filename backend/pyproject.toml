@@ -8,5 +8,6 @@ dependencies = [
     "fastapi>=0.137.2",
     "litellm>=1.89.2",
     "python-dotenv>=1.2.2",
+    "slowapi>=0.1.10",
 ]
 
