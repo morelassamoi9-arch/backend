@@ -16,9 +16,16 @@ app = FastAPI(
 # CORS ouvert pour le MVP (web FastShorts + mobile FastShorts appellent
 # cette API depuis des domaines différents). À restreindre à des origines
 # précises avant toute mise en production réelle au-delà du Challenge.
+import os
+
+origines_autorisees = os.getenv(
+    "CORS_ORIGINS",
+    "http://localhost:5173"
+).split(",")
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=origines_autorisees,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

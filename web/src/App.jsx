@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react'
 
-const API_URL = 'http://localhost:8000/api/demande'
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000/api/demande'
 
 function App() {
   const [message, setMessage] = useState('')
