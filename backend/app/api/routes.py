@@ -1,11 +1,12 @@
 import logging
 import re
 import time
+
 from fastapi import APIRouter, HTTPException, Request
 
-from app.models.schemas import DemandeCitoyen, ReponseCitoyen
 from app.agents.crew import ECitoyenCrew
 from app.limiter import limiter
+from app.models.schemas import DemandeCitoyen, ReponseCitoyen
 
 logger = logging.getLogger("e_citoyen_ci.api")
 router = APIRouter()
@@ -15,13 +16,13 @@ ATTENTE_PAR_DEFAUT = 2.0
 ATTENTE_MAX = 10.0
 
 # Plafond gratuit Groq pour llama-3.3-70b-versatile (tokens par jour).
-# Ce compteur est en mémoire process uniquement: il repart a zero si le
-# serveur redemarre, et ne reflete donc pas le vrai compteur Groq cote
-# serveur si le serveur a ete relance entre deux sessions de test.
-# A utiliser comme indicateur de tendance pendant une session continue,
-# pas comme source de verite absolue sur le quota restant.
+# Ce compteur est en mémoire process uniquement: il repart à zéro si le
+# serveur redémarre, et ne reflète donc pas le vrai compteur Groq côté
+# serveur si le serveur a été relancé entre deux sessions de test.
+# À utiliser comme indicateur de tendance pendant une session continue,
+# pas comme source de vérité absolue sur le quota restant.
 PLAFOND_TPD_GROQ = 100_000
-SEUIL_ALERTE_TPD = 0.8  # alerte a partir de 80% du plafond
+SEUIL_ALERTE_TPD = 0.8  # alerte à partir de 80% du plafond
 
 _tokens_consommes_session = 0
 _requetes_reussies_session = 0
@@ -46,7 +47,7 @@ def traiter_demande(request: Request, demande: DemandeCitoyen) -> ReponseCitoyen
     """
     global _tokens_consommes_session, _requetes_reussies_session
 
-    derniere_erreur = None
+    resultat = None
 
     for tentative in range(1, MAX_TENTATIVES + 1):
         try:
@@ -55,29 +56,33 @@ def traiter_demande(request: Request, demande: DemandeCitoyen) -> ReponseCitoyen
             )
             break
         except Exception as exc:
-            derniere_erreur = exc
             logger.warning(
                 "Tentative %d/%d échouée pour le traitement de la demande citoyenne: %s",
-                tentative, MAX_TENTATIVES, exc
+                tentative,
+                MAX_TENTATIVES,
+                exc,
             )
             if tentative == MAX_TENTATIVES:
-                logger.exception("Échec du traitement de la demande citoyenne après %d tentatives", MAX_TENTATIVES)
+                logger.exception(
+                    "Échec du traitement de la demande citoyenne après %d tentatives",
+                    MAX_TENTATIVES,
+                )
                 raise HTTPException(
                     status_code=500,
                     detail="Une erreur est survenue lors du traitement de votre demande. "
-                           "Veuillez réessayer dans un instant."
+                    "Veuillez réessayer dans un instant."
                 ) from exc
 
             delai = extraire_delai_attente(str(exc))
             logger.info("Attente de %.2fs avant la tentative suivante", delai)
             time.sleep(delai)
 
-    if resultat.pydantic is None:
+    if resultat is None or resultat.pydantic is None:
         logger.error("Le crew n'a pas produit de sortie structurée valide")
         raise HTTPException(
             status_code=500,
             detail="La réponse générée n'a pas pu être structurée correctement. "
-                   "Veuillez réessayer."
+            "Veuillez réessayer."
         )
 
     # --- Suivi de consommation de tokens (cette requête + cumul session) ---
@@ -88,17 +93,21 @@ def traiter_demande(request: Request, demande: DemandeCitoyen) -> ReponseCitoyen
     pourcentage_plafond = (_tokens_consommes_session / PLAFOND_TPD_GROQ) * 100
 
     logger.info(
-        "TOKENS - Cette requête: %d | Cumul session: %d/%d (%.1f%% du plafond gratuit TPD) | Requêtes réussies cette session: %d",
-        tokens_cette_requete, _tokens_consommes_session, PLAFOND_TPD_GROQ,
-        pourcentage_plafond, _requetes_reussies_session
+        "TOKENS - Cette requête: %d | Cumul session: %d/%d (%.1f%% du plafond gratuit TPD) | "
+        "Requêtes réussies cette session: %d",
+        tokens_cette_requete,
+        _tokens_consommes_session,
+        PLAFOND_TPD_GROQ,
+        pourcentage_plafond,
+        _requetes_reussies_session,
     )
 
     if pourcentage_plafond >= SEUIL_ALERTE_TPD * 100:
         logger.warning(
-            "⚠️ ALERTE QUOTA - %.1f%% du plafond journalier Groq atteint sur cette session "
+            "ALERTE QUOTA - %.1f%% du plafond journalier Groq atteint sur cette session "
             "(compteur en mémoire, peut sous-estimer si le serveur a déjà tourné aujourd'hui). "
             "Espacez les tests ou activez le tier Developer Groq.",
-            pourcentage_plafond
+            pourcentage_plafond,
         )
 
     return ReponseCitoyen(

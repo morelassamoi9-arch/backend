@@ -1,12 +1,12 @@
-import os
 from dotenv import load_dotenv
 
 # Le monkey-patch doit être appliqué AVANT toute exécution de crew,
-# donc tout en haut, juste après les imports de base
+# donc tout en haut, juste après les imports de base.
 import crewai.llms.cache as _crewai_cache
-_crewai_cache.mark_cache_breakpoint = lambda msg: msg
 
 from crewai import Agent, Task, Crew
+
+_crewai_cache.mark_cache_breakpoint = lambda msg: msg
 
 load_dotenv()
 

@@ -17,18 +17,18 @@ app = FastAPI(
     version="0.1.0",
 )
 
-# Rate limiting par IP pour proteger le quota Groq partage (gratuit,
-# fragile - voir mémoire projet). La route /api/demande declenche un
-# appel LLM couteux a chaque requete: sans limite, un seul client
-# (volontaire ou par bug/double-clic) peut epuiser le quota journalier
-# avant la demo. Limites definies directement sur la route concernee
+# Rate limiting par IP pour protéger le quota Groq partagé (gratuit,
+# fragile - voir mémoire projet). La route /api/demande déclenche un
+# appel LLM coûteux à chaque requête: sans limite, un seul client
+# (volontaire ou par bug/double-clic) peut épuiser le quota journalier
+# avant la démo. Limites définies directement sur la route concernée
 # dans app/api/routes.py.
 app.state.limiter = limiter
 app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 
-# CORS restreint aux origines connues (web local + web deploye, mobile
-# si besoin) via la variable d'environnement CORS_ORIGINS (liste separee
-# par des virgules). Valeur par defaut: localhost de dev uniquement.
+# CORS restreint aux origines connues (web local + web déployé, mobile
+# si besoin) via la variable d'environnement CORS_ORIGINS (liste séparée
+# par des virgules). Valeur par défaut: localhost de dev uniquement.
 origines_autorisees = os.getenv(
     "CORS_ORIGINS",
     "http://localhost:5173"
