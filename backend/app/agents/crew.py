@@ -1,20 +1,20 @@
-import os
 from pathlib import Path
+from typing import Optional, List
+
+from crewai import Agent, Task, Crew
+from crewai.project import CrewBase, agent, task, crew
 from dotenv import load_dotenv
+from pydantic import BaseModel, Field
 
 # WORKAROUND CONNU : bug CrewAI 1.14.x où 'cache_breakpoint' est injecté
 # dans les messages système même pour des providers non-Anthropic (Groq).
 # Voir https://github.com/crewAIInc/crewAI/issues/5886
 # À retirer si une version corrigée de CrewAI est publiée.
 import crewai.llms.cache as _crewai_cache
-_crewai_cache.mark_cache_breakpoint = lambda msg: msg
-
-from crewai import Agent, Task, Crew
-from crewai.project import CrewBase, agent, task, crew
-from pydantic import BaseModel, Field
-from typing import Optional, List
 
 from app.agents.tools import consulter_procedure
+
+_crewai_cache.mark_cache_breakpoint = lambda msg: msg
 
 load_dotenv()
 
@@ -150,7 +150,7 @@ if __name__ == "__main__":
 
     print("\n=== RÉPONSE FINALE AU CITOYEN ===")
     print(f"\nSituation : {resultat.pydantic.resume_situation}")
-    print(f"\nPlan d'action :")
+    print("\nPlan d'action :")
     for i, etape in enumerate(resultat.pydantic.plan_action, 1):
         print(f"  {i}. {etape}")
     print(f"\nDocuments à apporter : {resultat.pydantic.documents_a_apporter}")
@@ -158,7 +158,7 @@ if __name__ == "__main__":
     print(f"Délai estimé : {resultat.pydantic.delai_estime}")
     print(f"Coût : {resultat.pydantic.cout}")
     if resultat.pydantic.lettre_generee:
-        print(f"\n=== LETTRE GÉNÉRÉE ===")
+        print("\n=== LETTRE GÉNÉRÉE ===")
         print(resultat.pydantic.contenu_lettre)
     else:
         print("\nAucune lettre nécessaire pour ce cas.")
