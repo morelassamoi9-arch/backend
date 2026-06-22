@@ -19,7 +19,7 @@ def hash_password(password: str) -> str:
     Returns:
         str: Hash du mot de passe
     """
-    return pwd_context.hash(password)
+    return pwd_context.hash(password[:72])
 
 def verify_password(plain_password: str, hashed_password: str) -> bool:
     """
