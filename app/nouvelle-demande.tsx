@@ -22,6 +22,10 @@ import Animated, {
   withSequence,
   Easing,
 } from "react-native-reanimated";
+import {
+  ExpoSpeechRecognitionModule,
+  useSpeechRecognitionEvent,
+} from "expo-speech-recognition";
 import { Colors } from "@/constants/Colors";
 import { Fonts } from "@/constants/Typography";
 import { useAppStore } from "@/store/useAppStore";
@@ -43,6 +47,8 @@ export default function NouvelleDemande() {
   const [isRecording, setIsRecording] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  // Tracks the text that existed before speech recognition started
+  const preRecordingText = useRef("");
   const textInputRef = useRef<TextInput>(null);
 
   // Pulsing animation for mic button
@@ -67,94 +73,79 @@ export default function NouvelleDemande() {
     transform: [{ scale: pulseScale.value }],
   }));
 
+  // Speech recognition event listeners
+  useSpeechRecognitionEvent("start", () => {
+    setIsRecording(true);
+  });
+
+  useSpeechRecognitionEvent("end", () => {
+    setIsRecording(false);
+  });
+
+  useSpeechRecognitionEvent("result", (event) => {
+    const transcript = event.results[0]?.transcript ?? "";
+    const base = preRecordingText.current;
+    const separator = base.length > 0 && !base.endsWith(" ") ? " " : "";
+    setMessage(base + separator + transcript);
+  });
+
+  useSpeechRecognitionEvent("error", (event) => {
+    setIsRecording(false);
+    const errorMessages: Record<string, string> = {
+      "not-allowed": "Permission refusée. Veuillez autoriser l'accès au microphone.",
+      "no-speech": "Aucune parole détectée. Veuillez réessayer.",
+      "audio-capture": "Erreur de capture audio. Vérifiez votre microphone.",
+      "network": "Erreur réseau. Vérifiez votre connexion internet.",
+      "service-not-allowed": "Le service de reconnaissance vocale n'est pas disponible.",
+      "language-not-supported": "La langue française n'est pas disponible sur cet appareil.",
+    };
+    const msg = errorMessages[event.error] ?? "Erreur de reconnaissance vocale. Veuillez réessayer.";
+    Alert.alert("Erreur", msg);
+  });
+
   const handleGoBack = useCallback(() => {
     router.back();
   }, [router]);
 
-  const handleMicPress = useCallback(() => {
-    // Toggle recording state - speech recognition requires native module
-    // On web, show an alert that it's not supported
-    if (Platform.OS === "web") {
-      // Use Web Speech API on web
-      if (!isRecording) {
-        try {
-          const SpeechRecognition =
-            (window as unknown as Record<string, unknown>).SpeechRecognition ||
-            (window as unknown as Record<string, unknown>).webkitSpeechRecognition;
-          if (!SpeechRecognition) {
-            Alert.alert(
-              "Non disponible",
-              "La reconnaissance vocale n'est pas disponible sur ce navigateur."
-            );
-            return;
-          }
-          interface WebSpeechRecognition {
-            lang: string;
-            continuous: boolean;
-            interimResults: boolean;
-            onresult: ((event: unknown) => void) | null;
-            onerror: ((event: unknown) => void) | null;
-            onend: (() => void) | null;
-            start: () => void;
-            stop: () => void;
-          }
-          const recognition = new (SpeechRecognition as unknown as new () => WebSpeechRecognition)();
-          recognition.lang = "fr-FR";
-          recognition.continuous = true;
-          recognition.interimResults = true;
-          recognition.onresult = (event: unknown) => {
-            const results = (event as { results: SpeechRecognitionResultList }).results;
-            let transcript = "";
-            for (let i = 0; i < results.length; i++) {
-              transcript += results[i][0].transcript;
-            }
-            setMessage((prev) => {
-              const base = prev.endsWith(" ") || prev.length === 0 ? prev : `${prev} `;
-              return base + transcript;
-            });
-          };
-          recognition.onerror = () => {
-            setIsRecording(false);
-          };
-          recognition.onend = () => {
-            setIsRecording(false);
-          };
-          (window as unknown as Record<string, unknown>).__speechRecognition = recognition;
-          recognition.start();
-          setIsRecording(true);
-        } catch {
-          Alert.alert(
-            "Erreur",
-            "Impossible de démarrer la reconnaissance vocale."
-          );
-        }
-      } else {
-        try {
-          const recognition = (window as unknown as Record<string, unknown>).__speechRecognition as {
-            stop: () => void;
-          } | undefined;
-          if (recognition) {
-            recognition.stop();
-          }
-        } catch {
-          // ignore
-        }
-        setIsRecording(false);
-      }
-    } else {
-      // Native: toggle state for visual feedback
-      setIsRecording(!isRecording);
-      if (!isRecording) {
-        Alert.alert(
-          "Info",
-          "La reconnaissance vocale nécessite un appareil physique."
-        );
-      }
+  const handleMicPress = useCallback(async () => {
+    if (isRecording) {
+      // Stop recording
+      ExpoSpeechRecognitionModule.stop();
+      return;
     }
-  }, [isRecording]);
+
+    // Request permissions before starting
+    try {
+      const permResult = await ExpoSpeechRecognitionModule.requestPermissionsAsync();
+      if (!permResult.granted) {
+        Alert.alert(
+          "Permission requise",
+          "Veuillez autoriser l'accès au microphone pour utiliser la dictée vocale."
+        );
+        return;
+      }
+    } catch {
+      // On web, permissions are handled by the browser
+    }
+
+    // Save current text state before recording starts
+    preRecordingText.current = message;
+
+    // Start speech recognition
+    ExpoSpeechRecognitionModule.start({
+      lang: "fr-FR",
+      interimResults: true,
+      continuous: true,
+    });
+  }, [isRecording, message]);
 
   const handleSubmit = useCallback(async () => {
     if (!message.trim()) return;
+
+    // Stop recording if active
+    if (isRecording) {
+      ExpoSpeechRecognitionModule.stop();
+    }
 
     setIsLoading(true);
     setError(null);
@@ -196,7 +187,7 @@ export default function NouvelleDemande() {
     } finally {
       setIsLoading(false);
     }
-  }, [message, addDemande, router]);
+  }, [message, isRecording, addDemande, router]);
 
   const isButtonDisabled = !message.trim() || isLoading;
 

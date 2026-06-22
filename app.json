@@ -33,6 +33,13 @@
           "resizeMode": "contain",
           "backgroundColor": "#F5DEB3"
         }
+      ],
+      [
+        "expo-speech-recognition",
+        {
+          "microphonePermission": "e-Citoyen CI a besoin d'accéder au microphone pour la dictée vocale.",
+          "speechRecognitionPermission": "e-Citoyen CI a besoin de la reconnaissance vocale pour transcrire vos demandes."
+        }
       ]
     ],
     "experiments": {
