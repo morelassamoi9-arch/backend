@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Button } from "../components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/card";
 import { Textarea } from "../components/ui/textarea";
@@ -12,6 +12,12 @@ export default function NewRequest() {
   const [request, setRequest] = useState("");
   const [isRecording, setIsRecording] = useState(false);
 
+  const recognitionRef = useRef<any>(null);
+  const SpeechRecognitionAPI =
+    typeof window !== "undefined" &&
+    ((window as any).SpeechRecognition || (window as any).webkitSpeechRecognition);
+  const voiceInputSupported = Boolean(SpeechRecognitionAPI);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Simulate AI analysis
@@ -19,7 +25,38 @@ export default function NewRequest() {
   };
 
   const toggleRecording = () => {
-    setIsRecording(!isRecording);
+    if (!voiceInputSupported) return;
+
+    if (isRecording) {
+      recognitionRef.current?.stop();
+      return;
+    }
+
+    const recognition = new SpeechRecognitionAPI();
+    recognition.lang = "fr-FR";
+    recognition.continuous = true;
+    recognition.interimResults = true;
+
+    recognition.onstart = () => setIsRecording(true);
+    recognition.onend = () => setIsRecording(false);
+    recognition.onerror = (event: any) => { setIsRecording(false); console.error("Erreur vocale:", event?.error); };
+
+    recognition.onresult = (event: any) => {
+      let finalTranscript = "";
+      for (let i = event.resultIndex; i < event.results.length; i++) {
+        if (event.results[i].isFinal) {
+          finalTranscript += event.results[i][0].transcript;
+        }
+      }
+      if (finalTranscript) {
+        setRequest((prev) => (prev ? `${prev} ${finalTranscript}` : finalTranscript));
+      }
+    };
+
+
+
+    recognitionRef.current = recognition;
+    recognition.start();
   };
 
   return (
@@ -97,9 +134,15 @@ export default function NewRequest() {
                   variant={isRecording ? "destructive" : "outline"}
                   className="w-full"
                   onClick={toggleRecording}
+                  disabled={!voiceInputSupported}
+                  title={!voiceInputSupported ? "Saisie vocale non supportée par ce navigateur" : undefined}
                 >
                   <Mic className="w-5 h-5 mr-2" />
-                  {isRecording ? "Arrêter l'enregistrement" : "Commencer l'enregistrement"}
+                  {!voiceInputSupported
+                    ? "Saisie vocale non disponible sur ce navigateur"
+                    : isRecording
+                      ? "Arrêter l'enregistrement"
+                      : "Commencer l'enregistrement"}
                 </Button>
 
                 {isRecording && (
