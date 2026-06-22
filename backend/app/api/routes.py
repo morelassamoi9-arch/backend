@@ -145,3 +145,12 @@ def extraire_delai_attente(message_erreur: str) -> float:
         return min((float(match_millisecondes.group(1)) / 1000) + 0.5, ATTENTE_MAX)
 
     return ATTENTE_PAR_DEFAUT
+
+# Routers Manassé — auth, demandes, users
+from app.database.base import Base
+from app.database.sessions import engine
+Base.metadata.create_all(bind=engine)
+
+router.include_router(auth.router)
+router.include_router(demandes.router)
+router.include_router(users.router)

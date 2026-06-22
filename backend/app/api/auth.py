@@ -3,7 +3,7 @@ from fastapi.security import HTTPBearer
 from sqlalchemy.orm import Session
 from app.database.sessions import get_db
 from app.schemas.user import UserCreate, UserLogin, TokenResponse, UserResponse
-from app.services.auth_service import AuthService
+from app.services.auth_services import AuthService
 from app.auth.dependencies import get_current_user
 from app.database.models import User
 
