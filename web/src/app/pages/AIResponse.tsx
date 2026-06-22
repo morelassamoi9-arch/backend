@@ -2,7 +2,7 @@ import { Button } from "../components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/card";
 import { StatusBadge } from "../components/StatusBadge";
 import { MobileNav } from "../components/MobileNav";
-import { Link } from "react-router";
+import { Link, useLocation } from "react-router";
 import { toast } from "sonner";
 import { 
   Shield, 
@@ -20,6 +20,8 @@ import {
 } from "lucide-react";
 
 export default function AIResponse() {
+  const { state } = useLocation();
+  const reponse = state?.reponse;
   const procedures = [
     {
       step: 1,
@@ -63,22 +65,33 @@ export default function AIResponse() {
 
   const buildFullText = () => {
     const lines = [];
-    lines.push("DÉCLARATION DE NAISSANCE — e-Citoyen CI");
+    lines.push("e-Citoyen CI — Réponse à votre demande");
     lines.push("");
-    lines.push("ÉTAPES À SUIVRE :");
-    procedures.forEach((p) => {
-      lines.push(`${p.step}. ${p.title} (${p.duration})`);
-      lines.push(`   ${p.description}`);
-    });
-    lines.push("");
-    lines.push("DOCUMENTS NÉCESSAIRES :");
-    documents.forEach((d) => lines.push(`- ${d}`));
-    lines.push("");
-    lines.push("OÙ SE RENDRE :");
-    locations.forEach((l) => {
-      lines.push(`${l.name}`);
-      lines.push(`  ${l.address} — ${l.hours}`);
-    });
+    if (reponse?.resume_situation) {
+      lines.push("RÉSUMÉ :");
+      lines.push(reponse.resume_situation);
+      lines.push("");
+    }
+    if (reponse?.plan_action?.length) {
+      lines.push("ÉTAPES À SUIVRE :");
+      reponse.plan_action.forEach((etape: string, i: number) => {
+        lines.push(`${i + 1}. ${etape}`);
+      });
+      lines.push("");
+    }
+    if (reponse?.documents_a_apporter?.length) {
+      lines.push("DOCUMENTS NÉCESSAIRES :");
+      reponse.documents_a_apporter.forEach((d: string) => lines.push(`- ${d}`));
+      lines.push("");
+    }
+    if (reponse?.lieu) lines.push(`OÙ SE RENDRE : ${reponse.lieu}`);
+    if (reponse?.delai_estime) lines.push(`DÉLAI : ${reponse.delai_estime}`);
+    if (reponse?.cout) lines.push(`COÛT : ${reponse.cout}`);
+    if (reponse?.contenu_lettre) {
+      lines.push("");
+      lines.push("LETTRE GÉNÉRÉE :");
+      lines.push(reponse.contenu_lettre);
+    }
     return lines.join("\n");
   };
 
@@ -153,9 +166,7 @@ export default function AIResponse() {
           </CardHeader>
           <CardContent>
             <p className="text-foreground leading-relaxed">
-              Vous souhaitez effectuer la déclaration de naissance de votre enfant né à l'hôpital 
-              général d'Anyama. Cette démarche doit être effectuée dans les <strong>30 jours</strong> suivant 
-              la naissance. Voici les étapes complètes à suivre.
+              {reponse?.resume_situation || "Chargement..."}
             </p>
           </CardContent>
         </Card>
@@ -167,24 +178,18 @@ export default function AIResponse() {
           </CardHeader>
           <CardContent>
             <div className="space-y-6">
-              {procedures.map((procedure, index) => (
-                <div key={procedure.step} className="flex gap-4">
+              {(reponse?.plan_action || []).map((etape: string, index: number) => (
+                <div key={index} className="flex gap-4">
                   <div className="flex flex-col items-center">
                     <div className="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-semibold flex-shrink-0">
-                      {procedure.step}
+                      {index + 1}
                     </div>
-                    {index < procedures.length - 1 && (
+                    {index < (reponse?.plan_action?.length - 1) && (
                       <div className="w-0.5 h-full bg-border mt-2" />
                     )}
                   </div>
                   <div className="flex-1 pb-6">
-                    <div className="flex items-start justify-between gap-4 mb-2">
-                      <h4 className="font-semibold">{procedure.title}</h4>
-                      <span className="text-sm text-muted-foreground whitespace-nowrap">
-                        {procedure.duration}
-                      </span>
-                    </div>
-                    <p className="text-sm text-muted-foreground">{procedure.description}</p>
+                    <p className="font-medium">{etape}</p>
                   </div>
                 </div>
               ))}
@@ -199,7 +204,7 @@ export default function AIResponse() {
           </CardHeader>
           <CardContent>
             <div className="space-y-3">
-              {documents.map((doc, index) => (
+              {(reponse?.documents_a_apporter || []).map((doc: string, index: number) => (
                 <div key={index} className="flex items-center gap-3 p-3 rounded-lg bg-accent">
                   <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0" />
                   <span>{doc}</span>
@@ -216,26 +221,17 @@ export default function AIResponse() {
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
-              {locations.map((location, index) => (
-                <div key={index} className="p-4 rounded-lg border border-border">
-                  <div className="flex items-start gap-3 mb-3">
-                    <MapPin className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                    <div className="flex-1">
-                      <h4 className="font-semibold mb-1">{location.name}</h4>
-                      <p className="text-sm text-muted-foreground">{location.address}</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                    <Clock className="w-4 h-4" />
-                    <span>{location.hours}</span>
-                  </div>
+             <div className="p-4 rounded-lg border border-border">
+                <div className="flex items-start gap-3">
+                  <MapPin className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+                  <p className="font-medium">{reponse?.lieu || "—"}</p>
                 </div>
-              ))}
+              </div>
             </div>
           </CardContent>
         </Card>
 
-        {/* Deadlines and Costs */}
+        {/* Délais et coûts*/}
         <div className="grid md:grid-cols-2 gap-6 mb-6">
           <Card>
             <CardHeader>
@@ -247,16 +243,8 @@ export default function AIResponse() {
             <CardContent>
               <div className="space-y-3">
                 <div className="flex justify-between items-center">
-                  <span className="text-sm text-muted-foreground">Déclaration</span>
-                  <span className="font-semibold">30 jours</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-sm text-muted-foreground">Traitement</span>
-                  <span className="font-semibold">3-5 jours</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-sm text-muted-foreground">Total estimé</span>
-                  <span className="font-semibold">5-7 jours</span>
+                  <span className="text-sm text-muted-foreground">Délai estimé</span>
+                  <span className="font-semibold">{reponse?.delai_estime || "—"}</span>
                 </div>
               </div>
             </CardContent>
@@ -272,16 +260,11 @@ export default function AIResponse() {
             <CardContent>
               <div className="space-y-3">
                 <div className="flex justify-between items-center">
-                  <span className="text-sm text-muted-foreground">Déclaration</span>
+                  <span className="text-sm text-muted-foreground">Coût total</span>
                   <span className="font-semibold text-green-600">Gratuit</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-sm text-muted-foreground">Acte de naissance</span>
-                  <span className="font-semibold text-green-600">Gratuit</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-sm text-muted-foreground">Total</span>
-                  <span className="font-semibold text-green-600">0 FCFA</span>
+                  <span className="font-semibold">{reponse?.cout || "—"}</span>
                 </div>
               </div>
             </CardContent>
@@ -297,32 +280,8 @@ export default function AIResponse() {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="p-6 rounded-lg bg-accent border border-border font-mono text-sm space-y-4">
-              <div>
-                <p>Objet: Déclaration de naissance</p>
-              </div>
-              <div>
-                <p>Monsieur/Madame le Chef du Centre d'État Civil,</p>
-              </div>
-              <div>
-                <p>
-                  Je soussigné(e), [Nom du déclarant], viens par la présente procéder à la 
-                  déclaration de naissance de mon enfant né le [Date] à l'Hôpital Général d'Anyama.
-                </p>
-              </div>
-              <div>
-                <p>Veuillez trouver ci-joints les documents suivants:</p>
-                <ul className="list-disc list-inside mt-2 space-y-1">
-                  {documents.map((doc, i) => (
-                    <li key={i}>{doc}</li>
-                  ))}
-                </ul>
-              </div>
-              <div>
-                <p>
-                  Je vous prie d'agréer, Monsieur/Madame, l'expression de ma considération distinguée.
-                </p>
-              </div>
+            <div className="p-6 rounded-lg bg-accent border border-border font-mono text-sm whitespace-pre-wrap">
+              {reponse?.contenu_lettre || "Aucune lettre générée pour cette demande."}
             </div>
           </CardContent>
         </Card>
