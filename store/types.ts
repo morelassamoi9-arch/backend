@@ -19,4 +19,4 @@ export interface DemandeRequest {
   response: DemandeResponse;
 }
 
-export interface Preferences {}
+export type Preferences = {}
