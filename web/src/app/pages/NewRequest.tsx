@@ -18,10 +18,33 @@ export default function NewRequest() {
     ((window as any).SpeechRecognition || (window as any).webkitSpeechRecognition);
   const voiceInputSupported = Boolean(SpeechRecognitionAPI);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [apiError, setApiError] = useState<string | null>(null);
+
+  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8000/api/demande";
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Simulate AI analysis
-    navigate("/citizen/request/4");
+    if (!request.trim()) return;
+    setIsLoading(true);
+    setApiError(null);
+    try {
+      const response = await fetch(API_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: request }),
+      });
+      if (!response.ok) {
+        const err = await response.json().catch(() => ({}));
+        throw new Error(err.detail || `Erreur serveur (${response.status})`);
+      }
+      const data = await response.json();
+      navigate("/citizen/request/4", { state: { reponse: data } });
+    } catch (err: any) {
+      setApiError(err.message || "Impossible de contacter le serveur. Vérifiez votre connexion.");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const toggleRecording = () => {
@@ -177,10 +200,14 @@ export default function NewRequest() {
               </div>
 
               {/* Submit Button */}
-              <Button type="submit" size="lg" className="w-full" disabled={!request && !isRecording}>
-                <Sparkles className="w-5 h-5 mr-2" />
-                Analyser ma demande
-              </Button>
+              {apiError && (
+  <p className="text-sm text-destructive font-medium">⚠️ {apiError}</p>
+)}
+<Button type="submit" className="w-full" size="lg" disabled={isLoading || !request.trim()}>
+  <Sparkles className="w-5 h-5 mr-2" />
+  {isLoading ? "Analyse en cours..." : "Analyser ma demande"}
+</Button>
+
             </form>
           </CardContent>
         </Card>
