@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "e-Citoyen CI",
-    "slug": "e-citoyen-ci",
+    "name": "Citizenci",
+    "slug": "citizenci",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/app-icon.png",
-    "scheme": "ecitoyen",
+    "scheme": "fastshot",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "ios": {
@@ -37,7 +37,7 @@
       [
         "expo-speech-recognition",
         {
-          "microphonePermission": "e-Citoyen CI a besoin d'accéder au microphone pour la dictée vocale.",
+          "microphonePermission": "e-Citoyen CI a besoin d'acc\u00e9der au microphone pour la dict\u00e9e vocale.",
           "speechRecognitionPermission": "e-Citoyen CI a besoin de la reconnaissance vocale pour transcrire vos demandes."
         }
       ]
