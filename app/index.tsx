@@ -1,4 +1,4 @@
-import { useCallback, useMemo } from "react";
+import { useCallback, useMemo, useRef } from "react";
 import {
   View,
   Text,
@@ -6,6 +6,7 @@ import {
   ScrollView,
   StyleSheet,
   useWindowDimensions,
+  Alert,
 } from "react-native";
 import { Image } from "expo-image";
 import { useRouter } from "expo-router";
@@ -21,6 +22,28 @@ export default function HomeScreen() {
   const insets = useSafeAreaInsets();
   const { width } = useWindowDimensions();
   const demandes = useAppStore((s) => s.demandes);
+  const clearDemandes = useAppStore((s) => s.clearDemandes);
+  const scrollRef = useRef<ScrollView>(null);
+  const requestsSectionY = useRef(0);
+
+  const handleViewDemandes = useCallback(() => {
+    scrollRef.current?.scrollTo({ y: requestsSectionY.current, animated: true });
+  }, []);
+
+  const handleClearAll = useCallback(() => {
+    Alert.alert(
+      "Effacer l'historique",
+      "Êtes-vous sûr de vouloir supprimer toutes vos demandes ?",
+      [
+        { text: "Annuler", style: "cancel" },
+        {
+          text: "Effacer",
+          style: "destructive",
+          onPress: clearDemandes,
+        },
+      ]
+    );
+  }, [clearDemandes]);
 
   const handleNewRequest = useCallback(() => {
     router.push("/nouvelle-demande");
@@ -51,6 +74,7 @@ export default function HomeScreen() {
 
   return (
     <ScrollView
+      ref={scrollRef}
       style={styles.container}
       contentContainerStyle={[
         styles.contentContainer,
@@ -95,7 +119,7 @@ export default function HomeScreen() {
 
         <TouchableOpacity
           style={styles.secondaryButton}
-          onPress={() => {}}
+          onPress={handleViewDemandes}
           activeOpacity={0.8}
         >
           <Ionicons name="document-text-outline" size={22} color={Colors.primary} />
@@ -104,8 +128,18 @@ export default function HomeScreen() {
       </View>
 
       {/* Requests section */}
-      <View style={styles.requestsSection}>
-        <Text style={styles.sectionTitle}>Mes demandes r{"é"}centes</Text>
+      <View
+        style={styles.requestsSection}
+        onLayout={(e) => { requestsSectionY.current = e.nativeEvent.layout.y; }}
+      >
+        <View style={styles.sectionHeader}>
+          <Text style={styles.sectionTitle}>Mes demandes r{"é"}centes</Text>
+          {formattedDemandes.length > 0 ? (
+            <TouchableOpacity onPress={handleClearAll} activeOpacity={0.7}>
+              <Text style={styles.clearAllText}>Tout effacer</Text>
+            </TouchableOpacity>
+          ) : null}
+        </View>
 
         {formattedDemandes.length === 0 ? (
           <View style={styles.emptyState}>
@@ -233,11 +267,21 @@ const styles = StyleSheet.create({
     width: "100%",
     marginTop: 40,
   },
+  sectionHeader: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    marginBottom: 16,
+  },
   sectionTitle: {
     fontFamily: Fonts.semiBold,
     fontSize: 18,
     color: Colors.textPrimary,
-    marginBottom: 16,
+  },
+  clearAllText: {
+    fontFamily: Fonts.medium,
+    fontSize: 14,
+    color: Colors.accent,
   },
   emptyState: {
     backgroundColor: Colors.cardBackground,

@@ -22,6 +22,7 @@ export default function ResultatScreen() {
   const insets = useSafeAreaInsets();
   const { id } = useLocalSearchParams<{ id: string }>();
   const demandes = useAppStore((s) => s.demandes);
+  const removeDemande = useAppStore((s) => s.removeDemande);
 
   const [checkedItems, setCheckedItems] = useState<Record<string, boolean>>({});
   const [isSpeaking, setIsSpeaking] = useState(false);
@@ -38,6 +39,26 @@ export default function ResultatScreen() {
   const handleGoHome = useCallback(() => {
     router.replace("/");
   }, [router]);
+
+  const handleDelete = useCallback(() => {
+    Alert.alert(
+      "Supprimer cette demande",
+      "Êtes-vous sûr de vouloir supprimer cette demande de votre historique ?",
+      [
+        { text: "Annuler", style: "cancel" },
+        {
+          text: "Supprimer",
+          style: "destructive",
+          onPress: () => {
+            if (id) {
+              removeDemande(id);
+              router.replace("/");
+            }
+          },
+        },
+      ]
+    );
+  }, [id, removeDemande, router]);
 
   const toggleCheckItem = useCallback((item: string) => {
     setCheckedItems((prev) => ({
@@ -161,7 +182,13 @@ export default function ResultatScreen() {
         <Text style={styles.headerTitle} numberOfLines={1}>
           R{"é"}sultat de votre demande
         </Text>
-        <View style={styles.headerSpacer} />
+        <TouchableOpacity
+          onPress={handleDelete}
+          style={styles.deleteButton}
+          activeOpacity={0.7}
+        >
+          <Ionicons name="trash-outline" size={20} color={Colors.error} />
+        </TouchableOpacity>
       </View>
 
       <ScrollView
@@ -360,6 +387,16 @@ const styles = StyleSheet.create({
   },
   headerSpacer: {
     width: 44,
+  },
+  deleteButton: {
+    width: 44,
+    height: 44,
+    borderRadius: 12,
+    backgroundColor: Colors.cardBackground,
+    alignItems: "center",
+    justifyContent: "center",
+    borderWidth: 1,
+    borderColor: Colors.border,
   },
   scrollView: {
     flex: 1,
