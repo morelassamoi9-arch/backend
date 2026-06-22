@@ -5,7 +5,7 @@ from app.database.sessions import get_db
 from app.database.models import User, UserRole
 from app.schemas.user import UserResponse, UserUpdate
 from app.auth.dependencies import get_current_user
-from app.services.auth_service import AuthService
+from app.services.auth_services import AuthService
 
 router = APIRouter(
     prefix="/users",

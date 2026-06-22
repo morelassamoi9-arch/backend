@@ -3,7 +3,9 @@ import re
 import time
 
 from fastapi import APIRouter, HTTPException, Request
-
+from app.database.base import Base
+from app.database.sessions import engine
+from app.api import auth, demandes, users
 from app.agents.crew import ECitoyenCrew
 from app.limiter import limiter
 from app.models.schemas import DemandeCitoyen, ReponseCitoyen

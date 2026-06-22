@@ -15,7 +15,7 @@ logger = logging.getLogger(__name__)
 # URL de la base de données
 DATABASE_URL = os.getenv(
     "DATABASE_URL",
-    "postgresql://ecitoyen_user:MotDePasse123!@localhost:5432/ecitoyen"
+    "postgresql://ecitoyen_user:Manasse05@localhost:5432/ecitoyen"
 )
 
 # Configuration du moteur SQLAlchemy

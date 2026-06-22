@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Configuration JWT
-SECRET_KEY = os.getenv("JWT_SECRET_KEY", "default-secret-key-change-in-production")
+SECRET_KEY = os.getenv("JWT_SECRET_KEY", "maszxe@cdjdsdk1223344J4Jjckdkekdkedjedekdekdedoedkeffekfefkefkefnfjefejfe")
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = int(os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES", "10080"))  # 7 jours par défaut
 REFRESH_TOKEN_EXPIRE_DAYS = int(os.getenv("REFRESH_TOKEN_EXPIRE_DAYS", "30"))

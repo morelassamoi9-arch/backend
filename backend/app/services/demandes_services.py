@@ -4,7 +4,7 @@ from fastapi import HTTPException, status
 from typing import List, Optional
 from uuid import UUID
 from app.database.models import Demande, Reponse, User, DemandeStatus
-from app.schemas.demande import DemandeCreate
+from app.schemas.demandes import DemandeCreate
 
 class DemandeService:
     """Service de gestion des demandes"""

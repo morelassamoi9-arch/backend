@@ -2,11 +2,11 @@ from fastapi import APIRouter, Depends, HTTPException, status, BackgroundTasks
 from sqlalchemy.orm import Session
 from typing import List
 from uuid import UUID
-from app.database.session import get_db
+from app.database.sessions import get_db
 from app.database.models import User, Demande, DemandeStatus
-from app.schemas.demande import DemandeCreate, DemandeResponse
-from app.services.demande_service import DemandeService
-from app.services.crew_service import ECitoyenCrew
+from app.schemas.demandes import DemandeCreate, DemandeResponse
+from app.services.demandes_services import DemandeService
+from app.services.crew_services import ECitoyenCrew
 from app.auth.dependencies import get_current_user
 import logging
 
