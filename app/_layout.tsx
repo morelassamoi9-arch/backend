@@ -28,15 +28,19 @@ export default function RootLayout() {
       <SafeAreaProvider>
         <StatusBar style="dark" />
         <Stack
+          initialRouteName="login"
           screenOptions={{
             headerShown: false,
             contentStyle: { backgroundColor: Colors.background },
             animation: "slide_from_right",
           }}
         >
+          <Stack.Screen name="login" />
           <Stack.Screen name="index" />
           <Stack.Screen name="nouvelle-demande" />
           <Stack.Screen name="resultat" />
+          <Stack.Screen name="agent-dashboard" />
+          <Stack.Screen name="agent-demande-detail" />
         </Stack>
       </SafeAreaProvider>
     </GestureHandlerRootView>

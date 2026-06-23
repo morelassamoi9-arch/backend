@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": 1782140277687,
+  "generatedAt": 1782199655763,
   "entries": {
     "RootLayout@app/_layout.tsx:27": {
       "element": {
@@ -17,6 +17,2304 @@
               "col": 43,
               "endCol": 44,
               "raw": "1"
+            }
+          }
+        }
+      ]
+    },
+    "renderDemandeItem@app/agent-dashboard.tsx:161": {
+      "element": {
+        "file": "app/agent-dashboard.tsx",
+        "line": 161
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.demandeCard",
+          "file": "app/agent-dashboard.tsx",
+          "defLine": 437,
+          "properties": {
+            "borderRadius": {
+              "line": 439,
+              "col": 18,
+              "endCol": 20,
+              "raw": "18"
+            },
+            "padding": {
+              "line": 440,
+              "col": 13,
+              "endCol": 15,
+              "raw": "18"
+            },
+            "borderWidth": {
+              "line": 441,
+              "col": 17,
+              "endCol": 18,
+              "raw": "1"
+            },
+            "borderCurve": {
+              "line": 443,
+              "col": 17,
+              "endCol": 29,
+              "raw": "\"continuous\""
+            },
+            "boxShadow": {
+              "line": 444,
+              "col": 15,
+              "endCol": 50,
+              "raw": "\"0 2px 8px rgba(46, 107, 87, 0.08)\""
+            }
+          }
+        }
+      ]
+    },
+    "renderDemandeItem@app/agent-dashboard.tsx:166": {
+      "element": {
+        "file": "app/agent-dashboard.tsx",
+        "line": 166
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.cardTopRow",
+          "file": "app/agent-dashboard.tsx",
+          "defLine": 446,
+          "properties": {
+            "flexDirection": {
+              "line": 447,
+              "col": 19,
+              "endCol": 24,
+              "raw": "\"row\""
+            },
+            "alignItems": {
+              "line": 448,
+              "col": 16,
+              "endCol": 24,
+              "raw": "\"center\""
+            },
+            "justifyContent": {
+              "line": 449,
+              "col": 20,
+              "endCol": 35,
+              "raw": "\"space-between\""
+            },
+            "marginBottom": {
+              "line": 450,
+              "col": 18,
+              "endCol": 20,
+              "raw": "10"
+            }
+          }
+        }
+      ]
+    },
+    "renderDemandeItem@app/agent-dashboard.tsx:167": {
+      "element": {
+        "file": "app/agent-dashboard.tsx",
+        "line": 167
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.userInfo",
+          "file": "app/agent-dashboard.tsx",
+          "defLine": 452,
+          "properties": {
+            "flexDirection": {
+              "line": 453,
+              "col": 19,
+              "endCol": 24,
+              "raw": "\"row\""
+            },
+            "alignItems": {
+              "line": 454,
+              "col": 16,
+              "endCol": 24,
+              "raw": "\"center\""
+            },
+            "gap": {
+              "line": 455,
+              "col": 9,
+              "endCol": 11,
+              "raw": "10"
+            },
+            "flex": {
+              "line": 456,
+              "col": 10,
+              "endCol": 11,
+              "raw": "1"
+            },
+            "marginRight": {
+              "line": 457,
+              "col": 17,
+              "endCol": 19,
+              "raw": "12"
+            }
+          }
+        }
+      ]
+    },
+    "renderDemandeItem@app/agent-dashboard.tsx:168": {
+      "element": {
+        "file": "app/agent-dashboard.tsx",
+        "line": 168
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.avatarContainer",
+          "file": "app/agent-dashboard.tsx",
+          "defLine": 459,
+          "properties": {
+            "width": {
+              "line": 460,
+              "col": 11,
+              "endCol": 13,
+              "raw": "34"
+            },
+            "height": {
+              "line": 461,
+              "col": 12,
+              "endCol": 14,
+              "raw": "34"
+            },
+            "borderRadius": {
+              "line": 462,
+              "col": 18,
+              "endCol": 20,
+              "raw": "17"
+            },
+            "alignItems": {
+              "line": 464,
+              "col": 16,
+              "endCol": 24,
+              "raw": "\"center\""
+            },
+            "justifyContent": {
+              "line": 465,
+              "col": 20,
+              "endCol": 28,
+              "raw": "\"center\""
+            },
+            "borderWidth": {
+              "line": 466,
+              "col": 17,
+              "endCol": 18,
+              "raw": "1"
+            }
+          }
+        }
+      ]
+    },
+    "renderDemandeItem@app/agent-dashboard.tsx:171": {
+      "element": {
+        "file": "app/agent-dashboard.tsx",
+        "line": 171
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.userName",
+          "file": "app/agent-dashboard.tsx",
+          "defLine": 469,
+          "properties": {
+            "fontSize": {
+              "line": 471,
+              "col": 14,
+              "endCol": 16,
+              "raw": "15"
+            },
+            "flex": {
+              "line": 473,
+              "col": 10,
+              "endCol": 11,
+              "raw": "1"
+            }
+          }
+        }
+      ]
+    },
+    "renderDemandeItem@app/agent-dashboard.tsx:175": {
+      "element": {
+        "file": "app/agent-dashboard.tsx",
+        "line": 175
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.statusBadge",
+          "file": "app/agent-dashboard.tsx",
+          "defLine": 475,
+          "properties": {
+            "paddingHorizontal": {
+              "line": 476,
+              "col": 23,
+              "endCol": 25,
+              "raw": "10"
+            },
+            "paddingVertical": {
+              "line": 477,
+              "col": 21,
+              "endCol": 22,
+              "raw": "5"
+            },
+            "borderRadius": {
+              "line": 478,
+              "col": 18,
+              "endCol": 20,
+              "raw": "10"
+            }
+          }
+        }
+      ]
+    },
+    "renderDemandeItem@app/agent-dashboard.tsx:176": {
+      "element": {
+        "file": "app/agent-dashboard.tsx",
+        "line": 176
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.statusBadgeText",
+          "file": "app/agent-dashboard.tsx",
+          "defLine": 480,
+          "properties": {
+            "fontSize": {
+              "line": 482,
+              "col": 14,
+              "endCol": 16,
+              "raw": "12"
+            }
+          }
+        }
+      ]
+    },
+    "renderDemandeItem@app/agent-dashboard.tsx:180": {
+      "element": {
+        "file": "app/agent-dashboard.tsx",
+        "line": 180
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.demandeMessage",
+          "file": "app/agent-dashboard.tsx",
+          "defLine": 485,
+          "properties": {
+            "fontSize": {
+              "line": 487,
+              "col": 14,
+              "endCol": 16,
+              "raw": "15"
+            },
+            "lineHeight": {
+              "line": 489,
+              "col": 16,
+              "endCol": 18,
+              "raw": "22"
+            },
+            "marginBottom": {
+              "line": 490,
+              "col": 18,
+              "endCol": 20,
+              "raw": "12"
+            }
+          }
+        }
+      ]
+    },
+    "renderDemandeItem@app/agent-dashboard.tsx:184": {
+      "element": {
+        "file": "app/agent-dashboard.tsx",
+        "line": 184
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.cardFooter",
+          "file": "app/agent-dashboard.tsx",
+          "defLine": 492,
+          "properties": {
+            "flexDirection": {
+              "line": 493,
+              "col": 19,
+              "endCol": 24,
+              "raw": "\"row\""
+            },
+            "alignItems": {
+              "line": 494,
+              "col": 16,
+              "endCol": 24,
+              "raw": "\"center\""
+            },
+            "justifyContent": {
+              "line": 495,
+              "col": 20,
+              "endCol": 35,
+              "raw": "\"space-between\""
+            }
+          }
+        }
+      ]
+    },
+    "renderDemandeItem@app/agent-dashboard.tsx:185": {
+      "element": {
+        "file": "app/agent-dashboard.tsx",
+        "line": 185
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.dateRow",
+          "file": "app/agent-dashboard.tsx",
+          "defLine": 497,
+          "properties": {
+            "flexDirection": {
+              "line": 498,
+              "col": 19,
+              "endCol": 24,
+              "raw": "\"row\""
+            },
+            "alignItems": {
+              "line": 499,
+              "col": 16,
+              "endCol": 24,
+              "raw": "\"center\""
+            },
+            "gap": {
+              "line": 500,
+              "col": 9,
+              "endCol": 10,
+              "raw": "6"
+            }
+          }
+        }
+      ]
+    },
+    "renderDemandeItem@app/agent-dashboard.tsx:187": {
+      "element": {
+        "file": "app/agent-dashboard.tsx",
+        "line": 187
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.dateText",
+          "file": "app/agent-dashboard.tsx",
+          "defLine": 502,
+          "properties": {
+            "fontSize": {
+              "line": 504,
+              "col": 14,
+              "endCol": 16,
+              "raw": "13"
+            }
+          }
+        }
+      ]
+    },
+    "renderEmptyState@app/agent-dashboard.tsx:200": {
+      "element": {
+        "file": "app/agent-dashboard.tsx",
+        "line": 200
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.emptyState",
+          "file": "app/agent-dashboard.tsx",
+          "defLine": 507,
+          "properties": {
+            "alignItems": {
+              "line": 508,
+              "col": 16,
+              "endCol": 24,
+              "raw": "\"center\""
+            },
+            "paddingVertical": {
+              "line": 509,
+              "col": 21,
+              "endCol": 23,
+              "raw": "60"
+            },
+            "paddingHorizontal": {
+              "line": 510,
+              "col": 23,
+              "endCol": 25,
+              "raw": "24"
+            }
+          }
+        }
+      ]
+    },
+    "renderEmptyState@app/agent-dashboard.tsx:201": {
+      "element": {
+        "file": "app/agent-dashboard.tsx",
+        "line": 201
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.emptyIconContainer",
+          "file": "app/agent-dashboard.tsx",
+          "defLine": 512,
+          "properties": {
+            "width": {
+              "line": 513,
+              "col": 11,
+              "endCol": 13,
+              "raw": "80"
+            },
+            "height": {
+              "line": 514,
+              "col": 12,
+              "endCol": 14,
+              "raw": "80"
+            },
+            "borderRadius": {
+              "line": 515,
+              "col": 18,
+              "endCol": 20,
+              "raw": "40"
+            },
+            "alignItems": {
+              "line": 517,
+              "col": 16,
+              "endCol": 24,
+              "raw": "\"center\""
+            },
+            "justifyContent": {
+              "line": 518,
+              "col": 20,
+              "endCol": 28,
+              "raw": "\"center\""
+            },
+            "marginBottom": {
+              "line": 519,
+              "col": 18,
+              "endCol": 20,
+              "raw": "16"
+            },
+            "borderWidth": {
+              "line": 520,
+              "col": 17,
+              "endCol": 18,
+              "raw": "1"
+            }
+          }
+        }
+      ]
+    },
+    "renderEmptyState@app/agent-dashboard.tsx:204": {
+      "element": {
+        "file": "app/agent-dashboard.tsx",
+        "line": 204
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.emptyText",
+          "file": "app/agent-dashboard.tsx",
+          "defLine": 523,
+          "properties": {
+            "fontSize": {
+              "line": 525,
+              "col": 14,
+              "endCol": 16,
+              "raw": "16"
+            },
+            "textAlign": {
+              "line": 527,
+              "col": 15,
+              "endCol": 23,
+              "raw": "\"center\""
+            }
+          }
+        }
+      ]
+    },
+    "renderEmptyState@app/agent-dashboard.tsx:209": {
+      "element": {
+        "file": "app/agent-dashboard.tsx",
+        "line": 209
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.emptySubtext",
+          "file": "app/agent-dashboard.tsx",
+          "defLine": 529,
+          "properties": {
+            "fontSize": {
+              "line": 531,
+              "col": 14,
+              "endCol": 16,
+              "raw": "14"
+            },
+            "textAlign": {
+              "line": 533,
+              "col": 15,
+              "endCol": 23,
+              "raw": "\"center\""
+            },
+            "marginTop": {
+              "line": 534,
+              "col": 15,
+              "endCol": 16,
+              "raw": "8"
+            },
+            "lineHeight": {
+              "line": 535,
+              "col": 16,
+              "endCol": 18,
+              "raw": "20"
+            }
+          }
+        }
+      ]
+    },
+    "AgentDashboard@app/agent-dashboard.tsx:219": {
+      "element": {
+        "file": "app/agent-dashboard.tsx",
+        "line": 219
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.container",
+          "file": "app/agent-dashboard.tsx",
+          "defLine": 329,
+          "properties": {
+            "flex": {
+              "line": 330,
+              "col": 10,
+              "endCol": 11,
+              "raw": "1"
+            }
+          }
+        },
+        {
+          "origin": "stylesheet",
+          "ref": "styles.centerContent",
+          "file": "app/agent-dashboard.tsx",
+          "defLine": 333,
+          "properties": {
+            "alignItems": {
+              "line": 334,
+              "col": 16,
+              "endCol": 24,
+              "raw": "\"center\""
+            },
+            "justifyContent": {
+              "line": 335,
+              "col": 20,
+              "endCol": 28,
+              "raw": "\"center\""
+            }
+          }
+        }
+      ]
+    },
+    "AgentDashboard@app/agent-dashboard.tsx:220": {
+      "element": {
+        "file": "app/agent-dashboard.tsx",
+        "line": 220
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.errorState",
+          "file": "app/agent-dashboard.tsx",
+          "defLine": 537,
+          "properties": {
+            "alignItems": {
+              "line": 538,
+              "col": 16,
+              "endCol": 24,
+              "raw": "\"center\""
+            },
+            "padding": {
+              "line": 539,
+              "col": 13,
+              "endCol": 15,
+              "raw": "32"
+            },
+            "gap": {
+              "line": 540,
+              "col": 9,
+              "endCol": 11,
+              "raw": "12"
+            }
+          }
+        }
+      ]
+    },
+    "AgentDashboard@app/agent-dashboard.tsx:222": {
+      "element": {
+        "file": "app/agent-dashboard.tsx",
+        "line": 222
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.errorTitle",
+          "file": "app/agent-dashboard.tsx",
+          "defLine": 542,
+          "properties": {
+            "fontSize": {
+              "line": 544,
+              "col": 14,
+              "endCol": 16,
+              "raw": "20"
+            },
+            "textAlign": {
+              "line": 546,
+              "col": 15,
+              "endCol": 23,
+              "raw": "\"center\""
+            }
+          }
+        }
+      ]
+    },
+    "AgentDashboard@app/agent-dashboard.tsx:223": {
+      "element": {
+        "file": "app/agent-dashboard.tsx",
+        "line": 223
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.errorSubtitle",
+          "file": "app/agent-dashboard.tsx",
+          "defLine": 548,
+          "properties": {
+            "fontSize": {
+              "line": 550,
+              "col": 14,
+              "endCol": 16,
+              "raw": "15"
+            },
+            "textAlign": {
+              "line": 552,
+              "col": 15,
+              "endCol": 23,
+              "raw": "\"center\""
+            },
+            "lineHeight": {
+              "line": 553,
+              "col": 16,
+              "endCol": 18,
+              "raw": "22"
+            }
+          }
+        }
+      ]
+    },
+    "AgentDashboard@app/agent-dashboard.tsx:226": {
+      "element": {
+        "file": "app/agent-dashboard.tsx",
+        "line": 226
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.primaryButton",
+          "file": "app/agent-dashboard.tsx",
+          "defLine": 555,
+          "properties": {
+            "borderRadius": {
+              "line": 557,
+              "col": 18,
+              "endCol": 20,
+              "raw": "16"
+            },
+            "paddingVertical": {
+              "line": 558,
+              "col": 21,
+              "endCol": 23,
+              "raw": "16"
+            },
+            "paddingHorizontal": {
+              "line": 559,
+              "col": 23,
+              "endCol": 25,
+              "raw": "32"
+            },
+            "marginTop": {
+              "line": 560,
+              "col": 15,
+              "endCol": 17,
+              "raw": "20"
+            }
+          }
+        }
+      ]
+    },
+    "AgentDashboard@app/agent-dashboard.tsx:231": {
+      "element": {
+        "file": "app/agent-dashboard.tsx",
+        "line": 231
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.primaryButtonText",
+          "file": "app/agent-dashboard.tsx",
+          "defLine": 562,
+          "properties": {
+            "fontSize": {
+              "line": 564,
+              "col": 14,
+              "endCol": 16,
+              "raw": "16"
+            }
+          }
+        }
+      ]
+    },
+    "AgentDashboard@app/agent-dashboard.tsx:239": {
+      "element": {
+        "file": "app/agent-dashboard.tsx",
+        "line": 239
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.container",
+          "file": "app/agent-dashboard.tsx",
+          "defLine": 329,
+          "properties": {
+            "flex": {
+              "line": 330,
+              "col": 10,
+              "endCol": 11,
+              "raw": "1"
+            }
+          }
+        }
+      ]
+    },
+    "AgentDashboard@app/agent-dashboard.tsx:241": {
+      "element": {
+        "file": "app/agent-dashboard.tsx",
+        "line": 241
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.header",
+          "file": "app/agent-dashboard.tsx",
+          "defLine": 337,
+          "properties": {
+            "flexDirection": {
+              "line": 338,
+              "col": 19,
+              "endCol": 24,
+              "raw": "\"row\""
+            },
+            "alignItems": {
+              "line": 339,
+              "col": 16,
+              "endCol": 24,
+              "raw": "\"center\""
+            },
+            "justifyContent": {
+              "line": 340,
+              "col": 20,
+              "endCol": 35,
+              "raw": "\"space-between\""
+            },
+            "paddingHorizontal": {
+              "line": 341,
+              "col": 23,
+              "endCol": 25,
+              "raw": "24"
+            },
+            "marginBottom": {
+              "line": 342,
+              "col": 18,
+              "endCol": 20,
+              "raw": "16"
+            }
+          }
+        }
+      ]
+    },
+    "AgentDashboard@app/agent-dashboard.tsx:242": {
+      "element": {
+        "file": "app/agent-dashboard.tsx",
+        "line": 242
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.headerLeft",
+          "file": "app/agent-dashboard.tsx",
+          "defLine": 344,
+          "properties": {
+            "flex": {
+              "line": 345,
+              "col": 10,
+              "endCol": 11,
+              "raw": "1"
+            }
+          }
+        }
+      ]
+    },
+    "AgentDashboard@app/agent-dashboard.tsx:243": {
+      "element": {
+        "file": "app/agent-dashboard.tsx",
+        "line": 243
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.headerTitle",
+          "file": "app/agent-dashboard.tsx",
+          "defLine": 347,
+          "properties": {
+            "fontSize": {
+              "line": 349,
+              "col": 14,
+              "endCol": 16,
+              "raw": "24"
+            },
+            "letterSpacing": {
+              "line": 351,
+              "col": 19,
+              "endCol": 23,
+              "raw": "-0.3"
+            }
+          }
+        }
+      ]
+    },
+    "AgentDashboard@app/agent-dashboard.tsx:244": {
+      "element": {
+        "file": "app/agent-dashboard.tsx",
+        "line": 244
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.headerSubtitle",
+          "file": "app/agent-dashboard.tsx",
+          "defLine": 353,
+          "properties": {
+            "fontSize": {
+              "line": 355,
+              "col": 14,
+              "endCol": 16,
+              "raw": "14"
+            },
+            "marginTop": {
+              "line": 357,
+              "col": 15,
+              "endCol": 16,
+              "raw": "2"
+            }
+          }
+        }
+      ]
+    },
+    "AgentDashboard@app/agent-dashboard.tsx:246": {
+      "element": {
+        "file": "app/agent-dashboard.tsx",
+        "line": 246
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.logoutButton",
+          "file": "app/agent-dashboard.tsx",
+          "defLine": 359,
+          "properties": {
+            "width": {
+              "line": 360,
+              "col": 11,
+              "endCol": 13,
+              "raw": "44"
+            },
+            "height": {
+              "line": 361,
+              "col": 12,
+              "endCol": 14,
+              "raw": "44"
+            },
+            "borderRadius": {
+              "line": 362,
+              "col": 18,
+              "endCol": 20,
+              "raw": "12"
+            },
+            "alignItems": {
+              "line": 364,
+              "col": 16,
+              "endCol": 24,
+              "raw": "\"center\""
+            },
+            "justifyContent": {
+              "line": 365,
+              "col": 20,
+              "endCol": 28,
+              "raw": "\"center\""
+            },
+            "borderWidth": {
+              "line": 366,
+              "col": 17,
+              "endCol": 18,
+              "raw": "1"
+            }
+          }
+        }
+      ]
+    },
+    "AgentDashboard@app/agent-dashboard.tsx:256": {
+      "element": {
+        "file": "app/agent-dashboard.tsx",
+        "line": 256
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.filterContainer",
+          "file": "app/agent-dashboard.tsx",
+          "defLine": 369,
+          "properties": {
+            "marginBottom": {
+              "line": 370,
+              "col": 18,
+              "endCol": 20,
+              "raw": "16"
+            }
+          }
+        }
+      ]
+    },
+    "AgentDashboard@app/agent-dashboard.tsx:257": {
+      "element": {
+        "file": "app/agent-dashboard.tsx",
+        "line": 257
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/agent-dashboard.tsx",
+          "properties": {
+            "flexGrow": {
+              "line": 263,
+              "col": 29,
+              "endCol": 30,
+              "raw": "0"
+            }
+          }
+        }
+      ]
+    },
+    "AgentDashboard@app/agent-dashboard.tsx:265": {
+      "element": {
+        "file": "app/agent-dashboard.tsx",
+        "line": 265
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.filterButton",
+          "file": "app/agent-dashboard.tsx",
+          "defLine": 376,
+          "properties": {
+            "paddingHorizontal": {
+              "line": 377,
+              "col": 23,
+              "endCol": 25,
+              "raw": "18"
+            },
+            "paddingVertical": {
+              "line": 378,
+              "col": 21,
+              "endCol": 23,
+              "raw": "10"
+            },
+            "borderRadius": {
+              "line": 379,
+              "col": 18,
+              "endCol": 20,
+              "raw": "20"
+            },
+            "borderWidth": {
+              "line": 381,
+              "col": 17,
+              "endCol": 18,
+              "raw": "1"
+            },
+            "minHeight": {
+              "line": 383,
+              "col": 15,
+              "endCol": 17,
+              "raw": "44"
+            },
+            "justifyContent": {
+              "line": 384,
+              "col": 20,
+              "endCol": 28,
+              "raw": "\"center\""
+            }
+          }
+        },
+        {
+          "origin": "dynamic",
+          "resolvable": false
+        }
+      ]
+    },
+    "AgentDashboard@app/agent-dashboard.tsx:273": {
+      "element": {
+        "file": "app/agent-dashboard.tsx",
+        "line": 273
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.filterButtonText",
+          "file": "app/agent-dashboard.tsx",
+          "defLine": 390,
+          "properties": {
+            "fontSize": {
+              "line": 392,
+              "col": 14,
+              "endCol": 16,
+              "raw": "14"
+            }
+          }
+        },
+        {
+          "origin": "dynamic",
+          "resolvable": false
+        }
+      ]
+    },
+    "AgentDashboard@app/agent-dashboard.tsx:288": {
+      "element": {
+        "file": "app/agent-dashboard.tsx",
+        "line": 288
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.errorBanner",
+          "file": "app/agent-dashboard.tsx",
+          "defLine": 398,
+          "properties": {
+            "flexDirection": {
+              "line": 399,
+              "col": 19,
+              "endCol": 24,
+              "raw": "\"row\""
+            },
+            "alignItems": {
+              "line": 400,
+              "col": 16,
+              "endCol": 24,
+              "raw": "\"center\""
+            },
+            "gap": {
+              "line": 401,
+              "col": 9,
+              "endCol": 10,
+              "raw": "8"
+            },
+            "marginHorizontal": {
+              "line": 402,
+              "col": 22,
+              "endCol": 24,
+              "raw": "24"
+            },
+            "marginBottom": {
+              "line": 403,
+              "col": 18,
+              "endCol": 20,
+              "raw": "12"
+            },
+            "backgroundColor": {
+              "line": 404,
+              "col": 21,
+              "endCol": 30,
+              "raw": "\"#FFF0F0\""
+            },
+            "borderRadius": {
+              "line": 405,
+              "col": 18,
+              "endCol": 20,
+              "raw": "12"
+            },
+            "padding": {
+              "line": 406,
+              "col": 13,
+              "endCol": 15,
+              "raw": "14"
+            },
+            "borderWidth": {
+              "line": 407,
+              "col": 17,
+              "endCol": 18,
+              "raw": "1"
+            },
+            "borderColor": {
+              "line": 408,
+              "col": 17,
+              "endCol": 26,
+              "raw": "\"#FFCCCC\""
+            }
+          }
+        }
+      ]
+    },
+    "AgentDashboard@app/agent-dashboard.tsx:290": {
+      "element": {
+        "file": "app/agent-dashboard.tsx",
+        "line": 290
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.errorBannerText",
+          "file": "app/agent-dashboard.tsx",
+          "defLine": 410,
+          "properties": {
+            "flex": {
+              "line": 411,
+              "col": 10,
+              "endCol": 11,
+              "raw": "1"
+            },
+            "fontSize": {
+              "line": 413,
+              "col": 14,
+              "endCol": 16,
+              "raw": "14"
+            },
+            "lineHeight": {
+              "line": 415,
+              "col": 16,
+              "endCol": 18,
+              "raw": "20"
+            }
+          }
+        }
+      ]
+    },
+    "AgentDashboard@app/agent-dashboard.tsx:292": {
+      "element": {
+        "file": "app/agent-dashboard.tsx",
+        "line": 292
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.retryText",
+          "file": "app/agent-dashboard.tsx",
+          "defLine": 417,
+          "properties": {
+            "fontSize": {
+              "line": 419,
+              "col": 14,
+              "endCol": 16,
+              "raw": "14"
+            }
+          }
+        }
+      ]
+    },
+    "AgentDashboard@app/agent-dashboard.tsx:299": {
+      "element": {
+        "file": "app/agent-dashboard.tsx",
+        "line": 299
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.loadingContainer",
+          "file": "app/agent-dashboard.tsx",
+          "defLine": 422,
+          "properties": {
+            "flex": {
+              "line": 423,
+              "col": 10,
+              "endCol": 11,
+              "raw": "1"
+            },
+            "alignItems": {
+              "line": 424,
+              "col": 16,
+              "endCol": 24,
+              "raw": "\"center\""
+            },
+            "justifyContent": {
+              "line": 425,
+              "col": 20,
+              "endCol": 28,
+              "raw": "\"center\""
+            },
+            "gap": {
+              "line": 426,
+              "col": 9,
+              "endCol": 11,
+              "raw": "16"
+            }
+          }
+        }
+      ]
+    },
+    "AgentDashboard@app/agent-dashboard.tsx:301": {
+      "element": {
+        "file": "app/agent-dashboard.tsx",
+        "line": 301
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.loadingText",
+          "file": "app/agent-dashboard.tsx",
+          "defLine": 428,
+          "properties": {
+            "fontSize": {
+              "line": 430,
+              "col": 14,
+              "endCol": 16,
+              "raw": "16"
+            }
+          }
+        }
+      ]
+    },
+    "LoginScreen@app/login.tsx:96": {
+      "element": {
+        "file": "app/login.tsx",
+        "line": 96
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.flex",
+          "file": "app/login.tsx",
+          "defLine": 241,
+          "properties": {
+            "flex": {
+              "line": 242,
+              "col": 10,
+              "endCol": 11,
+              "raw": "1"
+            }
+          }
+        }
+      ]
+    },
+    "LoginScreen@app/login.tsx:100": {
+      "element": {
+        "file": "app/login.tsx",
+        "line": 100
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.container",
+          "file": "app/login.tsx",
+          "defLine": 244,
+          "properties": {
+            "flex": {
+              "line": 245,
+              "col": 10,
+              "endCol": 11,
+              "raw": "1"
+            }
+          }
+        }
+      ]
+    },
+    "LoginScreen@app/login.tsx:110": {
+      "element": {
+        "file": "app/login.tsx",
+        "line": 110
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.flagStrip",
+          "file": "app/login.tsx",
+          "defLine": 252,
+          "properties": {
+            "flexDirection": {
+              "line": 253,
+              "col": 19,
+              "endCol": 24,
+              "raw": "\"row\""
+            },
+            "width": {
+              "line": 254,
+              "col": 11,
+              "endCol": 13,
+              "raw": "80"
+            },
+            "height": {
+              "line": 255,
+              "col": 12,
+              "endCol": 13,
+              "raw": "4"
+            },
+            "borderRadius": {
+              "line": 256,
+              "col": 18,
+              "endCol": 19,
+              "raw": "2"
+            },
+            "overflow": {
+              "line": 257,
+              "col": 14,
+              "endCol": 22,
+              "raw": "\"hidden\""
+            },
+            "marginBottom": {
+              "line": 258,
+              "col": 18,
+              "endCol": 20,
+              "raw": "24"
+            }
+          }
+        }
+      ]
+    },
+    "LoginScreen@app/login.tsx:111": {
+      "element": {
+        "file": "app/login.tsx",
+        "line": 111
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.flagBand",
+          "file": "app/login.tsx",
+          "defLine": 260,
+          "properties": {
+            "flex": {
+              "line": 261,
+              "col": 10,
+              "endCol": 11,
+              "raw": "1"
+            },
+            "height": {
+              "line": 262,
+              "col": 12,
+              "endCol": 18,
+              "raw": "\"100%\""
+            }
+          }
+        }
+      ]
+    },
+    "LoginScreen@app/login.tsx:112": {
+      "element": {
+        "file": "app/login.tsx",
+        "line": 112
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.flagBand",
+          "file": "app/login.tsx",
+          "defLine": 260,
+          "properties": {
+            "flex": {
+              "line": 261,
+              "col": 10,
+              "endCol": 11,
+              "raw": "1"
+            },
+            "height": {
+              "line": 262,
+              "col": 12,
+              "endCol": 18,
+              "raw": "\"100%\""
+            }
+          }
+        }
+      ]
+    },
+    "LoginScreen@app/login.tsx:113": {
+      "element": {
+        "file": "app/login.tsx",
+        "line": 113
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.flagBand",
+          "file": "app/login.tsx",
+          "defLine": 260,
+          "properties": {
+            "flex": {
+              "line": 261,
+              "col": 10,
+              "endCol": 11,
+              "raw": "1"
+            },
+            "height": {
+              "line": 262,
+              "col": 12,
+              "endCol": 18,
+              "raw": "\"100%\""
+            }
+          }
+        }
+      ]
+    },
+    "LoginScreen@app/login.tsx:117": {
+      "element": {
+        "file": "app/login.tsx",
+        "line": 117
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.logoContainer",
+          "file": "app/login.tsx",
+          "defLine": 264,
+          "properties": {
+            "alignItems": {
+              "line": 265,
+              "col": 16,
+              "endCol": 24,
+              "raw": "\"center\""
+            },
+            "marginBottom": {
+              "line": 266,
+              "col": 18,
+              "endCol": 20,
+              "raw": "12"
+            }
+          }
+        }
+      ]
+    },
+    "LoginScreen@app/login.tsx:118": {
+      "element": {
+        "file": "app/login.tsx",
+        "line": 118
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.logo",
+          "file": "app/login.tsx",
+          "defLine": 268,
+          "properties": {
+            "borderRadius": {
+              "line": 269,
+              "col": 18,
+              "endCol": 20,
+              "raw": "20"
+            }
+          }
+        }
+      ]
+    },
+    "LoginScreen@app/login.tsx:129": {
+      "element": {
+        "file": "app/login.tsx",
+        "line": 129
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.title",
+          "file": "app/login.tsx",
+          "defLine": 271,
+          "properties": {
+            "fontSize": {
+              "line": 273,
+              "col": 14,
+              "endCol": 16,
+              "raw": "28"
+            },
+            "textAlign": {
+              "line": 275,
+              "col": 15,
+              "endCol": 23,
+              "raw": "\"center\""
+            },
+            "letterSpacing": {
+              "line": 276,
+              "col": 19,
+              "endCol": 23,
+              "raw": "-0.5"
+            }
+          }
+        }
+      ]
+    },
+    "LoginScreen@app/login.tsx:132": {
+      "element": {
+        "file": "app/login.tsx",
+        "line": 132
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.subtitle",
+          "file": "app/login.tsx",
+          "defLine": 278,
+          "properties": {
+            "fontSize": {
+              "line": 280,
+              "col": 14,
+              "endCol": 16,
+              "raw": "16"
+            },
+            "textAlign": {
+              "line": 282,
+              "col": 15,
+              "endCol": 23,
+              "raw": "\"center\""
+            },
+            "marginTop": {
+              "line": 283,
+              "col": 15,
+              "endCol": 16,
+              "raw": "6"
+            },
+            "marginBottom": {
+              "line": 284,
+              "col": 18,
+              "endCol": 20,
+              "raw": "32"
+            }
+          }
+        }
+      ]
+    },
+    "LoginScreen@app/login.tsx:137": {
+      "element": {
+        "file": "app/login.tsx",
+        "line": 137
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.formContainer",
+          "file": "app/login.tsx",
+          "defLine": 286,
+          "properties": {
+            "width": {
+              "line": 287,
+              "col": 11,
+              "endCol": 17,
+              "raw": "\"100%\""
+            },
+            "gap": {
+              "line": 288,
+              "col": 9,
+              "endCol": 11,
+              "raw": "16"
+            }
+          }
+        }
+      ]
+    },
+    "LoginScreen@app/login.tsx:139": {
+      "element": {
+        "file": "app/login.tsx",
+        "line": 139
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.inputWrapper",
+          "file": "app/login.tsx",
+          "defLine": 290,
+          "properties": {
+            "flexDirection": {
+              "line": 291,
+              "col": 19,
+              "endCol": 24,
+              "raw": "\"row\""
+            },
+            "alignItems": {
+              "line": 292,
+              "col": 16,
+              "endCol": 24,
+              "raw": "\"center\""
+            },
+            "borderRadius": {
+              "line": 294,
+              "col": 18,
+              "endCol": 20,
+              "raw": "16"
+            },
+            "borderWidth": {
+              "line": 295,
+              "col": 17,
+              "endCol": 18,
+              "raw": "1"
+            },
+            "paddingHorizontal": {
+              "line": 297,
+              "col": 23,
+              "endCol": 25,
+              "raw": "16"
+            },
+            "minHeight": {
+              "line": 298,
+              "col": 15,
+              "endCol": 17,
+              "raw": "56"
+            }
+          }
+        }
+      ]
+    },
+    "LoginScreen@app/login.tsx:140": {
+      "element": {
+        "file": "app/login.tsx",
+        "line": 140
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.inputIconContainer",
+          "file": "app/login.tsx",
+          "defLine": 300,
+          "properties": {
+            "marginRight": {
+              "line": 301,
+              "col": 17,
+              "endCol": 19,
+              "raw": "12"
+            }
+          }
+        }
+      ]
+    },
+    "LoginScreen@app/login.tsx:143": {
+      "element": {
+        "file": "app/login.tsx",
+        "line": 143
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.textInput",
+          "file": "app/login.tsx",
+          "defLine": 303,
+          "properties": {
+            "flex": {
+              "line": 304,
+              "col": 10,
+              "endCol": 11,
+              "raw": "1"
+            },
+            "fontSize": {
+              "line": 306,
+              "col": 14,
+              "endCol": 16,
+              "raw": "16"
+            },
+            "paddingVertical": {
+              "line": 308,
+              "col": 21,
+              "endCol": 23,
+              "raw": "16"
+            }
+          }
+        }
+      ]
+    },
+    "LoginScreen@app/login.tsx:158": {
+      "element": {
+        "file": "app/login.tsx",
+        "line": 158
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.inputWrapper",
+          "file": "app/login.tsx",
+          "defLine": 290,
+          "properties": {
+            "flexDirection": {
+              "line": 291,
+              "col": 19,
+              "endCol": 24,
+              "raw": "\"row\""
+            },
+            "alignItems": {
+              "line": 292,
+              "col": 16,
+              "endCol": 24,
+              "raw": "\"center\""
+            },
+            "borderRadius": {
+              "line": 294,
+              "col": 18,
+              "endCol": 20,
+              "raw": "16"
+            },
+            "borderWidth": {
+              "line": 295,
+              "col": 17,
+              "endCol": 18,
+              "raw": "1"
+            },
+            "paddingHorizontal": {
+              "line": 297,
+              "col": 23,
+              "endCol": 25,
+              "raw": "16"
+            },
+            "minHeight": {
+              "line": 298,
+              "col": 15,
+              "endCol": 17,
+              "raw": "56"
+            }
+          }
+        }
+      ]
+    },
+    "LoginScreen@app/login.tsx:159": {
+      "element": {
+        "file": "app/login.tsx",
+        "line": 159
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.inputIconContainer",
+          "file": "app/login.tsx",
+          "defLine": 300,
+          "properties": {
+            "marginRight": {
+              "line": 301,
+              "col": 17,
+              "endCol": 19,
+              "raw": "12"
+            }
+          }
+        }
+      ]
+    },
+    "LoginScreen@app/login.tsx:162": {
+      "element": {
+        "file": "app/login.tsx",
+        "line": 162
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.textInput",
+          "file": "app/login.tsx",
+          "defLine": 303,
+          "properties": {
+            "flex": {
+              "line": 304,
+              "col": 10,
+              "endCol": 11,
+              "raw": "1"
+            },
+            "fontSize": {
+              "line": 306,
+              "col": 14,
+              "endCol": 16,
+              "raw": "16"
+            },
+            "paddingVertical": {
+              "line": 308,
+              "col": 21,
+              "endCol": 23,
+              "raw": "16"
+            }
+          }
+        },
+        {
+          "origin": "stylesheet",
+          "ref": "styles.passwordInput",
+          "file": "app/login.tsx",
+          "defLine": 310,
+          "properties": {
+            "paddingRight": {
+              "line": 311,
+              "col": 18,
+              "endCol": 20,
+              "raw": "44"
+            }
+          }
+        }
+      ]
+    },
+    "LoginScreen@app/login.tsx:174": {
+      "element": {
+        "file": "app/login.tsx",
+        "line": 174
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.eyeButton",
+          "file": "app/login.tsx",
+          "defLine": 313,
+          "properties": {
+            "position": {
+              "line": 314,
+              "col": 14,
+              "endCol": 24,
+              "raw": "\"absolute\""
+            },
+            "right": {
+              "line": 315,
+              "col": 11,
+              "endCol": 13,
+              "raw": "16"
+            },
+            "width": {
+              "line": 316,
+              "col": 11,
+              "endCol": 13,
+              "raw": "44"
+            },
+            "height": {
+              "line": 317,
+              "col": 12,
+              "endCol": 14,
+              "raw": "44"
+            },
+            "alignItems": {
+              "line": 318,
+              "col": 16,
+              "endCol": 24,
+              "raw": "\"center\""
+            },
+            "justifyContent": {
+              "line": 319,
+              "col": 20,
+              "endCol": 28,
+              "raw": "\"center\""
+            }
+          }
+        }
+      ]
+    },
+    "LoginScreen@app/login.tsx:189": {
+      "element": {
+        "file": "app/login.tsx",
+        "line": 189
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.errorContainer",
+          "file": "app/login.tsx",
+          "defLine": 321,
+          "properties": {
+            "flexDirection": {
+              "line": 322,
+              "col": 19,
+              "endCol": 24,
+              "raw": "\"row\""
+            },
+            "alignItems": {
+              "line": 323,
+              "col": 16,
+              "endCol": 24,
+              "raw": "\"center\""
+            },
+            "gap": {
+              "line": 324,
+              "col": 9,
+              "endCol": 10,
+              "raw": "8"
+            },
+            "backgroundColor": {
+              "line": 325,
+              "col": 21,
+              "endCol": 30,
+              "raw": "\"#FFF0F0\""
+            },
+            "borderRadius": {
+              "line": 326,
+              "col": 18,
+              "endCol": 20,
+              "raw": "12"
+            },
+            "padding": {
+              "line": 327,
+              "col": 13,
+              "endCol": 15,
+              "raw": "14"
+            },
+            "borderWidth": {
+              "line": 328,
+              "col": 17,
+              "endCol": 18,
+              "raw": "1"
+            },
+            "borderColor": {
+              "line": 329,
+              "col": 17,
+              "endCol": 26,
+              "raw": "\"#FFCCCC\""
+            }
+          }
+        }
+      ]
+    },
+    "LoginScreen@app/login.tsx:191": {
+      "element": {
+        "file": "app/login.tsx",
+        "line": 191
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.errorText",
+          "file": "app/login.tsx",
+          "defLine": 331,
+          "properties": {
+            "flex": {
+              "line": 332,
+              "col": 10,
+              "endCol": 11,
+              "raw": "1"
+            },
+            "fontSize": {
+              "line": 334,
+              "col": 14,
+              "endCol": 16,
+              "raw": "14"
+            },
+            "lineHeight": {
+              "line": 336,
+              "col": 16,
+              "endCol": 18,
+              "raw": "20"
+            }
+          }
+        }
+      ]
+    },
+    "LoginScreen@app/login.tsx:198": {
+      "element": {
+        "file": "app/login.tsx",
+        "line": 198
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.loginButton",
+          "file": "app/login.tsx",
+          "defLine": 338,
+          "properties": {
+            "borderRadius": {
+              "line": 340,
+              "col": 18,
+              "endCol": 20,
+              "raw": "16"
+            },
+            "paddingVertical": {
+              "line": 341,
+              "col": 21,
+              "endCol": 23,
+              "raw": "18"
+            },
+            "paddingHorizontal": {
+              "line": 342,
+              "col": 23,
+              "endCol": 25,
+              "raw": "24"
+            },
+            "flexDirection": {
+              "line": 343,
+              "col": 19,
+              "endCol": 24,
+              "raw": "\"row\""
+            },
+            "alignItems": {
+              "line": 344,
+              "col": 16,
+              "endCol": 24,
+              "raw": "\"center\""
+            },
+            "justifyContent": {
+              "line": 345,
+              "col": 20,
+              "endCol": 28,
+              "raw": "\"center\""
+            },
+            "gap": {
+              "line": 346,
+              "col": 9,
+              "endCol": 11,
+              "raw": "10"
+            },
+            "marginTop": {
+              "line": 347,
+              "col": 15,
+              "endCol": 16,
+              "raw": "8"
+            },
+            "boxShadow": {
+              "line": 348,
+              "col": 15,
+              "endCol": 51,
+              "raw": "\"0 4px 14px rgba(46, 107, 87, 0.25)\""
+            }
+          }
+        },
+        {
+          "origin": "dynamic",
+          "resolvable": false
+        }
+      ]
+    },
+    "LoginScreen@app/login.tsx:212": {
+      "element": {
+        "file": "app/login.tsx",
+        "line": 212
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.loginButtonText",
+          "file": "app/login.tsx",
+          "defLine": 353,
+          "properties": {
+            "fontSize": {
+              "line": 355,
+              "col": 14,
+              "endCol": 16,
+              "raw": "17"
+            }
+          }
+        }
+      ]
+    },
+    "LoginScreen@app/login.tsx:219": {
+      "element": {
+        "file": "app/login.tsx",
+        "line": 219
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.divider",
+          "file": "app/login.tsx",
+          "defLine": 358,
+          "properties": {
+            "flexDirection": {
+              "line": 359,
+              "col": 19,
+              "endCol": 24,
+              "raw": "\"row\""
+            },
+            "alignItems": {
+              "line": 360,
+              "col": 16,
+              "endCol": 24,
+              "raw": "\"center\""
+            },
+            "width": {
+              "line": 361,
+              "col": 11,
+              "endCol": 17,
+              "raw": "\"100%\""
+            },
+            "marginVertical": {
+              "line": 362,
+              "col": 20,
+              "endCol": 22,
+              "raw": "24"
+            },
+            "gap": {
+              "line": 363,
+              "col": 9,
+              "endCol": 11,
+              "raw": "12"
+            }
+          }
+        }
+      ]
+    },
+    "LoginScreen@app/login.tsx:220": {
+      "element": {
+        "file": "app/login.tsx",
+        "line": 220
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.dividerLine",
+          "file": "app/login.tsx",
+          "defLine": 365,
+          "properties": {
+            "flex": {
+              "line": 366,
+              "col": 10,
+              "endCol": 11,
+              "raw": "1"
+            },
+            "height": {
+              "line": 367,
+              "col": 12,
+              "endCol": 13,
+              "raw": "1"
+            }
+          }
+        }
+      ]
+    },
+    "LoginScreen@app/login.tsx:221": {
+      "element": {
+        "file": "app/login.tsx",
+        "line": 221
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.dividerText",
+          "file": "app/login.tsx",
+          "defLine": 370,
+          "properties": {
+            "fontSize": {
+              "line": 372,
+              "col": 14,
+              "endCol": 16,
+              "raw": "14"
+            }
+          }
+        }
+      ]
+    },
+    "LoginScreen@app/login.tsx:222": {
+      "element": {
+        "file": "app/login.tsx",
+        "line": 222
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.dividerLine",
+          "file": "app/login.tsx",
+          "defLine": 365,
+          "properties": {
+            "flex": {
+              "line": 366,
+              "col": 10,
+              "endCol": 11,
+              "raw": "1"
+            },
+            "height": {
+              "line": 367,
+              "col": 12,
+              "endCol": 13,
+              "raw": "1"
+            }
+          }
+        }
+      ]
+    },
+    "LoginScreen@app/login.tsx:226": {
+      "element": {
+        "file": "app/login.tsx",
+        "line": 226
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.continueButton",
+          "file": "app/login.tsx",
+          "defLine": 375,
+          "properties": {
+            "flexDirection": {
+              "line": 376,
+              "col": 19,
+              "endCol": 24,
+              "raw": "\"row\""
+            },
+            "alignItems": {
+              "line": 377,
+              "col": 16,
+              "endCol": 24,
+              "raw": "\"center\""
+            },
+            "justifyContent": {
+              "line": 378,
+              "col": 20,
+              "endCol": 28,
+              "raw": "\"center\""
+            },
+            "gap": {
+              "line": 379,
+              "col": 9,
+              "endCol": 11,
+              "raw": "10"
+            },
+            "borderWidth": {
+              "line": 380,
+              "col": 17,
+              "endCol": 18,
+              "raw": "2"
+            },
+            "borderRadius": {
+              "line": 382,
+              "col": 18,
+              "endCol": 20,
+              "raw": "16"
+            },
+            "paddingVertical": {
+              "line": 383,
+              "col": 21,
+              "endCol": 23,
+              "raw": "16"
+            },
+            "paddingHorizontal": {
+              "line": 384,
+              "col": 23,
+              "endCol": 25,
+              "raw": "24"
+            },
+            "width": {
+              "line": 385,
+              "col": 11,
+              "endCol": 17,
+              "raw": "\"100%\""
+            },
+            "backgroundColor": {
+              "line": 386,
+              "col": 21,
+              "endCol": 34,
+              "raw": "\"transparent\""
+            }
+          }
+        }
+      ]
+    },
+    "LoginScreen@app/login.tsx:233": {
+      "element": {
+        "file": "app/login.tsx",
+        "line": 233
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.continueButtonText",
+          "file": "app/login.tsx",
+          "defLine": 388,
+          "properties": {
+            "fontSize": {
+              "line": 390,
+              "col": 14,
+              "endCol": 16,
+              "raw": "16"
             }
           }
         }
@@ -1000,6 +3298,870 @@
           "properties": {
             "fontSize": {
               "line": 354,
+              "col": 14,
+              "endCol": 16,
+              "raw": "14"
+            }
+          }
+        }
+      ]
+    },
+    "NouvelleDemande@app/nouvelle-demande.tsx:195": {
+      "element": {
+        "file": "app/nouvelle-demande.tsx",
+        "line": 195
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.flex",
+          "file": "app/nouvelle-demande.tsx",
+          "defLine": 320,
+          "properties": {
+            "flex": {
+              "line": 321,
+              "col": 10,
+              "endCol": 11,
+              "raw": "1"
+            }
+          }
+        }
+      ]
+    },
+    "NouvelleDemande@app/nouvelle-demande.tsx:199": {
+      "element": {
+        "file": "app/nouvelle-demande.tsx",
+        "line": 199
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.container",
+          "file": "app/nouvelle-demande.tsx",
+          "defLine": 323,
+          "properties": {
+            "flex": {
+              "line": 324,
+              "col": 10,
+              "endCol": 11,
+              "raw": "1"
+            }
+          }
+        }
+      ]
+    },
+    "NouvelleDemande@app/nouvelle-demande.tsx:209": {
+      "element": {
+        "file": "app/nouvelle-demande.tsx",
+        "line": 209
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.header",
+          "file": "app/nouvelle-demande.tsx",
+          "defLine": 330,
+          "properties": {
+            "flexDirection": {
+              "line": 331,
+              "col": 19,
+              "endCol": 24,
+              "raw": "\"row\""
+            },
+            "alignItems": {
+              "line": 332,
+              "col": 16,
+              "endCol": 24,
+              "raw": "\"center\""
+            },
+            "marginBottom": {
+              "line": 333,
+              "col": 18,
+              "endCol": 20,
+              "raw": "24"
+            }
+          }
+        }
+      ]
+    },
+    "NouvelleDemande@app/nouvelle-demande.tsx:210": {
+      "element": {
+        "file": "app/nouvelle-demande.tsx",
+        "line": 210
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.backButton",
+          "file": "app/nouvelle-demande.tsx",
+          "defLine": 335,
+          "properties": {
+            "width": {
+              "line": 336,
+              "col": 11,
+              "endCol": 13,
+              "raw": "44"
+            },
+            "height": {
+              "line": 337,
+              "col": 12,
+              "endCol": 14,
+              "raw": "44"
+            },
+            "borderRadius": {
+              "line": 338,
+              "col": 18,
+              "endCol": 20,
+              "raw": "12"
+            },
+            "alignItems": {
+              "line": 340,
+              "col": 16,
+              "endCol": 24,
+              "raw": "\"center\""
+            },
+            "justifyContent": {
+              "line": 341,
+              "col": 20,
+              "endCol": 28,
+              "raw": "\"center\""
+            },
+            "borderWidth": {
+              "line": 342,
+              "col": 17,
+              "endCol": 18,
+              "raw": "1"
+            }
+          }
+        }
+      ]
+    },
+    "NouvelleDemande@app/nouvelle-demande.tsx:217": {
+      "element": {
+        "file": "app/nouvelle-demande.tsx",
+        "line": 217
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.headerTitle",
+          "file": "app/nouvelle-demande.tsx",
+          "defLine": 345,
+          "properties": {
+            "flex": {
+              "line": 346,
+              "col": 10,
+              "endCol": 11,
+              "raw": "1"
+            },
+            "fontSize": {
+              "line": 348,
+              "col": 14,
+              "endCol": 16,
+              "raw": "20"
+            },
+            "textAlign": {
+              "line": 350,
+              "col": 15,
+              "endCol": 23,
+              "raw": "\"center\""
+            }
+          }
+        }
+      ]
+    },
+    "NouvelleDemande@app/nouvelle-demande.tsx:218": {
+      "element": {
+        "file": "app/nouvelle-demande.tsx",
+        "line": 218
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.headerSpacer",
+          "file": "app/nouvelle-demande.tsx",
+          "defLine": 352,
+          "properties": {
+            "width": {
+              "line": 353,
+              "col": 11,
+              "endCol": 13,
+              "raw": "44"
+            }
+          }
+        }
+      ]
+    },
+    "NouvelleDemande@app/nouvelle-demande.tsx:222": {
+      "element": {
+        "file": "app/nouvelle-demande.tsx",
+        "line": 222
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.instructionCard",
+          "file": "app/nouvelle-demande.tsx",
+          "defLine": 355,
+          "properties": {
+            "flexDirection": {
+              "line": 356,
+              "col": 19,
+              "endCol": 24,
+              "raw": "\"row\""
+            },
+            "borderRadius": {
+              "line": 358,
+              "col": 18,
+              "endCol": 20,
+              "raw": "14"
+            },
+            "padding": {
+              "line": 359,
+              "col": 13,
+              "endCol": 15,
+              "raw": "14"
+            },
+            "gap": {
+              "line": 360,
+              "col": 9,
+              "endCol": 11,
+              "raw": "10"
+            },
+            "alignItems": {
+              "line": 361,
+              "col": 16,
+              "endCol": 28,
+              "raw": "\"flex-start\""
+            },
+            "borderWidth": {
+              "line": 362,
+              "col": 17,
+              "endCol": 18,
+              "raw": "1"
+            },
+            "marginBottom": {
+              "line": 364,
+              "col": 18,
+              "endCol": 20,
+              "raw": "20"
+            }
+          }
+        }
+      ]
+    },
+    "NouvelleDemande@app/nouvelle-demande.tsx:224": {
+      "element": {
+        "file": "app/nouvelle-demande.tsx",
+        "line": 224
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.instructionText",
+          "file": "app/nouvelle-demande.tsx",
+          "defLine": 366,
+          "properties": {
+            "flex": {
+              "line": 367,
+              "col": 10,
+              "endCol": 11,
+              "raw": "1"
+            },
+            "fontSize": {
+              "line": 369,
+              "col": 14,
+              "endCol": 16,
+              "raw": "14"
+            },
+            "lineHeight": {
+              "line": 371,
+              "col": 16,
+              "endCol": 18,
+              "raw": "20"
+            }
+          }
+        }
+      ]
+    },
+    "NouvelleDemande@app/nouvelle-demande.tsx:230": {
+      "element": {
+        "file": "app/nouvelle-demande.tsx",
+        "line": 230
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.inputContainer",
+          "file": "app/nouvelle-demande.tsx",
+          "defLine": 373,
+          "properties": {
+            "borderRadius": {
+              "line": 375,
+              "col": 18,
+              "endCol": 20,
+              "raw": "16"
+            },
+            "borderWidth": {
+              "line": 376,
+              "col": 17,
+              "endCol": 18,
+              "raw": "1"
+            },
+            "padding": {
+              "line": 378,
+              "col": 13,
+              "endCol": 15,
+              "raw": "16"
+            },
+            "marginBottom": {
+              "line": 379,
+              "col": 18,
+              "endCol": 20,
+              "raw": "20"
+            }
+          }
+        }
+      ]
+    },
+    "NouvelleDemande@app/nouvelle-demande.tsx:231": {
+      "element": {
+        "file": "app/nouvelle-demande.tsx",
+        "line": 231
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.textInput",
+          "file": "app/nouvelle-demande.tsx",
+          "defLine": 381,
+          "properties": {
+            "fontSize": {
+              "line": 383,
+              "col": 14,
+              "endCol": 16,
+              "raw": "16"
+            },
+            "minHeight": {
+              "line": 385,
+              "col": 15,
+              "endCol": 18,
+              "raw": "140"
+            },
+            "lineHeight": {
+              "line": 386,
+              "col": 16,
+              "endCol": 18,
+              "raw": "24"
+            },
+            "padding": {
+              "line": 387,
+              "col": 13,
+              "endCol": 14,
+              "raw": "0"
+            }
+          }
+        }
+      ]
+    },
+    "NouvelleDemande@app/nouvelle-demande.tsx:242": {
+      "element": {
+        "file": "app/nouvelle-demande.tsx",
+        "line": 242
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.charCount",
+          "file": "app/nouvelle-demande.tsx",
+          "defLine": 389,
+          "properties": {
+            "alignItems": {
+              "line": 390,
+              "col": 16,
+              "endCol": 26,
+              "raw": "\"flex-end\""
+            },
+            "marginTop": {
+              "line": 391,
+              "col": 15,
+              "endCol": 16,
+              "raw": "8"
+            }
+          }
+        }
+      ]
+    },
+    "NouvelleDemande@app/nouvelle-demande.tsx:243": {
+      "element": {
+        "file": "app/nouvelle-demande.tsx",
+        "line": 243
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.charCountText",
+          "file": "app/nouvelle-demande.tsx",
+          "defLine": 393,
+          "properties": {
+            "fontSize": {
+              "line": 395,
+              "col": 14,
+              "endCol": 16,
+              "raw": "12"
+            }
+          }
+        }
+      ]
+    },
+    "NouvelleDemande@app/nouvelle-demande.tsx:248": {
+      "element": {
+        "file": "app/nouvelle-demande.tsx",
+        "line": 248
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.micContainer",
+          "file": "app/nouvelle-demande.tsx",
+          "defLine": 398,
+          "properties": {
+            "alignItems": {
+              "line": 399,
+              "col": 16,
+              "endCol": 24,
+              "raw": "\"center\""
+            },
+            "marginBottom": {
+              "line": 400,
+              "col": 18,
+              "endCol": 20,
+              "raw": "24"
+            }
+          }
+        }
+      ]
+    },
+    "NouvelleDemande@app/nouvelle-demande.tsx:249": {
+      "element": {
+        "file": "app/nouvelle-demande.tsx",
+        "line": 249
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.micButtonWrapper",
+          "file": "app/nouvelle-demande.tsx",
+          "defLine": 402,
+          "properties": {
+            "marginBottom": {
+              "line": 403,
+              "col": 18,
+              "endCol": 20,
+              "raw": "10"
+            }
+          }
+        },
+        {
+          "origin": "dynamic",
+          "resolvable": false
+        }
+      ]
+    },
+    "NouvelleDemande@app/nouvelle-demande.tsx:250": {
+      "element": {
+        "file": "app/nouvelle-demande.tsx",
+        "line": 250
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.micButton",
+          "file": "app/nouvelle-demande.tsx",
+          "defLine": 405,
+          "properties": {
+            "width": {
+              "line": 406,
+              "col": 11,
+              "endCol": 13,
+              "raw": "64"
+            },
+            "height": {
+              "line": 407,
+              "col": 12,
+              "endCol": 14,
+              "raw": "64"
+            },
+            "borderRadius": {
+              "line": 408,
+              "col": 18,
+              "endCol": 20,
+              "raw": "32"
+            },
+            "alignItems": {
+              "line": 410,
+              "col": 16,
+              "endCol": 24,
+              "raw": "\"center\""
+            },
+            "justifyContent": {
+              "line": 411,
+              "col": 20,
+              "endCol": 28,
+              "raw": "\"center\""
+            },
+            "boxShadow": {
+              "line": 412,
+              "col": 15,
+              "endCol": 52,
+              "raw": "\"0 4px 14px rgba(200, 106, 74, 0.35)\""
+            }
+          }
+        },
+        {
+          "origin": "dynamic",
+          "resolvable": false
+        }
+      ]
+    },
+    "NouvelleDemande@app/nouvelle-demande.tsx:265": {
+      "element": {
+        "file": "app/nouvelle-demande.tsx",
+        "line": 265
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.micLabel",
+          "file": "app/nouvelle-demande.tsx",
+          "defLine": 417,
+          "properties": {
+            "fontSize": {
+              "line": 419,
+              "col": 14,
+              "endCol": 16,
+              "raw": "14"
+            }
+          }
+        }
+      ]
+    },
+    "NouvelleDemande@app/nouvelle-demande.tsx:274": {
+      "element": {
+        "file": "app/nouvelle-demande.tsx",
+        "line": 274
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.errorContainer",
+          "file": "app/nouvelle-demande.tsx",
+          "defLine": 422,
+          "properties": {
+            "flexDirection": {
+              "line": 423,
+              "col": 19,
+              "endCol": 24,
+              "raw": "\"row\""
+            },
+            "alignItems": {
+              "line": 424,
+              "col": 16,
+              "endCol": 24,
+              "raw": "\"center\""
+            },
+            "gap": {
+              "line": 425,
+              "col": 9,
+              "endCol": 10,
+              "raw": "8"
+            },
+            "backgroundColor": {
+              "line": 426,
+              "col": 21,
+              "endCol": 30,
+              "raw": "\"#FFF0F0\""
+            },
+            "borderRadius": {
+              "line": 427,
+              "col": 18,
+              "endCol": 20,
+              "raw": "12"
+            },
+            "padding": {
+              "line": 428,
+              "col": 13,
+              "endCol": 15,
+              "raw": "14"
+            },
+            "marginBottom": {
+              "line": 429,
+              "col": 18,
+              "endCol": 20,
+              "raw": "20"
+            },
+            "borderWidth": {
+              "line": 430,
+              "col": 17,
+              "endCol": 18,
+              "raw": "1"
+            },
+            "borderColor": {
+              "line": 431,
+              "col": 17,
+              "endCol": 26,
+              "raw": "\"#FFCCCC\""
+            }
+          }
+        }
+      ]
+    },
+    "NouvelleDemande@app/nouvelle-demande.tsx:276": {
+      "element": {
+        "file": "app/nouvelle-demande.tsx",
+        "line": 276
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.errorText",
+          "file": "app/nouvelle-demande.tsx",
+          "defLine": 433,
+          "properties": {
+            "flex": {
+              "line": 434,
+              "col": 10,
+              "endCol": 11,
+              "raw": "1"
+            },
+            "fontSize": {
+              "line": 436,
+              "col": 14,
+              "endCol": 16,
+              "raw": "14"
+            },
+            "lineHeight": {
+              "line": 438,
+              "col": 16,
+              "endCol": 18,
+              "raw": "20"
+            }
+          }
+        }
+      ]
+    },
+    "NouvelleDemande@app/nouvelle-demande.tsx:281": {
+      "element": {
+        "file": "app/nouvelle-demande.tsx",
+        "line": 281
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.submitButton",
+          "file": "app/nouvelle-demande.tsx",
+          "defLine": 440,
+          "properties": {
+            "borderRadius": {
+              "line": 442,
+              "col": 18,
+              "endCol": 20,
+              "raw": "16"
+            },
+            "paddingVertical": {
+              "line": 443,
+              "col": 21,
+              "endCol": 23,
+              "raw": "18"
+            },
+            "paddingHorizontal": {
+              "line": 444,
+              "col": 23,
+              "endCol": 25,
+              "raw": "24"
+            },
+            "flexDirection": {
+              "line": 445,
+              "col": 19,
+              "endCol": 24,
+              "raw": "\"row\""
+            },
+            "alignItems": {
+              "line": 446,
+              "col": 16,
+              "endCol": 24,
+              "raw": "\"center\""
+            },
+            "justifyContent": {
+              "line": 447,
+              "col": 20,
+              "endCol": 28,
+              "raw": "\"center\""
+            },
+            "gap": {
+              "line": 448,
+              "col": 9,
+              "endCol": 11,
+              "raw": "10"
+            },
+            "boxShadow": {
+              "line": 449,
+              "col": 15,
+              "endCol": 51,
+              "raw": "\"0 4px 14px rgba(46, 107, 87, 0.25)\""
+            }
+          }
+        },
+        {
+          "origin": "dynamic",
+          "resolvable": false
+        }
+      ]
+    },
+    "NouvelleDemande@app/nouvelle-demande.tsx:295": {
+      "element": {
+        "file": "app/nouvelle-demande.tsx",
+        "line": 295
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.submitButtonText",
+          "file": "app/nouvelle-demande.tsx",
+          "defLine": 454,
+          "properties": {
+            "fontSize": {
+              "line": 456,
+              "col": 14,
+              "endCol": 16,
+              "raw": "17"
+            }
+          }
+        }
+      ]
+    },
+    "NouvelleDemande@app/nouvelle-demande.tsx:303": {
+      "element": {
+        "file": "app/nouvelle-demande.tsx",
+        "line": 303
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.loadingOverlay",
+          "file": "app/nouvelle-demande.tsx",
+          "defLine": 459,
+          "properties": {
+            "alignItems": {
+              "line": 462,
+              "col": 16,
+              "endCol": 24,
+              "raw": "\"center\""
+            },
+            "justifyContent": {
+              "line": 463,
+              "col": 20,
+              "endCol": 28,
+              "raw": "\"center\""
+            },
+            "zIndex": {
+              "line": 464,
+              "col": 12,
+              "endCol": 15,
+              "raw": "100"
+            }
+          }
+        }
+      ]
+    },
+    "NouvelleDemande@app/nouvelle-demande.tsx:304": {
+      "element": {
+        "file": "app/nouvelle-demande.tsx",
+        "line": 304
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.loadingCard",
+          "file": "app/nouvelle-demande.tsx",
+          "defLine": 466,
+          "properties": {
+            "borderRadius": {
+              "line": 468,
+              "col": 18,
+              "endCol": 20,
+              "raw": "24"
+            },
+            "padding": {
+              "line": 469,
+              "col": 13,
+              "endCol": 15,
+              "raw": "40"
+            },
+            "alignItems": {
+              "line": 470,
+              "col": 16,
+              "endCol": 24,
+              "raw": "\"center\""
+            },
+            "gap": {
+              "line": 471,
+              "col": 9,
+              "endCol": 11,
+              "raw": "16"
+            },
+            "boxShadow": {
+              "line": 472,
+              "col": 15,
+              "endCol": 51,
+              "raw": "\"0 8px 32px rgba(46, 107, 87, 0.15)\""
+            },
+            "borderWidth": {
+              "line": 473,
+              "col": 17,
+              "endCol": 18,
+              "raw": "1"
+            }
+          }
+        }
+      ]
+    },
+    "NouvelleDemande@app/nouvelle-demande.tsx:306": {
+      "element": {
+        "file": "app/nouvelle-demande.tsx",
+        "line": 306
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.loadingText",
+          "file": "app/nouvelle-demande.tsx",
+          "defLine": 476,
+          "properties": {
+            "fontSize": {
+              "line": 478,
+              "col": 14,
+              "endCol": 16,
+              "raw": "17"
+            }
+          }
+        }
+      ]
+    },
+    "NouvelleDemande@app/nouvelle-demande.tsx:309": {
+      "element": {
+        "file": "app/nouvelle-demande.tsx",
+        "line": 309
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.loadingSubtext",
+          "file": "app/nouvelle-demande.tsx",
+          "defLine": 481,
+          "properties": {
+            "fontSize": {
+              "line": 483,
               "col": 14,
               "endCol": 16,
               "raw": "14"
@@ -2948,162 +6110,172 @@
         }
       ]
     },
-    "NouvelleDemande@app/nouvelle-demande.tsx:195": {
+    "AgentDemandeDetail@app/agent-demande-detail.tsx:168": {
       "element": {
-        "file": "app/nouvelle-demande.tsx",
-        "line": 195
-      },
-      "styles": [
-        {
-          "origin": "stylesheet",
-          "ref": "styles.flex",
-          "file": "app/nouvelle-demande.tsx",
-          "defLine": 320,
-          "properties": {
-            "flex": {
-              "line": 321,
-              "col": 10,
-              "endCol": 11,
-              "raw": "1"
-            }
-          }
-        }
-      ]
-    },
-    "NouvelleDemande@app/nouvelle-demande.tsx:199": {
-      "element": {
-        "file": "app/nouvelle-demande.tsx",
-        "line": 199
+        "file": "app/agent-demande-detail.tsx",
+        "line": 168
       },
       "styles": [
         {
           "origin": "stylesheet",
           "ref": "styles.container",
-          "file": "app/nouvelle-demande.tsx",
-          "defLine": 323,
+          "file": "app/agent-demande-detail.tsx",
+          "defLine": 413,
           "properties": {
             "flex": {
-              "line": 324,
+              "line": 414,
               "col": 10,
               "endCol": 11,
               "raw": "1"
             }
           }
-        }
-      ]
-    },
-    "NouvelleDemande@app/nouvelle-demande.tsx:209": {
-      "element": {
-        "file": "app/nouvelle-demande.tsx",
-        "line": 209
-      },
-      "styles": [
+        },
         {
           "origin": "stylesheet",
-          "ref": "styles.header",
-          "file": "app/nouvelle-demande.tsx",
-          "defLine": 330,
+          "ref": "styles.centerContent",
+          "file": "app/agent-demande-detail.tsx",
+          "defLine": 417,
           "properties": {
-            "flexDirection": {
-              "line": 331,
-              "col": 19,
-              "endCol": 24,
-              "raw": "\"row\""
-            },
             "alignItems": {
-              "line": 332,
-              "col": 16,
-              "endCol": 24,
-              "raw": "\"center\""
-            },
-            "marginBottom": {
-              "line": 333,
-              "col": 18,
-              "endCol": 20,
-              "raw": "24"
-            }
-          }
-        }
-      ]
-    },
-    "NouvelleDemande@app/nouvelle-demande.tsx:210": {
-      "element": {
-        "file": "app/nouvelle-demande.tsx",
-        "line": 210
-      },
-      "styles": [
-        {
-          "origin": "stylesheet",
-          "ref": "styles.backButton",
-          "file": "app/nouvelle-demande.tsx",
-          "defLine": 335,
-          "properties": {
-            "width": {
-              "line": 336,
-              "col": 11,
-              "endCol": 13,
-              "raw": "44"
-            },
-            "height": {
-              "line": 337,
-              "col": 12,
-              "endCol": 14,
-              "raw": "44"
-            },
-            "borderRadius": {
-              "line": 338,
-              "col": 18,
-              "endCol": 20,
-              "raw": "12"
-            },
-            "alignItems": {
-              "line": 340,
+              "line": 418,
               "col": 16,
               "endCol": 24,
               "raw": "\"center\""
             },
             "justifyContent": {
-              "line": 341,
+              "line": 419,
               "col": 20,
               "endCol": 28,
               "raw": "\"center\""
-            },
-            "borderWidth": {
-              "line": 342,
-              "col": 17,
-              "endCol": 18,
-              "raw": "1"
             }
           }
         }
       ]
     },
-    "NouvelleDemande@app/nouvelle-demande.tsx:217": {
+    "AgentDemandeDetail@app/agent-demande-detail.tsx:170": {
       "element": {
-        "file": "app/nouvelle-demande.tsx",
-        "line": 217
+        "file": "app/agent-demande-detail.tsx",
+        "line": 170
       },
       "styles": [
         {
           "origin": "stylesheet",
-          "ref": "styles.headerTitle",
-          "file": "app/nouvelle-demande.tsx",
-          "defLine": 345,
+          "ref": "styles.loadingText",
+          "file": "app/agent-demande-detail.tsx",
+          "defLine": 618,
+          "properties": {
+            "fontSize": {
+              "line": 620,
+              "col": 14,
+              "endCol": 16,
+              "raw": "16"
+            },
+            "marginTop": {
+              "line": 622,
+              "col": 15,
+              "endCol": 17,
+              "raw": "16"
+            }
+          }
+        }
+      ]
+    },
+    "AgentDemandeDetail@app/agent-demande-detail.tsx:178": {
+      "element": {
+        "file": "app/agent-demande-detail.tsx",
+        "line": 178
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.container",
+          "file": "app/agent-demande-detail.tsx",
+          "defLine": 413,
           "properties": {
             "flex": {
-              "line": 346,
+              "line": 414,
               "col": 10,
               "endCol": 11,
               "raw": "1"
+            }
+          }
+        },
+        {
+          "origin": "stylesheet",
+          "ref": "styles.centerContent",
+          "file": "app/agent-demande-detail.tsx",
+          "defLine": 417,
+          "properties": {
+            "alignItems": {
+              "line": 418,
+              "col": 16,
+              "endCol": 24,
+              "raw": "\"center\""
             },
+            "justifyContent": {
+              "line": 419,
+              "col": 20,
+              "endCol": 28,
+              "raw": "\"center\""
+            }
+          }
+        }
+      ]
+    },
+    "AgentDemandeDetail@app/agent-demande-detail.tsx:179": {
+      "element": {
+        "file": "app/agent-demande-detail.tsx",
+        "line": 179
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.errorState",
+          "file": "app/agent-demande-detail.tsx",
+          "defLine": 624,
+          "properties": {
+            "alignItems": {
+              "line": 625,
+              "col": 16,
+              "endCol": 24,
+              "raw": "\"center\""
+            },
+            "padding": {
+              "line": 626,
+              "col": 13,
+              "endCol": 15,
+              "raw": "32"
+            },
+            "gap": {
+              "line": 627,
+              "col": 9,
+              "endCol": 11,
+              "raw": "12"
+            }
+          }
+        }
+      ]
+    },
+    "AgentDemandeDetail@app/agent-demande-detail.tsx:181": {
+      "element": {
+        "file": "app/agent-demande-detail.tsx",
+        "line": 181
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.errorTitle",
+          "file": "app/agent-demande-detail.tsx",
+          "defLine": 629,
+          "properties": {
             "fontSize": {
-              "line": 348,
+              "line": 631,
               "col": 14,
               "endCol": 16,
               "raw": "20"
             },
             "textAlign": {
-              "line": 350,
+              "line": 633,
               "col": 15,
               "endCol": 23,
               "raw": "\"center\""
@@ -3112,20 +6284,354 @@
         }
       ]
     },
-    "NouvelleDemande@app/nouvelle-demande.tsx:218": {
+    "AgentDemandeDetail@app/agent-demande-detail.tsx:182": {
       "element": {
-        "file": "app/nouvelle-demande.tsx",
-        "line": 218
+        "file": "app/agent-demande-detail.tsx",
+        "line": 182
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.errorSubtitle",
+          "file": "app/agent-demande-detail.tsx",
+          "defLine": 635,
+          "properties": {
+            "fontSize": {
+              "line": 637,
+              "col": 14,
+              "endCol": 16,
+              "raw": "15"
+            },
+            "textAlign": {
+              "line": 639,
+              "col": 15,
+              "endCol": 23,
+              "raw": "\"center\""
+            },
+            "lineHeight": {
+              "line": 640,
+              "col": 16,
+              "endCol": 18,
+              "raw": "22"
+            }
+          }
+        }
+      ]
+    },
+    "AgentDemandeDetail@app/agent-demande-detail.tsx:183": {
+      "element": {
+        "file": "app/agent-demande-detail.tsx",
+        "line": 183
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.errorActions",
+          "file": "app/agent-demande-detail.tsx",
+          "defLine": 642,
+          "properties": {
+            "flexDirection": {
+              "line": 643,
+              "col": 19,
+              "endCol": 24,
+              "raw": "\"row\""
+            },
+            "gap": {
+              "line": 644,
+              "col": 9,
+              "endCol": 11,
+              "raw": "12"
+            },
+            "marginTop": {
+              "line": 645,
+              "col": 15,
+              "endCol": 17,
+              "raw": "20"
+            }
+          }
+        }
+      ]
+    },
+    "AgentDemandeDetail@app/agent-demande-detail.tsx:184": {
+      "element": {
+        "file": "app/agent-demande-detail.tsx",
+        "line": 184
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.secondaryBtn",
+          "file": "app/agent-demande-detail.tsx",
+          "defLine": 647,
+          "properties": {
+            "borderWidth": {
+              "line": 648,
+              "col": 17,
+              "endCol": 18,
+              "raw": "2"
+            },
+            "borderRadius": {
+              "line": 650,
+              "col": 18,
+              "endCol": 20,
+              "raw": "16"
+            },
+            "paddingVertical": {
+              "line": 651,
+              "col": 21,
+              "endCol": 23,
+              "raw": "14"
+            },
+            "paddingHorizontal": {
+              "line": 652,
+              "col": 23,
+              "endCol": 25,
+              "raw": "24"
+            }
+          }
+        }
+      ]
+    },
+    "AgentDemandeDetail@app/agent-demande-detail.tsx:189": {
+      "element": {
+        "file": "app/agent-demande-detail.tsx",
+        "line": 189
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.secondaryBtnText",
+          "file": "app/agent-demande-detail.tsx",
+          "defLine": 654,
+          "properties": {
+            "fontSize": {
+              "line": 656,
+              "col": 14,
+              "endCol": 16,
+              "raw": "16"
+            }
+          }
+        }
+      ]
+    },
+    "AgentDemandeDetail@app/agent-demande-detail.tsx:191": {
+      "element": {
+        "file": "app/agent-demande-detail.tsx",
+        "line": 191
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.primaryBtn",
+          "file": "app/agent-demande-detail.tsx",
+          "defLine": 659,
+          "properties": {
+            "borderRadius": {
+              "line": 661,
+              "col": 18,
+              "endCol": 20,
+              "raw": "16"
+            },
+            "paddingVertical": {
+              "line": 662,
+              "col": 21,
+              "endCol": 23,
+              "raw": "14"
+            },
+            "paddingHorizontal": {
+              "line": 663,
+              "col": 23,
+              "endCol": 25,
+              "raw": "24"
+            }
+          }
+        }
+      ]
+    },
+    "AgentDemandeDetail@app/agent-demande-detail.tsx:196": {
+      "element": {
+        "file": "app/agent-demande-detail.tsx",
+        "line": 196
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.primaryBtnText",
+          "file": "app/agent-demande-detail.tsx",
+          "defLine": 665,
+          "properties": {
+            "fontSize": {
+              "line": 667,
+              "col": 14,
+              "endCol": 16,
+              "raw": "16"
+            }
+          }
+        }
+      ]
+    },
+    "AgentDemandeDetail@app/agent-demande-detail.tsx:210": {
+      "element": {
+        "file": "app/agent-demande-detail.tsx",
+        "line": 210
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.container",
+          "file": "app/agent-demande-detail.tsx",
+          "defLine": 413,
+          "properties": {
+            "flex": {
+              "line": 414,
+              "col": 10,
+              "endCol": 11,
+              "raw": "1"
+            }
+          }
+        }
+      ]
+    },
+    "AgentDemandeDetail@app/agent-demande-detail.tsx:212": {
+      "element": {
+        "file": "app/agent-demande-detail.tsx",
+        "line": 212
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.header",
+          "file": "app/agent-demande-detail.tsx",
+          "defLine": 421,
+          "properties": {
+            "flexDirection": {
+              "line": 422,
+              "col": 19,
+              "endCol": 24,
+              "raw": "\"row\""
+            },
+            "alignItems": {
+              "line": 423,
+              "col": 16,
+              "endCol": 24,
+              "raw": "\"center\""
+            },
+            "paddingHorizontal": {
+              "line": 424,
+              "col": 23,
+              "endCol": 25,
+              "raw": "24"
+            },
+            "marginBottom": {
+              "line": 425,
+              "col": 18,
+              "endCol": 20,
+              "raw": "16"
+            }
+          }
+        }
+      ]
+    },
+    "AgentDemandeDetail@app/agent-demande-detail.tsx:213": {
+      "element": {
+        "file": "app/agent-demande-detail.tsx",
+        "line": 213
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.backButton",
+          "file": "app/agent-demande-detail.tsx",
+          "defLine": 427,
+          "properties": {
+            "width": {
+              "line": 428,
+              "col": 11,
+              "endCol": 13,
+              "raw": "44"
+            },
+            "height": {
+              "line": 429,
+              "col": 12,
+              "endCol": 14,
+              "raw": "44"
+            },
+            "borderRadius": {
+              "line": 430,
+              "col": 18,
+              "endCol": 20,
+              "raw": "12"
+            },
+            "alignItems": {
+              "line": 432,
+              "col": 16,
+              "endCol": 24,
+              "raw": "\"center\""
+            },
+            "justifyContent": {
+              "line": 433,
+              "col": 20,
+              "endCol": 28,
+              "raw": "\"center\""
+            },
+            "borderWidth": {
+              "line": 434,
+              "col": 17,
+              "endCol": 18,
+              "raw": "1"
+            }
+          }
+        }
+      ]
+    },
+    "AgentDemandeDetail@app/agent-demande-detail.tsx:220": {
+      "element": {
+        "file": "app/agent-demande-detail.tsx",
+        "line": 220
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.headerTitle",
+          "file": "app/agent-demande-detail.tsx",
+          "defLine": 437,
+          "properties": {
+            "flex": {
+              "line": 438,
+              "col": 10,
+              "endCol": 11,
+              "raw": "1"
+            },
+            "fontSize": {
+              "line": 440,
+              "col": 14,
+              "endCol": 16,
+              "raw": "18"
+            },
+            "textAlign": {
+              "line": 442,
+              "col": 15,
+              "endCol": 23,
+              "raw": "\"center\""
+            }
+          }
+        }
+      ]
+    },
+    "AgentDemandeDetail@app/agent-demande-detail.tsx:223": {
+      "element": {
+        "file": "app/agent-demande-detail.tsx",
+        "line": 223
       },
       "styles": [
         {
           "origin": "stylesheet",
           "ref": "styles.headerSpacer",
-          "file": "app/nouvelle-demande.tsx",
-          "defLine": 352,
+          "file": "app/agent-demande-detail.tsx",
+          "defLine": 444,
           "properties": {
             "width": {
-              "line": 353,
+              "line": 445,
               "col": 11,
               "endCol": 13,
               "raw": "44"
@@ -3134,352 +6640,156 @@
         }
       ]
     },
-    "NouvelleDemande@app/nouvelle-demande.tsx:222": {
+    "AgentDemandeDetail@app/agent-demande-detail.tsx:226": {
       "element": {
-        "file": "app/nouvelle-demande.tsx",
-        "line": 222
+        "file": "app/agent-demande-detail.tsx",
+        "line": 226
       },
       "styles": [
         {
           "origin": "stylesheet",
-          "ref": "styles.instructionCard",
-          "file": "app/nouvelle-demande.tsx",
-          "defLine": 355,
+          "ref": "styles.scrollView",
+          "file": "app/agent-demande-detail.tsx",
+          "defLine": 447,
           "properties": {
-            "flexDirection": {
-              "line": 356,
-              "col": 19,
-              "endCol": 24,
-              "raw": "\"row\""
-            },
+            "flex": {
+              "line": 448,
+              "col": 10,
+              "endCol": 11,
+              "raw": "1"
+            }
+          }
+        }
+      ]
+    },
+    "AgentDemandeDetail@app/agent-demande-detail.tsx:235": {
+      "element": {
+        "file": "app/agent-demande-detail.tsx",
+        "line": 235
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.metaCard",
+          "file": "app/agent-demande-detail.tsx",
+          "defLine": 454,
+          "properties": {
             "borderRadius": {
-              "line": 358,
+              "line": 456,
               "col": 18,
               "endCol": 20,
-              "raw": "14"
+              "raw": "16"
             },
             "padding": {
-              "line": 359,
+              "line": 457,
               "col": 13,
               "endCol": 15,
-              "raw": "14"
+              "raw": "16"
             },
             "gap": {
-              "line": 360,
+              "line": 458,
               "col": 9,
               "endCol": 11,
               "raw": "10"
             },
-            "alignItems": {
-              "line": 361,
-              "col": 16,
-              "endCol": 28,
-              "raw": "\"flex-start\""
-            },
             "borderWidth": {
-              "line": 362,
+              "line": 459,
               "col": 17,
               "endCol": 18,
               "raw": "1"
             },
-            "marginBottom": {
-              "line": 364,
-              "col": 18,
-              "endCol": 20,
-              "raw": "20"
-            }
-          }
-        }
-      ]
-    },
-    "NouvelleDemande@app/nouvelle-demande.tsx:224": {
-      "element": {
-        "file": "app/nouvelle-demande.tsx",
-        "line": 224
-      },
-      "styles": [
-        {
-          "origin": "stylesheet",
-          "ref": "styles.instructionText",
-          "file": "app/nouvelle-demande.tsx",
-          "defLine": 366,
-          "properties": {
-            "flex": {
-              "line": 367,
-              "col": 10,
-              "endCol": 11,
-              "raw": "1"
-            },
-            "fontSize": {
-              "line": 369,
-              "col": 14,
-              "endCol": 16,
-              "raw": "14"
-            },
-            "lineHeight": {
-              "line": 371,
-              "col": 16,
-              "endCol": 18,
-              "raw": "20"
-            }
-          }
-        }
-      ]
-    },
-    "NouvelleDemande@app/nouvelle-demande.tsx:230": {
-      "element": {
-        "file": "app/nouvelle-demande.tsx",
-        "line": 230
-      },
-      "styles": [
-        {
-          "origin": "stylesheet",
-          "ref": "styles.inputContainer",
-          "file": "app/nouvelle-demande.tsx",
-          "defLine": 373,
-          "properties": {
-            "borderRadius": {
-              "line": 375,
-              "col": 18,
-              "endCol": 20,
-              "raw": "16"
-            },
-            "borderWidth": {
-              "line": 376,
+            "borderCurve": {
+              "line": 461,
               "col": 17,
-              "endCol": 18,
-              "raw": "1"
-            },
-            "padding": {
-              "line": 378,
-              "col": 13,
-              "endCol": 15,
-              "raw": "16"
-            },
-            "marginBottom": {
-              "line": 379,
-              "col": 18,
-              "endCol": 20,
-              "raw": "20"
+              "endCol": 29,
+              "raw": "\"continuous\""
             }
           }
         }
       ]
     },
-    "NouvelleDemande@app/nouvelle-demande.tsx:231": {
+    "AgentDemandeDetail@app/agent-demande-detail.tsx:236": {
       "element": {
-        "file": "app/nouvelle-demande.tsx",
-        "line": 231
+        "file": "app/agent-demande-detail.tsx",
+        "line": 236
       },
       "styles": [
         {
           "origin": "stylesheet",
-          "ref": "styles.textInput",
-          "file": "app/nouvelle-demande.tsx",
-          "defLine": 381,
+          "ref": "styles.metaRow",
+          "file": "app/agent-demande-detail.tsx",
+          "defLine": 463,
           "properties": {
-            "fontSize": {
-              "line": 383,
-              "col": 14,
-              "endCol": 16,
-              "raw": "16"
-            },
-            "minHeight": {
-              "line": 385,
-              "col": 15,
-              "endCol": 18,
-              "raw": "140"
-            },
-            "lineHeight": {
-              "line": 386,
-              "col": 16,
-              "endCol": 18,
-              "raw": "24"
-            },
-            "padding": {
-              "line": 387,
-              "col": 13,
-              "endCol": 14,
-              "raw": "0"
-            }
-          }
-        }
-      ]
-    },
-    "NouvelleDemande@app/nouvelle-demande.tsx:242": {
-      "element": {
-        "file": "app/nouvelle-demande.tsx",
-        "line": 242
-      },
-      "styles": [
-        {
-          "origin": "stylesheet",
-          "ref": "styles.charCount",
-          "file": "app/nouvelle-demande.tsx",
-          "defLine": 389,
-          "properties": {
-            "alignItems": {
-              "line": 390,
-              "col": 16,
-              "endCol": 26,
-              "raw": "\"flex-end\""
-            },
-            "marginTop": {
-              "line": 391,
-              "col": 15,
-              "endCol": 16,
-              "raw": "8"
-            }
-          }
-        }
-      ]
-    },
-    "NouvelleDemande@app/nouvelle-demande.tsx:243": {
-      "element": {
-        "file": "app/nouvelle-demande.tsx",
-        "line": 243
-      },
-      "styles": [
-        {
-          "origin": "stylesheet",
-          "ref": "styles.charCountText",
-          "file": "app/nouvelle-demande.tsx",
-          "defLine": 393,
-          "properties": {
-            "fontSize": {
-              "line": 395,
-              "col": 14,
-              "endCol": 16,
-              "raw": "12"
-            }
-          }
-        }
-      ]
-    },
-    "NouvelleDemande@app/nouvelle-demande.tsx:248": {
-      "element": {
-        "file": "app/nouvelle-demande.tsx",
-        "line": 248
-      },
-      "styles": [
-        {
-          "origin": "stylesheet",
-          "ref": "styles.micContainer",
-          "file": "app/nouvelle-demande.tsx",
-          "defLine": 398,
-          "properties": {
-            "alignItems": {
-              "line": 399,
-              "col": 16,
+            "flexDirection": {
+              "line": 464,
+              "col": 19,
               "endCol": 24,
-              "raw": "\"center\""
-            },
-            "marginBottom": {
-              "line": 400,
-              "col": 18,
-              "endCol": 20,
-              "raw": "24"
-            }
-          }
-        }
-      ]
-    },
-    "NouvelleDemande@app/nouvelle-demande.tsx:249": {
-      "element": {
-        "file": "app/nouvelle-demande.tsx",
-        "line": 249
-      },
-      "styles": [
-        {
-          "origin": "stylesheet",
-          "ref": "styles.micButtonWrapper",
-          "file": "app/nouvelle-demande.tsx",
-          "defLine": 402,
-          "properties": {
-            "marginBottom": {
-              "line": 403,
-              "col": 18,
-              "endCol": 20,
-              "raw": "10"
-            }
-          }
-        },
-        {
-          "origin": "dynamic",
-          "resolvable": false
-        }
-      ]
-    },
-    "NouvelleDemande@app/nouvelle-demande.tsx:250": {
-      "element": {
-        "file": "app/nouvelle-demande.tsx",
-        "line": 250
-      },
-      "styles": [
-        {
-          "origin": "stylesheet",
-          "ref": "styles.micButton",
-          "file": "app/nouvelle-demande.tsx",
-          "defLine": 405,
-          "properties": {
-            "width": {
-              "line": 406,
-              "col": 11,
-              "endCol": 13,
-              "raw": "64"
-            },
-            "height": {
-              "line": 407,
-              "col": 12,
-              "endCol": 14,
-              "raw": "64"
-            },
-            "borderRadius": {
-              "line": 408,
-              "col": 18,
-              "endCol": 20,
-              "raw": "32"
+              "raw": "\"row\""
             },
             "alignItems": {
-              "line": 410,
+              "line": 465,
               "col": 16,
               "endCol": 24,
               "raw": "\"center\""
             },
             "justifyContent": {
-              "line": 411,
+              "line": 466,
               "col": 20,
-              "endCol": 28,
-              "raw": "\"center\""
-            },
-            "boxShadow": {
-              "line": 412,
-              "col": 15,
-              "endCol": 52,
-              "raw": "\"0 4px 14px rgba(200, 106, 74, 0.35)\""
+              "endCol": 35,
+              "raw": "\"space-between\""
             }
           }
-        },
-        {
-          "origin": "dynamic",
-          "resolvable": false
         }
       ]
     },
-    "NouvelleDemande@app/nouvelle-demande.tsx:265": {
+    "AgentDemandeDetail@app/agent-demande-detail.tsx:237": {
       "element": {
-        "file": "app/nouvelle-demande.tsx",
-        "line": 265
+        "file": "app/agent-demande-detail.tsx",
+        "line": 237
       },
       "styles": [
         {
           "origin": "stylesheet",
-          "ref": "styles.micLabel",
-          "file": "app/nouvelle-demande.tsx",
-          "defLine": 417,
+          "ref": "styles.metaItem",
+          "file": "app/agent-demande-detail.tsx",
+          "defLine": 468,
+          "properties": {
+            "flexDirection": {
+              "line": 469,
+              "col": 19,
+              "endCol": 24,
+              "raw": "\"row\""
+            },
+            "alignItems": {
+              "line": 470,
+              "col": 16,
+              "endCol": 24,
+              "raw": "\"center\""
+            },
+            "gap": {
+              "line": 471,
+              "col": 9,
+              "endCol": 10,
+              "raw": "8"
+            }
+          }
+        }
+      ]
+    },
+    "AgentDemandeDetail@app/agent-demande-detail.tsx:239": {
+      "element": {
+        "file": "app/agent-demande-detail.tsx",
+        "line": 239
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.metaLabel",
+          "file": "app/agent-demande-detail.tsx",
+          "defLine": 473,
           "properties": {
             "fontSize": {
-              "line": 419,
+              "line": 475,
               "col": 14,
               "endCol": 16,
               "raw": "14"
@@ -3488,68 +6798,1204 @@
         }
       ]
     },
-    "NouvelleDemande@app/nouvelle-demande.tsx:274": {
+    "AgentDemandeDetail@app/agent-demande-detail.tsx:241": {
       "element": {
-        "file": "app/nouvelle-demande.tsx",
-        "line": 274
+        "file": "app/agent-demande-detail.tsx",
+        "line": 241
       },
       "styles": [
         {
           "origin": "stylesheet",
-          "ref": "styles.errorContainer",
-          "file": "app/nouvelle-demande.tsx",
-          "defLine": 422,
+          "ref": "styles.statusBadge",
+          "file": "app/agent-demande-detail.tsx",
+          "defLine": 478,
+          "properties": {
+            "paddingHorizontal": {
+              "line": 479,
+              "col": 23,
+              "endCol": 25,
+              "raw": "12"
+            },
+            "paddingVertical": {
+              "line": 480,
+              "col": 21,
+              "endCol": 22,
+              "raw": "5"
+            },
+            "borderRadius": {
+              "line": 481,
+              "col": 18,
+              "endCol": 20,
+              "raw": "10"
+            }
+          }
+        }
+      ]
+    },
+    "AgentDemandeDetail@app/agent-demande-detail.tsx:247": {
+      "element": {
+        "file": "app/agent-demande-detail.tsx",
+        "line": 247
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.statusBadgeText",
+          "file": "app/agent-demande-detail.tsx",
+          "defLine": 483,
+          "properties": {
+            "fontSize": {
+              "line": 485,
+              "col": 14,
+              "endCol": 16,
+              "raw": "12"
+            }
+          }
+        }
+      ]
+    },
+    "AgentDemandeDetail@app/agent-demande-detail.tsx:252": {
+      "element": {
+        "file": "app/agent-demande-detail.tsx",
+        "line": 252
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.metaItem",
+          "file": "app/agent-demande-detail.tsx",
+          "defLine": 468,
           "properties": {
             "flexDirection": {
-              "line": 423,
+              "line": 469,
               "col": 19,
               "endCol": 24,
               "raw": "\"row\""
             },
             "alignItems": {
-              "line": 424,
+              "line": 470,
               "col": 16,
               "endCol": 24,
               "raw": "\"center\""
             },
             "gap": {
-              "line": 425,
+              "line": 471,
+              "col": 9,
+              "endCol": 10,
+              "raw": "8"
+            }
+          }
+        }
+      ]
+    },
+    "AgentDemandeDetail@app/agent-demande-detail.tsx:254": {
+      "element": {
+        "file": "app/agent-demande-detail.tsx",
+        "line": 254
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.metaLabel",
+          "file": "app/agent-demande-detail.tsx",
+          "defLine": 473,
+          "properties": {
+            "fontSize": {
+              "line": 475,
+              "col": 14,
+              "endCol": 16,
+              "raw": "14"
+            }
+          }
+        }
+      ]
+    },
+    "AgentDemandeDetail@app/agent-demande-detail.tsx:259": {
+      "element": {
+        "file": "app/agent-demande-detail.tsx",
+        "line": 259
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.card",
+          "file": "app/agent-demande-detail.tsx",
+          "defLine": 488,
+          "properties": {
+            "borderRadius": {
+              "line": 490,
+              "col": 18,
+              "endCol": 20,
+              "raw": "16"
+            },
+            "padding": {
+              "line": 491,
+              "col": 13,
+              "endCol": 15,
+              "raw": "18"
+            },
+            "borderWidth": {
+              "line": 492,
+              "col": 17,
+              "endCol": 18,
+              "raw": "1"
+            },
+            "borderCurve": {
+              "line": 494,
+              "col": 17,
+              "endCol": 29,
+              "raw": "\"continuous\""
+            }
+          }
+        }
+      ]
+    },
+    "AgentDemandeDetail@app/agent-demande-detail.tsx:260": {
+      "element": {
+        "file": "app/agent-demande-detail.tsx",
+        "line": 260
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.cardHeader",
+          "file": "app/agent-demande-detail.tsx",
+          "defLine": 496,
+          "properties": {
+            "flexDirection": {
+              "line": 497,
+              "col": 19,
+              "endCol": 24,
+              "raw": "\"row\""
+            },
+            "alignItems": {
+              "line": 498,
+              "col": 16,
+              "endCol": 24,
+              "raw": "\"center\""
+            },
+            "gap": {
+              "line": 499,
+              "col": 9,
+              "endCol": 11,
+              "raw": "10"
+            },
+            "marginBottom": {
+              "line": 500,
+              "col": 18,
+              "endCol": 20,
+              "raw": "12"
+            }
+          }
+        }
+      ]
+    },
+    "AgentDemandeDetail@app/agent-demande-detail.tsx:262": {
+      "element": {
+        "file": "app/agent-demande-detail.tsx",
+        "line": 262
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.cardTitle",
+          "file": "app/agent-demande-detail.tsx",
+          "defLine": 502,
+          "properties": {
+            "fontSize": {
+              "line": 504,
+              "col": 14,
+              "endCol": 16,
+              "raw": "16"
+            }
+          }
+        }
+      ]
+    },
+    "AgentDemandeDetail@app/agent-demande-detail.tsx:264": {
+      "element": {
+        "file": "app/agent-demande-detail.tsx",
+        "line": 264
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.cardContent",
+          "file": "app/agent-demande-detail.tsx",
+          "defLine": 507,
+          "properties": {
+            "fontSize": {
+              "line": 509,
+              "col": 14,
+              "endCol": 16,
+              "raw": "15"
+            },
+            "lineHeight": {
+              "line": 511,
+              "col": 16,
+              "endCol": 18,
+              "raw": "24"
+            }
+          }
+        }
+      ]
+    },
+    "AgentDemandeDetail@app/agent-demande-detail.tsx:273": {
+      "element": {
+        "file": "app/agent-demande-detail.tsx",
+        "line": 273
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.card",
+          "file": "app/agent-demande-detail.tsx",
+          "defLine": 488,
+          "properties": {
+            "borderRadius": {
+              "line": 490,
+              "col": 18,
+              "endCol": 20,
+              "raw": "16"
+            },
+            "padding": {
+              "line": 491,
+              "col": 13,
+              "endCol": 15,
+              "raw": "18"
+            },
+            "borderWidth": {
+              "line": 492,
+              "col": 17,
+              "endCol": 18,
+              "raw": "1"
+            },
+            "borderCurve": {
+              "line": 494,
+              "col": 17,
+              "endCol": 29,
+              "raw": "\"continuous\""
+            }
+          }
+        }
+      ]
+    },
+    "AgentDemandeDetail@app/agent-demande-detail.tsx:274": {
+      "element": {
+        "file": "app/agent-demande-detail.tsx",
+        "line": 274
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.cardHeader",
+          "file": "app/agent-demande-detail.tsx",
+          "defLine": 496,
+          "properties": {
+            "flexDirection": {
+              "line": 497,
+              "col": 19,
+              "endCol": 24,
+              "raw": "\"row\""
+            },
+            "alignItems": {
+              "line": 498,
+              "col": 16,
+              "endCol": 24,
+              "raw": "\"center\""
+            },
+            "gap": {
+              "line": 499,
+              "col": 9,
+              "endCol": 11,
+              "raw": "10"
+            },
+            "marginBottom": {
+              "line": 500,
+              "col": 18,
+              "endCol": 20,
+              "raw": "12"
+            }
+          }
+        }
+      ]
+    },
+    "AgentDemandeDetail@app/agent-demande-detail.tsx:276": {
+      "element": {
+        "file": "app/agent-demande-detail.tsx",
+        "line": 276
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.cardTitle",
+          "file": "app/agent-demande-detail.tsx",
+          "defLine": 502,
+          "properties": {
+            "fontSize": {
+              "line": 504,
+              "col": 14,
+              "endCol": 16,
+              "raw": "16"
+            }
+          }
+        }
+      ]
+    },
+    "AgentDemandeDetail@app/agent-demande-detail.tsx:278": {
+      "element": {
+        "file": "app/agent-demande-detail.tsx",
+        "line": 278
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.cardContent",
+          "file": "app/agent-demande-detail.tsx",
+          "defLine": 507,
+          "properties": {
+            "fontSize": {
+              "line": 509,
+              "col": 14,
+              "endCol": 16,
+              "raw": "15"
+            },
+            "lineHeight": {
+              "line": 511,
+              "col": 16,
+              "endCol": 18,
+              "raw": "24"
+            }
+          }
+        }
+      ]
+    },
+    "AgentDemandeDetail@app/agent-demande-detail.tsx:284": {
+      "element": {
+        "file": "app/agent-demande-detail.tsx",
+        "line": 284
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.card",
+          "file": "app/agent-demande-detail.tsx",
+          "defLine": 488,
+          "properties": {
+            "borderRadius": {
+              "line": 490,
+              "col": 18,
+              "endCol": 20,
+              "raw": "16"
+            },
+            "padding": {
+              "line": 491,
+              "col": 13,
+              "endCol": 15,
+              "raw": "18"
+            },
+            "borderWidth": {
+              "line": 492,
+              "col": 17,
+              "endCol": 18,
+              "raw": "1"
+            },
+            "borderCurve": {
+              "line": 494,
+              "col": 17,
+              "endCol": 29,
+              "raw": "\"continuous\""
+            }
+          }
+        }
+      ]
+    },
+    "AgentDemandeDetail@app/agent-demande-detail.tsx:285": {
+      "element": {
+        "file": "app/agent-demande-detail.tsx",
+        "line": 285
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.cardHeader",
+          "file": "app/agent-demande-detail.tsx",
+          "defLine": 496,
+          "properties": {
+            "flexDirection": {
+              "line": 497,
+              "col": 19,
+              "endCol": 24,
+              "raw": "\"row\""
+            },
+            "alignItems": {
+              "line": 498,
+              "col": 16,
+              "endCol": 24,
+              "raw": "\"center\""
+            },
+            "gap": {
+              "line": 499,
+              "col": 9,
+              "endCol": 11,
+              "raw": "10"
+            },
+            "marginBottom": {
+              "line": 500,
+              "col": 18,
+              "endCol": 20,
+              "raw": "12"
+            }
+          }
+        }
+      ]
+    },
+    "AgentDemandeDetail@app/agent-demande-detail.tsx:287": {
+      "element": {
+        "file": "app/agent-demande-detail.tsx",
+        "line": 287
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.cardTitle",
+          "file": "app/agent-demande-detail.tsx",
+          "defLine": 502,
+          "properties": {
+            "fontSize": {
+              "line": 504,
+              "col": 14,
+              "endCol": 16,
+              "raw": "16"
+            }
+          }
+        }
+      ]
+    },
+    "AgentDemandeDetail@app/agent-demande-detail.tsx:289": {
+      "element": {
+        "file": "app/agent-demande-detail.tsx",
+        "line": 289
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.cardContent",
+          "file": "app/agent-demande-detail.tsx",
+          "defLine": 507,
+          "properties": {
+            "fontSize": {
+              "line": 509,
+              "col": 14,
+              "endCol": 16,
+              "raw": "15"
+            },
+            "lineHeight": {
+              "line": 511,
+              "col": 16,
+              "endCol": 18,
+              "raw": "24"
+            }
+          }
+        }
+      ]
+    },
+    "AgentDemandeDetail@app/agent-demande-detail.tsx:295": {
+      "element": {
+        "file": "app/agent-demande-detail.tsx",
+        "line": 295
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.card",
+          "file": "app/agent-demande-detail.tsx",
+          "defLine": 488,
+          "properties": {
+            "borderRadius": {
+              "line": 490,
+              "col": 18,
+              "endCol": 20,
+              "raw": "16"
+            },
+            "padding": {
+              "line": 491,
+              "col": 13,
+              "endCol": 15,
+              "raw": "18"
+            },
+            "borderWidth": {
+              "line": 492,
+              "col": 17,
+              "endCol": 18,
+              "raw": "1"
+            },
+            "borderCurve": {
+              "line": 494,
+              "col": 17,
+              "endCol": 29,
+              "raw": "\"continuous\""
+            }
+          }
+        }
+      ]
+    },
+    "AgentDemandeDetail@app/agent-demande-detail.tsx:296": {
+      "element": {
+        "file": "app/agent-demande-detail.tsx",
+        "line": 296
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.cardHeader",
+          "file": "app/agent-demande-detail.tsx",
+          "defLine": 496,
+          "properties": {
+            "flexDirection": {
+              "line": 497,
+              "col": 19,
+              "endCol": 24,
+              "raw": "\"row\""
+            },
+            "alignItems": {
+              "line": 498,
+              "col": 16,
+              "endCol": 24,
+              "raw": "\"center\""
+            },
+            "gap": {
+              "line": 499,
+              "col": 9,
+              "endCol": 11,
+              "raw": "10"
+            },
+            "marginBottom": {
+              "line": 500,
+              "col": 18,
+              "endCol": 20,
+              "raw": "12"
+            }
+          }
+        }
+      ]
+    },
+    "AgentDemandeDetail@app/agent-demande-detail.tsx:298": {
+      "element": {
+        "file": "app/agent-demande-detail.tsx",
+        "line": 298
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.cardTitle",
+          "file": "app/agent-demande-detail.tsx",
+          "defLine": 502,
+          "properties": {
+            "fontSize": {
+              "line": 504,
+              "col": 14,
+              "endCol": 16,
+              "raw": "16"
+            }
+          }
+        }
+      ]
+    },
+    "AgentDemandeDetail@app/agent-demande-detail.tsx:300": {
+      "element": {
+        "file": "app/agent-demande-detail.tsx",
+        "line": 300
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.cardContent",
+          "file": "app/agent-demande-detail.tsx",
+          "defLine": 507,
+          "properties": {
+            "fontSize": {
+              "line": 509,
+              "col": 14,
+              "endCol": 16,
+              "raw": "15"
+            },
+            "lineHeight": {
+              "line": 511,
+              "col": 16,
+              "endCol": 18,
+              "raw": "24"
+            }
+          }
+        }
+      ]
+    },
+    "AgentDemandeDetail@app/agent-demande-detail.tsx:306": {
+      "element": {
+        "file": "app/agent-demande-detail.tsx",
+        "line": 306
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.card",
+          "file": "app/agent-demande-detail.tsx",
+          "defLine": 488,
+          "properties": {
+            "borderRadius": {
+              "line": 490,
+              "col": 18,
+              "endCol": 20,
+              "raw": "16"
+            },
+            "padding": {
+              "line": 491,
+              "col": 13,
+              "endCol": 15,
+              "raw": "18"
+            },
+            "borderWidth": {
+              "line": 492,
+              "col": 17,
+              "endCol": 18,
+              "raw": "1"
+            },
+            "borderCurve": {
+              "line": 494,
+              "col": 17,
+              "endCol": 29,
+              "raw": "\"continuous\""
+            }
+          }
+        }
+      ]
+    },
+    "AgentDemandeDetail@app/agent-demande-detail.tsx:307": {
+      "element": {
+        "file": "app/agent-demande-detail.tsx",
+        "line": 307
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.cardHeader",
+          "file": "app/agent-demande-detail.tsx",
+          "defLine": 496,
+          "properties": {
+            "flexDirection": {
+              "line": 497,
+              "col": 19,
+              "endCol": 24,
+              "raw": "\"row\""
+            },
+            "alignItems": {
+              "line": 498,
+              "col": 16,
+              "endCol": 24,
+              "raw": "\"center\""
+            },
+            "gap": {
+              "line": 499,
+              "col": 9,
+              "endCol": 11,
+              "raw": "10"
+            },
+            "marginBottom": {
+              "line": 500,
+              "col": 18,
+              "endCol": 20,
+              "raw": "12"
+            }
+          }
+        }
+      ]
+    },
+    "AgentDemandeDetail@app/agent-demande-detail.tsx:309": {
+      "element": {
+        "file": "app/agent-demande-detail.tsx",
+        "line": 309
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.cardTitle",
+          "file": "app/agent-demande-detail.tsx",
+          "defLine": 502,
+          "properties": {
+            "fontSize": {
+              "line": 504,
+              "col": 14,
+              "endCol": 16,
+              "raw": "16"
+            }
+          }
+        }
+      ]
+    },
+    "AgentDemandeDetail@app/agent-demande-detail.tsx:311": {
+      "element": {
+        "file": "app/agent-demande-detail.tsx",
+        "line": 311
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.cardContent",
+          "file": "app/agent-demande-detail.tsx",
+          "defLine": 507,
+          "properties": {
+            "fontSize": {
+              "line": 509,
+              "col": 14,
+              "endCol": 16,
+              "raw": "15"
+            },
+            "lineHeight": {
+              "line": 511,
+              "col": 16,
+              "endCol": 18,
+              "raw": "24"
+            }
+          }
+        }
+      ]
+    },
+    "AgentDemandeDetail@app/agent-demande-detail.tsx:317": {
+      "element": {
+        "file": "app/agent-demande-detail.tsx",
+        "line": 317
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.card",
+          "file": "app/agent-demande-detail.tsx",
+          "defLine": 488,
+          "properties": {
+            "borderRadius": {
+              "line": 490,
+              "col": 18,
+              "endCol": 20,
+              "raw": "16"
+            },
+            "padding": {
+              "line": 491,
+              "col": 13,
+              "endCol": 15,
+              "raw": "18"
+            },
+            "borderWidth": {
+              "line": 492,
+              "col": 17,
+              "endCol": 18,
+              "raw": "1"
+            },
+            "borderCurve": {
+              "line": 494,
+              "col": 17,
+              "endCol": 29,
+              "raw": "\"continuous\""
+            }
+          }
+        }
+      ]
+    },
+    "AgentDemandeDetail@app/agent-demande-detail.tsx:318": {
+      "element": {
+        "file": "app/agent-demande-detail.tsx",
+        "line": 318
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.cardHeader",
+          "file": "app/agent-demande-detail.tsx",
+          "defLine": 496,
+          "properties": {
+            "flexDirection": {
+              "line": 497,
+              "col": 19,
+              "endCol": 24,
+              "raw": "\"row\""
+            },
+            "alignItems": {
+              "line": 498,
+              "col": 16,
+              "endCol": 24,
+              "raw": "\"center\""
+            },
+            "gap": {
+              "line": 499,
+              "col": 9,
+              "endCol": 11,
+              "raw": "10"
+            },
+            "marginBottom": {
+              "line": 500,
+              "col": 18,
+              "endCol": 20,
+              "raw": "12"
+            }
+          }
+        }
+      ]
+    },
+    "AgentDemandeDetail@app/agent-demande-detail.tsx:320": {
+      "element": {
+        "file": "app/agent-demande-detail.tsx",
+        "line": 320
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.cardTitle",
+          "file": "app/agent-demande-detail.tsx",
+          "defLine": 502,
+          "properties": {
+            "fontSize": {
+              "line": 504,
+              "col": 14,
+              "endCol": 16,
+              "raw": "16"
+            }
+          }
+        }
+      ]
+    },
+    "AgentDemandeDetail@app/agent-demande-detail.tsx:322": {
+      "element": {
+        "file": "app/agent-demande-detail.tsx",
+        "line": 322
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.cardContent",
+          "file": "app/agent-demande-detail.tsx",
+          "defLine": 507,
+          "properties": {
+            "fontSize": {
+              "line": 509,
+              "col": 14,
+              "endCol": 16,
+              "raw": "15"
+            },
+            "lineHeight": {
+              "line": 511,
+              "col": 16,
+              "endCol": 18,
+              "raw": "24"
+            }
+          }
+        }
+      ]
+    },
+    "AgentDemandeDetail@app/agent-demande-detail.tsx:328": {
+      "element": {
+        "file": "app/agent-demande-detail.tsx",
+        "line": 328
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.card",
+          "file": "app/agent-demande-detail.tsx",
+          "defLine": 488,
+          "properties": {
+            "borderRadius": {
+              "line": 490,
+              "col": 18,
+              "endCol": 20,
+              "raw": "16"
+            },
+            "padding": {
+              "line": 491,
+              "col": 13,
+              "endCol": 15,
+              "raw": "18"
+            },
+            "borderWidth": {
+              "line": 492,
+              "col": 17,
+              "endCol": 18,
+              "raw": "1"
+            },
+            "borderCurve": {
+              "line": 494,
+              "col": 17,
+              "endCol": 29,
+              "raw": "\"continuous\""
+            }
+          }
+        }
+      ]
+    },
+    "AgentDemandeDetail@app/agent-demande-detail.tsx:329": {
+      "element": {
+        "file": "app/agent-demande-detail.tsx",
+        "line": 329
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.cardHeader",
+          "file": "app/agent-demande-detail.tsx",
+          "defLine": 496,
+          "properties": {
+            "flexDirection": {
+              "line": 497,
+              "col": 19,
+              "endCol": 24,
+              "raw": "\"row\""
+            },
+            "alignItems": {
+              "line": 498,
+              "col": 16,
+              "endCol": 24,
+              "raw": "\"center\""
+            },
+            "gap": {
+              "line": 499,
+              "col": 9,
+              "endCol": 11,
+              "raw": "10"
+            },
+            "marginBottom": {
+              "line": 500,
+              "col": 18,
+              "endCol": 20,
+              "raw": "12"
+            }
+          }
+        }
+      ]
+    },
+    "AgentDemandeDetail@app/agent-demande-detail.tsx:331": {
+      "element": {
+        "file": "app/agent-demande-detail.tsx",
+        "line": 331
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.cardTitle",
+          "file": "app/agent-demande-detail.tsx",
+          "defLine": 502,
+          "properties": {
+            "fontSize": {
+              "line": 504,
+              "col": 14,
+              "endCol": 16,
+              "raw": "16"
+            }
+          }
+        }
+      ]
+    },
+    "AgentDemandeDetail@app/agent-demande-detail.tsx:333": {
+      "element": {
+        "file": "app/agent-demande-detail.tsx",
+        "line": 333
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.cardContent",
+          "file": "app/agent-demande-detail.tsx",
+          "defLine": 507,
+          "properties": {
+            "fontSize": {
+              "line": 509,
+              "col": 14,
+              "endCol": 16,
+              "raw": "15"
+            },
+            "lineHeight": {
+              "line": 511,
+              "col": 16,
+              "endCol": 18,
+              "raw": "24"
+            }
+          }
+        }
+      ]
+    },
+    "AgentDemandeDetail@app/agent-demande-detail.tsx:339": {
+      "element": {
+        "file": "app/agent-demande-detail.tsx",
+        "line": 339
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.noResponseCard",
+          "file": "app/agent-demande-detail.tsx",
+          "defLine": 513,
+          "properties": {
+            "borderRadius": {
+              "line": 515,
+              "col": 18,
+              "endCol": 20,
+              "raw": "16"
+            },
+            "padding": {
+              "line": 516,
+              "col": 13,
+              "endCol": 15,
+              "raw": "24"
+            },
+            "alignItems": {
+              "line": 517,
+              "col": 16,
+              "endCol": 24,
+              "raw": "\"center\""
+            },
+            "gap": {
+              "line": 518,
+              "col": 9,
+              "endCol": 11,
+              "raw": "12"
+            },
+            "borderWidth": {
+              "line": 519,
+              "col": 17,
+              "endCol": 18,
+              "raw": "1"
+            }
+          }
+        }
+      ]
+    },
+    "AgentDemandeDetail@app/agent-demande-detail.tsx:341": {
+      "element": {
+        "file": "app/agent-demande-detail.tsx",
+        "line": 341
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.noResponseText",
+          "file": "app/agent-demande-detail.tsx",
+          "defLine": 522,
+          "properties": {
+            "fontSize": {
+              "line": 524,
+              "col": 14,
+              "endCol": 16,
+              "raw": "15"
+            },
+            "textAlign": {
+              "line": 526,
+              "col": 15,
+              "endCol": 23,
+              "raw": "\"center\""
+            },
+            "lineHeight": {
+              "line": 527,
+              "col": 16,
+              "endCol": 18,
+              "raw": "22"
+            }
+          }
+        }
+      ]
+    },
+    "AgentDemandeDetail@app/agent-demande-detail.tsx:349": {
+      "element": {
+        "file": "app/agent-demande-detail.tsx",
+        "line": 349
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.actionBar",
+          "file": "app/agent-demande-detail.tsx",
+          "defLine": 529,
+          "properties": {
+            "paddingHorizontal": {
+              "line": 530,
+              "col": 23,
+              "endCol": 25,
+              "raw": "24"
+            },
+            "paddingTop": {
+              "line": 531,
+              "col": 16,
+              "endCol": 18,
+              "raw": "14"
+            },
+            "borderTopWidth": {
+              "line": 533,
+              "col": 20,
+              "endCol": 21,
+              "raw": "1"
+            }
+          }
+        }
+      ]
+    },
+    "AgentDemandeDetail@app/agent-demande-detail.tsx:351": {
+      "element": {
+        "file": "app/agent-demande-detail.tsx",
+        "line": 351
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.actionErrorContainer",
+          "file": "app/agent-demande-detail.tsx",
+          "defLine": 536,
+          "properties": {
+            "flexDirection": {
+              "line": 537,
+              "col": 19,
+              "endCol": 24,
+              "raw": "\"row\""
+            },
+            "alignItems": {
+              "line": 538,
+              "col": 16,
+              "endCol": 24,
+              "raw": "\"center\""
+            },
+            "gap": {
+              "line": 539,
               "col": 9,
               "endCol": 10,
               "raw": "8"
             },
+            "marginBottom": {
+              "line": 540,
+              "col": 18,
+              "endCol": 20,
+              "raw": "12"
+            },
             "backgroundColor": {
-              "line": 426,
+              "line": 541,
               "col": 21,
               "endCol": 30,
               "raw": "\"#FFF0F0\""
             },
             "borderRadius": {
-              "line": 427,
+              "line": 542,
               "col": 18,
               "endCol": 20,
-              "raw": "12"
+              "raw": "10"
             },
             "padding": {
-              "line": 428,
+              "line": 543,
               "col": 13,
               "endCol": 15,
-              "raw": "14"
-            },
-            "marginBottom": {
-              "line": 429,
-              "col": 18,
-              "endCol": 20,
-              "raw": "20"
+              "raw": "10"
             },
             "borderWidth": {
-              "line": 430,
+              "line": 544,
               "col": 17,
               "endCol": 18,
               "raw": "1"
             },
             "borderColor": {
-              "line": 431,
+              "line": 545,
               "col": 17,
               "endCol": 26,
               "raw": "\"#FFCCCC\""
@@ -3558,96 +8004,232 @@
         }
       ]
     },
-    "NouvelleDemande@app/nouvelle-demande.tsx:276": {
+    "AgentDemandeDetail@app/agent-demande-detail.tsx:353": {
       "element": {
-        "file": "app/nouvelle-demande.tsx",
-        "line": 276
+        "file": "app/agent-demande-detail.tsx",
+        "line": 353
       },
       "styles": [
         {
           "origin": "stylesheet",
-          "ref": "styles.errorText",
-          "file": "app/nouvelle-demande.tsx",
-          "defLine": 433,
+          "ref": "styles.actionErrorText",
+          "file": "app/agent-demande-detail.tsx",
+          "defLine": 547,
           "properties": {
             "flex": {
-              "line": 434,
+              "line": 548,
               "col": 10,
               "endCol": 11,
               "raw": "1"
             },
             "fontSize": {
-              "line": 436,
+              "line": 550,
               "col": 14,
               "endCol": 16,
-              "raw": "14"
+              "raw": "13"
             },
             "lineHeight": {
-              "line": 438,
+              "line": 552,
               "col": 16,
               "endCol": 18,
-              "raw": "20"
+              "raw": "18"
             }
           }
         }
       ]
     },
-    "NouvelleDemande@app/nouvelle-demande.tsx:281": {
+    "AgentDemandeDetail@app/agent-demande-detail.tsx:357": {
       "element": {
-        "file": "app/nouvelle-demande.tsx",
-        "line": 281
+        "file": "app/agent-demande-detail.tsx",
+        "line": 357
       },
       "styles": [
         {
           "origin": "stylesheet",
-          "ref": "styles.submitButton",
-          "file": "app/nouvelle-demande.tsx",
-          "defLine": 440,
+          "ref": "styles.actionButtons",
+          "file": "app/agent-demande-detail.tsx",
+          "defLine": 554,
           "properties": {
-            "borderRadius": {
-              "line": 442,
-              "col": 18,
-              "endCol": 20,
-              "raw": "16"
+            "flexDirection": {
+              "line": 555,
+              "col": 19,
+              "endCol": 24,
+              "raw": "\"row\""
             },
-            "paddingVertical": {
-              "line": 443,
-              "col": 21,
-              "endCol": 23,
-              "raw": "18"
-            },
-            "paddingHorizontal": {
-              "line": 444,
-              "col": 23,
-              "endCol": 25,
-              "raw": "24"
+            "gap": {
+              "line": 556,
+              "col": 9,
+              "endCol": 11,
+              "raw": "12"
+            }
+          }
+        }
+      ]
+    },
+    "AgentDemandeDetail@app/agent-demande-detail.tsx:358": {
+      "element": {
+        "file": "app/agent-demande-detail.tsx",
+        "line": 358
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.verifyButton",
+          "file": "app/agent-demande-detail.tsx",
+          "defLine": 558,
+          "properties": {
+            "flex": {
+              "line": 559,
+              "col": 10,
+              "endCol": 11,
+              "raw": "1"
             },
             "flexDirection": {
-              "line": 445,
+              "line": 560,
               "col": 19,
               "endCol": 24,
               "raw": "\"row\""
             },
             "alignItems": {
-              "line": 446,
+              "line": 561,
               "col": 16,
               "endCol": 24,
               "raw": "\"center\""
             },
             "justifyContent": {
-              "line": 447,
+              "line": 562,
               "col": 20,
               "endCol": 28,
               "raw": "\"center\""
             },
             "gap": {
-              "line": 448,
+              "line": 563,
               "col": 9,
+              "endCol": 10,
+              "raw": "8"
+            },
+            "paddingVertical": {
+              "line": 564,
+              "col": 21,
+              "endCol": 23,
+              "raw": "16"
+            },
+            "borderRadius": {
+              "line": 565,
+              "col": 18,
+              "endCol": 20,
+              "raw": "16"
+            },
+            "borderWidth": {
+              "line": 566,
+              "col": 17,
+              "endCol": 18,
+              "raw": "2"
+            },
+            "backgroundColor": {
+              "line": 568,
+              "col": 21,
+              "endCol": 34,
+              "raw": "\"transparent\""
+            },
+            "minHeight": {
+              "line": 569,
+              "col": 15,
+              "endCol": 17,
+              "raw": "52"
+            }
+          }
+        },
+        {
+          "origin": "dynamic",
+          "resolvable": false
+        }
+      ]
+    },
+    "AgentDemandeDetail@app/agent-demande-detail.tsx:373": {
+      "element": {
+        "file": "app/agent-demande-detail.tsx",
+        "line": 373
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.verifyButtonText",
+          "file": "app/agent-demande-detail.tsx",
+          "defLine": 571,
+          "properties": {
+            "fontSize": {
+              "line": 573,
+              "col": 14,
+              "endCol": 16,
+              "raw": "16"
+            }
+          }
+        }
+      ]
+    },
+    "AgentDemandeDetail@app/agent-demande-detail.tsx:378": {
+      "element": {
+        "file": "app/agent-demande-detail.tsx",
+        "line": 378
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.confirmButton",
+          "file": "app/agent-demande-detail.tsx",
+          "defLine": 576,
+          "properties": {
+            "flex": {
+              "line": 577,
+              "col": 10,
               "endCol": 11,
-              "raw": "10"
+              "raw": "1"
+            },
+            "flexDirection": {
+              "line": 578,
+              "col": 19,
+              "endCol": 24,
+              "raw": "\"row\""
+            },
+            "alignItems": {
+              "line": 579,
+              "col": 16,
+              "endCol": 24,
+              "raw": "\"center\""
+            },
+            "justifyContent": {
+              "line": 580,
+              "col": 20,
+              "endCol": 28,
+              "raw": "\"center\""
+            },
+            "gap": {
+              "line": 581,
+              "col": 9,
+              "endCol": 10,
+              "raw": "8"
+            },
+            "paddingVertical": {
+              "line": 582,
+              "col": 21,
+              "endCol": 23,
+              "raw": "16"
+            },
+            "borderRadius": {
+              "line": 583,
+              "col": 18,
+              "endCol": 20,
+              "raw": "16"
+            },
+            "minHeight": {
+              "line": 585,
+              "col": 15,
+              "endCol": 17,
+              "raw": "52"
             },
             "boxShadow": {
-              "line": 449,
+              "line": 586,
               "col": 15,
               "endCol": 51,
               "raw": "\"0 4px 14px rgba(46, 107, 87, 0.25)\""
@@ -3660,54 +8242,54 @@
         }
       ]
     },
-    "NouvelleDemande@app/nouvelle-demande.tsx:295": {
+    "AgentDemandeDetail@app/agent-demande-detail.tsx:392": {
       "element": {
-        "file": "app/nouvelle-demande.tsx",
-        "line": 295
+        "file": "app/agent-demande-detail.tsx",
+        "line": 392
       },
       "styles": [
         {
           "origin": "stylesheet",
-          "ref": "styles.submitButtonText",
-          "file": "app/nouvelle-demande.tsx",
-          "defLine": 454,
+          "ref": "styles.confirmButtonText",
+          "file": "app/agent-demande-detail.tsx",
+          "defLine": 588,
           "properties": {
             "fontSize": {
-              "line": 456,
+              "line": 590,
               "col": 14,
               "endCol": 16,
-              "raw": "17"
+              "raw": "16"
             }
           }
         }
       ]
     },
-    "NouvelleDemande@app/nouvelle-demande.tsx:303": {
+    "AgentDemandeDetail@app/agent-demande-detail.tsx:401": {
       "element": {
-        "file": "app/nouvelle-demande.tsx",
-        "line": 303
+        "file": "app/agent-demande-detail.tsx",
+        "line": 401
       },
       "styles": [
         {
           "origin": "stylesheet",
-          "ref": "styles.loadingOverlay",
-          "file": "app/nouvelle-demande.tsx",
-          "defLine": 459,
+          "ref": "styles.updatingOverlay",
+          "file": "app/agent-demande-detail.tsx",
+          "defLine": 596,
           "properties": {
             "alignItems": {
-              "line": 462,
+              "line": 599,
               "col": 16,
               "endCol": 24,
               "raw": "\"center\""
             },
             "justifyContent": {
-              "line": 463,
+              "line": 600,
               "col": 20,
               "endCol": 28,
               "raw": "\"center\""
             },
             "zIndex": {
-              "line": 464,
+              "line": 601,
               "col": 12,
               "endCol": 15,
               "raw": "100"
@@ -3716,50 +8298,50 @@
         }
       ]
     },
-    "NouvelleDemande@app/nouvelle-demande.tsx:304": {
+    "AgentDemandeDetail@app/agent-demande-detail.tsx:402": {
       "element": {
-        "file": "app/nouvelle-demande.tsx",
-        "line": 304
+        "file": "app/agent-demande-detail.tsx",
+        "line": 402
       },
       "styles": [
         {
           "origin": "stylesheet",
-          "ref": "styles.loadingCard",
-          "file": "app/nouvelle-demande.tsx",
-          "defLine": 466,
+          "ref": "styles.updatingCard",
+          "file": "app/agent-demande-detail.tsx",
+          "defLine": 603,
           "properties": {
             "borderRadius": {
-              "line": 468,
+              "line": 605,
               "col": 18,
               "endCol": 20,
               "raw": "24"
             },
             "padding": {
-              "line": 469,
+              "line": 606,
               "col": 13,
               "endCol": 15,
               "raw": "40"
             },
             "alignItems": {
-              "line": 470,
+              "line": 607,
               "col": 16,
               "endCol": 24,
               "raw": "\"center\""
             },
             "gap": {
-              "line": 471,
+              "line": 608,
               "col": 9,
               "endCol": 11,
               "raw": "16"
             },
             "boxShadow": {
-              "line": 472,
+              "line": 609,
               "col": 15,
               "endCol": 51,
               "raw": "\"0 8px 32px rgba(46, 107, 87, 0.15)\""
             },
             "borderWidth": {
-              "line": 473,
+              "line": 610,
               "col": 17,
               "endCol": 18,
               "raw": "1"
@@ -3768,45 +8350,23 @@
         }
       ]
     },
-    "NouvelleDemande@app/nouvelle-demande.tsx:306": {
+    "AgentDemandeDetail@app/agent-demande-detail.tsx:404": {
       "element": {
-        "file": "app/nouvelle-demande.tsx",
-        "line": 306
+        "file": "app/agent-demande-detail.tsx",
+        "line": 404
       },
       "styles": [
         {
           "origin": "stylesheet",
-          "ref": "styles.loadingText",
-          "file": "app/nouvelle-demande.tsx",
-          "defLine": 476,
+          "ref": "styles.updatingText",
+          "file": "app/agent-demande-detail.tsx",
+          "defLine": 613,
           "properties": {
             "fontSize": {
-              "line": 478,
+              "line": 615,
               "col": 14,
               "endCol": 16,
               "raw": "17"
-            }
-          }
-        }
-      ]
-    },
-    "NouvelleDemande@app/nouvelle-demande.tsx:309": {
-      "element": {
-        "file": "app/nouvelle-demande.tsx",
-        "line": 309
-      },
-      "styles": [
-        {
-          "origin": "stylesheet",
-          "ref": "styles.loadingSubtext",
-          "file": "app/nouvelle-demande.tsx",
-          "defLine": 481,
-          "properties": {
-            "fontSize": {
-              "line": 483,
-              "col": 14,
-              "endCol": 16,
-              "raw": "14"
             }
           }
         }

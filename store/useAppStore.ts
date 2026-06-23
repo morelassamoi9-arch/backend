@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import type { Preferences, DemandeRequest } from './types';
+import type { Preferences, DemandeRequest, AuthUser } from './types';
 
 interface DemandesSlice {
   demandes: DemandeRequest[];
@@ -14,13 +14,22 @@ interface PreferencesSlice {
   preferences: Preferences;
 }
 
-export type AppStore = PreferencesSlice & DemandesSlice;
+interface AuthSlice {
+  accessToken: string | null;
+  user: AuthUser | null;
+  setAuth: (token: string, user: AuthUser) => void;
+  logout: () => void;
+}
+
+export type AppStore = PreferencesSlice & DemandesSlice & AuthSlice;
 
 export const useAppStore = create<AppStore>()(
   persist(
     (set) => ({
       preferences: {},
       demandes: [],
+      accessToken: null,
+      user: null,
       addDemande: (demande: DemandeRequest) =>
         set((state) => ({
           demandes: [demande, ...state.demandes],
@@ -30,6 +39,10 @@ export const useAppStore = create<AppStore>()(
           demandes: state.demandes.filter((d) => d.id !== id),
         })),
       clearDemandes: () => set({ demandes: [] }),
+      setAuth: (token: string, user: AuthUser) =>
+        set({ accessToken: token, user }),
+      logout: () =>
+        set({ accessToken: null, user: null }),
     }),
     {
       name: 'ecitoyen-storage',
@@ -37,6 +50,8 @@ export const useAppStore = create<AppStore>()(
       partialize: (state) => ({
         preferences: state.preferences,
         demandes: state.demandes,
+        accessToken: state.accessToken,
+        user: state.user,
       }),
     }
   )
