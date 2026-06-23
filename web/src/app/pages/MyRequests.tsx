@@ -90,9 +90,7 @@ export default function MyRequests() {
               </Button>
             </Link>
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center">
-                <Shield className="w-6 h-6 text-white" />
-              </div>
+              <img src="/Icone.png" alt="e-Citoyen CI" className="w-10 h-10 object-contain" />
               <div>
                 <h1 className="text-lg font-semibold">Mes Demandes</h1>
                 <p className="text-xs text-muted-foreground">{filteredRequests.length} demande(s)</p>

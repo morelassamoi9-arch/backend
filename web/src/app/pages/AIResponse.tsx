@@ -145,9 +145,7 @@ export default function AIResponse() {
               </Button>
             </Link>
             <div className="flex items-center gap-3 flex-1">
-              <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center">
-                <Shield className="w-6 h-6 text-white" />
-              </div>
+              <img src="/Icone.png" alt="e-Citoyen CI" className="w-10 h-10 object-contain" />
               <div className="flex-1">
                 <h1 className="text-lg font-semibold">Résultat de l'analyse</h1>
                 <p className="text-xs text-muted-foreground">Déclaration de naissance</p>

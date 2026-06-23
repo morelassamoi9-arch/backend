@@ -84,9 +84,7 @@ export default function Statistics() {
         <Sidebar>
           <SidebarHeader className="border-b border-border p-4">
             <div className="flex items-center gap-2">
-              <div className="w-10 h-10 rounded-xl bg-secondary flex items-center justify-center">
-                <Shield className="w-6 h-6 text-white" />
-              </div>
+              <img src="/Icone.png" alt="e-Citoyen CI" className="w-10 h-10 object-contain" />
               <div>
                 <h1 className="text-lg font-semibold">e-Citoyen CI</h1>
                 <p className="text-xs text-muted-foreground">Espace Agent</p>
