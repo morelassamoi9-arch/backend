@@ -1,84 +1,100 @@
-const API_URL = 'http://localhost:8000';
+// Utilisation de l'URL avec fallback
+const API_URL = (import.meta as any).env?.VITE_API_URL || "http://localhost:8000";
 
-export async function testConnection() {
-  const response = await fetch(`${API_URL}/`);
-  return response.json();
-}
+// Helper pour les requêtes
+async function request<T = any>(url: string, options: RequestInit = {}): Promise<T> {
+  const token = localStorage.getItem('token');
+  const headers: HeadersInit = {
+    'Content-Type': 'application/json',
+    ...(token && { Authorization: `Bearer ${token}` }),
+    ...options.headers,
+  };
 
-// Test santé
-export async function healthCheck() {
-  const response = await fetch(`${API_URL}/health`);
-  return response.json();
-}
-
-// Inscription
-export async function register(data: {
-  nom: string;
-  email: string;
-  password: string;
-}) {
-  const response = await fetch(`${API_URL}/auth/register`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(data),
+  const response = await fetch(`${API_URL}${url}`, {
+    ...options,
+    headers,
   });
-  return response.json();
-}
 
-// Connexion
-export async function login(data: { email: string; password: string }) {
-  const response = await fetch(`${API_URL}/auth/login`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(data),
-  });
-  const result = await response.json();
-  if (result.access_token) {
-    localStorage.setItem('token', result.access_token);
-    localStorage.setItem('user', JSON.stringify(result.user));
+  if (response.status === 401) {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    window.location.href = '/login';
+    throw new Error('Non authentifié');
   }
-  return result;
-}
 
-// Créer une demande
-export async function createDemande(data: { message: string; categorie?: string }) {
-  const token = localStorage.getItem('token');
-  const response = await fetch(`${API_URL}/demandes/`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}`,
-    },
-    body: JSON.stringify(data),
-  });
+  if (!response.ok) {
+    const error = await response.json().catch(() => ({}));
+    throw new Error(error.detail || `Erreur ${response.status}`);
+  }
+
   return response.json();
 }
 
-// Voir mes demandes
-export async function getMesDemandes() {
-  const token = localStorage.getItem('token');
-  const response = await fetch(`${API_URL}/demandes/`, {
-    headers: {
-      'Authorization': `Bearer ${token}`,
-    },
-  });
-  return response.json();
-}
+// ============================================
+// AUTH
+// ============================================
+export const auth = {
+  login: (data: { email: string; password: string }) =>
+    request('/auth/login', { method: 'POST', body: JSON.stringify(data) }),
+  
+  register: (data: { nom: string; prenom?: string; email: string; password: string; telephone?: string }) =>
+    request('/auth/register', { method: 'POST', body: JSON.stringify(data) }),
+  
+  logout: () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    window.location.href = '/login';
+  },
+};
 
-// Voir mon profil
-export async function getProfile() {
-  const token = localStorage.getItem('token');
-  const response = await fetch(`${API_URL}/users/me`, {
-    headers: {
-      'Authorization': `Bearer ${token}`,
-    },
-  });
-  return response.json();
-}
+// ============================================
+// DEMANDES
+// ============================================
+export const demandes = {
+  create: (data: { message: string; categorie?: string }) =>
+    request('/demandes/', { method: 'POST', body: JSON.stringify(data) }),
+  
+  getAll: (params?: { skip?: number; limit?: number; status?: string }) => {
+    const query = new URLSearchParams();
+    if (params?.skip) query.append('skip', String(params.skip));
+    if (params?.limit) query.append('limit', String(params.limit));
+    if (params?.status) query.append('status_filter', params.status);
+    const url = `/demandes/${query.toString() ? '?' + query.toString() : ''}`;
+    return request(url);
+  },
+  
+  getOne: (id: string) =>
+    request(`/demandes/${id}`),
+  
+  delete: (id: string) =>
+    request(`/demandes/${id}`, { method: 'DELETE' }),
+  
+  getStats: () =>
+    request('/demandes/stats/overview'),
+};
 
-// Déconnexion
-export function logout() {
-  localStorage.removeItem('token');
-  localStorage.removeItem('user');
-  window.location.href = '/login';
-}
+// ============================================
+// USERS
+// ============================================
+export const users = {
+  me: () =>
+    request('/users/me'),
+  
+  update: (data: { nom?: string; prenom?: string; telephone?: string }) =>
+    request('/users/me', { method: 'PUT', body: JSON.stringify(data) }),
+};
+
+// ============================================
+// TEST CONNEXION
+// ============================================
+export const test = {
+  connection: () => request('/'),
+  health: () => request('/health'),
+};
+
+export default {
+  auth,
+  demandes,
+  users,
+  test,
+};

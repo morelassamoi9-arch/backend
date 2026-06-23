@@ -5,10 +5,8 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from slowapi import _rate_limit_exceeded_handler
 from slowapi.errors import RateLimitExceeded
-
 from app.limiter import limiter
 from app.api.routes import router
-
 logging.basicConfig(level=logging.INFO)
 
 app = FastAPI(
@@ -29,20 +27,26 @@ app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 # CORS restreint aux origines connues (web local + web déployé, mobile
 # si besoin) via la variable d'environnement CORS_ORIGINS (liste séparée
 # par des virgules). Valeur par défaut: localhost de dev uniquement.
-origines_autorisees = os.getenv(
+origines_autorisees = [
+    origine.strip()
+    for origine in os.getenv(
     "CORS_ORIGINS",
     "http://localhost:5173"
-).split(",")
+    ).split(",")
+    if origine.strip()
+]
+allow_credentials = "*" not in origines_autorisees
 
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origines_autorisees,
-    allow_credentials=True,
+    allow_credentials=allow_credentials,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
 app.include_router(router, prefix="/api")
+app.include_router(router)
 
 
 @app.get("/")

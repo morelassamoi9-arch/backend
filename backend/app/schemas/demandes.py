@@ -1,5 +1,6 @@
-from pydantic import BaseModel, Field, validator
-from typing import Optional, List
+import json
+from pydantic import BaseModel, Field, validator, field_validator
+from typing import Any, Optional, List
 from datetime import datetime
 from uuid import UUID
 
@@ -58,9 +59,20 @@ class DemandeResponse(BaseModel):
     message: str
     categorie: Optional[str] = None
     status: str
+    reponse: Optional[Any] = None
     created_at: datetime
     updated_at: datetime
     reponses: Optional[List[ReponseSchema]] = []
+
+    @field_validator("reponse", mode="before")
+    @classmethod
+    def parse_reponse_json(cls, value):
+        if isinstance(value, str):
+            try:
+                return json.loads(value)
+            except json.JSONDecodeError:
+                return value
+        return value
     
     class Config:
         from_attributes = True

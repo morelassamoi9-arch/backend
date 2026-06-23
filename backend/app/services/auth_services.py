@@ -118,10 +118,11 @@ class AuthService:
             )
         
         # Créer les tokens
+        role_value = user.role.value if hasattr(user.role, "value") else user.role
         token_data = {
             "sub": str(user.id),
             "email": user.email,
-            "role": user.role.value
+            "role": role_value
         }
         
         access_token = create_access_token(token_data)

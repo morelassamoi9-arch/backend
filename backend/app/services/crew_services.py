@@ -1,11 +1,8 @@
-from crewai import Agent, Task, Crew, Process
-from langchain_groq import ChatGroq
 import os
 import json
-from datetime import datetime
 from typing import Dict, Any
 from sqlalchemy.orm import Session
-from app.database.models import Reponse
+from app.database.models import Demande, DemandeStatus, Reponse
 import logging
 
 logger = logging.getLogger(__name__)
@@ -23,6 +20,8 @@ class ECitoyenCrew:
             logger.warning("GROQ_API_KEY non définie - Mode simulation activé")
             self.llm = None
         else:
+            from langchain_groq import ChatGroq
+
             self.llm = ChatGroq(
                 temperature=0.3,
                 groq_api_key=groq_api_key,
@@ -140,6 +139,8 @@ class ECitoyenCrew:
             return self._get_default_response(message)
         
         try:
+            from crewai import Agent, Crew, Process, Task
+
             # Créer les agents
             analyste = Agent(
                 role='Analyste des services publics ivoiriens',
@@ -273,6 +274,10 @@ class ECitoyenCrew:
             )
             
             db.add(reponse)
+            demande = db.query(Demande).filter(Demande.id == str(demande_id)).first()
+            if demande:
+                demande.status = DemandeStatus.TRAITEE
+                demande.reponse = json.dumps(crew_result, ensure_ascii=False)
             db.commit()
             db.refresh(reponse)
             

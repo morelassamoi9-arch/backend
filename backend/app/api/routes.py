@@ -5,8 +5,8 @@ import time
 from fastapi import APIRouter, HTTPException, Request
 from app.database.base import Base
 from app.database.sessions import engine
+from app.database.migrations import ensure_sqlite_schema
 from app.api import auth, demandes, users
-from app.agents.crew import ECitoyenCrew
 from app.limiter import limiter
 from app.models.schemas import DemandeCitoyen, ReponseCitoyen
 
@@ -53,6 +53,8 @@ def traiter_demande(request: Request, demande: DemandeCitoyen) -> ReponseCitoyen
 
     for tentative in range(1, MAX_TENTATIVES + 1):
         try:
+            from app.agents.crew import ECitoyenCrew
+
             resultat = ECitoyenCrew().crew().kickoff(
                 inputs={"demande_citoyen": demande.message}
             )
@@ -150,6 +152,7 @@ def extraire_delai_attente(message_erreur: str) -> float:
 from app.database.base import Base
 from app.database.sessions import engine
 Base.metadata.create_all(bind=engine)
+ensure_sqlite_schema(engine)
 
 router.include_router(auth.router)
 router.include_router(demandes.router)

@@ -6,8 +6,8 @@ from app.database.sessions import get_db
 from app.database.models import User, Demande, DemandeStatus
 from app.schemas.demandes import DemandeCreate, DemandeResponse
 from app.services.demandes_services import DemandeService
-from app.services.crew_services import ECitoyenCrew
 from app.auth.dependencies import get_current_user
+import json
 import logging
 
 logger = logging.getLogger(__name__)
@@ -21,11 +21,13 @@ router = APIRouter(
     }
 )
 
-def process_demande_with_crew(db: Session, demande_id: UUID, message: str):
+def process_demande_with_crew(demande_id: str, message: str):
     """
     Tâche de fond pour traiter la demande avec CrewAI
     """
     try:
+        from app.services.crew_services import ECitoyenCrew
+
         logger.info(f"Traitement CrewAI pour la demande {demande_id}")
         crew = ECitoyenCrew()
         crew_result = crew.process_demande(message)
@@ -69,8 +71,7 @@ async def create_demande(
         # Lancer le traitement CrewAI en arrière-plan
         background_tasks.add_task(
             process_demande_with_crew,
-            db_session_factory=get_db,
-            demande_id=demande.id,
+            demande_id=str(demande.id),
             message=demande_data.message
         )
         
@@ -163,3 +164,73 @@ def get_demande_stats(
     Retourne les statistiques des demandes
     """
     return DemandeService.get_statistics(db, current_user)
+# ============================================
+# GÉNÉRATION DE RÉPONSE (MOCKÉE)
+# ============================================
+@router.post("/{demande_id}/generate-response")
+def generate_response(
+    demande_id: UUID,
+    current_user: User = Depends(get_current_user),
+    db: Session = Depends(get_db)
+):
+    """Génère une réponse mockée pour la demande"""
+    demande = db.query(Demande).filter(
+        Demande.id == str(demande_id),
+        Demande.user_id == current_user.id
+    ).first()
+    if not demande:
+        raise HTTPException(status_code=404, detail="Demande non trouvée")
+    
+    # Réponse mockée
+    reponse_data = {
+        "etapes": [
+            "Rendez-vous à la mairie de votre commune",
+            "Présentez les documents requis",
+            "Payez les frais de traitement",
+            "Recevez votre convocation pour la prise d'empreintes",
+            "Retirez votre CNI sous 15 jours"
+        ],
+        "documents": [
+            "Extrait d'acte de naissance datant de moins de 3 mois",
+            "Pièce d'identité en cours de validité",
+            "Justificatif de domicile (facture d'eau ou d'électricité)",
+            "2 photos d'identité récentes",
+            "Timbre fiscal de 2000 FCFA"
+        ],
+        "lieux": [
+            "Mairie de votre commune",
+            "Centre d'enrôlement le plus proche",
+            "Agence de l'ONECI (Office National de l'État-Civil et de l'Identification)"
+        ],
+        "delai": "15 à 30 jours ouvrés",
+        "cout": "2 000 FCFA (timbre fiscal) + 3 000 FCFA (frais de dossier)",
+        "lettre": f"""
+Objet : Demande de Carte Nationale d'Identité
+
+Je soussigné(e), {current_user.nom} {current_user.prenom}, né(e) le ... à ..., 
+demeurant à ..., sollicite par la présente l'obtention de ma Carte Nationale d'Identité.
+
+Je vous prie de bien vouloir trouver ci-joint les documents requis pour ma demande.
+
+Dans l'attente de votre réponse, je vous prie d'agréer, Madame, Monsieur, l'expression de 
+mes salutations distinguées.
+
+Fait à ... , le {demande.created_at.strftime('%d/%m/%Y')}
+
+Signature
+"""
+    }
+    
+    # Sauvegarder la réponse dans la demande
+    demande.reponse = json.dumps(reponse_data, ensure_ascii=False)
+    demande.status = DemandeStatus.TRAITEE
+    db.commit()
+    
+    return {
+        "id": demande.id,
+        "message": demande.message,
+        "categorie": demande.categorie,
+        "status": demande.status,
+        "created_at": demande.created_at,
+        "reponse": reponse_data
+    }

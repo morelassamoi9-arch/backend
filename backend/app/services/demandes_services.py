@@ -86,7 +86,7 @@ class DemandeService:
             Demande: La demande avec ses réponses
         """
         demande = db.query(Demande).filter(
-            Demande.id == demande_id,
+            Demande.id == str(demande_id),
             Demande.user_id == user.id
         ).first()
         
@@ -109,7 +109,7 @@ class DemandeService:
             demande_id: ID de la demande
         """
         demande = db.query(Demande).filter(
-            Demande.id == demande_id,
+            Demande.id == str(demande_id),
             Demande.user_id == user.id
         ).first()
         

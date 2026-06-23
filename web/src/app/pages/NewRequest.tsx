@@ -6,6 +6,7 @@ import { MobileNav } from "../components/MobileNav";
 import { Link, useNavigate } from "react-router";
 import { Shield, ArrowLeft, Mic, Sparkles } from "lucide-react";
 import { motion } from "motion/react";
+import { demandes } from "../../services/api";
 
 export default function NewRequest() {
   const navigate = useNavigate();
@@ -21,26 +22,24 @@ export default function NewRequest() {
   const [isLoading, setIsLoading] = useState(false);
   const [apiError, setApiError] = useState<string | null>(null);
 
-  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8000/api/demande";
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!request.trim()) return;
     setIsLoading(true);
     setApiError(null);
     try {
-      const response = await fetch(API_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: request }),
+      // Utilisation du service API au lieu de fetch direct
+      const result = await demandes.create({
+        message: request,
+        categorie: "general",
       });
-      if (!response.ok) {
-        const err = await response.json().catch(() => ({}));
-        throw new Error(err.detail || `Erreur serveur (${response.status})`);
-      }
-      const data = await response.json();
-      navigate("/citizen/request/4", { state: { reponse: data } });
+      
+      console.log("Demande creee:", result);
+      
+      // Rediriger vers la page de réponse avec l'ID de la demande
+      navigate(`/citizen/request/${result.id}`, { state: { reponse: result } });
     } catch (err: any) {
+      console.error("Erreur:", err);
       setApiError(err.message || "Impossible de contacter le serveur. Vérifiez votre connexion.");
     } finally {
       setIsLoading(false);
@@ -62,7 +61,10 @@ export default function NewRequest() {
 
     recognition.onstart = () => setIsRecording(true);
     recognition.onend = () => setIsRecording(false);
-    recognition.onerror = (event: any) => { setIsRecording(false); console.error("Erreur vocale:", event?.error); };
+    recognition.onerror = (event: any) => { 
+      setIsRecording(false); 
+      console.error("Erreur vocale:", event?.error); 
+    };
 
     recognition.onresult = (event: any) => {
       let finalTranscript = "";
@@ -75,8 +77,6 @@ export default function NewRequest() {
         setRequest((prev) => (prev ? `${prev} ${finalTranscript}` : finalTranscript));
       }
     };
-
-
 
     recognitionRef.current = recognition;
     recognition.start();
@@ -201,13 +201,12 @@ export default function NewRequest() {
 
               {/* Submit Button */}
               {apiError && (
-  <p className="text-sm text-destructive font-medium">⚠️ {apiError}</p>
-)}
-<Button type="submit" className="w-full" size="lg" disabled={isLoading || !request.trim()}>
-  <Sparkles className="w-5 h-5 mr-2" />
-  {isLoading ? "Analyse en cours..." : "Analyser ma demande"}
-</Button>
-
+                <p className="text-sm text-destructive font-medium">⚠️ {apiError}</p>
+              )}
+              <Button type="submit" className="w-full" size="lg" disabled={isLoading || !request.trim()}>
+                <Sparkles className="w-5 h-5 mr-2" />
+                {isLoading ? "Analyse en cours..." : "Analyser ma demande"}
+              </Button>
             </form>
           </CardContent>
         </Card>
