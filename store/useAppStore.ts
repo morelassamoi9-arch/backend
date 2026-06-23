@@ -47,6 +47,7 @@ export const useAppStore = create<AppStore>()(
     {
       name: 'ecitoyen-storage',
       storage: createJSONStorage(() => AsyncStorage),
+      // Controls which fields get serialized to AsyncStorage (excludes action functions)
       partialize: (state) => ({
         preferences: state.preferences,
         demandes: state.demandes,
