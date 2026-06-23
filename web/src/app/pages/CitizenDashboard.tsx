@@ -42,9 +42,7 @@ export default function CitizenDashboard() {
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center">
-                <Shield className="w-6 h-6 text-white" />
-              </div>
+              <img src="/Icone.png" alt="e-Citoyen CI" className="w-10 h-10 object-contain" />
               <div>
                 <h1 className="text-lg font-semibold">e-Citoyen CI</h1>
                 <p className="text-xs text-muted-foreground">Tableau de bord</p>
