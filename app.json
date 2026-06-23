@@ -37,13 +37,14 @@
       [
         "expo-speech-recognition",
         {
-          "microphonePermission": "e-Citoyen CI a besoin d'acc\u00e9der au microphone pour la dict\u00e9e vocale.",
+          "microphonePermission": "e-Citoyen CI a besoin d'accéder au microphone pour la dictée vocale.",
           "speechRecognitionPermission": "e-Citoyen CI a besoin de la reconnaissance vocale pour transcrire vos demandes."
         }
       ]
     ],
     "experiments": {
-      "typedRoutes": true
+      "typedRoutes": true,
+      "baseUrl": "/b70b47f6-fb50-4ecb-a8e0-db9f29e6d75f/dev-preview/"
     }
   }
 }
