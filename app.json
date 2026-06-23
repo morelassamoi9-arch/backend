@@ -9,14 +9,22 @@
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": false
+      "supportsTablet": false,
+      "infoPlist": {
+        "NSSpeechRecognitionUsageDescription": "e-Citoyen CI a besoin de la reconnaissance vocale pour transcrire vos demandes.",
+        "NSMicrophoneUsageDescription": "e-Citoyen CI a besoin d'acc\u00e9der au microphone pour la dict\u00e9e vocale."
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/app-icon.png",
         "backgroundColor": "#F5DEB3"
       },
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": true,
+      "permissions": [
+        "android.permission.RECORD_AUDIO"
+      ],
+      "package": "com.moreldev.citizenci"
     },
     "web": {
       "bundler": "metro",
@@ -37,14 +45,20 @@
       [
         "expo-speech-recognition",
         {
-          "microphonePermission": "e-Citoyen CI a besoin d'accéder au microphone pour la dictée vocale.",
+          "microphonePermission": "e-Citoyen CI a besoin d'acc\u00e9der au microphone pour la dict\u00e9e vocale.",
           "speechRecognitionPermission": "e-Citoyen CI a besoin de la reconnaissance vocale pour transcrire vos demandes."
         }
       ]
     ],
     "experiments": {
-      "typedRoutes": true,
-      "baseUrl": "/b70b47f6-fb50-4ecb-a8e0-db9f29e6d75f/dev-preview/"
+      "typedRoutes": true
+    },
+    "owner": "morel-dev",
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "318f2520-aa58-43d6-be48-bb9ccb07bf9e"
+      }
     }
   }
 }
