@@ -8,10 +8,15 @@ import {
   ActivityIndicator,
   Animated,
   ScrollView,
+  Platform,
 } from "react-native";
 import { useRouter, useLocalSearchParams } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import {
+  ExpoSpeechRecognitionModule,
+  useSpeechRecognitionEvent,
+} from "expo-speech-recognition";
 import { Colors } from "@/constants/Colors";
 import { Fonts } from "@/constants/Typography";
 import { useAppStore } from "@/store/useAppStore";
@@ -22,20 +27,42 @@ export default function NewRequestScreen() {
   const params = useLocalSearchParams<{ prefill?: string }>();
   const [description, setDescription] = useState(params.prefill || "");
   const [isRecording, setIsRecording] = useState(false);
+  const [voiceError, setVoiceError] = useState<string | null>(null);
   const { createRequest, isLoadingRequests, requestError, clearRequestError } =
     useAppStore();
 
-  // Animation refs for microphone waves
+  // Animation refs
   const wave1 = useRef(new Animated.Value(0)).current;
   const wave2 = useRef(new Animated.Value(0)).current;
   const wave3 = useRef(new Animated.Value(0)).current;
   const animationRef = useRef<Animated.CompositeAnimation | null>(null);
 
   useEffect(() => {
-    if (params.prefill) {
-      setDescription(params.prefill);
-    }
+    if (params.prefill) setDescription(params.prefill);
   }, [params.prefill]);
+
+  // --- Reconnaissance vocale ---
+
+  useSpeechRecognitionEvent("result", (event) => {
+    if (event.results?.[0]?.transcript) {
+      setDescription(event.results[0].transcript);
+    }
+  });
+
+  useSpeechRecognitionEvent("end", () => {
+    setIsRecording(false);
+    stopWaveAnimation();
+  });
+
+  useSpeechRecognitionEvent("error", (event) => {
+    setIsRecording(false);
+    stopWaveAnimation();
+    if (event.error !== "aborted") {
+      setVoiceError("Reconnaissance vocale impossible. Réessayez ou tapez votre demande.");
+    }
+  });
+
+  // --- Animations ondes ---
 
   const startWaveAnimation = useCallback(() => {
     wave1.setValue(0);
@@ -46,18 +73,8 @@ export default function NewRequestScreen() {
       Animated.loop(
         Animated.sequence([
           Animated.delay(delay),
-          Animated.parallel([
-            Animated.timing(value, {
-              toValue: 1,
-              duration: 1500,
-              useNativeDriver: false,
-            }),
-          ]),
-          Animated.timing(value, {
-            toValue: 0,
-            duration: 0,
-            useNativeDriver: false,
-          }),
+          Animated.timing(value, { toValue: 1, duration: 1500, useNativeDriver: false }),
+          Animated.timing(value, { toValue: 0, duration: 0, useNativeDriver: false }),
         ])
       );
 
@@ -66,35 +83,52 @@ export default function NewRequestScreen() {
       createWave(wave2, 300),
       createWave(wave3, 600),
     ]);
-
     animationRef.current = animation;
     animation.start();
   }, [wave1, wave2, wave3]);
 
   const stopWaveAnimation = useCallback(() => {
-    if (animationRef.current) {
-      animationRef.current.stop();
-    }
+    animationRef.current?.stop();
     wave1.setValue(0);
     wave2.setValue(0);
     wave3.setValue(0);
   }, [wave1, wave2, wave3]);
 
-  const handleMicPress = useCallback(() => {
+  // --- Bouton micro ---
+
+  const handleMicPress = useCallback(async () => {
+    setVoiceError(null);
+
     if (isRecording) {
+      // Arrêter
+      ExpoSpeechRecognitionModule.stop();
       setIsRecording(false);
       stopWaveAnimation();
-      // Simulate voice-to-text result
-      if (!description) {
-        setDescription(
-          "Je souhaite obtenir un acte de naissance pour mon enfant ne a Abidjan"
-        );
-      }
-    } else {
+      return;
+    }
+
+    // Demander la permission
+    const { granted } = await ExpoSpeechRecognitionModule.requestPermissionsAsync();
+    if (!granted) {
+      setVoiceError("Permission microphone refusée. Activez-la dans les paramètres.");
+      return;
+    }
+
+    // Démarrer
+    try {
+      ExpoSpeechRecognitionModule.start({
+        lang: "fr-FR",
+        interimResults: true,
+        continuous: false,
+      });
       setIsRecording(true);
       startWaveAnimation();
+    } catch {
+      setVoiceError("Impossible de démarrer la reconnaissance vocale.");
     }
-  }, [isRecording, description, startWaveAnimation, stopWaveAnimation]);
+  }, [isRecording, startWaveAnimation, stopWaveAnimation]);
+
+  // --- Soumission ---
 
   const handleSubmit = useCallback(async () => {
     if (!description.trim()) return;
@@ -106,26 +140,16 @@ export default function NewRequestScreen() {
     }
   }, [description, createRequest, clearRequestError, router]);
 
+  // --- Rendu onde ---
+
   const renderWave = (anim: Animated.Value, baseSize: number) => {
-    const scale = anim.interpolate({
-      inputRange: [0, 1],
-      outputRange: [1, 1 + baseSize * 0.015],
-    });
-    const opacity = anim.interpolate({
-      inputRange: [0, 1],
-      outputRange: [0.6, 0],
-    });
+    const scale = anim.interpolate({ inputRange: [0, 1], outputRange: [1, 1 + baseSize * 0.015] });
+    const opacity = anim.interpolate({ inputRange: [0, 1], outputRange: [0.6, 0] });
     return (
       <Animated.View
         style={[
           styles.wave,
-          {
-            width: baseSize,
-            height: baseSize,
-            borderRadius: baseSize / 2,
-            transform: [{ scale }],
-            opacity,
-          },
+          { width: baseSize, height: baseSize, borderRadius: baseSize / 2, transform: [{ scale }], opacity },
         ]}
       />
     );
@@ -140,19 +164,18 @@ export default function NewRequestScreen() {
       ]}
       keyboardShouldPersistTaps="handled"
     >
-      {/* Header */}
       <Text style={styles.title}>Nouvelle demande</Text>
-      <Text style={styles.subtitle}>Decrivez votre situation</Text>
+      <Text style={styles.subtitle}>Décrivez votre situation</Text>
       <Text style={styles.hint}>
-        Ex: Je souhaite obtenir un acte de naissance pour mon enfant ne a Abidjan,
-        quelles sont les demarches a suivre ?
+        Ex : Je souhaite obtenir un acte de naissance pour mon enfant né à Abidjan,
+        quelles sont les démarches à suivre ?
       </Text>
 
-      {/* Text Input */}
+      {/* Champ texte */}
       <View style={styles.inputContainer}>
         <TextInput
           style={styles.textInput}
-          placeholder="Decrivez votre besoin ici..."
+          placeholder="Décrivez votre besoin ici..."
           placeholderTextColor={Colors.textLight}
           value={description}
           onChangeText={setDescription}
@@ -174,19 +197,23 @@ export default function NewRequestScreen() {
             onPress={handleMicPress}
             activeOpacity={0.8}
           >
-            <Ionicons
-              name={isRecording ? "stop" : "mic"}
-              size={28}
-              color={Colors.white}
-            />
+            <Ionicons name={isRecording ? "stop" : "mic"} size={28} color={Colors.white} />
           </TouchableOpacity>
         </View>
         {isRecording && (
-          <Text style={styles.recordingText}>Enregistrement en cours...</Text>
+          <Text style={styles.recordingText}>Enregistrement en cours... (appuyez pour arrêter)</Text>
         )}
       </View>
 
-      {/* Error */}
+      {/* Erreur vocale */}
+      {voiceError && (
+        <View style={styles.errorContainer}>
+          <Ionicons name="mic-off-outline" size={18} color={Colors.error} />
+          <Text style={styles.errorText}>{voiceError}</Text>
+        </View>
+      )}
+
+      {/* Erreur API */}
       {requestError && (
         <View style={styles.errorContainer}>
           <Ionicons name="alert-circle-outline" size={18} color={Colors.error} />
@@ -194,7 +221,7 @@ export default function NewRequestScreen() {
         </View>
       )}
 
-      {/* Submit */}
+      {/* Bouton envoyer */}
       <TouchableOpacity
         style={[
           styles.submitButton,
@@ -209,7 +236,7 @@ export default function NewRequestScreen() {
         ) : (
           <>
             <Ionicons name="send" size={18} color={Colors.white} />
-            <Text style={styles.submitText}>{"Envoyer a l'IA"}</Text>
+            <Text style={styles.submitText}>{"Envoyer à l'IA"}</Text>
           </>
         )}
       </TouchableOpacity>
@@ -218,117 +245,22 @@ export default function NewRequestScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    paddingHorizontal: 20,
-    gap: 12,
-  },
-  title: {
-    fontFamily: Fonts.serifBold,
-    fontSize: 26,
-    color: Colors.text,
-    letterSpacing: -0.3,
-  },
-  subtitle: {
-    fontFamily: Fonts.serifSemiBold,
-    fontSize: 18,
-    color: Colors.text,
-    marginTop: 4,
-  },
-  hint: {
-    fontFamily: Fonts.regular,
-    fontSize: 14,
-    color: Colors.textSecondary,
-    lineHeight: 20,
-    marginTop: 4,
-  },
-  inputContainer: {
-    backgroundColor: Colors.white,
-    borderRadius: 16,
-    borderWidth: 1,
-    borderColor: Colors.border,
-    marginTop: 8,
-    borderCurve: "continuous",
-  },
-  textInput: {
-    fontFamily: Fonts.regular,
-    fontSize: 16,
-    color: Colors.text,
-    padding: 16,
-    minHeight: 140,
-    lineHeight: 22,
-  },
-  micContainer: {
-    alignItems: "center",
-    marginTop: 16,
-    gap: 10,
-  },
-  micLabel: {
-    fontFamily: Fonts.regular,
-    fontSize: 13,
-    color: Colors.textLight,
-  },
-  micWrapper: {
-    width: 140,
-    height: 140,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  wave: {
-    position: "absolute",
-    borderWidth: 2,
-    borderColor: Colors.primary,
-  },
-  micButton: {
-    width: 64,
-    height: 64,
-    borderRadius: 32,
-    backgroundColor: Colors.primary,
-    alignItems: "center",
-    justifyContent: "center",
-    boxShadow: "0 4px 14px rgba(200, 106, 74, 0.35)",
-  },
-  micButtonActive: {
-    backgroundColor: Colors.stamp,
-  },
-  recordingText: {
-    fontFamily: Fonts.medium,
-    fontSize: 13,
-    color: Colors.stamp,
-  },
-  errorContainer: {
-    backgroundColor: "#FEF2F2",
-    borderRadius: 10,
-    padding: 12,
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 8,
-    borderWidth: 1,
-    borderColor: "#FECACA",
-  },
-  errorText: {
-    fontFamily: Fonts.regular,
-    fontSize: 13,
-    color: Colors.error,
-    flex: 1,
-  },
-  submitButton: {
-    backgroundColor: Colors.primary,
-    borderRadius: 14,
-    paddingVertical: 16,
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    gap: 8,
-    marginTop: 12,
-    boxShadow: "0 4px 12px rgba(200, 106, 74, 0.3)",
-    borderCurve: "continuous",
-  },
-  submitDisabled: {
-    opacity: 0.5,
-  },
-  submitText: {
-    fontFamily: Fonts.semiBold,
-    fontSize: 17,
-    color: Colors.white,
-  },
+  container:        { paddingHorizontal: 20, gap: 12 },
+  title:            { fontFamily: Fonts.serifBold, fontSize: 26, color: Colors.text, letterSpacing: -0.3 },
+  subtitle:         { fontFamily: Fonts.serifSemiBold, fontSize: 18, color: Colors.text, marginTop: 4 },
+  hint:             { fontFamily: Fonts.regular, fontSize: 14, color: Colors.textSecondary, lineHeight: 20, marginTop: 4 },
+  inputContainer:   { backgroundColor: Colors.white, borderRadius: 16, borderWidth: 1, borderColor: Colors.border, marginTop: 8 },
+  textInput:        { fontFamily: Fonts.regular, fontSize: 16, color: Colors.text, padding: 16, minHeight: 140, lineHeight: 22 },
+  micContainer:     { alignItems: "center", marginTop: 16, gap: 10 },
+  micLabel:         { fontFamily: Fonts.regular, fontSize: 13, color: Colors.textLight },
+  micWrapper:       { width: 140, height: 140, alignItems: "center", justifyContent: "center" },
+  wave:             { position: "absolute", borderWidth: 2, borderColor: Colors.primary },
+  micButton:        { width: 64, height: 64, borderRadius: 32, backgroundColor: Colors.primary, alignItems: "center", justifyContent: "center" },
+  micButtonActive:  { backgroundColor: Colors.stamp },
+  recordingText:    { fontFamily: Fonts.medium, fontSize: 13, color: Colors.stamp, textAlign: "center" },
+  errorContainer:   { backgroundColor: "#FEF2F2", borderRadius: 10, padding: 12, flexDirection: "row", alignItems: "center", gap: 8, borderWidth: 1, borderColor: "#FECACA" },
+  errorText:        { fontFamily: Fonts.regular, fontSize: 13, color: Colors.error, flex: 1 },
+  submitButton:     { backgroundColor: Colors.primary, borderRadius: 14, paddingVertical: 16, flexDirection: "row", alignItems: "center", justifyContent: "center", gap: 8, marginTop: 12 },
+  submitDisabled:   { opacity: 0.5 },
+  submitText:       { fontFamily: Fonts.semiBold, fontSize: 17, color: Colors.white },
 });
