@@ -1,20 +1,22 @@
 {
   "expo": {
-    "name": "Ciassist",
-    "slug": "ciassist",
+    "name": "e-Citoyen CI",
+    "slug": "ecitoyen-ci",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "fastshot",
+    "scheme": "ecitoyen",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": false
+      "supportsTablet": false,
+      "bundleIdentifier": "ci.ecitoyen.app"
     },
     "android": {
+      "package": "ci.ecitoyen.app",
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
-        "backgroundColor": "#10192b"
+        "backgroundColor": "#F5EFE3"
       },
       "edgeToEdgeEnabled": true
     },
@@ -25,13 +27,14 @@
     },
     "plugins": [
       "expo-router",
+      "expo-speech-recognition",
       [
         "expo-splash-screen",
         {
           "image": "./assets/images/splash-icon.png",
           "imageWidth": 200,
           "resizeMode": "contain",
-          "backgroundColor": "#ffffff"
+          "backgroundColor": "#F5EFE3"
         }
       ]
     ],
