@@ -1,19 +1,23 @@
 import os
+import uuid
 from dotenv import load_dotenv
-load_dotenv()
-
 from sqlalchemy import create_engine, Column, String, Text, ForeignKey, DateTime, Boolean, func
 from sqlalchemy.orm import declarative_base, relationship
-from sqlalchemy.dialects.postgresql import UUID
-import uuid
 
-DATABASE_URL = os.getenv("DATABASE_URL", "postgresql://ecitoyen_user:Manasse05@localhost:5432/ecitoyen")
-engine = create_engine(DATABASE_URL, echo=True)
+load_dotenv()
+
+# Fallback sur SQLite en dev local
+DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./ecitoyen.db")
+engine = create_engine(
+    DATABASE_URL, 
+    connect_args={"check_same_thread": False} if DATABASE_URL.startswith("sqlite") else {},
+    echo=True
+)
 Base = declarative_base()
 
 class BaseModel(Base):
     __abstract__ = True
-    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    id = Column(String(36), primary_key=True, default=lambda: str(uuid.uuid4()))
     created_at = Column(DateTime(timezone=True), server_default=func.now())
     updated_at = Column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now())
 
@@ -27,7 +31,7 @@ class User(BaseModel):
 
 class Demande(BaseModel):
     __tablename__ = "demandes"
-    user_id = Column(UUID(as_uuid=True), ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
+    user_id = Column(String(36), ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
     message = Column(Text, nullable=False)
     categorie = Column(String(100))
     status = Column(String(20), default="en_attente")
@@ -36,7 +40,7 @@ class Demande(BaseModel):
 
 class Reponse(BaseModel):
     __tablename__ = "reponses"
-    demande_id = Column(UUID(as_uuid=True), ForeignKey("demandes.id", ondelete="CASCADE"), nullable=False)
+    demande_id = Column(String(36), ForeignKey("demandes.id", ondelete="CASCADE"), nullable=False)
     resume = Column(Text, nullable=False)
     etapes = Column(Text)
     lieu = Column(String(255))

@@ -41,11 +41,10 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=origines_autorisees,
     allow_credentials=allow_credentials,
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allow_headers=["Authorization", "Content-Type"],
 )
 
-app.include_router(router, prefix="/api")
 app.include_router(router)
 
 

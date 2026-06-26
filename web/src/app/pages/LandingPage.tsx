@@ -1,8 +1,11 @@
 import { Button } from "../components/ui/button";
 import { Link } from "react-router";
 import { Shield, Sparkles, FileText, Clock, CheckCircle2 } from "lucide-react";
+import { useAuth } from "../../hooks/useAuth";
 
 export default function LandingPage() {
+  const { isAuthenticated } = useAuth();
+
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
@@ -15,9 +18,15 @@ export default function LandingPage() {
               <p className="text-xs text-muted-foreground">République de Côte d'Ivoire</p>
             </div>
           </div>
-          <Link to="/login">
-            <Button variant="outline">Connexion</Button>
-          </Link>
+          {isAuthenticated ? (
+            <Link to="/citizen">
+              <Button variant="outline">Tableau de bord</Button>
+            </Link>
+          ) : (
+            <Link to="/login">
+              <Button variant="outline">Connexion</Button>
+            </Link>
+          )}
         </div>
       </header>
 
@@ -39,9 +48,9 @@ export default function LandingPage() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/login">
-              <Button size="lg" className="w-full sm:w-auto">
-                Commencer
+            <Link to={isAuthenticated ? "/citizen" : "/login"}>
+              <Button size="lg" className="w-full sm:w-auto text-white" style={{ backgroundColor: "#C86A4A" }}>
+                {isAuthenticated ? "Continuer ma demande" : "Commencer"}
               </Button>
             </Link>
             <Button
@@ -90,9 +99,9 @@ export default function LandingPage() {
                 <div className="flex items-start gap-3">
                   <CheckCircle2 className="w-5 h-5 text-primary mt-1" />
                   <div>
-                    <h4 className="font-semibold mb-1">Vérifié par des agents</h4>
+                    <h4 className="font-semibold mb-1">Conformité réglementaire</h4>
                     <p className="text-sm text-muted-foreground">
-                      Chaque demande est validée par nos agents administratifs
+                      Toutes les réponses se basent sur les textes officiels ivoiriens.
                     </p>
                   </div>
                 </div>
@@ -139,9 +148,9 @@ export default function LandingPage() {
               <div className="w-16 h-16 rounded-2xl bg-green-100 flex items-center justify-center mx-auto mb-4">
                 <CheckCircle2 className="w-8 h-8 text-green-600" />
               </div>
-              <h4 className="text-xl font-semibold mb-3">3. Validation</h4>
+              <h4 className="text-xl font-semibold mb-3">3. Guide complet</h4>
               <p className="text-muted-foreground">
-                Un agent vérifie et confirme votre demande pour garantir sa conformité
+                Obtenez immédiatement la marche à suivre, la liste des pièces et la lettre prérédigée.
               </p>
             </div>
           </div>
@@ -189,9 +198,9 @@ export default function LandingPage() {
           <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto">
             Rejoignez des milliers de citoyens qui utilisent déjà e-Citoyen CI
           </p>
-          <Link to="/login">
+          <Link to={isAuthenticated ? "/citizen" : "/login"}>
             <Button size="lg" variant="secondary" className="bg-white text-primary hover:bg-white/90">
-              Commencer maintenant
+              {isAuthenticated ? "Accéder à mon espace" : "Commencer maintenant"}
             </Button>
           </Link>
         </div>

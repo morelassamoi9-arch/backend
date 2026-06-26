@@ -3,7 +3,7 @@ const API_URL = (import.meta as any).env?.VITE_API_URL || "http://localhost:8000
 
 // Helper pour les requêtes
 async function request<T = any>(url: string, options: RequestInit = {}): Promise<T> {
-  const token = localStorage.getItem('token');
+  const token = sessionStorage.getItem('token');
   const headers: HeadersInit = {
     'Content-Type': 'application/json',
     ...(token && { Authorization: `Bearer ${token}` }),
@@ -16,9 +16,9 @@ async function request<T = any>(url: string, options: RequestInit = {}): Promise
   });
 
   if (response.status === 401) {
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
-    window.location.href = '/login';
+    sessionStorage.removeItem('token');
+    sessionStorage.removeItem('user');
+    window.dispatchEvent(new CustomEvent('auth_unauthorized'));
     throw new Error('Non authentifié');
   }
 
@@ -41,8 +41,8 @@ export const auth = {
     request('/auth/register', { method: 'POST', body: JSON.stringify(data) }),
   
   logout: () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
+    sessionStorage.removeItem('token');
+    sessionStorage.removeItem('user');
     window.location.href = '/login';
   },
 };

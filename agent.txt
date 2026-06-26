@@ -1,0 +1,136 @@
+================================================================================
+ARCHIVE DES COMPOSANTS ET ROUTAGE DU RÔLE : AGENT ADMINISTRATIF
+================================================================================
+
+Ce fichier documente et conserve le code lié à la fonctionnalité "Agent administratif" 
+qui a été complètement retirée de l'application active.
+
+--------------------------------------------------------------------------------
+1. STRUCTURE DES FICHIERS SUPPRIMÉS
+--------------------------------------------------------------------------------
+
+- Frontend (Pages d'administration et de gestion des dossiers) :
+  * src/app/pages/AgentDashboard.tsx  -> Tableau de bord de l'agent avec indicateurs clés et graphiques
+  * src/app/pages/RequestManagement.tsx -> Liste de gestion des demandes des citoyens
+  * src/app/pages/RequestDetails.tsx   -> Vue détaillée d'un dossier avec actions de validation et notes internes
+  * src/app/pages/Statistics.tsx      -> Rapports, diagrammes circulaires et graphiques de performances financiers/temporels
+
+- Backend (Rôles & Données d'initialisation) :
+  * backend/app/database/models.py (Rôles ADMIN et AGENT retirés de l'énumération UserRole)
+  * init_db.py (Le script de seed de l'agent "agent1@gmail.com" avec le rôle "agent_administratif" a été retiré)
+
+--------------------------------------------------------------------------------
+2. ANCIENNES ROUTES SUPPRIMÉES (dans src/app/routes.tsx)
+--------------------------------------------------------------------------------
+
+Ancien groupe de routes réservées aux agents :
+```tsx
+  {
+    path: "/agent",
+    children: [
+      { index: true, Component: AgentDashboard },
+      { path: "requests", Component: RequestManagement },
+      { path: "request/:id", Component: RequestDetails },
+      { path: "statistics", Component: Statistics },
+    ],
+  },
+```
+
+--------------------------------------------------------------------------------
+3. EXTRAITS DE CODE ARCHIVÉS
+--------------------------------------------------------------------------------
+
+=== Ancien Composant : src/app/pages/AgentDashboard.tsx ===
+Usage : Affichait le nombre total de demandes en cours, en attente, et triait l'état d'avancement avec des graphiques Recharts.
+```tsx
+import { useState, useEffect } from "react";
+import { Button } from "../components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/card";
+import { StatCard } from "../components/StatCard";
+import { Link } from "react-router";
+import { 
+  FileText, 
+  Clock, 
+  CheckCircle2, 
+  BarChart3,
+  LogOut,
+  Settings
+} from "lucide-react";
+// ...
+export default function AgentDashboard() {
+  const { trackAction } = useHistoryTracker();
+
+  useEffect(() => {
+    trackAction("NAVIGATE", "Accès au tableau de bord agent", "success");
+  }, []);
+  
+  return (
+    <SidebarProvider>
+      <div className="flex min-h-screen w-full bg-background">
+         {/* Sidebar d'administration & Header avec bouton logout appelant auth.logout() */}
+      </div>
+    </SidebarProvider>
+  );
+}
+```
+
+=== Ancien Composant : src/app/pages/RequestManagement.tsx ===
+Usage : Affichait un tableau HTML/React de tous les dossiers citoyens soumis avec des filtres par statut.
+```tsx
+export default function RequestManagement() {
+  const [statusFilter, setStatusFilter] = useState<string>("all");
+  const [searchQuery, setSearchQuery] = useState("");
+  // Table affichant l'identifiant REQ-2026-X, le nom du citoyen, le sujet, le statut
+  // et un lien bouton 'Voir détails' redirigeant vers /agent/request/:id
+}
+```
+
+=== Ancien Composant : src/app/pages/RequestDetails.tsx ===
+Usage : Permettait à l'agent d'ajouter des notes internes, de vérifier et confirmer définitivement une demande (actions VALIDATE_REQUEST).
+```tsx
+export default function RequestDetails() {
+  const [showVerifyDialog, setShowVerifyDialog] = useState(false);
+  const [showConfirmDialog, setShowConfirmDialog] = useState(false);
+  // ...
+  // Boutons d'action pour:
+  // - Confirmer la vérification (VALIDATE_REQUEST)
+  // - Confirmer définitivement (VALIDATE_REQUEST)
+  // - Enregistrer des notes internes (UPDATE_REQUEST)
+  // - Télécharger le rapport technique (DOWNLOAD)
+}
+```
+
+=== Ancien Composant : src/app/pages/Statistics.tsx ===
+Usage : Visualisation graphique des temps de traitement, taux de confirmation et distribution par type de demande.
+```tsx
+export default function Statistics() {
+  // Graphiques en barres et circulaires (PieChart, BarChart Recharts) montrant les performances
+}
+```
+
+=== Ancien Code de Seeding : init_db.py ===
+Usage : Création automatique du compte administrateur/agent de test par défaut.
+```python
+def seed_default_agent():
+    db = SessionLocal()
+    try:
+        email = "agent1@gmail.com"
+        existing_user = db.query(User).filter(User.email == email).first()
+        if not existing_user:
+            default_agent = User(
+                nom="Amani",
+                prenom="Manasse",
+                email=email,
+                telephone="0714781378",
+                password_hash=hash_password("agent@23"),
+                role=UserRole.AGENT_ADMINISTRATIF,
+                is_active=True
+            )
+            db.add(default_agent)
+            db.commit()
+    except Exception as e:
+        db.rollback()
+    finally:
+        db.close()
+```
+================================================================================

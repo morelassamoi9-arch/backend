@@ -5,6 +5,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/card"
 import { MobileNav } from "../components/MobileNav";
 import { ArrowLeft, Download, FileText, MapPin, Clock, CreditCard, Sparkles } from "lucide-react";
 import { demandes } from "../../services/api";
+import { StatusBadge, RequestStatus } from "../components/StatusBadge";
+import { useHistoryTracker } from "../../services/useHistoryTracker";
 
 interface DemandeDetail {
   id: string;
@@ -26,6 +28,7 @@ export default function AIResponse() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const location = useLocation();
+  const { trackAction } = useHistoryTracker();
   const [demande, setDemande] = useState<DemandeDetail | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -44,6 +47,40 @@ export default function AIResponse() {
       fetchDemande(id);
     }
   }, [id, location.state]);
+
+  // Suivi de l'ouverture du détail de la demande
+  useEffect(() => {
+    if (demande && demande.id) {
+      trackAction("OPEN_DETAILS", `Consultation de la demande #${demande.id}`, "success", {
+        requestId: demande.id,
+        categorie: demande.categorie,
+        status: demande.status,
+      });
+    }
+  }, [demande?.id]);
+
+  // Polling automatique pour les demandes en attente ou en cours de traitement
+  useEffect(() => {
+    const targetId = id || demande?.id;
+    if (!targetId) return;
+
+    // Pas de polling si le statut est déjà finalisé
+    if (demande?.status === "traitee" || demande?.status === "rejetee") {
+      return;
+    }
+
+    const interval = setInterval(async () => {
+      try {
+        const data = await demandes.getOne(targetId);
+        console.log("Polling de la demande :", data);
+        setDemande(data);
+      } catch (err) {
+        console.error("Erreur lors du polling de la demande :", err);
+      }
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [id, demande?.id, demande?.status]);
 
   const fetchDemande = async (demandeId: string) => {
     try {
@@ -95,6 +132,34 @@ export default function AIResponse() {
 
   const reponse = demande.reponse || {};
 
+  // Normalise un champ en tableau :
+  // - tableau → retourné tel quel
+  // - string JSON (ex: '["étape 1", "étape 2"]') → parsé
+  // - string simple → découpée sur \n, •, ou -
+  function toArray(val: string | string[] | undefined): string[] {
+    if (!val) return [];
+    if (Array.isArray(val)) return val;
+    // Tentative de parse JSON si la string ressemble à un tableau
+    const trimmed = val.trim();
+    if (trimmed.startsWith("[")) {
+      try {
+        const parsed = JSON.parse(trimmed);
+        if (Array.isArray(parsed)) return parsed.map(String).filter(Boolean);
+      } catch {
+        // pas du JSON valide, on continue
+      }
+    }
+    // Fallback : découpe sur sauts de ligne, puces ou tirets
+    return trimmed
+      .split(/\n|•|-(?=\s)/)
+      .map((s) => s.trim())
+      .filter(Boolean);
+  }
+
+  const etapes = toArray(reponse.etapes as any).map(s => s.replace(/^\d+[\.\)]\s*/, ""));
+  const documents = toArray(reponse.documents as any).map(s => s.replace(/^\d+[\.\)]\s*/, ""));
+  const lieux = toArray(reponse.lieux as any).map(s => s.replace(/^\d+[\.\)]\s*/, ""));
+
   return (
     <div className="min-h-screen bg-background pb-20 md:pb-0">
       {/* Header */}
@@ -117,11 +182,7 @@ export default function AIResponse() {
       <div className="container mx-auto px-4 py-8 max-w-3xl">
         {/* Status Badge */}
         <div className="mb-6 flex items-center gap-3">
-          <span className="px-3 py-1 rounded-full text-sm font-medium bg-yellow-100 text-yellow-800">
-            {demande.status === "en_attente" ? "En attente" :
-             demande.status === "en_cours" ? "En cours" :
-             demande.status === "traitee" ? "Traitée" : "Rejetée"}
-          </span>
+          <StatusBadge status={demande.status as RequestStatus} />
           <span className="text-sm text-muted-foreground">
             {new Date(demande.created_at).toLocaleString("fr-FR")}
           </span>
@@ -140,7 +201,7 @@ export default function AIResponse() {
         {/* Réponse IA */}
         <div className="space-y-4">
           {/* Étapes */}
-          {reponse.etapes && reponse.etapes.length > 0 && (
+          {etapes.length > 0 && (
             <Card>
               <CardHeader>
                 <CardTitle className="text-base flex items-center gap-2">
@@ -150,7 +211,7 @@ export default function AIResponse() {
               </CardHeader>
               <CardContent>
                 <ol className="list-decimal list-inside space-y-2">
-                  {reponse.etapes.map((etape, index) => (
+                  {etapes.map((etape, index) => (
                     <li key={index} className="text-muted-foreground">{etape}</li>
                   ))}
                 </ol>
@@ -159,7 +220,7 @@ export default function AIResponse() {
           )}
 
           {/* Documents */}
-          {reponse.documents && reponse.documents.length > 0 && (
+          {documents.length > 0 && (
             <Card>
               <CardHeader>
                 <CardTitle className="text-base flex items-center gap-2">
@@ -169,7 +230,7 @@ export default function AIResponse() {
               </CardHeader>
               <CardContent>
                 <ul className="list-disc list-inside space-y-2">
-                  {reponse.documents.map((doc, index) => (
+                  {documents.map((doc, index) => (
                     <li key={index} className="text-muted-foreground">{doc}</li>
                   ))}
                 </ul>
@@ -178,7 +239,7 @@ export default function AIResponse() {
           )}
 
           {/* Lieux */}
-          {reponse.lieux && reponse.lieux.length > 0 && (
+          {lieux.length > 0 && (
             <Card>
               <CardHeader>
                 <CardTitle className="text-base flex items-center gap-2">
@@ -188,7 +249,7 @@ export default function AIResponse() {
               </CardHeader>
               <CardContent>
                 <ul className="list-disc list-inside space-y-2">
-                  {reponse.lieux.map((lieu, index) => (
+                  {lieux.map((lieu, index) => (
                     <li key={index} className="text-muted-foreground">{lieu}</li>
                   ))}
                 </ul>
@@ -248,6 +309,12 @@ export default function AIResponse() {
                   a.download = `lettre_${demande.id}.txt`;
                   a.click();
                   URL.revokeObjectURL(url);
+
+                  // Track downloading the letter
+                  trackAction("DOWNLOAD", `Téléchargement de la lettre pour la demande #${demande.id}`, "success", {
+                    requestId: demande.id,
+                    categorie: demande.categorie
+                  });
                 }}>
                   <Download className="w-4 h-4 mr-2" />
                   Télécharger la lettre
@@ -256,18 +323,22 @@ export default function AIResponse() {
             </Card>
           )}
 
-          {Object.keys(reponse).length === 0 && (
+          {etapes.length === 0 && documents.length === 0 && lieux.length === 0 && !reponse.delai && !reponse.cout && !reponse.lettre && (
             <Card>
               <CardContent className="pt-6 text-center py-8">
                 <p className="text-muted-foreground">
-                  L'analyse de votre demande est en cours. Les résultats apparaîtront ici.
+                  {demande.status === "rejetee"
+                    ? "Votre demande n'a pas pu être traitée par l'assistant. Veuillez vérifier vos informations ou réessayer plus tard."
+                    : "L'analyse de votre demande est en cours. Les résultats apparaîtront ici."}
                 </p>
-                <Button 
-                  className="mt-4" 
-                  onClick={() => fetchDemande(demande.id)}
-                >
-                  Actualiser
-                </Button>
+                {demande.status !== "rejetee" && (
+                  <Button 
+                    className="mt-4" 
+                    onClick={() => fetchDemande(demande.id)}
+                  >
+                    Actualiser
+                  </Button>
+                )}
               </CardContent>
             </Card>
           )}

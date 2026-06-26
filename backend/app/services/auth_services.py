@@ -1,6 +1,7 @@
 from sqlalchemy.orm import Session
 from fastapi import HTTPException, status
 from typing import Optional
+import logging
 from app.database.models import User, UserRole
 from app.schemas.user import UserCreate, UserLogin, UserUpdate
 from app.auth.security import (
@@ -11,6 +12,8 @@ from app.auth.security import (
     sanitize_string
 )
 from app.auth.jwt import create_access_token, create_refresh_token
+
+logger = logging.getLogger(__name__)
 
 class AuthService:
     """Service d'authentification et gestion des utilisateurs"""
@@ -65,20 +68,21 @@ class AuthService:
             email=email,
             password_hash=hash_password(user_data.password),
             telephone=sanitize_string(user_data.telephone) if user_data.telephone else None,
-            role=UserRole.CITOYEN
+            role=UserRole.CLIENT
         )
         
         try:
             db.add(user)
             db.commit()
             db.refresh(user)
-            return user
         except Exception as e:
             db.rollback()
+            logger.exception("Erreur lors de la création du compte")
             raise HTTPException(
                 status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-                detail=f"Erreur lors de la création du compte : {str(e)}"
+                detail="Une erreur interne est survenue lors de la création du compte"
             )
+        return user
     
     @staticmethod
     def login(db: Session, credentials: UserLogin) -> dict:
@@ -211,7 +215,8 @@ class AuthService:
             db.commit()
         except Exception as e:
             db.rollback()
+            logger.exception("Erreur lors de la suppression de l'utilisateur")
             raise HTTPException(
                 status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-                detail=f"Erreur lors de la suppression : {str(e)}"
+                detail="Une erreur interne est survenue lors de la suppression de l'utilisateur"
             )

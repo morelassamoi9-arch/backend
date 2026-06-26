@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import React, { useState, useRef } from "react";
 import { Button } from "../components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/card";
 import { Textarea } from "../components/ui/textarea";
@@ -7,9 +7,11 @@ import { Link, useNavigate } from "react-router";
 import { Shield, ArrowLeft, Mic, Sparkles } from "lucide-react";
 import { motion } from "motion/react";
 import { demandes } from "../../services/api";
+import { useHistoryTracker } from "../../services/useHistoryTracker";
 
 export default function NewRequest() {
   const navigate = useNavigate();
+  const { trackAction } = useHistoryTracker();
   const [request, setRequest] = useState("");
   const [isRecording, setIsRecording] = useState(false);
 
@@ -35,12 +37,26 @@ export default function NewRequest() {
       });
       
       console.log("Demande creee:", result);
+
+      // Track successful request creation
+      trackAction("CREATE_REQUEST", `Création de la demande #${result.id}`, "success", {
+        requestId: result.id,
+        category: "general",
+        snippet: request.substring(0, 100) + (request.length > 100 ? "..." : "")
+      });
       
       // Rediriger vers la page de réponse avec l'ID de la demande
       navigate(`/citizen/request/${result.id}`, { state: { reponse: result } });
     } catch (err: any) {
       console.error("Erreur:", err);
-      setApiError(err.message || "Impossible de contacter le serveur. Vérifiez votre connexion.");
+      const errMsg = err.message || "Impossible de contacter le serveur. Vérifiez votre connexion.";
+      setApiError(errMsg);
+
+      // Track failed request creation
+      trackAction("CREATE_REQUEST", "Échec de création de la demande", "failed", {
+        error: errMsg,
+        snippet: request.substring(0, 100) + (request.length > 100 ? "..." : "")
+      });
     } finally {
       setIsLoading(false);
     }

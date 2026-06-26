@@ -12,11 +12,17 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'backend'))
 from dotenv import load_dotenv
 load_dotenv(os.path.join(os.path.dirname(__file__), 'backend', '.env'))
 
-from backend.app.database.base import Base
-from backend.app.database.sessions import engine
-from backend.app.database.models import User, Demande, Reponse
+from app.database.base import Base
+from app.database.sessions import engine, DATABASE_URL
+from app.database.models import User, Demande, Reponse
 from sqlalchemy import inspect
+import os
 
+print("=" * 60)
+print("🔍 SÉCURITÉ ET CONFIGURATION BASE DE DONNÉES")
+print(f"   DATABASE_URL : {DATABASE_URL}")
+db_path = DATABASE_URL.replace('sqlite:///', '')
+print(f"   Chemin absolu : {os.path.abspath(db_path)}")
 print("=" * 60)
 print("🗄️  CRÉATION DES TABLES")
 print("=" * 60)

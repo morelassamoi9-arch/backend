@@ -75,31 +75,14 @@ async def get_current_active_user(
     Raises:
         HTTPException: Si l'utilisateur n'est pas actif
     """
-    # Pour l'instant, tous les utilisateurs sont actifs
-    # Vous pouvez ajouter un champ 'is_active' au modèle User plus tard
-    return current_user
-
-async def get_admin_user(
-    current_user: User = Depends(get_current_user)
-) -> User:
-    """
-    Vérifie que l'utilisateur est administrateur
-    
-    Args:
-        current_user: Utilisateur courant
-    
-    Returns:
-        User: L'utilisateur admin
-    
-    Raises:
-        HTTPException: Si l'utilisateur n'est pas admin
-    """
-    if current_user.role != UserRole.ADMIN:
+    if not current_user.is_active:
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,
-            detail="Accès réservé aux administrateurs",
+            detail="Ce compte est désactivé"
         )
     return current_user
+
+
 
 async def get_optional_user(
     credentials: Optional[HTTPAuthorizationCredentials] = Depends(

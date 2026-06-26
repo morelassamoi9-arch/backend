@@ -23,25 +23,81 @@ router = APIRouter(
 
 def process_demande_with_crew(demande_id: str, message: str):
     """
-    Tâche de fond pour traiter la demande avec CrewAI
+    Tâche de fond pour traiter la demande avec CrewAI (YAML-based)
     """
     try:
-        from app.services.crew_services import ECitoyenCrew
+        from app.agents.crew import ECitoyenCrew
+        from app.database.models import Demande, DemandeStatus, Reponse
 
-        logger.info(f"Traitement CrewAI pour la demande {demande_id}")
-        crew = ECitoyenCrew()
-        crew_result = crew.process_demande(message)
-        
+        # Mettre à jour le statut en EN_COURS avant de lancer le kickoff
+        db_session = next(get_db())
+        try:
+            demande = db_session.query(Demande).filter(Demande.id == demande_id).first()
+            if demande:
+                demande.status = DemandeStatus.EN_COURS
+                db_session.commit()
+                logger.info(f"Statut de la demande {demande_id} mis à EN_COURS")
+        except Exception as db_err:
+            logger.error(f"Erreur lors du passage au statut EN_COURS pour {demande_id}: {db_err}")
+        finally:
+            db_session.close()
+
+        logger.info(f"Traitement CrewAI unifié pour la demande {demande_id}")
+        resultat = ECitoyenCrew().crew().kickoff(
+            inputs={"demande_citoyen": message}
+        )
+
+        if resultat is None or resultat.pydantic is None:
+            raise ValueError("Le crew n'a pas produit de sortie structurée valide")
+
+        pydantic_res = resultat.pydantic
+        crew_result = {
+            "resume": pydantic_res.resume_situation,
+            "etapes": pydantic_res.plan_action,
+            "documents": pydantic_res.documents_a_apporter,
+            "lieux": [pydantic_res.lieu] if pydantic_res.lieu else [],
+            "delai": pydantic_res.delai_estime,
+            "cout": pydantic_res.cout,
+            "lettre": pydantic_res.contenu_lettre if pydantic_res.lettre_generee else None
+        }
+
         # Sauvegarder la réponse
         db_session = next(get_db())
         try:
-            crew.save_reponse_to_db(db_session, demande_id, crew_result)
+            reponse = Reponse(
+                demande_id=demande_id,
+                resume=pydantic_res.resume_situation,
+                etapes=json.dumps(pydantic_res.plan_action, ensure_ascii=False),
+                documents_requis=json.dumps(pydantic_res.documents_a_apporter, ensure_ascii=False),
+                lieu=pydantic_res.lieu or "Non spécifié",
+                delai=pydantic_res.delai_estime or "Non spécifié",
+                cout=pydantic_res.cout or "Non spécifié",
+                contacts=json.dumps({}, ensure_ascii=False),
+                source='crew_ai'
+            )
+            db_session.add(reponse)
+
+            demande = db_session.query(Demande).filter(Demande.id == demande_id).first()
+            if demande:
+                demande.status = DemandeStatus.TRAITEE
+                demande.reponse = json.dumps(crew_result, ensure_ascii=False)
+            db_session.commit()
             logger.info(f"Réponse CrewAI sauvegardée pour la demande {demande_id}")
         finally:
             db_session.close()
-            
+
     except Exception as e:
         logger.error(f"Erreur CrewAI pour demande {demande_id}: {str(e)}")
+        db_session = next(get_db())
+        try:
+            demande = db_session.query(Demande).filter(Demande.id == demande_id).first()
+            if demande:
+                demande.status = DemandeStatus.REJETEE
+                db_session.commit()
+        except Exception as db_err:
+            logger.error(f"Erreur lors du marquage d'erreur pour {demande_id}: {db_err}")
+        finally:
+            db_session.close()
 
 @router.post(
     "/",
@@ -164,16 +220,15 @@ def get_demande_stats(
     Retourne les statistiques des demandes
     """
     return DemandeService.get_statistics(db, current_user)
-# ============================================
-# GÉNÉRATION DE RÉPONSE (MOCKÉE)
-# ============================================
+
 @router.post("/{demande_id}/generate-response")
 def generate_response(
     demande_id: UUID,
+    background_tasks: BackgroundTasks,
     current_user: User = Depends(get_current_user),
     db: Session = Depends(get_db)
 ):
-    """Génère une réponse mockée pour la demande"""
+    """Génère la vraie réponse IA en arrière-plan pour la demande spécifiée (ancien mock réorienté)"""
     demande = db.query(Demande).filter(
         Demande.id == str(demande_id),
         Demande.user_id == current_user.id
@@ -181,50 +236,16 @@ def generate_response(
     if not demande:
         raise HTTPException(status_code=404, detail="Demande non trouvée")
     
-    # Réponse mockée
-    reponse_data = {
-        "etapes": [
-            "Rendez-vous à la mairie de votre commune",
-            "Présentez les documents requis",
-            "Payez les frais de traitement",
-            "Recevez votre convocation pour la prise d'empreintes",
-            "Retirez votre CNI sous 15 jours"
-        ],
-        "documents": [
-            "Extrait d'acte de naissance datant de moins de 3 mois",
-            "Pièce d'identité en cours de validité",
-            "Justificatif de domicile (facture d'eau ou d'électricité)",
-            "2 photos d'identité récentes",
-            "Timbre fiscal de 2000 FCFA"
-        ],
-        "lieux": [
-            "Mairie de votre commune",
-            "Centre d'enrôlement le plus proche",
-            "Agence de l'ONECI (Office National de l'État-Civil et de l'Identification)"
-        ],
-        "delai": "15 à 30 jours ouvrés",
-        "cout": "2 000 FCFA (timbre fiscal) + 3 000 FCFA (frais de dossier)",
-        "lettre": f"""
-Objet : Demande de Carte Nationale d'Identité
-
-Je soussigné(e), {current_user.nom} {current_user.prenom}, né(e) le ... à ..., 
-demeurant à ..., sollicite par la présente l'obtention de ma Carte Nationale d'Identité.
-
-Je vous prie de bien vouloir trouver ci-joint les documents requis pour ma demande.
-
-Dans l'attente de votre réponse, je vous prie d'agréer, Madame, Monsieur, l'expression de 
-mes salutations distinguées.
-
-Fait à ... , le {demande.created_at.strftime('%d/%m/%Y')}
-
-Signature
-"""
-    }
-    
-    # Sauvegarder la réponse dans la demande
-    demande.reponse = json.dumps(reponse_data, ensure_ascii=False)
-    demande.status = DemandeStatus.TRAITEE
+    # Repasser la demande en statut EN_COURS
+    demande.status = DemandeStatus.EN_COURS
     db.commit()
+    
+    # Déclencher le traitement CrewAI réel en tâche de fond
+    background_tasks.add_task(
+        process_demande_with_crew,
+        demande_id=str(demande.id),
+        message=demande.message
+    )
     
     return {
         "id": demande.id,
@@ -232,5 +253,5 @@ Signature
         "categorie": demande.categorie,
         "status": demande.status,
         "created_at": demande.created_at,
-        "reponse": reponse_data
+        "info": "Traitement de la demande démarré en arrière-plan"
     }

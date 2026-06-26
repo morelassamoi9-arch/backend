@@ -2,8 +2,9 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 from typing import List
 from app.database.sessions import get_db
-from app.database.models import User, UserRole
+from app.database.models import User
 from app.schemas.user import UserResponse, UserUpdate
+from app.schemas.password import PasswordChange
 from app.auth.dependencies import get_current_user
 from app.services.auth_services import AuthService
 
@@ -58,8 +59,7 @@ def update_current_user(
     description="Change le mot de passe du citoyen connecté"
 )
 def change_password(
-    old_password: str,
-    new_password: str,
+    password_data: PasswordChange,
     current_user: User = Depends(get_current_user),
     db: Session = Depends(get_db)
 ):
@@ -67,9 +67,9 @@ def change_password(
     Changer le mot de passe :
     
     - **old_password** : Ancien mot de passe
-    - **new_password** : Nouveau mot de passe (min 6 caractères)
+    - **new_password** : Nouveau mot de passe (min 8 caractères)
     """
-    AuthService.change_password(db, current_user, old_password, new_password)
+    AuthService.change_password(db, current_user, password_data.old_password, password_data.new_password)
     return {"message": "Mot de passe modifié avec succès"}
 
 @router.delete(
@@ -86,28 +86,4 @@ def delete_account(
     """
     AuthService.delete_user(db, current_user)
     return {"message": "Compte supprimé avec succès"}
-
-# Routes Admin (optionnel pour le MVP)
-@router.get(
-    "/",
-    response_model=List[UserResponse],
-    summary="[ADMIN] Liste des utilisateurs",
-    description="Liste tous les utilisateurs (admin seulement)"
-)
-def list_users(
-    current_user: User = Depends(get_current_user),
-    db: Session = Depends(get_db),
-    skip: int = 0,
-    limit: int = 50
-):
-    """
-    Liste tous les utilisateurs - Réservé aux administrateurs
-    """
-    if current_user.role != UserRole.ADMIN:
-        raise HTTPException(
-            status_code=status.HTTP_403_FORBIDDEN,
-            detail="Accès réservé aux administrateurs"
-        )
-    
-    users = db.query(User).offset(skip).limit(limit).all()
-    return users
+

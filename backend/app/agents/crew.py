@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 from typing import Optional, List
 
@@ -5,6 +6,9 @@ from crewai import Agent, Task, Crew
 from crewai.project import CrewBase, agent, task, crew
 from dotenv import load_dotenv
 from pydantic import BaseModel, Field
+
+# Charger les variables d'environnement en premier
+load_dotenv()
 
 # WORKAROUND CONNU : bug CrewAI 1.14.x où 'cache_breakpoint' est injecté
 # dans les messages système même pour des providers non-Anthropic (Groq).
@@ -16,9 +20,17 @@ from app.agents.tools import consulter_procedure
 
 _crewai_cache.mark_cache_breakpoint = lambda msg: msg
 
-load_dotenv()
+# Modèle LLM partagé — Groq via LiteLLM
+GROQ_LLM = "groq/llama-3.3-70b-versatile"
+
+# Vérification au démarrage
+if not os.getenv("GROQ_API_KEY"):
+    raise EnvironmentError(
+        "GROQ_API_KEY manquante. Vérifiez le fichier backend/.env"
+    )
 
 BASE_DIR = Path(__file__).parent
+
 
 
 class AnalyseDemande(BaseModel):
@@ -76,7 +88,7 @@ class ECitoyenCrew:
     def accueil(self) -> Agent:
         return Agent(
             config=self.agents_config["accueil"],
-            llm="groq/llama-3.3-70b-versatile",
+            llm=GROQ_LLM,
             verbose=True
         )
 
@@ -84,7 +96,7 @@ class ECitoyenCrew:
     def documentaliste(self) -> Agent:
         return Agent(
             config=self.agents_config["documentaliste"],
-            llm="groq/llama-3.3-70b-versatile",
+            llm=GROQ_LLM,
             tools=[consulter_procedure],
             verbose=True
         )
@@ -93,7 +105,7 @@ class ECitoyenCrew:
     def redacteur(self) -> Agent:
         return Agent(
             config=self.agents_config["redacteur"],
-            llm="groq/llama-3.3-70b-versatile",
+            llm=GROQ_LLM,
             verbose=True
         )
 

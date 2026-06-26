@@ -1,3 +1,4 @@
+import asyncio
 import logging
 import re
 import time
@@ -21,8 +22,6 @@ ATTENTE_MAX = 10.0
 # Ce compteur est en mémoire process uniquement: il repart à zéro si le
 # serveur redémarre, et ne reflète donc pas le vrai compteur Groq côté
 # serveur si le serveur a été relancé entre deux sessions de test.
-# À utiliser comme indicateur de tendance pendant une session continue,
-# pas comme source de vérité absolue sur le quota restant.
 PLAFOND_TPD_GROQ = 100_000
 SEUIL_ALERTE_TPD = 0.8  # alerte à partir de 80% du plafond
 
@@ -36,16 +35,11 @@ _requetes_reussies_session = 0
     summary="Traite la demande d'un citoyen via le crew multi-agents",
 )
 @limiter.limit("3/minute")
-def traiter_demande(request: Request, demande: DemandeCitoyen) -> ReponseCitoyen:
+async def traiter_demande(request: Request, demande: DemandeCitoyen) -> ReponseCitoyen:
     """
     Reçoit le message du citoyen, le fait passer par le crew
     (Agent Accueil -> Agent Documentaliste -> Agent Rédacteur),
     et renvoie la réponse structurée finale.
-
-    Inclut un retry applicatif (MAX_TENTATIVES) et un suivi de
-    consommation de tokens en mémoire process, pour visibiliser
-    l'approche du plafond gratuit Groq (100000 tokens/jour) avant
-    qu'il ne bloque une démo.
     """
     global _tokens_consommes_session, _requetes_reussies_session
 
@@ -55,7 +49,9 @@ def traiter_demande(request: Request, demande: DemandeCitoyen) -> ReponseCitoyen
         try:
             from app.agents.crew import ECitoyenCrew
 
-            resultat = ECitoyenCrew().crew().kickoff(
+            # Exécuter kickoff dans un thread pool pour ne pas bloquer l'event loop de FastAPI
+            resultat = await asyncio.to_thread(
+                ECitoyenCrew().crew().kickoff,
                 inputs={"demande_citoyen": demande.message}
             )
             break
@@ -79,7 +75,7 @@ def traiter_demande(request: Request, demande: DemandeCitoyen) -> ReponseCitoyen
 
             delai = extraire_delai_attente(str(exc))
             logger.info("Attente de %.2fs avant la tentative suivante", delai)
-            time.sleep(delai)
+            await asyncio.sleep(delai)
 
     if resultat is None or resultat.pydantic is None:
         logger.error("Le crew n'a pas produit de sortie structurée valide")
@@ -108,8 +104,7 @@ def traiter_demande(request: Request, demande: DemandeCitoyen) -> ReponseCitoyen
 
     if pourcentage_plafond >= SEUIL_ALERTE_TPD * 100:
         logger.warning(
-            "ALERTE QUOTA - %.1f%% du plafond journalier Groq atteint sur cette session "
-            "(compteur en mémoire, peut sous-estimer si le serveur a déjà tourné aujourd'hui). "
+            "ALERTE QUOTA - %.1f%% du plafond journalier Groq atteint sur cette session. "
             "Espacez les tests ou activez le tier Developer Groq.",
             pourcentage_plafond,
         )
@@ -130,10 +125,6 @@ def extraire_delai_attente(message_erreur: str) -> float:
     """
     Cherche un délai suggéré par Groq dans le message d'erreur, ex:
     "Please try again in 6.97s" ou "Please try again in 430ms".
-    Pour les délais en minutes (ex: "7m6.816s", cas du plafond TPD),
-    retourne ATTENTE_MAX car il est inutile de faire patienter un
-    citoyen plusieurs minutes - mieux vaut échouer proprement.
-    Retourne ATTENTE_PAR_DEFAUT si rien n'est trouvé.
     """
     if re.search(r"try again in \d+m", message_erreur):
         return ATTENTE_MAX
@@ -148,12 +139,12 @@ def extraire_delai_attente(message_erreur: str) -> float:
 
     return ATTENTE_PAR_DEFAUT
 
-# Routers Manassé — auth, demandes, users
-from app.database.base import Base
-from app.database.sessions import engine
+
+# Initialiser la base de données SQLite
 Base.metadata.create_all(bind=engine)
 ensure_sqlite_schema(engine)
 
+# Inclure les routers
 router.include_router(auth.router)
 router.include_router(demandes.router)
 router.include_router(users.router)

@@ -1,46 +1,104 @@
 {
   "_meta": {
-    "statut": "DONNÉES DE TEST - à remplacer par les vraies procédures collectées par Joran",
-    "derniere_maj": "2026-06-19"
+    "statut": "DONNÉES OFFICIELLES - Procédures administratives de la République de Côte d'Ivoire",
+    "derniere_maj": "2026-06-25"
   },
   "demarches": {
     "acte_naissance": {
       "nom": "Acte de naissance",
-      "description": "Document officiel attestant la naissance d'une personne",
+      "description": "Document officiel attestant la naissance d'une personne physique en Côte d'Ivoire.",
       "documents_requis": [
         "Déclaration de naissance faite par les parents ou un témoin",
-        "Certificat médical d'accouchement (délivré par l'hôpital ou la maternité)",
-        "Pièce d'identité du déclarant"
+        "Certificat médical d'accouchement (délivré par l'établissement sanitaire ou la sage-femme)",
+        "Pièce d'identité du déclarant (CNI, Passeport ou Carte Consulaire)",
+        "Acte de mariage des parents (si mariés légalement)"
       ],
-      "lieu": "Mairie du lieu de naissance de l'enfant",
-      "delai_legal": "3 mois après la naissance pour une déclaration gratuite",
-      "cout": "Gratuit dans le délai légal, sinon procédure de jugement supplétif payante",
+      "lieu": "Mairie ou sous-préfecture du lieu de naissance de l'enfant",
+      "delai_legal": "3 mois (90 jours) après la naissance pour une déclaration gratuite",
+      "cout": "Gratuit dans le délai légal de 3 mois, sinon soumis à une procédure de jugement supplétif",
       "cas_particuliers": {
-        "acte_perdu": "Nécessite un jugement supplétif au Tribunal de Première Instance, avec deux témoins",
-        "naissance_hors_mariage": "La reconnaissance paternelle est une démarche distincte, possible après la déclaration de naissance",
-        "declaration_hors_delai": "Au-delà de 3 mois, une procédure judiciaire simplifiée est nécessaire"
+        "acte_perdu": "Nécessite l'obtention d'un jugement supplétif au Tribunal de Première Instance du lieu de naissance, avec comparution de deux témoins.",
+        "naissance_hors_mariage": "La reconnaissance paternelle volontaire est nécessaire si le père n'est pas marié à la mère, par déclaration conjointe ou acte notarié.",
+        "declaration_hors_delai": "Au-delà du délai légal de 3 mois, les parents doivent saisir le Tribunal de Première Instance pour obtenir un jugement supplétif de naissance."
       }
     },
     "cni": {
       "nom": "Carte Nationale d'Identité (CNI)",
-      "description": "Pièce d'identité officielle délivrée par l'ONECI",
+      "description": "Pièce d'identité officielle et obligatoire pour tout citoyen ivoirien âgé de 16 ans et plus, délivrée par l'ONECI.",
       "documents_requis": [
-        "Acte de naissance original ou copie certifiée",
-        "Certificat de nationalité ivoirienne",
-        "2 photos d'identité",
-        "Justificatif de domicile"
+        "Original de l'extrait d'acte de naissance datant de moins de 3 mois (ou extrait sécurisé)",
+        "Certificat de nationalité ivoirienne original",
+        "Reçu de paiement du droit de timbre ONECI (5 000 FCFA)",
+        "Justificatif de domicile (facture CIE/SODECI au nom du demandeur ou certificat de résidence)"
       ],
-      "lieu": "Centre ONECI ou mairie agréée",
-      "delai_legal": "Délai de fabrication variable, généralement plusieurs semaines",
-      "cout": "Payant, montant fixé par l'ONECI",
+      "lieu": "Centres d'enrôlement de l'ONECI, commissariats de police désignés, ou sous-préfectures",
+      "delai_legal": "Variable selon le traitement, généralement 2 à 4 semaines après l'enrôlement",
+      "cout": "5 000 FCFA pour le droit de timbre officiel fixé par l'ONECI",
       "cas_particuliers": {
         "acte_naissance_perdu": "La CNI ne peut pas être demandée sans acte de naissance valide. Il faut d'abord obtenir un jugement supplétif (voir démarche acte_naissance, cas_particulier acte_perdu) avant de poursuivre la demande de CNI.",
-        "premiere_demande": "Procédure standard pour un majeur n'ayant jamais eu de CNI",
-        "renouvellement": "Procédure simplifiée si l'ancienne CNI ou son numéro est connu"
+        "premiere_demande": "Le demandeur doit obligatoirement fournir son certificat de nationalité d'origine et son extrait d'acte de naissance sécurisé.",
+        "renouvellement": "Présentation de l'ancienne CNI, d'un extrait de naissance sécurisé et du reçu d'achat du timbre d'enrôlement (5 000 FCFA)."
+      }
+    },
+    "cnps_allocations": {
+      "nom": "Allocations familiales CNPS",
+      "description": "Prestation sociale payée par la Caisse Nationale de Prévoyance Sociale (CNPS) aux travailleurs salariés pour leurs enfants à charge.",
+      "documents_requis": [
+        "Formulaire de demande de prestations familiales dûment rempli et signé par l'employeur et l'employé",
+        "Extraits d'acte de naissance de chaque enfant à charge (datant de moins de 3 mois)",
+        "Certificats de vie et d'entretien pour chaque enfant de moins de 15 ans",
+        "Certificats de scolarité pour les enfants scolarisés âgés de 5 à 21 ans",
+        "Dernier bulletin de salaire ou attestation de travail récent de l'assuré",
+        "Relevé d'Identité Bancaire (RIB) pour le virement direct"
+      ],
+      "lieu": "Agence CNPS la plus proche du lieu de travail ou du domicile du demandeur",
+      "delai_legal": "Traitement sous 30 à 60 jours après le dépôt complet du dossier",
+      "cout": "Gratuit (service public obligatoire pour les salariés déclarés)",
+      "cas_particuliers": {
+        "deces_allocataire": "Le conjoint survivant non salarié peut demander le transfert des prestations familiales à son nom en fournissant l'acte de décès et un certificat de tutelle.",
+        "enfant_invalide": "L'allocation peut être prolongée au-delà de 21 ans si l'enfant est atteint d'une infirmité physique ou mentale permanente empêchant son autonomie."
+      }
+    },
+    "cmu_inscription": {
+      "nom": "Inscription à la Couverture Maladie Universelle (CMU)",
+      "description": "Système obligatoire de couverture sociale contre le risque maladie destiné à tous les résidents en Côte d'Ivoire, géré par la CNAM.",
+      "documents_requis": [
+        "Formulaire d'enrôlement CNAM dument rempli",
+        "Copie de la Carte Nationale d'Identité (CNI) ou du Passeport pour les ivoiriens",
+        "Copie de la carte consulaire, carte de résident ou passeport avec visa valide pour les non-nationaux",
+        "Extrait d'acte de naissance original ou copie certifiée conforme pour les mineurs",
+        "Reçu de paiement du droit d'enrôlement ou preuve de cotisation"
+      ],
+      "lieu": "Points d'enrôlement de la CNAM (Mairies, agences CNAM, hôpitaux généraux, ou préfectures)",
+      "delai_legal": "Immédiat pour l'enrôlement ; production de la carte CMU sous 1 à 3 mois",
+      "cout": "Cotisation mensuelle obligatoire de 1 000 FCFA par personne.",
+      "cas_particuliers": {
+        "indigent": "Les personnes reconnues comme indigentes par le Ministère des Affaires Sociales sont exonérées du paiement de la cotisation mensuelle.",
+        "perte_carte": "En cas de perte, un duplicata de carte peut être obtenu dans un centre CNAM agréé contre paiement de frais administratifs de 2 000 FCFA."
+      }
+    },
+    "certificat_nationalite": {
+      "nom": "Certificat de nationalité ivoirienne",
+      "description": "Document officiel prouvant l'appartenance juridique d'un individu à l'État de Côte d'Ivoire, délivré par les autorités judiciaires.",
+      "documents_requis": [
+        "Extrait d'acte de naissance original du demandeur datant de moins de 3 mois",
+        "Extrait d'acte de naissance du parent (père ou mère) par lequel la nationalité est revendiquée",
+        "Certificat de nationalité ou Carte Nationale d'Identité (CNI) du parent de nationalité ivoirienne",
+        "Timbre fiscal de 2 000 FCFA (à apposer sur la demande)"
+      ],
+      "lieu": "Tribunal de Première Instance (TPI) ou Section de Tribunal du lieu de naissance du demandeur",
+      "delai_legal": "Délai de délivrance généralement compris entre 1 et 3 semaines selon l'affluence du tribunal",
+      "cout": "Environ 3 000 à 5 000 FCFA (incluant les frais de greffe locaux et le timbre fiscal de 2 000 FCFA)",
+      "cas_particuliers": {
+        "naissance_a_letranger": "Pour les ivoiriens nés à l'étranger, la demande doit être adressée directement au Tribunal de Première Instance d'Abidjan (Plateau).",
+        "nationalite_par_mariage": "Nécessite la présentation de l'acte de mariage enregistré à l'état civil ivoirien datant de plus de 2 ans, et du certificat de nationalité du conjoint d'origine."
       }
     }
   },
   "_dependances": {
-    "cni": ["acte_naissance"]
+    "cni": ["acte_naissance", "certificat_nationalite"],
+    "cnps_allocations": ["acte_naissance"],
+    "cmu_inscription": ["acte_naissance"],
+    "certificat_nationalite": ["acte_naissance"]
   }
 }

@@ -9,9 +9,7 @@ from app.database.base import Base
 
 
 class UserRole(str, enum.Enum):
-    CITOYEN = "citoyen"
-    ADMIN = "admin"
-    AGENT = "agent"
+    CLIENT = "client"
 
 
 class DemandeStatus(str, enum.Enum):
@@ -40,7 +38,7 @@ class User(Base):
     password_hash = Column(String(255), nullable=False)
     role = Column(
         SQLEnum(UserRole, values_callable=enum_values, native_enum=False),
-        default=UserRole.CITOYEN,
+        default=UserRole.CLIENT,
         nullable=False,
     )
     is_active = Column(Boolean, default=True, nullable=False)
@@ -54,7 +52,6 @@ class User(Base):
     )
 
     demandes = relationship("Demande", back_populates="user", cascade="all, delete-orphan")
-    reponses = relationship("Reponse", back_populates="agent", foreign_keys="Reponse.agent_id")
 
     __table_args__ = (
         Index("idx_users_role", "role"),
@@ -104,7 +101,6 @@ class Reponse(Base):
 
     id = Column(String(36), primary_key=True, default=new_uuid)
     demande_id = Column(String(36), ForeignKey("demandes.id", ondelete="CASCADE"), nullable=False, index=True)
-    agent_id = Column(String(36), ForeignKey("users.id", ondelete="SET NULL"), nullable=True, index=True)
     resume = Column(Text, nullable=False)
     message = Column(Text, default="", nullable=True)
     etapes = Column(Text, nullable=True)
@@ -124,7 +120,6 @@ class Reponse(Base):
     )
 
     demande = relationship("Demande", back_populates="reponses")
-    agent = relationship("User", back_populates="reponses", foreign_keys=[agent_id])
 
     __table_args__ = (
         Index("idx_reponses_created_at", "created_at"),

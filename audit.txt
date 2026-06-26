@@ -1,0 +1,101 @@
+================================================================================
+AUDIT DE CODE ET SÉCURITÉ - PROJET E-CITOYEN CI
+================================================================================
+
+Date de l'audit: 26 Juin 2026
+Statut: Terminé (Toutes les corrections majeures appliquées)
+
+--------------------------------------------------------------------------------
+1. CONSTATS ET ANALYSE DE L'ARCHITECTURE
+--------------------------------------------------------------------------------
+
+* Séparation des responsabilités :
+  - L'architecture utilise FastAPI au backend avec une séparation claire entre
+    l'API (api/), l'authentification (auth/), la base de données (database/),
+    les schémas Pydantic (schemas/), et la logique métier (services/).
+  - Le frontend est en React + TypeScript utilisant des services (services/) et
+    des contextes (contexts/) centralisés pour communiquer avec le backend.
+
+* Dette technique & Code mort :
+  - Des restes de fonctionnalités liées à l'ancien rôle d'Agent Administratif
+    (retiré de l'application active) ont été détectés sous forme de stubs vides
+    et de blocs de code commentés volumineux dans l'interface de connexion.
+  - Plusieurs scripts de développement orphelins (ex: final.py, test_connexion.py)
+    ont été laissés à la racine du backend.
+
+--------------------------------------------------------------------------------
+2. VULNÉRABILITÉS IDENTIFIÉES & CORRIGÉES
+--------------------------------------------------------------------------------
+
+### [C01] Exposition de secrets dans les fichiers de configuration (.env, .db, .log)
+* Gravité: Critique
+* Problème: Les variables d'environnement (y compris la clé API Groq et JWT_SECRET)
+  ainsi que la base de données locale (SQLite) n'étaient pas correctement exclues.
+* Correction: Ajout des motifs correspondants (.env, *.db, *.log, venv, etc.)
+  dans les fichiers .gitignore du backend et de la racine pour éviter toute
+  publication de secrets sur les dépôts de code source distants.
+
+### [C02] Double enregistrement du routeur FastAPI (Surface d'attaque doublée)
+* Gravité: Critique
+* Problème: Le router principal était inclus à la fois sur le préfixe "/api" et à la
+  racine "/", exposant l'ensemble de l'API sans authentification ou sur des chemins
+  alternatifs non protégés.
+* Correction: Suppression du montage en doublon pour garder une route d'API propre,
+  et synchronisation des requêtes du frontend sur les bons endpoints.
+
+### [C03] Fuite de mots de passe via les paramètres de requête (Query parameters)
+* Gravité: Critique
+* Problème: L'endpoint "PUT /users/me/password" passait l'ancien et le nouveau mot de passe
+  dans l'URL de la requête, ce qui les rendait visibles dans les historiques de
+  navigation, les logs réseau et serveurs.
+* Correction: Refactoring de la route pour accepter un schéma de corps Pydantic
+  (PasswordChange) et passage du mot de passe dans le corps de requête JSON (body).
+
+### [C04 / H08] Fuite d'informations internes dans les exceptions d'erreurs (500)
+* Gravité: Critique / Élevé
+* Problème: Le backend interceptait des erreurs et renvoyait la stacktrace ou le détail de
+  l'exception brute au client, ce qui fuitait la structure de la base de données
+  ou des dépendances.
+* Correction: Capture et journalisation interne des erreurs côté serveur (logger.exception),
+  et retour d'un message générique anonymisé à l'utilisateur.
+
+### [H02] CORS trop permissif ( allow_methods="*" / allow_headers="*" )
+* Gravité: Élevé
+* Problème: Le backend acceptait n'importe quelle méthode et header de n'importe quelle origine.
+* Correction: Restriction des méthodes CORS autorisées aux verbes utiles et courants
+  (GET, POST, PUT, DELETE, OPTIONS) et des en-têtes à Authorization et Content-Type.
+
+### [H04] Absence de Rate Limiting sur les endpoints sensibles (Brute Force)
+* Gravité: Élevé
+* Problème: Pas de limitation sur le nombre de tentatives de connexion ou d'inscription.
+* Correction: Ajout de rate limiting (slowapi) à 5 requêtes par minute sur la connexion
+  et 3 par minute sur l'inscription.
+
+### [H05] Bypass de la vérification de l'activation des comptes
+* Gravité: Élevé
+* Problème: Le guard de route get_current_active_user se contentait de renvoyer l'utilisateur
+  courant sans valider le flag de profil is_active en base de données.
+* Correction: Implémentation de la vérification effective du statut du compte (is_active).
+
+### [H07] Risque d'injection de contenu / XSS dans les messages
+* Gravité: Élevé
+* Problème: Le contenu des messages soumis par les citoyens était enregistré brut sans
+  nettoyage.
+* Correction: Application systématique de la fonction de nettoyage sanitize_string
+  avant l'insertion en base de données SQLite.
+
+### [H06 / M02 / B01] Nettoyage de l'interface de Login
+* Gravité: Élevé / Moyen / Bas
+* Problème: Présence de 199 lignes de code mort commenté, imports d'icônes inutilisées,
+  et d'une variable obsolète SHOW_AGENT_UI dans LoginPage.tsx.
+* Correction: Nettoyage complet du fichier, suppression du code mort et des déclarations
+  redondantes.
+
+--------------------------------------------------------------------------------
+3. CONCLUSION DE L'AUDIT
+--------------------------------------------------------------------------------
+L'ensemble des vulnérabilités critiques et majeures ont été corrigées avec succès. Le code
+a été rationalisé, la sécurité des flux d'authentification a été renforcée, et la
+protection des données utilisateur (mots de passe, messages) a été mise en œuvre.
+Le projet est désormais plus robuste, propre et prêt pour une mise en production.
+================================================================================
