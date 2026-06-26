@@ -3,7 +3,7 @@ import { persist, createJSONStorage } from 'zustand/middleware';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import type { User, Request, AIResponse, DemandeStatus } from './types';
 
-const API_BASE = 'https://e-citoyen-ci-backend.onrender.com';
+const API_BASE = process.env.EXPO_PUBLIC_API_URL || 'https://e-citoyen-ci-backend.onrender.com';
 
 export interface AppState {
   // Auth

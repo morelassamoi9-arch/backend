@@ -26,10 +26,15 @@ export default function LoginScreen() {
   const { login, register, isLoading, error, clearError } = useAppStore();
 
   const handleSubmit = useCallback(async () => {
-    if (isLogin) {
-      await login(email.trim(), password);
-    } else {
-      await register(name.trim(), email.trim(), password);
+    try {
+      if (isLogin) {
+        await login(email.trim(), password);
+      } else {
+        await register(name.trim(), email.trim(), password);
+      }
+    } catch (e) {
+      // L'erreur est gérée et stockée dans le store Zustand pour être affichée à l'écran.
+      // On l'attrape ici pour éviter qu'elle ne remonte et provoque un crash (Unhandled Promise Rejection).
     }
   }, [isLogin, name, email, password, login, register]);
 

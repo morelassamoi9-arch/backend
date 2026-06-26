@@ -133,10 +133,15 @@ export default function NewRequestScreen() {
   const handleSubmit = useCallback(async () => {
     if (!description.trim()) return;
     clearRequestError();
-    await createRequest(description.trim());
-    const state = useAppStore.getState();
-    if (state.currentRequest && !state.requestError) {
-      router.push(`/(citizen)/request/${state.currentRequest.id}`);
+    try {
+      await createRequest(description.trim());
+      const state = useAppStore.getState();
+      if (state.currentRequest && !state.requestError) {
+        router.push(`/(citizen)/request/${state.currentRequest.id}`);
+      }
+    } catch (e) {
+      // L'erreur est stockée dans le store et affichée dans l'interface (requestError).
+      // On l'attrape pour éviter de planter l'application.
     }
   }, [description, createRequest, clearRequestError, router]);
 

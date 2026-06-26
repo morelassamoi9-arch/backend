@@ -1,0 +1,4599 @@
+{
+  "version": 1,
+  "generatedAt": 1782476827196,
+  "entries": {
+    "StatusBadge@app\\(citizen)\\index.tsx:18": {
+      "element": {
+        "file": "app\\(citizen)\\index.tsx",
+        "line": 18
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.badge",
+          "file": "app\\(citizen)\\index.tsx",
+          "defLine": 115,
+          "properties": {
+            "paddingHorizontal": {
+              "line": 115,
+              "col": 40,
+              "endCol": 41,
+              "raw": "8"
+            },
+            "paddingVertical": {
+              "line": 115,
+              "col": 60,
+              "endCol": 61,
+              "raw": "3"
+            },
+            "borderRadius": {
+              "line": 115,
+              "col": 77,
+              "endCol": 78,
+              "raw": "6"
+            }
+          }
+        }
+      ]
+    },
+    "StatusBadge@app\\(citizen)\\index.tsx:19": {
+      "element": {
+        "file": "app\\(citizen)\\index.tsx",
+        "line": 19
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.badgeText",
+          "file": "app\\(citizen)\\index.tsx",
+          "defLine": 116,
+          "properties": {
+            "fontSize": {
+              "line": 116,
+              "col": 31,
+              "endCol": 33,
+              "raw": "11"
+            },
+            "fontWeight": {
+              "line": 116,
+              "col": 47,
+              "endCol": 52,
+              "raw": "\"600\""
+            }
+          }
+        }
+      ]
+    },
+    "CitizenDashboard@app\\(citizen)\\index.tsx:34": {
+      "element": {
+        "file": "app\\(citizen)\\index.tsx",
+        "line": 34
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.container",
+          "file": "app\\(citizen)\\index.tsx",
+          "defLine": 95,
+          "properties": {
+            "flex": {
+              "line": 95,
+              "col": 27,
+              "endCol": 28,
+              "raw": "1"
+            }
+          }
+        }
+      ]
+    },
+    "CitizenDashboard@app\\(citizen)\\index.tsx:35": {
+      "element": {
+        "file": "app\\(citizen)\\index.tsx",
+        "line": 35
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.header",
+          "file": "app\\(citizen)\\index.tsx",
+          "defLine": 96,
+          "properties": {
+            "flexDirection": {
+              "line": 96,
+              "col": 36,
+              "endCol": 41,
+              "raw": "\"row\""
+            },
+            "justifyContent": {
+              "line": 96,
+              "col": 59,
+              "endCol": 74,
+              "raw": "\"space-between\""
+            },
+            "alignItems": {
+              "line": 96,
+              "col": 88,
+              "endCol": 100,
+              "raw": "\"flex-start\""
+            },
+            "padding": {
+              "line": 96,
+              "col": 111,
+              "endCol": 113,
+              "raw": "24"
+            },
+            "paddingTop": {
+              "line": 96,
+              "col": 127,
+              "endCol": 129,
+              "raw": "56"
+            }
+          }
+        }
+      ]
+    },
+    "CitizenDashboard@app\\(citizen)\\index.tsx:37": {
+      "element": {
+        "file": "app\\(citizen)\\index.tsx",
+        "line": 37
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.greeting",
+          "file": "app\\(citizen)\\index.tsx",
+          "defLine": 97,
+          "properties": {
+            "fontSize": {
+              "line": 97,
+              "col": 31,
+              "endCol": 33,
+              "raw": "22"
+            },
+            "fontWeight": {
+              "line": 97,
+              "col": 47,
+              "endCol": 52,
+              "raw": "\"700\""
+            }
+          }
+        }
+      ]
+    },
+    "CitizenDashboard@app\\(citizen)\\index.tsx:38": {
+      "element": {
+        "file": "app\\(citizen)\\index.tsx",
+        "line": 38
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.subtitle",
+          "file": "app\\(citizen)\\index.tsx",
+          "defLine": 98,
+          "properties": {
+            "fontSize": {
+              "line": 98,
+              "col": 31,
+              "endCol": 33,
+              "raw": "14"
+            },
+            "marginTop": {
+              "line": 98,
+              "col": 75,
+              "endCol": 76,
+              "raw": "2"
+            }
+          }
+        }
+      ]
+    },
+    "CitizenDashboard@app\\(citizen)\\index.tsx:40": {
+      "element": {
+        "file": "app\\(citizen)\\index.tsx",
+        "line": 40
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.logoutBtn",
+          "file": "app\\(citizen)\\index.tsx",
+          "defLine": 99,
+          "properties": {
+            "paddingHorizontal": {
+              "line": 99,
+              "col": 34,
+              "endCol": 35,
+              "raw": "8"
+            },
+            "paddingVertical": {
+              "line": 99,
+              "col": 54,
+              "endCol": 55,
+              "raw": "5"
+            },
+            "borderRadius": {
+              "line": 99,
+              "col": 71,
+              "endCol": 72,
+              "raw": "8"
+            },
+            "borderWidth": {
+              "line": 99,
+              "col": 87,
+              "endCol": 88,
+              "raw": "1"
+            },
+            "maxWidth": {
+              "line": 99,
+              "col": 128,
+              "endCol": 130,
+              "raw": "90"
+            }
+          }
+        }
+      ]
+    },
+    "CitizenDashboard@app\\(citizen)\\index.tsx:41": {
+      "element": {
+        "file": "app\\(citizen)\\index.tsx",
+        "line": 41
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.logoutText",
+          "file": "app\\(citizen)\\index.tsx",
+          "defLine": 100,
+          "properties": {
+            "fontSize": {
+              "line": 100,
+              "col": 26,
+              "endCol": 28,
+              "raw": "11"
+            }
+          }
+        }
+      ]
+    },
+    "CitizenDashboard@app\\(citizen)\\index.tsx:45": {
+      "element": {
+        "file": "app\\(citizen)\\index.tsx",
+        "line": 45
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.newRequestBtn",
+          "file": "app\\(citizen)\\index.tsx",
+          "defLine": 101,
+          "properties": {
+            "marginHorizontal": {
+              "line": 101,
+              "col": 39,
+              "endCol": 41,
+              "raw": "16"
+            },
+            "marginBottom": {
+              "line": 101,
+              "col": 57,
+              "endCol": 59,
+              "raw": "24"
+            },
+            "padding": {
+              "line": 101,
+              "col": 70,
+              "endCol": 72,
+              "raw": "20"
+            },
+            "borderRadius": {
+              "line": 101,
+              "col": 121,
+              "endCol": 123,
+              "raw": "16"
+            }
+          }
+        }
+      ]
+    },
+    "CitizenDashboard@app\\(citizen)\\index.tsx:49": {
+      "element": {
+        "file": "app\\(citizen)\\index.tsx",
+        "line": 49
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.newRequestText",
+          "file": "app\\(citizen)\\index.tsx",
+          "defLine": 102,
+          "properties": {
+            "fontSize": {
+              "line": 102,
+              "col": 31,
+              "endCol": 33,
+              "raw": "18"
+            },
+            "fontWeight": {
+              "line": 102,
+              "col": 47,
+              "endCol": 52,
+              "raw": "\"700\""
+            }
+          }
+        }
+      ]
+    },
+    "CitizenDashboard@app\\(citizen)\\index.tsx:50": {
+      "element": {
+        "file": "app\\(citizen)\\index.tsx",
+        "line": 50
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.newRequestSub",
+          "file": "app\\(citizen)\\index.tsx",
+          "defLine": 103,
+          "properties": {
+            "fontSize": {
+              "line": 103,
+              "col": 31,
+              "endCol": 33,
+              "raw": "12"
+            },
+            "color": {
+              "line": 103,
+              "col": 42,
+              "endCol": 65,
+              "raw": "\"rgba(255,255,255,0.8)\""
+            },
+            "marginTop": {
+              "line": 103,
+              "col": 78,
+              "endCol": 79,
+              "raw": "4"
+            }
+          }
+        }
+      ]
+    },
+    "CitizenDashboard@app\\(citizen)\\index.tsx:53": {
+      "element": {
+        "file": "app\\(citizen)\\index.tsx",
+        "line": 53
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.section",
+          "file": "app\\(citizen)\\index.tsx",
+          "defLine": 104,
+          "properties": {
+            "paddingHorizontal": {
+              "line": 104,
+              "col": 40,
+              "endCol": 42,
+              "raw": "16"
+            }
+          }
+        }
+      ]
+    },
+    "CitizenDashboard@app\\(citizen)\\index.tsx:54": {
+      "element": {
+        "file": "app\\(citizen)\\index.tsx",
+        "line": 54
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.sectionHeader",
+          "file": "app\\(citizen)\\index.tsx",
+          "defLine": 105,
+          "properties": {
+            "flexDirection": {
+              "line": 105,
+              "col": 36,
+              "endCol": 41,
+              "raw": "\"row\""
+            },
+            "justifyContent": {
+              "line": 105,
+              "col": 59,
+              "endCol": 74,
+              "raw": "\"space-between\""
+            },
+            "alignItems": {
+              "line": 105,
+              "col": 88,
+              "endCol": 96,
+              "raw": "\"center\""
+            },
+            "marginBottom": {
+              "line": 105,
+              "col": 112,
+              "endCol": 114,
+              "raw": "12"
+            }
+          }
+        }
+      ]
+    },
+    "CitizenDashboard@app\\(citizen)\\index.tsx:55": {
+      "element": {
+        "file": "app\\(citizen)\\index.tsx",
+        "line": 55
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.sectionTitle",
+          "file": "app\\(citizen)\\index.tsx",
+          "defLine": 106,
+          "properties": {
+            "fontSize": {
+              "line": 106,
+              "col": 31,
+              "endCol": 33,
+              "raw": "16"
+            },
+            "fontWeight": {
+              "line": 106,
+              "col": 47,
+              "endCol": 52,
+              "raw": "\"600\""
+            }
+          }
+        }
+      ]
+    },
+    "CitizenDashboard@app\\(citizen)\\index.tsx:58": {
+      "element": {
+        "file": "app\\(citizen)\\index.tsx",
+        "line": 58
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.seeAll",
+          "file": "app\\(citizen)\\index.tsx",
+          "defLine": 107,
+          "properties": {
+            "fontSize": {
+              "line": 107,
+              "col": 31,
+              "endCol": 33,
+              "raw": "13"
+            }
+          }
+        }
+      ]
+    },
+    "CitizenDashboard@app\\(citizen)\\index.tsx:64": {
+      "element": {
+        "file": "app\\(citizen)\\index.tsx",
+        "line": 64
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app\\(citizen)\\index.tsx",
+          "properties": {
+            "marginTop": {
+              "line": 64,
+              "col": 72,
+              "endCol": 74,
+              "raw": "16"
+            }
+          }
+        }
+      ]
+    },
+    "CitizenDashboard@app\\(citizen)\\index.tsx:66": {
+      "element": {
+        "file": "app\\(citizen)\\index.tsx",
+        "line": 66
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.emptyCard",
+          "file": "app\\(citizen)\\index.tsx",
+          "defLine": 108,
+          "properties": {
+            "padding": {
+              "line": 108,
+              "col": 30,
+              "endCol": 32,
+              "raw": "24"
+            },
+            "borderRadius": {
+              "line": 108,
+              "col": 83,
+              "endCol": 85,
+              "raw": "12"
+            },
+            "borderWidth": {
+              "line": 108,
+              "col": 100,
+              "endCol": 101,
+              "raw": "1"
+            },
+            "alignItems": {
+              "line": 108,
+              "col": 143,
+              "endCol": 151,
+              "raw": "\"center\""
+            }
+          }
+        }
+      ]
+    },
+    "CitizenDashboard@app\\(citizen)\\index.tsx:67": {
+      "element": {
+        "file": "app\\(citizen)\\index.tsx",
+        "line": 67
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.emptyText",
+          "file": "app\\(citizen)\\index.tsx",
+          "defLine": 109,
+          "properties": {
+            "fontSize": {
+              "line": 109,
+              "col": 31,
+              "endCol": 33,
+              "raw": "15"
+            },
+            "fontWeight": {
+              "line": 109,
+              "col": 67,
+              "endCol": 72,
+              "raw": "\"500\""
+            }
+          }
+        }
+      ]
+    },
+    "CitizenDashboard@app\\(citizen)\\index.tsx:68": {
+      "element": {
+        "file": "app\\(citizen)\\index.tsx",
+        "line": 68
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.emptyHint",
+          "file": "app\\(citizen)\\index.tsx",
+          "defLine": 110,
+          "properties": {
+            "fontSize": {
+              "line": 110,
+              "col": 31,
+              "endCol": 33,
+              "raw": "12"
+            },
+            "marginTop": {
+              "line": 110,
+              "col": 75,
+              "endCol": 76,
+              "raw": "4"
+            },
+            "textAlign": {
+              "line": 110,
+              "col": 89,
+              "endCol": 97,
+              "raw": "\"center\""
+            }
+          }
+        }
+      ]
+    },
+    "CitizenDashboard@app\\(citizen)\\index.tsx:72": {
+      "element": {
+        "file": "app\\(citizen)\\index.tsx",
+        "line": 72
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.card",
+          "file": "app\\(citizen)\\index.tsx",
+          "defLine": 111,
+          "properties": {
+            "borderRadius": {
+              "line": 111,
+              "col": 70,
+              "endCol": 72,
+              "raw": "12"
+            },
+            "borderWidth": {
+              "line": 111,
+              "col": 87,
+              "endCol": 88,
+              "raw": "1"
+            },
+            "padding": {
+              "line": 111,
+              "col": 127,
+              "endCol": 129,
+              "raw": "16"
+            },
+            "marginBottom": {
+              "line": 111,
+              "col": 145,
+              "endCol": 147,
+              "raw": "12"
+            }
+          }
+        }
+      ]
+    },
+    "CitizenDashboard@app\\(citizen)\\index.tsx:79": {
+      "element": {
+        "file": "app\\(citizen)\\index.tsx",
+        "line": 79
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.cardMessage",
+          "file": "app\\(citizen)\\index.tsx",
+          "defLine": 112,
+          "properties": {
+            "fontSize": {
+              "line": 112,
+              "col": 31,
+              "endCol": 33,
+              "raw": "14"
+            },
+            "lineHeight": {
+              "line": 112,
+              "col": 67,
+              "endCol": 69,
+              "raw": "20"
+            },
+            "marginBottom": {
+              "line": 112,
+              "col": 85,
+              "endCol": 87,
+              "raw": "12"
+            }
+          }
+        }
+      ]
+    },
+    "CitizenDashboard@app\\(citizen)\\index.tsx:80": {
+      "element": {
+        "file": "app\\(citizen)\\index.tsx",
+        "line": 80
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.cardFooter",
+          "file": "app\\(citizen)\\index.tsx",
+          "defLine": 113,
+          "properties": {
+            "flexDirection": {
+              "line": 113,
+              "col": 36,
+              "endCol": 41,
+              "raw": "\"row\""
+            },
+            "justifyContent": {
+              "line": 113,
+              "col": 59,
+              "endCol": 74,
+              "raw": "\"space-between\""
+            },
+            "alignItems": {
+              "line": 113,
+              "col": 88,
+              "endCol": 96,
+              "raw": "\"center\""
+            }
+          }
+        }
+      ]
+    },
+    "CitizenDashboard@app\\(citizen)\\index.tsx:82": {
+      "element": {
+        "file": "app\\(citizen)\\index.tsx",
+        "line": 82
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.cardDate",
+          "file": "app\\(citizen)\\index.tsx",
+          "defLine": 114,
+          "properties": {
+            "fontSize": {
+              "line": 114,
+              "col": 31,
+              "endCol": 33,
+              "raw": "12"
+            }
+          }
+        }
+      ]
+    },
+    "RootLayout@app\\_layout.tsx:44": {
+      "element": {
+        "file": "app\\_layout.tsx",
+        "line": 44
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app\\_layout.tsx",
+          "properties": {
+            "flex": {
+              "line": 44,
+              "col": 43,
+              "endCol": 44,
+              "raw": "1"
+            }
+          }
+        }
+      ]
+    },
+    "StatusBadge@app\\(citizen)\\requests.tsx:21": {
+      "element": {
+        "file": "app\\(citizen)\\requests.tsx",
+        "line": 21
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.badge",
+          "file": "app\\(citizen)\\requests.tsx",
+          "defLine": 111,
+          "properties": {
+            "paddingHorizontal": {
+              "line": 111,
+              "col": 38,
+              "endCol": 39,
+              "raw": "8"
+            },
+            "paddingVertical": {
+              "line": 111,
+              "col": 58,
+              "endCol": 59,
+              "raw": "3"
+            },
+            "borderRadius": {
+              "line": 111,
+              "col": 75,
+              "endCol": 76,
+              "raw": "6"
+            }
+          }
+        }
+      ]
+    },
+    "StatusBadge@app\\(citizen)\\requests.tsx:22": {
+      "element": {
+        "file": "app\\(citizen)\\requests.tsx",
+        "line": 22
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.badgeText",
+          "file": "app\\(citizen)\\requests.tsx",
+          "defLine": 112,
+          "properties": {
+            "fontSize": {
+              "line": 112,
+              "col": 29,
+              "endCol": 31,
+              "raw": "11"
+            },
+            "fontWeight": {
+              "line": 112,
+              "col": 45,
+              "endCol": 50,
+              "raw": "\"600\""
+            }
+          }
+        }
+      ]
+    },
+    "MyRequests@app\\(citizen)\\requests.tsx:36": {
+      "element": {
+        "file": "app\\(citizen)\\requests.tsx",
+        "line": 36
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.centered",
+          "file": "app\\(citizen)\\requests.tsx",
+          "defLine": 97,
+          "properties": {
+            "flex": {
+              "line": 97,
+              "col": 25,
+              "endCol": 26,
+              "raw": "1"
+            },
+            "justifyContent": {
+              "line": 97,
+              "col": 44,
+              "endCol": 52,
+              "raw": "\"center\""
+            },
+            "alignItems": {
+              "line": 97,
+              "col": 66,
+              "endCol": 74,
+              "raw": "\"center\""
+            }
+          }
+        }
+      ]
+    },
+    "MyRequests@app\\(citizen)\\requests.tsx:43": {
+      "element": {
+        "file": "app\\(citizen)\\requests.tsx",
+        "line": 43
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.container",
+          "file": "app\\(citizen)\\requests.tsx",
+          "defLine": 96,
+          "properties": {
+            "flex": {
+              "line": 96,
+              "col": 25,
+              "endCol": 26,
+              "raw": "1"
+            }
+          }
+        }
+      ]
+    },
+    "MyRequests@app\\(citizen)\\requests.tsx:44": {
+      "element": {
+        "file": "app\\(citizen)\\requests.tsx",
+        "line": 44
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.header",
+          "file": "app\\(citizen)\\requests.tsx",
+          "defLine": 98,
+          "properties": {
+            "padding": {
+              "line": 98,
+              "col": 28,
+              "endCol": 30,
+              "raw": "24"
+            },
+            "paddingTop": {
+              "line": 98,
+              "col": 44,
+              "endCol": 46,
+              "raw": "56"
+            },
+            "borderBottomWidth": {
+              "line": 98,
+              "col": 67,
+              "endCol": 68,
+              "raw": "1"
+            }
+          }
+        }
+      ]
+    },
+    "MyRequests@app\\(citizen)\\requests.tsx:46": {
+      "element": {
+        "file": "app\\(citizen)\\requests.tsx",
+        "line": 46
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.back",
+          "file": "app\\(citizen)\\requests.tsx",
+          "defLine": 99,
+          "properties": {
+            "fontSize": {
+              "line": 99,
+              "col": 29,
+              "endCol": 31,
+              "raw": "14"
+            },
+            "marginBottom": {
+              "line": 99,
+              "col": 70,
+              "endCol": 71,
+              "raw": "8"
+            }
+          }
+        }
+      ]
+    },
+    "MyRequests@app\\(citizen)\\requests.tsx:48": {
+      "element": {
+        "file": "app\\(citizen)\\requests.tsx",
+        "line": 48
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.title",
+          "file": "app\\(citizen)\\requests.tsx",
+          "defLine": 100,
+          "properties": {
+            "fontSize": {
+              "line": 100,
+              "col": 29,
+              "endCol": 31,
+              "raw": "22"
+            },
+            "fontWeight": {
+              "line": 100,
+              "col": 45,
+              "endCol": 50,
+              "raw": "\"700\""
+            }
+          }
+        }
+      ]
+    },
+    "MyRequests@app\\(citizen)\\requests.tsx:49": {
+      "element": {
+        "file": "app\\(citizen)\\requests.tsx",
+        "line": 49
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.count",
+          "file": "app\\(citizen)\\requests.tsx",
+          "defLine": 101,
+          "properties": {
+            "fontSize": {
+              "line": 101,
+              "col": 29,
+              "endCol": 31,
+              "raw": "13"
+            },
+            "marginTop": {
+              "line": 101,
+              "col": 73,
+              "endCol": 74,
+              "raw": "2"
+            }
+          }
+        }
+      ]
+    },
+    "MyRequests@app\\(citizen)\\requests.tsx:59": {
+      "element": {
+        "file": "app\\(citizen)\\requests.tsx",
+        "line": 59
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.emptyCard",
+          "file": "app\\(citizen)\\requests.tsx",
+          "defLine": 102,
+          "properties": {
+            "alignItems": {
+              "line": 102,
+              "col": 31,
+              "endCol": 39,
+              "raw": "\"center\""
+            },
+            "paddingVertical": {
+              "line": 102,
+              "col": 58,
+              "endCol": 60,
+              "raw": "48"
+            }
+          }
+        }
+      ]
+    },
+    "MyRequests@app\\(citizen)\\requests.tsx:60": {
+      "element": {
+        "file": "app\\(citizen)\\requests.tsx",
+        "line": 60
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.emptyText",
+          "file": "app\\(citizen)\\requests.tsx",
+          "defLine": 103,
+          "properties": {
+            "fontSize": {
+              "line": 103,
+              "col": 29,
+              "endCol": 31,
+              "raw": "16"
+            }
+          }
+        }
+      ]
+    },
+    "MyRequests@app\\(citizen)\\requests.tsx:61": {
+      "element": {
+        "file": "app\\(citizen)\\requests.tsx",
+        "line": 61
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.newBtn",
+          "file": "app\\(citizen)\\requests.tsx",
+          "defLine": 104,
+          "properties": {
+            "marginTop": {
+              "line": 104,
+              "col": 30,
+              "endCol": 32,
+              "raw": "16"
+            },
+            "paddingHorizontal": {
+              "line": 104,
+              "col": 86,
+              "endCol": 88,
+              "raw": "24"
+            },
+            "paddingVertical": {
+              "line": 104,
+              "col": 107,
+              "endCol": 109,
+              "raw": "12"
+            },
+            "borderRadius": {
+              "line": 104,
+              "col": 125,
+              "endCol": 127,
+              "raw": "10"
+            }
+          }
+        }
+      ]
+    },
+    "MyRequests@app\\(citizen)\\requests.tsx:65": {
+      "element": {
+        "file": "app\\(citizen)\\requests.tsx",
+        "line": 65
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.newBtnText",
+          "file": "app\\(citizen)\\requests.tsx",
+          "defLine": 105,
+          "properties": {
+            "fontWeight": {
+              "line": 105,
+              "col": 52,
+              "endCol": 57,
+              "raw": "\"600\""
+            }
+          }
+        }
+      ]
+    },
+    "MyRequests@app\\(citizen)\\requests.tsx:70": {
+      "element": {
+        "file": "app\\(citizen)\\requests.tsx",
+        "line": 70
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.card",
+          "file": "app\\(citizen)\\requests.tsx",
+          "defLine": 106,
+          "properties": {
+            "borderRadius": {
+              "line": 106,
+              "col": 68,
+              "endCol": 70,
+              "raw": "12"
+            },
+            "borderWidth": {
+              "line": 106,
+              "col": 85,
+              "endCol": 86,
+              "raw": "1"
+            },
+            "padding": {
+              "line": 106,
+              "col": 125,
+              "endCol": 127,
+              "raw": "16"
+            },
+            "marginBottom": {
+              "line": 106,
+              "col": 143,
+              "endCol": 145,
+              "raw": "12"
+            }
+          }
+        }
+      ]
+    },
+    "MyRequests@app\\(citizen)\\requests.tsx:76": {
+      "element": {
+        "file": "app\\(citizen)\\requests.tsx",
+        "line": 76
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.cardTop",
+          "file": "app\\(citizen)\\requests.tsx",
+          "defLine": 107,
+          "properties": {
+            "flexDirection": {
+              "line": 107,
+              "col": 34,
+              "endCol": 39,
+              "raw": "\"row\""
+            },
+            "justifyContent": {
+              "line": 107,
+              "col": 57,
+              "endCol": 72,
+              "raw": "\"space-between\""
+            },
+            "alignItems": {
+              "line": 107,
+              "col": 86,
+              "endCol": 94,
+              "raw": "\"center\""
+            },
+            "marginBottom": {
+              "line": 107,
+              "col": 110,
+              "endCol": 112,
+              "raw": "10"
+            }
+          }
+        }
+      ]
+    },
+    "MyRequests@app\\(citizen)\\requests.tsx:78": {
+      "element": {
+        "file": "app\\(citizen)\\requests.tsx",
+        "line": 78
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.cardDate",
+          "file": "app\\(citizen)\\requests.tsx",
+          "defLine": 108,
+          "properties": {
+            "fontSize": {
+              "line": 108,
+              "col": 29,
+              "endCol": 31,
+              "raw": "12"
+            }
+          }
+        }
+      ]
+    },
+    "MyRequests@app\\(citizen)\\requests.tsx:82": {
+      "element": {
+        "file": "app\\(citizen)\\requests.tsx",
+        "line": 82
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.cardMessage",
+          "file": "app\\(citizen)\\requests.tsx",
+          "defLine": 109,
+          "properties": {
+            "fontSize": {
+              "line": 109,
+              "col": 29,
+              "endCol": 31,
+              "raw": "14"
+            },
+            "lineHeight": {
+              "line": 109,
+              "col": 65,
+              "endCol": 67,
+              "raw": "20"
+            }
+          }
+        }
+      ]
+    },
+    "MyRequests@app\\(citizen)\\requests.tsx:84": {
+      "element": {
+        "file": "app\\(citizen)\\requests.tsx",
+        "line": 84
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.cardSituation",
+          "file": "app\\(citizen)\\requests.tsx",
+          "defLine": 110,
+          "properties": {
+            "fontSize": {
+              "line": 110,
+              "col": 29,
+              "endCol": 31,
+              "raw": "13"
+            },
+            "marginTop": {
+              "line": 110,
+              "col": 73,
+              "endCol": 74,
+              "raw": "8"
+            },
+            "fontStyle": {
+              "line": 110,
+              "col": 87,
+              "endCol": 95,
+              "raw": "\"italic\""
+            }
+          }
+        }
+      ]
+    },
+    "Index@app\\index.tsx:20": {
+      "element": {
+        "file": "app\\index.tsx",
+        "line": 20
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app\\index.tsx",
+          "properties": {
+            "flex": {
+              "line": 20,
+              "col": 25,
+              "endCol": 26,
+              "raw": "1"
+            },
+            "justifyContent": {
+              "line": 20,
+              "col": 44,
+              "endCol": 52,
+              "raw": "\"center\""
+            },
+            "alignItems": {
+              "line": 20,
+              "col": 66,
+              "endCol": 74,
+              "raw": "\"center\""
+            }
+          }
+        }
+      ]
+    },
+    "RequestDetailScreen@app\\(citizen)\\request\\[id].tsx:99": {
+      "element": {
+        "file": "app\\(citizen)\\request\\[id].tsx",
+        "line": 99
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.centered",
+          "file": "app\\(citizen)\\request\\[id].tsx",
+          "defLine": 309,
+          "properties": {
+            "flex": {
+              "line": 310,
+              "col": 10,
+              "endCol": 11,
+              "raw": "1"
+            },
+            "justifyContent": {
+              "line": 311,
+              "col": 20,
+              "endCol": 28,
+              "raw": "\"center\""
+            },
+            "alignItems": {
+              "line": 312,
+              "col": 16,
+              "endCol": 24,
+              "raw": "\"center\""
+            },
+            "gap": {
+              "line": 314,
+              "col": 9,
+              "endCol": 11,
+              "raw": "12"
+            },
+            "padding": {
+              "line": 315,
+              "col": 13,
+              "endCol": 15,
+              "raw": "20"
+            }
+          }
+        }
+      ]
+    },
+    "RequestDetailScreen@app\\(citizen)\\request\\[id].tsx:101": {
+      "element": {
+        "file": "app\\(citizen)\\request\\[id].tsx",
+        "line": 101
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.loadingText",
+          "file": "app\\(citizen)\\request\\[id].tsx",
+          "defLine": 317,
+          "properties": {
+            "fontSize": {
+              "line": 319,
+              "col": 14,
+              "endCol": 16,
+              "raw": "15"
+            },
+            "marginTop": {
+              "line": 321,
+              "col": 15,
+              "endCol": 16,
+              "raw": "8"
+            }
+          }
+        }
+      ]
+    },
+    "RequestDetailScreen@app\\(citizen)\\request\\[id].tsx:108": {
+      "element": {
+        "file": "app\\(citizen)\\request\\[id].tsx",
+        "line": 108
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.centered",
+          "file": "app\\(citizen)\\request\\[id].tsx",
+          "defLine": 309,
+          "properties": {
+            "flex": {
+              "line": 310,
+              "col": 10,
+              "endCol": 11,
+              "raw": "1"
+            },
+            "justifyContent": {
+              "line": 311,
+              "col": 20,
+              "endCol": 28,
+              "raw": "\"center\""
+            },
+            "alignItems": {
+              "line": 312,
+              "col": 16,
+              "endCol": 24,
+              "raw": "\"center\""
+            },
+            "gap": {
+              "line": 314,
+              "col": 9,
+              "endCol": 11,
+              "raw": "12"
+            },
+            "padding": {
+              "line": 315,
+              "col": 13,
+              "endCol": 15,
+              "raw": "20"
+            }
+          }
+        }
+      ]
+    },
+    "RequestDetailScreen@app\\(citizen)\\request\\[id].tsx:110": {
+      "element": {
+        "file": "app\\(citizen)\\request\\[id].tsx",
+        "line": 110
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.errorTitle",
+          "file": "app\\(citizen)\\request\\[id].tsx",
+          "defLine": 323,
+          "properties": {
+            "fontSize": {
+              "line": 325,
+              "col": 14,
+              "endCol": 16,
+              "raw": "20"
+            }
+          }
+        }
+      ]
+    },
+    "RequestDetailScreen@app\\(citizen)\\request\\[id].tsx:111": {
+      "element": {
+        "file": "app\\(citizen)\\request\\[id].tsx",
+        "line": 111
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.errorMessage",
+          "file": "app\\(citizen)\\request\\[id].tsx",
+          "defLine": 328,
+          "properties": {
+            "fontSize": {
+              "line": 330,
+              "col": 14,
+              "endCol": 16,
+              "raw": "14"
+            },
+            "textAlign": {
+              "line": 332,
+              "col": 15,
+              "endCol": 23,
+              "raw": "\"center\""
+            }
+          }
+        }
+      ]
+    },
+    "RequestDetailScreen@app\\(citizen)\\request\\[id].tsx:112": {
+      "element": {
+        "file": "app\\(citizen)\\request\\[id].tsx",
+        "line": 112
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.retryButton",
+          "file": "app\\(citizen)\\request\\[id].tsx",
+          "defLine": 334,
+          "properties": {
+            "borderRadius": {
+              "line": 336,
+              "col": 18,
+              "endCol": 20,
+              "raw": "10"
+            },
+            "paddingHorizontal": {
+              "line": 337,
+              "col": 23,
+              "endCol": 25,
+              "raw": "20"
+            },
+            "paddingVertical": {
+              "line": 338,
+              "col": 21,
+              "endCol": 23,
+              "raw": "10"
+            },
+            "marginTop": {
+              "line": 339,
+              "col": 15,
+              "endCol": 16,
+              "raw": "8"
+            }
+          }
+        }
+      ]
+    },
+    "RequestDetailScreen@app\\(citizen)\\request\\[id].tsx:113": {
+      "element": {
+        "file": "app\\(citizen)\\request\\[id].tsx",
+        "line": 113
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.retryButtonText",
+          "file": "app\\(citizen)\\request\\[id].tsx",
+          "defLine": 341,
+          "properties": {
+            "fontSize": {
+              "line": 343,
+              "col": 14,
+              "endCol": 16,
+              "raw": "14"
+            }
+          }
+        }
+      ]
+    },
+    "RequestDetailScreen@app\\(citizen)\\request\\[id].tsx:121": {
+      "element": {
+        "file": "app\\(citizen)\\request\\[id].tsx",
+        "line": 121
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.centered",
+          "file": "app\\(citizen)\\request\\[id].tsx",
+          "defLine": 309,
+          "properties": {
+            "flex": {
+              "line": 310,
+              "col": 10,
+              "endCol": 11,
+              "raw": "1"
+            },
+            "justifyContent": {
+              "line": 311,
+              "col": 20,
+              "endCol": 28,
+              "raw": "\"center\""
+            },
+            "alignItems": {
+              "line": 312,
+              "col": 16,
+              "endCol": 24,
+              "raw": "\"center\""
+            },
+            "gap": {
+              "line": 314,
+              "col": 9,
+              "endCol": 11,
+              "raw": "12"
+            },
+            "padding": {
+              "line": 315,
+              "col": 13,
+              "endCol": 15,
+              "raw": "20"
+            }
+          }
+        }
+      ]
+    },
+    "RequestDetailScreen@app\\(citizen)\\request\\[id].tsx:122": {
+      "element": {
+        "file": "app\\(citizen)\\request\\[id].tsx",
+        "line": 122
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.errorMessage",
+          "file": "app\\(citizen)\\request\\[id].tsx",
+          "defLine": 328,
+          "properties": {
+            "fontSize": {
+              "line": 330,
+              "col": 14,
+              "endCol": 16,
+              "raw": "14"
+            },
+            "textAlign": {
+              "line": 332,
+              "col": 15,
+              "endCol": 23,
+              "raw": "\"center\""
+            }
+          }
+        }
+      ]
+    },
+    "RequestDetailScreen@app\\(citizen)\\request\\[id].tsx:123": {
+      "element": {
+        "file": "app\\(citizen)\\request\\[id].tsx",
+        "line": 123
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.retryButton",
+          "file": "app\\(citizen)\\request\\[id].tsx",
+          "defLine": 334,
+          "properties": {
+            "borderRadius": {
+              "line": 336,
+              "col": 18,
+              "endCol": 20,
+              "raw": "10"
+            },
+            "paddingHorizontal": {
+              "line": 337,
+              "col": 23,
+              "endCol": 25,
+              "raw": "20"
+            },
+            "paddingVertical": {
+              "line": 338,
+              "col": 21,
+              "endCol": 23,
+              "raw": "10"
+            },
+            "marginTop": {
+              "line": 339,
+              "col": 15,
+              "endCol": 16,
+              "raw": "8"
+            }
+          }
+        }
+      ]
+    },
+    "RequestDetailScreen@app\\(citizen)\\request\\[id].tsx:124": {
+      "element": {
+        "file": "app\\(citizen)\\request\\[id].tsx",
+        "line": 124
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.retryButtonText",
+          "file": "app\\(citizen)\\request\\[id].tsx",
+          "defLine": 341,
+          "properties": {
+            "fontSize": {
+              "line": 343,
+              "col": 14,
+              "endCol": 16,
+              "raw": "14"
+            }
+          }
+        }
+      ]
+    },
+    "RequestDetailScreen@app\\(citizen)\\request\\[id].tsx:133": {
+      "element": {
+        "file": "app\\(citizen)\\request\\[id].tsx",
+        "line": 133
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app\\(citizen)\\request\\[id].tsx",
+          "properties": {
+            "flex": {
+              "line": 133,
+              "col": 25,
+              "endCol": 26,
+              "raw": "1"
+            }
+          }
+        }
+      ]
+    },
+    "RequestDetailScreen@app\\(citizen)\\request\\[id].tsx:135": {
+      "element": {
+        "file": "app\\(citizen)\\request\\[id].tsx",
+        "line": 135
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.header",
+          "file": "app\\(citizen)\\request\\[id].tsx",
+          "defLine": 346,
+          "properties": {
+            "flexDirection": {
+              "line": 347,
+              "col": 19,
+              "endCol": 24,
+              "raw": "\"row\""
+            },
+            "alignItems": {
+              "line": 348,
+              "col": 16,
+              "endCol": 24,
+              "raw": "\"center\""
+            },
+            "paddingHorizontal": {
+              "line": 349,
+              "col": 23,
+              "endCol": 25,
+              "raw": "16"
+            },
+            "paddingBottom": {
+              "line": 350,
+              "col": 19,
+              "endCol": 21,
+              "raw": "12"
+            },
+            "borderBottomWidth": {
+              "line": 352,
+              "col": 23,
+              "endCol": 24,
+              "raw": "1"
+            }
+          }
+        }
+      ]
+    },
+    "RequestDetailScreen@app\\(citizen)\\request\\[id].tsx:136": {
+      "element": {
+        "file": "app\\(citizen)\\request\\[id].tsx",
+        "line": 136
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.backButton",
+          "file": "app\\(citizen)\\request\\[id].tsx",
+          "defLine": 355,
+          "properties": {
+            "width": {
+              "line": 356,
+              "col": 11,
+              "endCol": 13,
+              "raw": "36"
+            },
+            "height": {
+              "line": 357,
+              "col": 12,
+              "endCol": 14,
+              "raw": "36"
+            },
+            "borderRadius": {
+              "line": 358,
+              "col": 18,
+              "endCol": 20,
+              "raw": "10"
+            },
+            "alignItems": {
+              "line": 360,
+              "col": 16,
+              "endCol": 24,
+              "raw": "\"center\""
+            },
+            "justifyContent": {
+              "line": 361,
+              "col": 20,
+              "endCol": 28,
+              "raw": "\"center\""
+            },
+            "borderWidth": {
+              "line": 362,
+              "col": 17,
+              "endCol": 18,
+              "raw": "1"
+            }
+          }
+        }
+      ]
+    },
+    "RequestDetailScreen@app\\(citizen)\\request\\[id].tsx:139": {
+      "element": {
+        "file": "app\\(citizen)\\request\\[id].tsx",
+        "line": 139
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.headerTitle",
+          "file": "app\\(citizen)\\request\\[id].tsx",
+          "defLine": 365,
+          "properties": {
+            "fontSize": {
+              "line": 367,
+              "col": 14,
+              "endCol": 16,
+              "raw": "18"
+            },
+            "flex": {
+              "line": 369,
+              "col": 10,
+              "endCol": 11,
+              "raw": "1"
+            },
+            "textAlign": {
+              "line": 370,
+              "col": 15,
+              "endCol": 23,
+              "raw": "\"center\""
+            }
+          }
+        }
+      ]
+    },
+    "RequestDetailScreen@app\\(citizen)\\request\\[id].tsx:140": {
+      "element": {
+        "file": "app\\(citizen)\\request\\[id].tsx",
+        "line": 140
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.speakButton",
+          "file": "app\\(citizen)\\request\\[id].tsx",
+          "defLine": 372,
+          "properties": {
+            "width": {
+              "line": 373,
+              "col": 11,
+              "endCol": 13,
+              "raw": "36"
+            },
+            "height": {
+              "line": 374,
+              "col": 12,
+              "endCol": 14,
+              "raw": "36"
+            },
+            "borderRadius": {
+              "line": 375,
+              "col": 18,
+              "endCol": 20,
+              "raw": "10"
+            },
+            "alignItems": {
+              "line": 377,
+              "col": 16,
+              "endCol": 24,
+              "raw": "\"center\""
+            },
+            "justifyContent": {
+              "line": 378,
+              "col": 20,
+              "endCol": 28,
+              "raw": "\"center\""
+            },
+            "borderWidth": {
+              "line": 379,
+              "col": 17,
+              "endCol": 18,
+              "raw": "1"
+            }
+          }
+        },
+        {
+          "origin": "dynamic",
+          "resolvable": false
+        }
+      ]
+    },
+    "RequestDetailScreen@app\\(citizen)\\request\\[id].tsx:159": {
+      "element": {
+        "file": "app\\(citizen)\\request\\[id].tsx",
+        "line": 159
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.situationCard",
+          "file": "app\\(citizen)\\request\\[id].tsx",
+          "defLine": 390,
+          "properties": {
+            "borderRadius": {
+              "line": 392,
+              "col": 18,
+              "endCol": 20,
+              "raw": "16"
+            },
+            "padding": {
+              "line": 393,
+              "col": 13,
+              "endCol": 15,
+              "raw": "18"
+            },
+            "gap": {
+              "line": 394,
+              "col": 9,
+              "endCol": 10,
+              "raw": "8"
+            },
+            "borderWidth": {
+              "line": 395,
+              "col": 17,
+              "endCol": 18,
+              "raw": "1"
+            },
+            "borderCurve": {
+              "line": 397,
+              "col": 17,
+              "endCol": 29,
+              "raw": "\"continuous\""
+            }
+          }
+        }
+      ]
+    },
+    "RequestDetailScreen@app\\(citizen)\\request\\[id].tsx:160": {
+      "element": {
+        "file": "app\\(citizen)\\request\\[id].tsx",
+        "line": 160
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.cardLabel",
+          "file": "app\\(citizen)\\request\\[id].tsx",
+          "defLine": 399,
+          "properties": {
+            "fontSize": {
+              "line": 401,
+              "col": 14,
+              "endCol": 16,
+              "raw": "15"
+            }
+          }
+        }
+      ]
+    },
+    "RequestDetailScreen@app\\(citizen)\\request\\[id].tsx:161": {
+      "element": {
+        "file": "app\\(citizen)\\request\\[id].tsx",
+        "line": 161
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.situationText",
+          "file": "app\\(citizen)\\request\\[id].tsx",
+          "defLine": 404,
+          "properties": {
+            "fontSize": {
+              "line": 406,
+              "col": 14,
+              "endCol": 16,
+              "raw": "15"
+            },
+            "lineHeight": {
+              "line": 408,
+              "col": 16,
+              "endCol": 18,
+              "raw": "22"
+            }
+          }
+        }
+      ]
+    },
+    "RequestDetailScreen@app\\(citizen)\\request\\[id].tsx:169": {
+      "element": {
+        "file": "app\\(citizen)\\request\\[id].tsx",
+        "line": 169
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.sectionBlock",
+          "file": "app\\(citizen)\\request\\[id].tsx",
+          "defLine": 410,
+          "properties": {
+            "gap": {
+              "line": 411,
+              "col": 9,
+              "endCol": 11,
+              "raw": "12"
+            }
+          }
+        }
+      ]
+    },
+    "RequestDetailScreen@app\\(citizen)\\request\\[id].tsx:170": {
+      "element": {
+        "file": "app\\(citizen)\\request\\[id].tsx",
+        "line": 170
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.sectionTitle",
+          "file": "app\\(citizen)\\request\\[id].tsx",
+          "defLine": 413,
+          "properties": {
+            "fontSize": {
+              "line": 415,
+              "col": 14,
+              "endCol": 16,
+              "raw": "17"
+            }
+          }
+        }
+      ]
+    },
+    "RequestDetailScreen@app\\(citizen)\\request\\[id].tsx:171": {
+      "element": {
+        "file": "app\\(citizen)\\request\\[id].tsx",
+        "line": 171
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.timelineContainer",
+          "file": "app\\(citizen)\\request\\[id].tsx",
+          "defLine": 418,
+          "properties": {
+            "gap": {
+              "line": 419,
+              "col": 9,
+              "endCol": 10,
+              "raw": "0"
+            }
+          }
+        }
+      ]
+    },
+    "RequestDetailScreen@app\\(citizen)\\request\\[id].tsx:173": {
+      "element": {
+        "file": "app\\(citizen)\\request\\[id].tsx",
+        "line": 173
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.timelineItem",
+          "file": "app\\(citizen)\\request\\[id].tsx",
+          "defLine": 421,
+          "properties": {
+            "flexDirection": {
+              "line": 422,
+              "col": 19,
+              "endCol": 24,
+              "raw": "\"row\""
+            },
+            "alignItems": {
+              "line": 423,
+              "col": 16,
+              "endCol": 28,
+              "raw": "\"flex-start\""
+            },
+            "gap": {
+              "line": 424,
+              "col": 9,
+              "endCol": 11,
+              "raw": "12"
+            },
+            "minHeight": {
+              "line": 425,
+              "col": 15,
+              "endCol": 17,
+              "raw": "48"
+            }
+          }
+        }
+      ]
+    },
+    "RequestDetailScreen@app\\(citizen)\\request\\[id].tsx:174": {
+      "element": {
+        "file": "app\\(citizen)\\request\\[id].tsx",
+        "line": 174
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.timelineDot",
+          "file": "app\\(citizen)\\request\\[id].tsx",
+          "defLine": 427,
+          "properties": {
+            "width": {
+              "line": 428,
+              "col": 11,
+              "endCol": 13,
+              "raw": "28"
+            },
+            "height": {
+              "line": 429,
+              "col": 12,
+              "endCol": 14,
+              "raw": "28"
+            },
+            "borderRadius": {
+              "line": 430,
+              "col": 18,
+              "endCol": 20,
+              "raw": "14"
+            },
+            "alignItems": {
+              "line": 432,
+              "col": 16,
+              "endCol": 24,
+              "raw": "\"center\""
+            },
+            "justifyContent": {
+              "line": 433,
+              "col": 20,
+              "endCol": 28,
+              "raw": "\"center\""
+            },
+            "zIndex": {
+              "line": 434,
+              "col": 12,
+              "endCol": 13,
+              "raw": "1"
+            }
+          }
+        }
+      ]
+    },
+    "RequestDetailScreen@app\\(citizen)\\request\\[id].tsx:175": {
+      "element": {
+        "file": "app\\(citizen)\\request\\[id].tsx",
+        "line": 175
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.timelineNumber",
+          "file": "app\\(citizen)\\request\\[id].tsx",
+          "defLine": 436,
+          "properties": {
+            "fontSize": {
+              "line": 438,
+              "col": 14,
+              "endCol": 16,
+              "raw": "12"
+            }
+          }
+        }
+      ]
+    },
+    "RequestDetailScreen@app\\(citizen)\\request\\[id].tsx:178": {
+      "element": {
+        "file": "app\\(citizen)\\request\\[id].tsx",
+        "line": 178
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.timelineLine",
+          "file": "app\\(citizen)\\request\\[id].tsx",
+          "defLine": 441,
+          "properties": {
+            "position": {
+              "line": 442,
+              "col": 14,
+              "endCol": 24,
+              "raw": "\"absolute\""
+            },
+            "left": {
+              "line": 443,
+              "col": 10,
+              "endCol": 12,
+              "raw": "13"
+            },
+            "top": {
+              "line": 444,
+              "col": 9,
+              "endCol": 11,
+              "raw": "28"
+            },
+            "width": {
+              "line": 445,
+              "col": 11,
+              "endCol": 12,
+              "raw": "2"
+            },
+            "height": {
+              "line": 446,
+              "col": 12,
+              "endCol": 14,
+              "raw": "20"
+            }
+          }
+        }
+      ]
+    },
+    "RequestDetailScreen@app\\(citizen)\\request\\[id].tsx:180": {
+      "element": {
+        "file": "app\\(citizen)\\request\\[id].tsx",
+        "line": 180
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.timelineText",
+          "file": "app\\(citizen)\\request\\[id].tsx",
+          "defLine": 449,
+          "properties": {
+            "fontSize": {
+              "line": 451,
+              "col": 14,
+              "endCol": 16,
+              "raw": "14"
+            },
+            "flex": {
+              "line": 453,
+              "col": 10,
+              "endCol": 11,
+              "raw": "1"
+            },
+            "lineHeight": {
+              "line": 454,
+              "col": 16,
+              "endCol": 18,
+              "raw": "20"
+            },
+            "paddingTop": {
+              "line": 455,
+              "col": 16,
+              "endCol": 17,
+              "raw": "4"
+            }
+          }
+        }
+      ]
+    },
+    "RequestDetailScreen@app\\(citizen)\\request\\[id].tsx:191": {
+      "element": {
+        "file": "app\\(citizen)\\request\\[id].tsx",
+        "line": 191
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.sectionBlock",
+          "file": "app\\(citizen)\\request\\[id].tsx",
+          "defLine": 410,
+          "properties": {
+            "gap": {
+              "line": 411,
+              "col": 9,
+              "endCol": 11,
+              "raw": "12"
+            }
+          }
+        }
+      ]
+    },
+    "RequestDetailScreen@app\\(citizen)\\request\\[id].tsx:192": {
+      "element": {
+        "file": "app\\(citizen)\\request\\[id].tsx",
+        "line": 192
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.sectionTitle",
+          "file": "app\\(citizen)\\request\\[id].tsx",
+          "defLine": 413,
+          "properties": {
+            "fontSize": {
+              "line": 415,
+              "col": 14,
+              "endCol": 16,
+              "raw": "17"
+            }
+          }
+        }
+      ]
+    },
+    "RequestDetailScreen@app\\(citizen)\\request\\[id].tsx:193": {
+      "element": {
+        "file": "app\\(citizen)\\request\\[id].tsx",
+        "line": 193
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.checklistContainer",
+          "file": "app\\(citizen)\\request\\[id].tsx",
+          "defLine": 457,
+          "properties": {
+            "borderRadius": {
+              "line": 459,
+              "col": 18,
+              "endCol": 20,
+              "raw": "14"
+            },
+            "padding": {
+              "line": 460,
+              "col": 13,
+              "endCol": 14,
+              "raw": "4"
+            },
+            "borderWidth": {
+              "line": 461,
+              "col": 17,
+              "endCol": 18,
+              "raw": "1"
+            },
+            "borderCurve": {
+              "line": 463,
+              "col": 17,
+              "endCol": 29,
+              "raw": "\"continuous\""
+            }
+          }
+        }
+      ]
+    },
+    "RequestDetailScreen@app\\(citizen)\\request\\[id].tsx:195": {
+      "element": {
+        "file": "app\\(citizen)\\request\\[id].tsx",
+        "line": 195
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.checklistItem",
+          "file": "app\\(citizen)\\request\\[id].tsx",
+          "defLine": 465,
+          "properties": {
+            "flexDirection": {
+              "line": 466,
+              "col": 19,
+              "endCol": 24,
+              "raw": "\"row\""
+            },
+            "alignItems": {
+              "line": 467,
+              "col": 16,
+              "endCol": 24,
+              "raw": "\"center\""
+            },
+            "gap": {
+              "line": 468,
+              "col": 9,
+              "endCol": 11,
+              "raw": "12"
+            },
+            "padding": {
+              "line": 469,
+              "col": 13,
+              "endCol": 15,
+              "raw": "12"
+            }
+          }
+        }
+      ]
+    },
+    "RequestDetailScreen@app\\(citizen)\\request\\[id].tsx:201": {
+      "element": {
+        "file": "app\\(citizen)\\request\\[id].tsx",
+        "line": 201
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.checkbox",
+          "file": "app\\(citizen)\\request\\[id].tsx",
+          "defLine": 471,
+          "properties": {
+            "width": {
+              "line": 472,
+              "col": 11,
+              "endCol": 13,
+              "raw": "22"
+            },
+            "height": {
+              "line": 473,
+              "col": 12,
+              "endCol": 14,
+              "raw": "22"
+            },
+            "borderRadius": {
+              "line": 474,
+              "col": 18,
+              "endCol": 19,
+              "raw": "6"
+            },
+            "borderWidth": {
+              "line": 475,
+              "col": 17,
+              "endCol": 18,
+              "raw": "2"
+            },
+            "alignItems": {
+              "line": 477,
+              "col": 16,
+              "endCol": 24,
+              "raw": "\"center\""
+            },
+            "justifyContent": {
+              "line": 478,
+              "col": 20,
+              "endCol": 28,
+              "raw": "\"center\""
+            }
+          }
+        },
+        {
+          "origin": "dynamic",
+          "resolvable": false
+        }
+      ]
+    },
+    "RequestDetailScreen@app\\(citizen)\\request\\[id].tsx:211": {
+      "element": {
+        "file": "app\\(citizen)\\request\\[id].tsx",
+        "line": 211
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.checklistText",
+          "file": "app\\(citizen)\\request\\[id].tsx",
+          "defLine": 484,
+          "properties": {
+            "fontSize": {
+              "line": 486,
+              "col": 14,
+              "endCol": 16,
+              "raw": "14"
+            },
+            "flex": {
+              "line": 488,
+              "col": 10,
+              "endCol": 11,
+              "raw": "1"
+            }
+          }
+        },
+        {
+          "origin": "dynamic",
+          "resolvable": false
+        }
+      ]
+    },
+    "RequestDetailScreen@app\\(citizen)\\request\\[id].tsx:228": {
+      "element": {
+        "file": "app\\(citizen)\\request\\[id].tsx",
+        "line": 228
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.badgesRow",
+          "file": "app\\(citizen)\\request\\[id].tsx",
+          "defLine": 494,
+          "properties": {
+            "flexDirection": {
+              "line": 495,
+              "col": 19,
+              "endCol": 24,
+              "raw": "\"row\""
+            },
+            "flexWrap": {
+              "line": 496,
+              "col": 14,
+              "endCol": 20,
+              "raw": "\"wrap\""
+            },
+            "gap": {
+              "line": 497,
+              "col": 9,
+              "endCol": 10,
+              "raw": "8"
+            }
+          }
+        }
+      ]
+    },
+    "RequestDetailScreen@app\\(citizen)\\request\\[id].tsx:230": {
+      "element": {
+        "file": "app\\(citizen)\\request\\[id].tsx",
+        "line": 230
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.badge",
+          "file": "app\\(citizen)\\request\\[id].tsx",
+          "defLine": 499,
+          "properties": {
+            "flexDirection": {
+              "line": 500,
+              "col": 19,
+              "endCol": 24,
+              "raw": "\"row\""
+            },
+            "alignItems": {
+              "line": 501,
+              "col": 16,
+              "endCol": 24,
+              "raw": "\"center\""
+            },
+            "gap": {
+              "line": 502,
+              "col": 9,
+              "endCol": 10,
+              "raw": "6"
+            },
+            "paddingHorizontal": {
+              "line": 503,
+              "col": 23,
+              "endCol": 25,
+              "raw": "12"
+            },
+            "paddingVertical": {
+              "line": 504,
+              "col": 21,
+              "endCol": 22,
+              "raw": "8"
+            },
+            "borderRadius": {
+              "line": 505,
+              "col": 18,
+              "endCol": 20,
+              "raw": "10"
+            },
+            "borderCurve": {
+              "line": 506,
+              "col": 17,
+              "endCol": 29,
+              "raw": "\"continuous\""
+            }
+          }
+        },
+        {
+          "origin": "inline",
+          "file": "app\\(citizen)\\request\\[id].tsx",
+          "properties": {
+            "backgroundColor": {
+              "line": 230,
+              "col": 61,
+              "endCol": 70,
+              "raw": "\"#EDF5F2\""
+            }
+          }
+        }
+      ]
+    },
+    "RequestDetailScreen@app\\(citizen)\\request\\[id].tsx:232": {
+      "element": {
+        "file": "app\\(citizen)\\request\\[id].tsx",
+        "line": 232
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.badgeText",
+          "file": "app\\(citizen)\\request\\[id].tsx",
+          "defLine": 508,
+          "properties": {
+            "fontSize": {
+              "line": 510,
+              "col": 14,
+              "endCol": 16,
+              "raw": "13"
+            }
+          }
+        }
+      ]
+    },
+    "RequestDetailScreen@app\\(citizen)\\request\\[id].tsx:238": {
+      "element": {
+        "file": "app\\(citizen)\\request\\[id].tsx",
+        "line": 238
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.badge",
+          "file": "app\\(citizen)\\request\\[id].tsx",
+          "defLine": 499,
+          "properties": {
+            "flexDirection": {
+              "line": 500,
+              "col": 19,
+              "endCol": 24,
+              "raw": "\"row\""
+            },
+            "alignItems": {
+              "line": 501,
+              "col": 16,
+              "endCol": 24,
+              "raw": "\"center\""
+            },
+            "gap": {
+              "line": 502,
+              "col": 9,
+              "endCol": 10,
+              "raw": "6"
+            },
+            "paddingHorizontal": {
+              "line": 503,
+              "col": 23,
+              "endCol": 25,
+              "raw": "12"
+            },
+            "paddingVertical": {
+              "line": 504,
+              "col": 21,
+              "endCol": 22,
+              "raw": "8"
+            },
+            "borderRadius": {
+              "line": 505,
+              "col": 18,
+              "endCol": 20,
+              "raw": "10"
+            },
+            "borderCurve": {
+              "line": 506,
+              "col": 17,
+              "endCol": 29,
+              "raw": "\"continuous\""
+            }
+          }
+        },
+        {
+          "origin": "inline",
+          "file": "app\\(citizen)\\request\\[id].tsx",
+          "properties": {
+            "backgroundColor": {
+              "line": 238,
+              "col": 61,
+              "endCol": 70,
+              "raw": "\"#FFF4EC\""
+            }
+          }
+        }
+      ]
+    },
+    "RequestDetailScreen@app\\(citizen)\\request\\[id].tsx:240": {
+      "element": {
+        "file": "app\\(citizen)\\request\\[id].tsx",
+        "line": 240
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.badgeText",
+          "file": "app\\(citizen)\\request\\[id].tsx",
+          "defLine": 508,
+          "properties": {
+            "fontSize": {
+              "line": 510,
+              "col": 14,
+              "endCol": 16,
+              "raw": "13"
+            }
+          }
+        }
+      ]
+    },
+    "RequestDetailScreen@app\\(citizen)\\request\\[id].tsx:246": {
+      "element": {
+        "file": "app\\(citizen)\\request\\[id].tsx",
+        "line": 246
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.badge",
+          "file": "app\\(citizen)\\request\\[id].tsx",
+          "defLine": 499,
+          "properties": {
+            "flexDirection": {
+              "line": 500,
+              "col": 19,
+              "endCol": 24,
+              "raw": "\"row\""
+            },
+            "alignItems": {
+              "line": 501,
+              "col": 16,
+              "endCol": 24,
+              "raw": "\"center\""
+            },
+            "gap": {
+              "line": 502,
+              "col": 9,
+              "endCol": 10,
+              "raw": "6"
+            },
+            "paddingHorizontal": {
+              "line": 503,
+              "col": 23,
+              "endCol": 25,
+              "raw": "12"
+            },
+            "paddingVertical": {
+              "line": 504,
+              "col": 21,
+              "endCol": 22,
+              "raw": "8"
+            },
+            "borderRadius": {
+              "line": 505,
+              "col": 18,
+              "endCol": 20,
+              "raw": "10"
+            },
+            "borderCurve": {
+              "line": 506,
+              "col": 17,
+              "endCol": 29,
+              "raw": "\"continuous\""
+            }
+          }
+        },
+        {
+          "origin": "inline",
+          "file": "app\\(citizen)\\request\\[id].tsx",
+          "properties": {
+            "backgroundColor": {
+              "line": 246,
+              "col": 61,
+              "endCol": 70,
+              "raw": "\"#F5EFE3\""
+            }
+          }
+        }
+      ]
+    },
+    "RequestDetailScreen@app\\(citizen)\\request\\[id].tsx:252": {
+      "element": {
+        "file": "app\\(citizen)\\request\\[id].tsx",
+        "line": 252
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.badgeText",
+          "file": "app\\(citizen)\\request\\[id].tsx",
+          "defLine": 508,
+          "properties": {
+            "fontSize": {
+              "line": 510,
+              "col": 14,
+              "endCol": 16,
+              "raw": "13"
+            }
+          }
+        }
+      ]
+    },
+    "RequestDetailScreen@app\\(citizen)\\request\\[id].tsx:262": {
+      "element": {
+        "file": "app\\(citizen)\\request\\[id].tsx",
+        "line": 262
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.sectionBlock",
+          "file": "app\\(citizen)\\request\\[id].tsx",
+          "defLine": 410,
+          "properties": {
+            "gap": {
+              "line": 411,
+              "col": 9,
+              "endCol": 11,
+              "raw": "12"
+            }
+          }
+        }
+      ]
+    },
+    "RequestDetailScreen@app\\(citizen)\\request\\[id].tsx:263": {
+      "element": {
+        "file": "app\\(citizen)\\request\\[id].tsx",
+        "line": 263
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.letterHeader",
+          "file": "app\\(citizen)\\request\\[id].tsx",
+          "defLine": 512,
+          "properties": {
+            "flexDirection": {
+              "line": 513,
+              "col": 19,
+              "endCol": 24,
+              "raw": "\"row\""
+            },
+            "justifyContent": {
+              "line": 514,
+              "col": 20,
+              "endCol": 35,
+              "raw": "\"space-between\""
+            },
+            "alignItems": {
+              "line": 515,
+              "col": 16,
+              "endCol": 24,
+              "raw": "\"center\""
+            }
+          }
+        }
+      ]
+    },
+    "RequestDetailScreen@app\\(citizen)\\request\\[id].tsx:264": {
+      "element": {
+        "file": "app\\(citizen)\\request\\[id].tsx",
+        "line": 264
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.sectionTitle",
+          "file": "app\\(citizen)\\request\\[id].tsx",
+          "defLine": 413,
+          "properties": {
+            "fontSize": {
+              "line": 415,
+              "col": 14,
+              "endCol": 16,
+              "raw": "17"
+            }
+          }
+        }
+      ]
+    },
+    "RequestDetailScreen@app\\(citizen)\\request\\[id].tsx:265": {
+      "element": {
+        "file": "app\\(citizen)\\request\\[id].tsx",
+        "line": 265
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.copyButton",
+          "file": "app\\(citizen)\\request\\[id].tsx",
+          "defLine": 517,
+          "properties": {
+            "flexDirection": {
+              "line": 518,
+              "col": 19,
+              "endCol": 24,
+              "raw": "\"row\""
+            },
+            "alignItems": {
+              "line": 519,
+              "col": 16,
+              "endCol": 24,
+              "raw": "\"center\""
+            },
+            "gap": {
+              "line": 520,
+              "col": 9,
+              "endCol": 10,
+              "raw": "4"
+            },
+            "paddingHorizontal": {
+              "line": 521,
+              "col": 23,
+              "endCol": 25,
+              "raw": "10"
+            },
+            "paddingVertical": {
+              "line": 522,
+              "col": 21,
+              "endCol": 22,
+              "raw": "6"
+            },
+            "borderRadius": {
+              "line": 523,
+              "col": 18,
+              "endCol": 19,
+              "raw": "8"
+            },
+            "borderWidth": {
+              "line": 525,
+              "col": 17,
+              "endCol": 18,
+              "raw": "1"
+            }
+          }
+        }
+      ]
+    },
+    "RequestDetailScreen@app\\(citizen)\\request\\[id].tsx:275": {
+      "element": {
+        "file": "app\\(citizen)\\request\\[id].tsx",
+        "line": 275
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.copyText",
+          "file": "app\\(citizen)\\request\\[id].tsx",
+          "defLine": 528,
+          "properties": {
+            "fontSize": {
+              "line": 530,
+              "col": 14,
+              "endCol": 16,
+              "raw": "12"
+            }
+          }
+        }
+      ]
+    },
+    "RequestDetailScreen@app\\(citizen)\\request\\[id].tsx:285": {
+      "element": {
+        "file": "app\\(citizen)\\request\\[id].tsx",
+        "line": 285
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.letterCard",
+          "file": "app\\(citizen)\\request\\[id].tsx",
+          "defLine": 532,
+          "properties": {
+            "borderRadius": {
+              "line": 534,
+              "col": 18,
+              "endCol": 20,
+              "raw": "14"
+            },
+            "padding": {
+              "line": 535,
+              "col": 13,
+              "endCol": 15,
+              "raw": "18"
+            },
+            "borderWidth": {
+              "line": 536,
+              "col": 17,
+              "endCol": 18,
+              "raw": "1"
+            },
+            "borderCurve": {
+              "line": 538,
+              "col": 17,
+              "endCol": 29,
+              "raw": "\"continuous\""
+            }
+          }
+        }
+      ]
+    },
+    "RequestDetailScreen@app\\(citizen)\\request\\[id].tsx:286": {
+      "element": {
+        "file": "app\\(citizen)\\request\\[id].tsx",
+        "line": 286
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.letterText",
+          "file": "app\\(citizen)\\request\\[id].tsx",
+          "defLine": 540,
+          "properties": {
+            "fontSize": {
+              "line": 542,
+              "col": 14,
+              "endCol": 16,
+              "raw": "14"
+            },
+            "lineHeight": {
+              "line": 544,
+              "col": 16,
+              "endCol": 18,
+              "raw": "22"
+            }
+          }
+        }
+      ]
+    },
+    "RequestDetailScreen@app\\(citizen)\\request\\[id].tsx:295": {
+      "element": {
+        "file": "app\\(citizen)\\request\\[id].tsx",
+        "line": 295
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.pendingCard",
+          "file": "app\\(citizen)\\request\\[id].tsx",
+          "defLine": 546,
+          "properties": {
+            "borderRadius": {
+              "line": 548,
+              "col": 18,
+              "endCol": 20,
+              "raw": "16"
+            },
+            "padding": {
+              "line": 549,
+              "col": 13,
+              "endCol": 15,
+              "raw": "28"
+            },
+            "alignItems": {
+              "line": 550,
+              "col": 16,
+              "endCol": 24,
+              "raw": "\"center\""
+            },
+            "gap": {
+              "line": 551,
+              "col": 9,
+              "endCol": 11,
+              "raw": "10"
+            },
+            "borderWidth": {
+              "line": 552,
+              "col": 17,
+              "endCol": 18,
+              "raw": "1"
+            },
+            "borderCurve": {
+              "line": 554,
+              "col": 17,
+              "endCol": 29,
+              "raw": "\"continuous\""
+            }
+          }
+        }
+      ]
+    },
+    "RequestDetailScreen@app\\(citizen)\\request\\[id].tsx:297": {
+      "element": {
+        "file": "app\\(citizen)\\request\\[id].tsx",
+        "line": 297
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.pendingTitle",
+          "file": "app\\(citizen)\\request\\[id].tsx",
+          "defLine": 556,
+          "properties": {
+            "fontSize": {
+              "line": 558,
+              "col": 14,
+              "endCol": 16,
+              "raw": "16"
+            },
+            "marginTop": {
+              "line": 560,
+              "col": 15,
+              "endCol": 16,
+              "raw": "4"
+            }
+          }
+        }
+      ]
+    },
+    "RequestDetailScreen@app\\(citizen)\\request\\[id].tsx:298": {
+      "element": {
+        "file": "app\\(citizen)\\request\\[id].tsx",
+        "line": 298
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.pendingText",
+          "file": "app\\(citizen)\\request\\[id].tsx",
+          "defLine": 562,
+          "properties": {
+            "fontSize": {
+              "line": 564,
+              "col": 14,
+              "endCol": 16,
+              "raw": "14"
+            },
+            "textAlign": {
+              "line": 566,
+              "col": 15,
+              "endCol": 23,
+              "raw": "\"center\""
+            },
+            "lineHeight": {
+              "line": 567,
+              "col": 16,
+              "endCol": 18,
+              "raw": "20"
+            }
+          }
+        }
+      ]
+    },
+    "LoginScreen@app\\login.tsx:47": {
+      "element": {
+        "file": "app\\login.tsx",
+        "line": 47
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app\\login.tsx",
+          "properties": {
+            "flex": {
+              "line": 48,
+              "col": 21,
+              "endCol": 22,
+              "raw": "1"
+            }
+          }
+        }
+      ]
+    },
+    "LoginScreen@app\\login.tsx:51": {
+      "element": {
+        "file": "app\\login.tsx",
+        "line": 51
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app\\login.tsx",
+          "properties": {
+            "flex": {
+              "line": 52,
+              "col": 23,
+              "endCol": 24,
+              "raw": "1"
+            }
+          }
+        }
+      ]
+    },
+    "LoginScreen@app\\login.tsx:60": {
+      "element": {
+        "file": "app\\login.tsx",
+        "line": 60
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.logoContainer",
+          "file": "app\\login.tsx",
+          "defLine": 175,
+          "properties": {
+            "alignItems": {
+              "line": 176,
+              "col": 16,
+              "endCol": 24,
+              "raw": "\"center\""
+            },
+            "marginBottom": {
+              "line": 177,
+              "col": 18,
+              "endCol": 20,
+              "raw": "32"
+            }
+          }
+        }
+      ]
+    },
+    "LoginScreen@app\\login.tsx:61": {
+      "element": {
+        "file": "app\\login.tsx",
+        "line": 61
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.logo",
+          "file": "app\\login.tsx",
+          "defLine": 179,
+          "properties": {
+            "width": {
+              "line": 180,
+              "col": 11,
+              "endCol": 14,
+              "raw": "100"
+            },
+            "height": {
+              "line": 181,
+              "col": 12,
+              "endCol": 15,
+              "raw": "100"
+            },
+            "marginBottom": {
+              "line": 182,
+              "col": 18,
+              "endCol": 20,
+              "raw": "12"
+            }
+          }
+        }
+      ]
+    },
+    "LoginScreen@app\\login.tsx:66": {
+      "element": {
+        "file": "app\\login.tsx",
+        "line": 66
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.appTitle",
+          "file": "app\\login.tsx",
+          "defLine": 184,
+          "properties": {
+            "fontSize": {
+              "line": 186,
+              "col": 14,
+              "endCol": 16,
+              "raw": "28"
+            },
+            "letterSpacing": {
+              "line": 188,
+              "col": 19,
+              "endCol": 23,
+              "raw": "-0.5"
+            }
+          }
+        }
+      ]
+    },
+    "LoginScreen@app\\login.tsx:67": {
+      "element": {
+        "file": "app\\login.tsx",
+        "line": 67
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.appSubtitle",
+          "file": "app\\login.tsx",
+          "defLine": 190,
+          "properties": {
+            "fontSize": {
+              "line": 192,
+              "col": 14,
+              "endCol": 16,
+              "raw": "14"
+            },
+            "marginTop": {
+              "line": 194,
+              "col": 15,
+              "endCol": 16,
+              "raw": "4"
+            }
+          }
+        }
+      ]
+    },
+    "LoginScreen@app\\login.tsx:71": {
+      "element": {
+        "file": "app\\login.tsx",
+        "line": 71
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.toggleContainer",
+          "file": "app\\login.tsx",
+          "defLine": 196,
+          "properties": {
+            "flexDirection": {
+              "line": 197,
+              "col": 19,
+              "endCol": 24,
+              "raw": "\"row\""
+            },
+            "borderRadius": {
+              "line": 199,
+              "col": 18,
+              "endCol": 20,
+              "raw": "12"
+            },
+            "padding": {
+              "line": 200,
+              "col": 13,
+              "endCol": 14,
+              "raw": "4"
+            },
+            "marginBottom": {
+              "line": 201,
+              "col": 18,
+              "endCol": 20,
+              "raw": "28"
+            },
+            "width": {
+              "line": 202,
+              "col": 11,
+              "endCol": 17,
+              "raw": "\"100%\""
+            },
+            "borderWidth": {
+              "line": 203,
+              "col": 17,
+              "endCol": 18,
+              "raw": "1"
+            }
+          }
+        }
+      ]
+    },
+    "LoginScreen@app\\login.tsx:72": {
+      "element": {
+        "file": "app\\login.tsx",
+        "line": 72
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.toggleButton",
+          "file": "app\\login.tsx",
+          "defLine": 206,
+          "properties": {
+            "flex": {
+              "line": 207,
+              "col": 10,
+              "endCol": 11,
+              "raw": "1"
+            },
+            "paddingVertical": {
+              "line": 208,
+              "col": 21,
+              "endCol": 23,
+              "raw": "12"
+            },
+            "alignItems": {
+              "line": 209,
+              "col": 16,
+              "endCol": 24,
+              "raw": "\"center\""
+            },
+            "borderRadius": {
+              "line": 210,
+              "col": 18,
+              "endCol": 20,
+              "raw": "10"
+            }
+          }
+        },
+        {
+          "origin": "dynamic",
+          "resolvable": false
+        }
+      ]
+    },
+    "LoginScreen@app\\login.tsx:77": {
+      "element": {
+        "file": "app\\login.tsx",
+        "line": 77
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.toggleText",
+          "file": "app\\login.tsx",
+          "defLine": 215,
+          "properties": {
+            "fontSize": {
+              "line": 217,
+              "col": 14,
+              "endCol": 16,
+              "raw": "15"
+            }
+          }
+        },
+        {
+          "origin": "dynamic",
+          "resolvable": false
+        }
+      ]
+    },
+    "LoginScreen@app\\login.tsx:81": {
+      "element": {
+        "file": "app\\login.tsx",
+        "line": 81
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.toggleButton",
+          "file": "app\\login.tsx",
+          "defLine": 206,
+          "properties": {
+            "flex": {
+              "line": 207,
+              "col": 10,
+              "endCol": 11,
+              "raw": "1"
+            },
+            "paddingVertical": {
+              "line": 208,
+              "col": 21,
+              "endCol": 23,
+              "raw": "12"
+            },
+            "alignItems": {
+              "line": 209,
+              "col": 16,
+              "endCol": 24,
+              "raw": "\"center\""
+            },
+            "borderRadius": {
+              "line": 210,
+              "col": 18,
+              "endCol": 20,
+              "raw": "10"
+            }
+          }
+        },
+        {
+          "origin": "dynamic",
+          "resolvable": false
+        }
+      ]
+    },
+    "LoginScreen@app\\login.tsx:86": {
+      "element": {
+        "file": "app\\login.tsx",
+        "line": 86
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.toggleText",
+          "file": "app\\login.tsx",
+          "defLine": 215,
+          "properties": {
+            "fontSize": {
+              "line": 217,
+              "col": 14,
+              "endCol": 16,
+              "raw": "15"
+            }
+          }
+        },
+        {
+          "origin": "dynamic",
+          "resolvable": false
+        }
+      ]
+    },
+    "LoginScreen@app\\login.tsx:93": {
+      "element": {
+        "file": "app\\login.tsx",
+        "line": 93
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.form",
+          "file": "app\\login.tsx",
+          "defLine": 223,
+          "properties": {
+            "width": {
+              "line": 224,
+              "col": 11,
+              "endCol": 17,
+              "raw": "\"100%\""
+            },
+            "gap": {
+              "line": 225,
+              "col": 9,
+              "endCol": 11,
+              "raw": "18"
+            }
+          }
+        }
+      ]
+    },
+    "LoginScreen@app\\login.tsx:95": {
+      "element": {
+        "file": "app\\login.tsx",
+        "line": 95
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.inputGroup",
+          "file": "app\\login.tsx",
+          "defLine": 227,
+          "properties": {
+            "gap": {
+              "line": 228,
+              "col": 9,
+              "endCol": 10,
+              "raw": "6"
+            }
+          }
+        }
+      ]
+    },
+    "LoginScreen@app\\login.tsx:96": {
+      "element": {
+        "file": "app\\login.tsx",
+        "line": 96
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.label",
+          "file": "app\\login.tsx",
+          "defLine": 230,
+          "properties": {
+            "fontSize": {
+              "line": 232,
+              "col": 14,
+              "endCol": 16,
+              "raw": "14"
+            },
+            "marginLeft": {
+              "line": 234,
+              "col": 16,
+              "endCol": 17,
+              "raw": "4"
+            }
+          }
+        }
+      ]
+    },
+    "LoginScreen@app\\login.tsx:97": {
+      "element": {
+        "file": "app\\login.tsx",
+        "line": 97
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.input",
+          "file": "app\\login.tsx",
+          "defLine": 236,
+          "properties": {
+            "borderWidth": {
+              "line": 238,
+              "col": 17,
+              "endCol": 18,
+              "raw": "1"
+            },
+            "borderRadius": {
+              "line": 240,
+              "col": 18,
+              "endCol": 20,
+              "raw": "12"
+            },
+            "paddingHorizontal": {
+              "line": 241,
+              "col": 23,
+              "endCol": 25,
+              "raw": "16"
+            },
+            "paddingVertical": {
+              "line": 242,
+              "col": 21,
+              "endCol": 23,
+              "raw": "14"
+            },
+            "fontSize": {
+              "line": 244,
+              "col": 14,
+              "endCol": 16,
+              "raw": "16"
+            }
+          }
+        }
+      ]
+    },
+    "LoginScreen@app\\login.tsx:108": {
+      "element": {
+        "file": "app\\login.tsx",
+        "line": 108
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.inputGroup",
+          "file": "app\\login.tsx",
+          "defLine": 227,
+          "properties": {
+            "gap": {
+              "line": 228,
+              "col": 9,
+              "endCol": 10,
+              "raw": "6"
+            }
+          }
+        }
+      ]
+    },
+    "LoginScreen@app\\login.tsx:109": {
+      "element": {
+        "file": "app\\login.tsx",
+        "line": 109
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.label",
+          "file": "app\\login.tsx",
+          "defLine": 230,
+          "properties": {
+            "fontSize": {
+              "line": 232,
+              "col": 14,
+              "endCol": 16,
+              "raw": "14"
+            },
+            "marginLeft": {
+              "line": 234,
+              "col": 16,
+              "endCol": 17,
+              "raw": "4"
+            }
+          }
+        }
+      ]
+    },
+    "LoginScreen@app\\login.tsx:110": {
+      "element": {
+        "file": "app\\login.tsx",
+        "line": 110
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.input",
+          "file": "app\\login.tsx",
+          "defLine": 236,
+          "properties": {
+            "borderWidth": {
+              "line": 238,
+              "col": 17,
+              "endCol": 18,
+              "raw": "1"
+            },
+            "borderRadius": {
+              "line": 240,
+              "col": 18,
+              "endCol": 20,
+              "raw": "12"
+            },
+            "paddingHorizontal": {
+              "line": 241,
+              "col": 23,
+              "endCol": 25,
+              "raw": "16"
+            },
+            "paddingVertical": {
+              "line": 242,
+              "col": 21,
+              "endCol": 23,
+              "raw": "14"
+            },
+            "fontSize": {
+              "line": 244,
+              "col": 14,
+              "endCol": 16,
+              "raw": "16"
+            }
+          }
+        }
+      ]
+    },
+    "LoginScreen@app\\login.tsx:122": {
+      "element": {
+        "file": "app\\login.tsx",
+        "line": 122
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.inputGroup",
+          "file": "app\\login.tsx",
+          "defLine": 227,
+          "properties": {
+            "gap": {
+              "line": 228,
+              "col": 9,
+              "endCol": 10,
+              "raw": "6"
+            }
+          }
+        }
+      ]
+    },
+    "LoginScreen@app\\login.tsx:123": {
+      "element": {
+        "file": "app\\login.tsx",
+        "line": 123
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.label",
+          "file": "app\\login.tsx",
+          "defLine": 230,
+          "properties": {
+            "fontSize": {
+              "line": 232,
+              "col": 14,
+              "endCol": 16,
+              "raw": "14"
+            },
+            "marginLeft": {
+              "line": 234,
+              "col": 16,
+              "endCol": 17,
+              "raw": "4"
+            }
+          }
+        }
+      ]
+    },
+    "LoginScreen@app\\login.tsx:124": {
+      "element": {
+        "file": "app\\login.tsx",
+        "line": 124
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.input",
+          "file": "app\\login.tsx",
+          "defLine": 236,
+          "properties": {
+            "borderWidth": {
+              "line": 238,
+              "col": 17,
+              "endCol": 18,
+              "raw": "1"
+            },
+            "borderRadius": {
+              "line": 240,
+              "col": 18,
+              "endCol": 20,
+              "raw": "12"
+            },
+            "paddingHorizontal": {
+              "line": 241,
+              "col": 23,
+              "endCol": 25,
+              "raw": "16"
+            },
+            "paddingVertical": {
+              "line": 242,
+              "col": 21,
+              "endCol": 23,
+              "raw": "14"
+            },
+            "fontSize": {
+              "line": 244,
+              "col": 14,
+              "endCol": 16,
+              "raw": "16"
+            }
+          }
+        }
+      ]
+    },
+    "LoginScreen@app\\login.tsx:135": {
+      "element": {
+        "file": "app\\login.tsx",
+        "line": 135
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.errorContainer",
+          "file": "app\\login.tsx",
+          "defLine": 247,
+          "properties": {
+            "backgroundColor": {
+              "line": 248,
+              "col": 21,
+              "endCol": 30,
+              "raw": "\"#FEF2F2\""
+            },
+            "borderRadius": {
+              "line": 249,
+              "col": 18,
+              "endCol": 20,
+              "raw": "10"
+            },
+            "padding": {
+              "line": 250,
+              "col": 13,
+              "endCol": 15,
+              "raw": "12"
+            },
+            "borderWidth": {
+              "line": 251,
+              "col": 17,
+              "endCol": 18,
+              "raw": "1"
+            },
+            "borderColor": {
+              "line": 252,
+              "col": 17,
+              "endCol": 26,
+              "raw": "\"#FECACA\""
+            }
+          }
+        }
+      ]
+    },
+    "LoginScreen@app\\login.tsx:136": {
+      "element": {
+        "file": "app\\login.tsx",
+        "line": 136
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.errorText",
+          "file": "app\\login.tsx",
+          "defLine": 254,
+          "properties": {
+            "fontSize": {
+              "line": 256,
+              "col": 14,
+              "endCol": 16,
+              "raw": "13"
+            },
+            "textAlign": {
+              "line": 258,
+              "col": 15,
+              "endCol": 23,
+              "raw": "\"center\""
+            }
+          }
+        }
+      ]
+    },
+    "LoginScreen@app\\login.tsx:140": {
+      "element": {
+        "file": "app\\login.tsx",
+        "line": 140
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.submitButton",
+          "file": "app\\login.tsx",
+          "defLine": 260,
+          "properties": {
+            "borderRadius": {
+              "line": 262,
+              "col": 18,
+              "endCol": 20,
+              "raw": "14"
+            },
+            "paddingVertical": {
+              "line": 263,
+              "col": 21,
+              "endCol": 23,
+              "raw": "16"
+            },
+            "alignItems": {
+              "line": 264,
+              "col": 16,
+              "endCol": 24,
+              "raw": "\"center\""
+            },
+            "marginTop": {
+              "line": 265,
+              "col": 15,
+              "endCol": 16,
+              "raw": "8"
+            },
+            "boxShadow": {
+              "line": 266,
+              "col": 15,
+              "endCol": 51,
+              "raw": "\"0 4px 12px rgba(200, 106, 74, 0.3)\""
+            }
+          }
+        },
+        {
+          "origin": "dynamic",
+          "resolvable": false
+        }
+      ]
+    },
+    "LoginScreen@app\\login.tsx:149": {
+      "element": {
+        "file": "app\\login.tsx",
+        "line": 149
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.submitText",
+          "file": "app\\login.tsx",
+          "defLine": 271,
+          "properties": {
+            "fontSize": {
+              "line": 273,
+              "col": 14,
+              "endCol": 16,
+              "raw": "17"
+            }
+          }
+        }
+      ]
+    },
+    "LoginScreen@app\\login.tsx:156": {
+      "element": {
+        "file": "app\\login.tsx",
+        "line": 156
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.footerText",
+          "file": "app\\login.tsx",
+          "defLine": 276,
+          "properties": {
+            "fontSize": {
+              "line": 278,
+              "col": 14,
+              "endCol": 16,
+              "raw": "14"
+            },
+            "marginTop": {
+              "line": 280,
+              "col": 15,
+              "endCol": 17,
+              "raw": "24"
+            }
+          }
+        }
+      ]
+    },
+    "LoginScreen@app\\login.tsx:160": {
+      "element": {
+        "file": "app\\login.tsx",
+        "line": 160
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.footerLink",
+          "file": "app\\login.tsx",
+          "defLine": 282,
+          "properties": {}
+        }
+      ]
+    },
+    "renderWave@app\\(citizen)\\new-request.tsx:154": {
+      "element": {
+        "file": "app\\(citizen)\\new-request.tsx",
+        "line": 154
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.wave",
+          "file": "app\\(citizen)\\new-request.tsx",
+          "defLine": 262,
+          "properties": {
+            "position": {
+              "line": 262,
+              "col": 32,
+              "endCol": 42,
+              "raw": "\"absolute\""
+            },
+            "borderWidth": {
+              "line": 262,
+              "col": 57,
+              "endCol": 58,
+              "raw": "2"
+            }
+          }
+        }
+      ]
+    },
+    "NewRequestScreen@app\\(citizen)\\new-request.tsx:164": {
+      "element": {
+        "file": "app\\(citizen)\\new-request.tsx",
+        "line": 164
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app\\(citizen)\\new-request.tsx",
+          "properties": {
+            "flex": {
+              "line": 165,
+              "col": 21,
+              "endCol": 22,
+              "raw": "1"
+            }
+          }
+        }
+      ]
+    },
+    "NewRequestScreen@app\\(citizen)\\new-request.tsx:172": {
+      "element": {
+        "file": "app\\(citizen)\\new-request.tsx",
+        "line": 172
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.title",
+          "file": "app\\(citizen)\\new-request.tsx",
+          "defLine": 254,
+          "properties": {
+            "fontSize": {
+              "line": 254,
+              "col": 61,
+              "endCol": 63,
+              "raw": "26"
+            },
+            "letterSpacing": {
+              "line": 254,
+              "col": 100,
+              "endCol": 104,
+              "raw": "-0.3"
+            }
+          }
+        }
+      ]
+    },
+    "NewRequestScreen@app\\(citizen)\\new-request.tsx:173": {
+      "element": {
+        "file": "app\\(citizen)\\new-request.tsx",
+        "line": 173
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.subtitle",
+          "file": "app\\(citizen)\\new-request.tsx",
+          "defLine": 255,
+          "properties": {
+            "fontSize": {
+              "line": 255,
+              "col": 65,
+              "endCol": 67,
+              "raw": "18"
+            },
+            "marginTop": {
+              "line": 255,
+              "col": 100,
+              "endCol": 101,
+              "raw": "4"
+            }
+          }
+        }
+      ]
+    },
+    "NewRequestScreen@app\\(citizen)\\new-request.tsx:174": {
+      "element": {
+        "file": "app\\(citizen)\\new-request.tsx",
+        "line": 174
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.hint",
+          "file": "app\\(citizen)\\new-request.tsx",
+          "defLine": 256,
+          "properties": {
+            "fontSize": {
+              "line": 256,
+              "col": 59,
+              "endCol": 61,
+              "raw": "14"
+            },
+            "lineHeight": {
+              "line": 256,
+              "col": 104,
+              "endCol": 106,
+              "raw": "20"
+            },
+            "marginTop": {
+              "line": 256,
+              "col": 119,
+              "endCol": 120,
+              "raw": "4"
+            }
+          }
+        }
+      ]
+    },
+    "NewRequestScreen@app\\(citizen)\\new-request.tsx:180": {
+      "element": {
+        "file": "app\\(citizen)\\new-request.tsx",
+        "line": 180
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.inputContainer",
+          "file": "app\\(citizen)\\new-request.tsx",
+          "defLine": 257,
+          "properties": {
+            "borderRadius": {
+              "line": 257,
+              "col": 67,
+              "endCol": 69,
+              "raw": "16"
+            },
+            "borderWidth": {
+              "line": 257,
+              "col": 84,
+              "endCol": 85,
+              "raw": "1"
+            },
+            "marginTop": {
+              "line": 257,
+              "col": 126,
+              "endCol": 127,
+              "raw": "8"
+            }
+          }
+        }
+      ]
+    },
+    "NewRequestScreen@app\\(citizen)\\new-request.tsx:181": {
+      "element": {
+        "file": "app\\(citizen)\\new-request.tsx",
+        "line": 181
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.textInput",
+          "file": "app\\(citizen)\\new-request.tsx",
+          "defLine": 258,
+          "properties": {
+            "fontSize": {
+              "line": 258,
+              "col": 59,
+              "endCol": 61,
+              "raw": "16"
+            },
+            "padding": {
+              "line": 258,
+              "col": 92,
+              "endCol": 94,
+              "raw": "16"
+            },
+            "minHeight": {
+              "line": 258,
+              "col": 107,
+              "endCol": 110,
+              "raw": "140"
+            },
+            "lineHeight": {
+              "line": 258,
+              "col": 124,
+              "endCol": 126,
+              "raw": "22"
+            }
+          }
+        }
+      ]
+    },
+    "NewRequestScreen@app\\(citizen)\\new-request.tsx:194": {
+      "element": {
+        "file": "app\\(citizen)\\new-request.tsx",
+        "line": 194
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.micContainer",
+          "file": "app\\(citizen)\\new-request.tsx",
+          "defLine": 259,
+          "properties": {
+            "alignItems": {
+              "line": 259,
+              "col": 34,
+              "endCol": 42,
+              "raw": "\"center\""
+            },
+            "marginTop": {
+              "line": 259,
+              "col": 55,
+              "endCol": 57,
+              "raw": "16"
+            },
+            "gap": {
+              "line": 259,
+              "col": 64,
+              "endCol": 66,
+              "raw": "10"
+            }
+          }
+        }
+      ]
+    },
+    "NewRequestScreen@app\\(citizen)\\new-request.tsx:195": {
+      "element": {
+        "file": "app\\(citizen)\\new-request.tsx",
+        "line": 195
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.micLabel",
+          "file": "app\\(citizen)\\new-request.tsx",
+          "defLine": 260,
+          "properties": {
+            "fontSize": {
+              "line": 260,
+              "col": 59,
+              "endCol": 61,
+              "raw": "13"
+            }
+          }
+        }
+      ]
+    },
+    "NewRequestScreen@app\\(citizen)\\new-request.tsx:196": {
+      "element": {
+        "file": "app\\(citizen)\\new-request.tsx",
+        "line": 196
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.micWrapper",
+          "file": "app\\(citizen)\\new-request.tsx",
+          "defLine": 261,
+          "properties": {
+            "width": {
+              "line": 261,
+              "col": 29,
+              "endCol": 32,
+              "raw": "140"
+            },
+            "height": {
+              "line": 261,
+              "col": 42,
+              "endCol": 45,
+              "raw": "140"
+            },
+            "alignItems": {
+              "line": 261,
+              "col": 59,
+              "endCol": 67,
+              "raw": "\"center\""
+            },
+            "justifyContent": {
+              "line": 261,
+              "col": 85,
+              "endCol": 93,
+              "raw": "\"center\""
+            }
+          }
+        }
+      ]
+    },
+    "NewRequestScreen@app\\(citizen)\\new-request.tsx:200": {
+      "element": {
+        "file": "app\\(citizen)\\new-request.tsx",
+        "line": 200
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.micButton",
+          "file": "app\\(citizen)\\new-request.tsx",
+          "defLine": 263,
+          "properties": {
+            "width": {
+              "line": 263,
+              "col": 29,
+              "endCol": 31,
+              "raw": "64"
+            },
+            "height": {
+              "line": 263,
+              "col": 41,
+              "endCol": 43,
+              "raw": "64"
+            },
+            "borderRadius": {
+              "line": 263,
+              "col": 59,
+              "endCol": 61,
+              "raw": "32"
+            },
+            "alignItems": {
+              "line": 263,
+              "col": 108,
+              "endCol": 116,
+              "raw": "\"center\""
+            },
+            "justifyContent": {
+              "line": 263,
+              "col": 134,
+              "endCol": 142,
+              "raw": "\"center\""
+            }
+          }
+        },
+        {
+          "origin": "dynamic",
+          "resolvable": false
+        }
+      ]
+    },
+    "NewRequestScreen@app\\(citizen)\\new-request.tsx:209": {
+      "element": {
+        "file": "app\\(citizen)\\new-request.tsx",
+        "line": 209
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.recordingText",
+          "file": "app\\(citizen)\\new-request.tsx",
+          "defLine": 265,
+          "properties": {
+            "fontSize": {
+              "line": 265,
+              "col": 58,
+              "endCol": 60,
+              "raw": "13"
+            },
+            "textAlign": {
+              "line": 265,
+              "col": 94,
+              "endCol": 102,
+              "raw": "\"center\""
+            }
+          }
+        }
+      ]
+    },
+    "NewRequestScreen@app\\(citizen)\\new-request.tsx:215": {
+      "element": {
+        "file": "app\\(citizen)\\new-request.tsx",
+        "line": 215
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.errorContainer",
+          "file": "app\\(citizen)\\new-request.tsx",
+          "defLine": 266,
+          "properties": {
+            "backgroundColor": {
+              "line": 266,
+              "col": 39,
+              "endCol": 48,
+              "raw": "\"#FEF2F2\""
+            },
+            "borderRadius": {
+              "line": 266,
+              "col": 64,
+              "endCol": 66,
+              "raw": "10"
+            },
+            "padding": {
+              "line": 266,
+              "col": 77,
+              "endCol": 79,
+              "raw": "12"
+            },
+            "flexDirection": {
+              "line": 266,
+              "col": 96,
+              "endCol": 101,
+              "raw": "\"row\""
+            },
+            "alignItems": {
+              "line": 266,
+              "col": 115,
+              "endCol": 123,
+              "raw": "\"center\""
+            },
+            "gap": {
+              "line": 266,
+              "col": 130,
+              "endCol": 131,
+              "raw": "8"
+            },
+            "borderWidth": {
+              "line": 266,
+              "col": 146,
+              "endCol": 147,
+              "raw": "1"
+            },
+            "borderColor": {
+              "line": 266,
+              "col": 162,
+              "endCol": 171,
+              "raw": "\"#FECACA\""
+            }
+          }
+        }
+      ]
+    },
+    "NewRequestScreen@app\\(citizen)\\new-request.tsx:217": {
+      "element": {
+        "file": "app\\(citizen)\\new-request.tsx",
+        "line": 217
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.errorText",
+          "file": "app\\(citizen)\\new-request.tsx",
+          "defLine": 267,
+          "properties": {
+            "fontSize": {
+              "line": 267,
+              "col": 59,
+              "endCol": 61,
+              "raw": "13"
+            },
+            "flex": {
+              "line": 267,
+              "col": 90,
+              "endCol": 91,
+              "raw": "1"
+            }
+          }
+        }
+      ]
+    },
+    "NewRequestScreen@app\\(citizen)\\new-request.tsx:223": {
+      "element": {
+        "file": "app\\(citizen)\\new-request.tsx",
+        "line": 223
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.errorContainer",
+          "file": "app\\(citizen)\\new-request.tsx",
+          "defLine": 266,
+          "properties": {
+            "backgroundColor": {
+              "line": 266,
+              "col": 39,
+              "endCol": 48,
+              "raw": "\"#FEF2F2\""
+            },
+            "borderRadius": {
+              "line": 266,
+              "col": 64,
+              "endCol": 66,
+              "raw": "10"
+            },
+            "padding": {
+              "line": 266,
+              "col": 77,
+              "endCol": 79,
+              "raw": "12"
+            },
+            "flexDirection": {
+              "line": 266,
+              "col": 96,
+              "endCol": 101,
+              "raw": "\"row\""
+            },
+            "alignItems": {
+              "line": 266,
+              "col": 115,
+              "endCol": 123,
+              "raw": "\"center\""
+            },
+            "gap": {
+              "line": 266,
+              "col": 130,
+              "endCol": 131,
+              "raw": "8"
+            },
+            "borderWidth": {
+              "line": 266,
+              "col": 146,
+              "endCol": 147,
+              "raw": "1"
+            },
+            "borderColor": {
+              "line": 266,
+              "col": 162,
+              "endCol": 171,
+              "raw": "\"#FECACA\""
+            }
+          }
+        }
+      ]
+    },
+    "NewRequestScreen@app\\(citizen)\\new-request.tsx:225": {
+      "element": {
+        "file": "app\\(citizen)\\new-request.tsx",
+        "line": 225
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.errorText",
+          "file": "app\\(citizen)\\new-request.tsx",
+          "defLine": 267,
+          "properties": {
+            "fontSize": {
+              "line": 267,
+              "col": 59,
+              "endCol": 61,
+              "raw": "13"
+            },
+            "flex": {
+              "line": 267,
+              "col": 90,
+              "endCol": 91,
+              "raw": "1"
+            }
+          }
+        }
+      ]
+    },
+    "NewRequestScreen@app\\(citizen)\\new-request.tsx:230": {
+      "element": {
+        "file": "app\\(citizen)\\new-request.tsx",
+        "line": 230
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.submitButton",
+          "file": "app\\(citizen)\\new-request.tsx",
+          "defLine": 268,
+          "properties": {
+            "borderRadius": {
+              "line": 268,
+              "col": 69,
+              "endCol": 71,
+              "raw": "14"
+            },
+            "paddingVertical": {
+              "line": 268,
+              "col": 90,
+              "endCol": 92,
+              "raw": "16"
+            },
+            "flexDirection": {
+              "line": 268,
+              "col": 109,
+              "endCol": 114,
+              "raw": "\"row\""
+            },
+            "alignItems": {
+              "line": 268,
+              "col": 128,
+              "endCol": 136,
+              "raw": "\"center\""
+            },
+            "justifyContent": {
+              "line": 268,
+              "col": 154,
+              "endCol": 162,
+              "raw": "\"center\""
+            },
+            "gap": {
+              "line": 268,
+              "col": 169,
+              "endCol": 170,
+              "raw": "8"
+            },
+            "marginTop": {
+              "line": 268,
+              "col": 183,
+              "endCol": 185,
+              "raw": "12"
+            }
+          }
+        },
+        {
+          "origin": "dynamic",
+          "resolvable": false
+        }
+      ]
+    },
+    "NewRequestScreen@app\\(citizen)\\new-request.tsx:244": {
+      "element": {
+        "file": "app\\(citizen)\\new-request.tsx",
+        "line": 244
+      },
+      "styles": [
+        {
+          "origin": "stylesheet",
+          "ref": "styles.submitText",
+          "file": "app\\(citizen)\\new-request.tsx",
+          "defLine": 270,
+          "properties": {
+            "fontSize": {
+              "line": 270,
+              "col": 60,
+              "endCol": 62,
+              "raw": "17"
+            }
+          }
+        }
+      ]
+    }
+  }
+}
