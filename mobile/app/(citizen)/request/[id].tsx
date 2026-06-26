@@ -78,10 +78,21 @@ export default function RequestDetailScreen() {
   }, [isSpeaking, currentRequest]);
 
   useEffect(() => {
-    return () => {
-      Speech.stop();
-    };
-  }, []);
+    if (!id) return;
+    fetchRequestById(id);
+
+    // Polling : vérifie toutes les 5 secondes si la réponse IA est disponible
+    const interval = setInterval(() => {
+      const state = useAppStore.getState();
+      if (state.currentRequest?.aiResponse) {
+        clearInterval(interval);
+        return;
+      }
+      fetchRequestById(id);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [id, fetchRequestById]);
 
   if (isLoadingRequests) {
     return (
