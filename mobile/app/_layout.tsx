@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { useAppStore } from "@/store/useAppStore";
+import { AppState, AppStateStatus } from "react-native";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -29,12 +30,31 @@ function AuthRedirect() {
 
 export default function RootLayout() {
   const [loaded, error] = useFonts(FontMap);
+  const restoreSession = useAppStore((s) => s.restoreSession);
 
   useEffect(() => {
     if (loaded || error) {
       SplashScreen.hideAsync();
     }
   }, [loaded, error]);
+
+  // Restaurer la session quand l'app revient en avant-plan
+  useEffect(() => {
+    const handleAppStateChange = (nextAppState: AppStateStatus) => {
+      if (nextAppState === 'active') {
+        restoreSession();
+      }
+    };
+
+    const subscription = AppState.addEventListener('change', handleAppStateChange);
+
+    // Restaurer la session au démarrage initial
+    restoreSession();
+
+    return () => {
+      subscription.remove();
+    };
+  }, [restoreSession]);
 
   if (!loaded && !error) {
     return null;

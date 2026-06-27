@@ -30,6 +30,7 @@ export interface AppState {
   fetchRequests: () => Promise<void>;
   fetchRequestById: (id: string) => Promise<void>;
   regenerateRequest: (id: string) => Promise<void>;
+  restoreSession: () => Promise<void>; // Restaurer la session et recharger les demandes
 
   // Utilitaires
   clearError: () => void;
@@ -115,6 +116,8 @@ export const useAppStore = create<AppState>()(
             isAuthenticated: true,
             isLoading: false,
           });
+          // Recharger les demandes après connexion réussie
+          get().fetchRequests();
         } catch (e: any) {
           set({ error: e.message, isLoading: false });
           throw e;
@@ -147,6 +150,8 @@ export const useAppStore = create<AppState>()(
             isAuthenticated: true,
             isLoading: false,
           });
+          // Recharger les demandes après inscription réussie
+          get().fetchRequests();
         } catch (e: any) {
           set({ error: e.message, isLoading: false });
           throw e;
@@ -258,15 +263,27 @@ export const useAppStore = create<AppState>()(
         }
       },
 
+      restoreSession: async () => {
+        const { user, isAuthenticated } = get();
+        if (isAuthenticated && user) {
+          // Recharger les demandes depuis le serveur
+          try {
+            await get().fetchRequests();
+          } catch (e) {
+            console.log('Impossible de recharger les demandes:', e);
+          }
+        }
+      },
+
       // --- UTILITAIRES ---
 
       clearError: () => set({ error: null }),
-      clearRequestError: () => set({ requestError: null, currentRequest: null }),
+      clearRequestError: () => set({ requestError: null, currentRequest: null, isLoadingRequests: false }),
     }),
     {
       name: 'ecitoyen-storage',
       storage: createJSONStorage(() => AsyncStorage),
-      partialize: (s) => ({ user: s.user, isAuthenticated: s.isAuthenticated }),
+      partialize: (s) => ({ user: s.user, isAuthenticated: s.isAuthenticated, requests: s.requests }),
     }
   )
 );
