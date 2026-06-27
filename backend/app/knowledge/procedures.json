@@ -26,10 +26,10 @@
       "nom": "Carte Nationale d'Identité (CNI)",
       "description": "Pièce d'identité officielle et obligatoire pour tout citoyen ivoirien âgé de 16 ans et plus, délivrée par l'ONECI.",
       "documents_requis": [
-        "Original de l'extrait d'acte de naissance datant de moins de 3 mois (ou extrait sécurisé)",
-        "Certificat de nationalité ivoirienne original",
-        "Reçu de paiement du droit de timbre ONECI (5 000 FCFA)",
-        "Justificatif de domicile (facture CIE/SODECI au nom du demandeur ou certificat de résidence)"
+        "Pièce d'identité de l'un des parents",
+        "Extrait de naissance",
+        "Certificat de nationalité datant de moins de 2 ans",
+        "Quittance ONECI (5 000 FCFA)"
       ],
       "lieu": "Centres d'enrôlement de l'ONECI, commissariats de police désignés, ou sous-préfectures",
       "delai_legal": "Variable selon le traitement, généralement 2 à 4 semaines après l'enrôlement",
@@ -41,15 +41,51 @@
       }
     },
     "cnps_allocations": {
-      "nom": "Allocations familiales CNPS",
+      "nom": "Allocation Familiale CNPS",
+      "organisme": "CNPS",
       "description": "Prestation sociale payée par la Caisse Nationale de Prévoyance Sociale (CNPS) aux travailleurs salariés pour leurs enfants à charge.",
-      "documents_requis": [
-        "Formulaire de demande de prestations familiales dûment rempli et signé par l'employeur et l'employé",
-        "Extraits d'acte de naissance de chaque enfant à charge (datant de moins de 3 mois)",
-        "Certificats de vie et d'entretien pour chaque enfant de moins de 15 ans",
-        "Certificats de scolarité pour les enfants scolarisés âgés de 5 à 21 ans",
-        "Dernier bulletin de salaire ou attestation de travail récent de l'assuré",
-        "Relevé d'Identité Bancaire (RIB) pour le virement direct"
+      "documents_requis": {
+        "assure": [
+          "Demande de prestations familiales (formulaire à retirer à la CNPS)",
+          "Extrait d'acte de naissance ou jugement supplétif",
+          "Extrait d'acte de mariage",
+          "Attestation de travail précisant : la date d'embauche, la profession, le numéro CNPS du salarié, le numéro CNPS de l'employeur, le nom et les prénoms du signataire, la qualité du signataire, valable 6 mois, à fournir deux fois par an",
+          "Deux photos d'identité récentes du même tirage",
+          "Photocopie de la pièce d'identité"
+        ],
+        "conjoint": [
+          "Extrait d'acte de naissance ou jugement supplétif",
+          "Attestation de travail",
+          "Attestation de non-paiement des allocations familiales délivrée par la Direction de la Solde (si le conjoint est fonctionnaire)",
+          "Deux photos d'identité récentes",
+          "Photocopie de la pièce d'identité"
+        ],
+        "grossesse": [
+          "Certificat de grossesse du 3ᵉ mois",
+          "Certificat de grossesse du 6ᵉ mois",
+          "Certificat de grossesse du 7ᵉ mois et demi",
+          "Certificat médical d'accouchement ou photocopie légalisée/cachetée du carnet de santé",
+          "Extrait d'acte de naissance de l'enfant établi dans les 3 mois suivant la naissance",
+          "Certificats médicaux des visites obligatoires à : 2 mois, 4 mois, 6 mois, 8 mois, 10 mois, 12 mois ou photocopie légalisée/cachetée du carnet de santé"
+        ],
+        "enfants": [
+          "Extrait d'acte de naissance",
+          "Certificat médical annuel pour les enfants de 1 à 14 ans non scolarisés",
+          "Attestation de fréquentation scolaire (moins de 21 ans)",
+          "Certificat de vie et d'entretien",
+          "Certificat d'inaptitude permanent (si applicable)",
+          "Certificat d'apprentissage (si applicable)"
+        ],
+        "cas_particuliers": [
+          "Pour les chômeurs : Lettre de licenciement ou certificat de travail et Attestation de chômage valable 6 mois",
+          "Pour une femme salariée célibataire ayant un enfant à charge : Ordonnance de puissance paternelle délivrée par la justice"
+        ]
+      },
+      "notes": [
+        "Fournir les originaux des pièces d'état civil demandées.",
+        "Les attestations de travail sont valables six mois.",
+        "Certaines pièces doivent être renouvelées chaque année ou à chaque rentrée scolaire.",
+        "Les certificats médicaux doivent être délivrés conformément aux exigences de la CNPS."
       ],
       "lieu": "Agence CNPS la plus proche du lieu de travail ou du domicile du demandeur",
       "delai_legal": "Traitement sous 30 à 60 jours après le dépôt complet du dossier",
@@ -60,14 +96,11 @@
       }
     },
     "cmu_inscription": {
-      "nom": "Inscription à la Couverture Maladie Universelle (CMU)",
+      "nom": "CMU",
       "description": "Système obligatoire de couverture sociale contre le risque maladie destiné à tous les résidents en Côte d'Ivoire, géré par la CNAM.",
       "documents_requis": [
-        "Formulaire d'enrôlement CNAM dument rempli",
-        "Copie de la Carte Nationale d'Identité (CNI) ou du Passeport pour les ivoiriens",
-        "Copie de la carte consulaire, carte de résident ou passeport avec visa valide pour les non-nationaux",
-        "Extrait d'acte de naissance original ou copie certifiée conforme pour les mineurs",
-        "Reçu de paiement du droit d'enrôlement ou preuve de cotisation"
+        "Photocopie de la pièce d'identité",
+        "Si le demandeur est un élève : photocopie de la pièce d'identité de l'un des parents ou carte scolaire"
       ],
       "lieu": "Points d'enrôlement de la CNAM (Mairies, agences CNAM, hôpitaux généraux, ou préfectures)",
       "delai_legal": "Immédiat pour l'enrôlement ; production de la carte CMU sous 1 à 3 mois",
@@ -79,20 +112,89 @@
     },
     "certificat_nationalite": {
       "nom": "Certificat de nationalité ivoirienne",
+      "organisme": "Tribunal",
       "description": "Document officiel prouvant l'appartenance juridique d'un individu à l'État de Côte d'Ivoire, délivré par les autorités judiciaires.",
-      "documents_requis": [
-        "Extrait d'acte de naissance original du demandeur datant de moins de 3 mois",
-        "Extrait d'acte de naissance du parent (père ou mère) par lequel la nationalité est revendiquée",
-        "Certificat de nationalité ou Carte Nationale d'Identité (CNI) du parent de nationalité ivoirienne",
-        "Timbre fiscal de 2 000 FCFA (à apposer sur la demande)"
+      "cout": {
+        "montant": "2500 FCFA",
+        "timbre_fiscal": "500 FCFA"
+      },
+      "documents_requis": {
+        "cas_general": [
+          "Fiche de demande (requête pour l'établissement du certificat de nationalité)",
+          "Original de l'extrait d'acte de naissance",
+          "Photocopie de la Carte Nationale d'Identité de l'un des parents"
+        ],
+        "par_filiation": [
+          "Original de l'extrait d'acte de naissance",
+          "Preuve de la nationalité ivoirienne du père ou de la mère : Certificat de nationalité ivoirienne ou Carte Nationale d'Identité"
+        ],
+        "par_acquisition_parent": [
+          "Extrait d'acte de naissance",
+          "Copie du document ayant permis au parent d'acquérir la nationalité ivoirienne : Décret de naturalisation, Certificat d'acquisition, ou Attestation d'acquisition par mariage"
+        ],
+        "enfant_trouve": [
+          "Extrait d'acte de naissance sans mention des parents",
+          "Ordonnance du juge reconnaissant la qualité d'enfant trouvé"
+        ],
+        "par_adoption": [
+          "Original de l'extrait d'acte de naissance",
+          "Jugement d'adoption ou jugement de légitimation adoptive",
+          "Certificat de nationalité ou Carte Nationale d'Identité d'un parent adoptif ivoirien"
+        ],
+        "par_mariage": [
+          "Extrait d'acte de mariage ou livret de famille",
+          "Certificat de nationalité ou Carte Nationale d'Identité du conjoint ivoirien",
+          "Attestation de non-déclination de la nationalité ivoirienne",
+          "Attestation de non-opposition ou de non-déchéance (si nécessaire)",
+          "Attestation d'absence d'arrêté d'expulsion (pour le conjoint étranger)"
+        ],
+        "par_declaration": [
+          "Extrait d'acte de naissance",
+          "Certificat ou attestation d'acquisition de la nationalité délivré par le Ministère de la Justice"
+        ],
+        "par_naturalisation": [
+          "Extrait d'acte de naissance",
+          "Décret de naturalisation ou attestation du Ministère de la Justice"
+        ],
+        "par_reintegration": [
+          "Extrait d'acte de naissance",
+          "Décret ou attestation de réintégration délivré par le Ministère de la Justice"
+        ]
+      },
+      "notes": [
+        "Les originaux des actes d'état civil peuvent être exigés.",
+        "Les documents à fournir dépendent du mode d'acquisition de la nationalité.",
+        "Si l'usager ne connaît pas son cas (filiation, mariage, naturalisation, etc.), l'agent IA doit commencer par lui demander comment il a obtenu la nationalité ivoirienne avant d'afficher la liste des documents."
       ],
       "lieu": "Tribunal de Première Instance (TPI) ou Section de Tribunal du lieu de naissance du demandeur",
       "delai_legal": "Délai de délivrance généralement compris entre 1 et 3 semaines selon l'affluence du tribunal",
-      "cout": "Environ 3 000 à 5 000 FCFA (incluant les frais de greffe locaux et le timbre fiscal de 2 000 FCFA)",
       "cas_particuliers": {
         "naissance_a_letranger": "Pour les ivoiriens nés à l'étranger, la demande doit être adressée directement au Tribunal de Première Instance d'Abidjan (Plateau).",
         "nationalite_par_mariage": "Nécessite la présentation de l'acte de mariage enregistré à l'état civil ivoirien datant de plus de 2 ans, et du certificat de nationalité du conjoint d'origine."
       }
+    },
+    "etudiant": {
+      "nom": "Étudiant",
+      "description": "Statut d'étudiant pour les démarches administratives scolaires et universitaires.",
+      "documents_requis": [
+        "Photocopie de la pièce d'identité",
+        "Fiche d'inscription OU certificat de fréquentation"
+      ]
+    },
+    "declaration_naissance": {
+      "nom": "Déclaration de naissance",
+      "description": "Démarche pour déclarer la naissance d'un nouveau-né auprès de l'état civil.",
+      "documents_requis": [
+        "Photocopie de la pièce d'identité de l'un des parents OU photocopie de son extrait de naissance",
+        "Projet de naissance (fiche disponible à la mairie à renseigner)"
+      ]
+    },
+    "acte_mariage": {
+      "nom": "Acte de mariage",
+      "description": "Document officiel attestant l'union légale entre deux conjoints.",
+      "documents_requis": [
+        "À compléter ultérieurement (couple légal)"
+      ]
     }
   },
   "_dependances": {
