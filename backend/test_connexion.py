@@ -1,3 +1,4 @@
+import os
 from dotenv import load_dotenv
 
 # Le monkey-patch doit être appliqué AVANT toute exécution de crew,
@@ -14,7 +15,7 @@ agent_test = Agent(
     role="Assistant administratif",
     goal="Répondre brièvement à une question simple sur les démarches administratives en Côte d'Ivoire",
     backstory="Tu es un agent IA de test pour valider la connexion technique du projet e-Citoyen CI.",
-    llm=LLM(model="gemini/gemini-1.5-flash", api_key=os.getenv("GEMINI_API_KEY")),
+    llm=LLM(model="gemini/gemini-2.5-flash", api_key=os.getenv("GEMINI_API_KEY")),
     verbose=True
 )
 
