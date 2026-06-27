@@ -42,61 +42,61 @@ const getActionIcon = (action: string) => {
   switch (action) {
     case "LOGIN":
       return (
-        <div className="p-2.5 rounded-xl bg-indigo-50 border border-indigo-100 flex items-center justify-center">
+        <div className="p-2.5 rounded-xl bg-indigo-50 border border-indigo-100 flex items-center justify-center shrink-0">
           <LogIn className={`${iconClass} text-indigo-600`} />
         </div>
       );
     case "LOGOUT":
       return (
-        <div className="p-2.5 rounded-xl bg-gray-100 border border-gray-200 flex items-center justify-center">
+        <div className="p-2.5 rounded-xl bg-gray-100 border border-gray-200 flex items-center justify-center shrink-0">
           <LogOut className={`${iconClass} text-gray-600`} />
         </div>
       );
     case "CREATE_REQUEST":
       return (
-        <div className="p-2.5 rounded-xl bg-green-50 border border-green-100 flex items-center justify-center">
+        <div className="p-2.5 rounded-xl bg-green-50 border border-green-100 flex items-center justify-center shrink-0">
           <Sparkles className={`${iconClass} text-green-600`} />
         </div>
       );
     case "UPDATE_REQUEST":
       return (
-        <div className="p-2.5 rounded-xl bg-amber-50 border border-amber-100 flex items-center justify-center">
+        <div className="p-2.5 rounded-xl bg-amber-50 border border-amber-100 flex items-center justify-center shrink-0">
           <Edit3 className={`${iconClass} text-amber-600`} />
         </div>
       );
     case "DELETE_REQUEST":
       return (
-        <div className="p-2.5 rounded-xl bg-rose-50 border border-rose-100 flex items-center justify-center">
+        <div className="p-2.5 rounded-xl bg-rose-50 border border-rose-100 flex items-center justify-center shrink-0">
           <Trash2 className={`${iconClass} text-rose-600`} />
         </div>
       );
     case "VALIDATE_REQUEST":
       return (
-        <div className="p-2.5 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center">
+        <div className="p-2.5 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center shrink-0">
           <UserCheck className={`${iconClass} text-emerald-600`} />
         </div>
       );
     case "OPEN_DETAILS":
       return (
-        <div className="p-2.5 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center">
+        <div className="p-2.5 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center shrink-0">
           <Eye className={`${iconClass} text-blue-600`} />
         </div>
       );
     case "DOWNLOAD":
       return (
-        <div className="p-2.5 rounded-xl bg-teal-50 border border-teal-100 flex items-center justify-center">
+        <div className="p-2.5 rounded-xl bg-teal-50 border border-teal-100 flex items-center justify-center shrink-0">
           <Download className={`${iconClass} text-teal-600`} />
         </div>
       );
     case "NAVIGATE":
       return (
-        <div className="p-2.5 rounded-xl bg-cyan-50 border border-cyan-100 flex items-center justify-center">
+        <div className="p-2.5 rounded-xl bg-cyan-50 border border-cyan-100 flex items-center justify-center shrink-0">
           <Compass className={`${iconClass} text-cyan-600`} />
         </div>
       );
     default:
       return (
-        <div className="p-2.5 rounded-xl bg-slate-100 border border-slate-200 flex items-center justify-center">
+        <div className="p-2.5 rounded-xl bg-slate-100 border border-slate-200 flex items-center justify-center shrink-0">
           <Clock className={`${iconClass} text-slate-600`} />
         </div>
       );
@@ -365,8 +365,8 @@ export default function History() {
                         className="hover:shadow-md transition-all duration-200 border-border bg-white active:scale-[0.99] cursor-pointer"
                         onClick={() => setSelectedItem(item)}
                       >
-                        <CardContent className="p-4 flex items-center justify-between gap-4">
-                          <div className="flex items-center gap-3.5 flex-1 min-w-0">
+                        <CardContent className="p-3 sm:p-4 flex items-center justify-between gap-2 sm:gap-4">
+                          <div className="flex items-center gap-2.5 sm:gap-3.5 flex-1 min-w-0">
                             {/* Action Icon */}
                             {getActionIcon(item.action)}
 
@@ -386,19 +386,19 @@ export default function History() {
                             </div>
                           </div>
 
-                          <div className="flex items-center gap-2">
+                          <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
                             {/* Status Bullet */}
-                            <span className={`w-2.5 h-2.5 rounded-full ${
+                            <span className={`w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full ${
                               isSuccess ? "bg-emerald-500 shadow-emerald-200/50" :
                               isFailed ? "bg-rose-500 shadow-rose-200/50" :
                               "bg-amber-500 shadow-amber-200/50"
                             } shadow-sm`} />
 
-                            <div className="flex items-center gap-1 border-l border-slate-100 pl-2">
+                            <div className="flex items-center gap-0.5 sm:gap-1 border-l border-slate-100 pl-1.5 sm:pl-2">
                               <Button
                                 variant="ghost"
                                 size="icon"
-                                className="w-8 h-8 rounded-full text-slate-400 hover:text-rose-600 hover:bg-rose-50/50 active:scale-90 transition-transform"
+                                className="w-8 h-8 p-0 rounded-full text-slate-400 hover:text-rose-600 hover:bg-rose-50/50 active:scale-90 transition-transform flex items-center justify-center shrink-0"
                                 onClick={(e) => handleDeleteItem(item.id, e)}
                               >
                                 <Trash2 className="w-4 h-4" />
