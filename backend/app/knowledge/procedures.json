@@ -1,206 +1,1461 @@
 {
   "_meta": {
-    "statut": "DONNÉES OFFICIELLES - Procédures administratives de la République de Côte d'Ivoire",
-    "derniere_maj": "2026-06-25"
+    "statut": "DONNÉES OFFICIELLES ET LIÉES - Procédures administratives de la République de Côte d'Ivoire",
+    "derniere_maj": "2026-06-27"
   },
   "demarches": {
-    "acte_naissance": {
-      "nom": "Acte de naissance",
-      "description": "Document officiel attestant la naissance d'une personne physique en Côte d'Ivoire.",
-      "documents_requis": [
-        "Déclaration de naissance faite par les parents ou un témoin",
-        "Certificat médical d'accouchement (délivré par l'établissement sanitaire ou la sage-femme)",
-        "Pièce d'identité du déclarant (CNI, Passeport ou Carte Consulaire)",
-        "Acte de mariage des parents (si mariés légalement)"
-      ],
-      "lieu": "Mairie ou sous-préfecture du lieu de naissance de l'enfant",
-      "delai_legal": "3 mois (90 jours) après la naissance pour une déclaration gratuite",
-      "cout": "Gratuit dans le délai légal de 3 mois, sinon soumis à une procédure de jugement supplétif",
-      "cas_particuliers": {
-        "acte_perdu": "Nécessite l'obtention d'un jugement supplétif au Tribunal de Première Instance du lieu de naissance, avec comparution de deux témoins.",
-        "naissance_hors_mariage": "La reconnaissance paternelle volontaire est nécessaire si le père n'est pas marié à la mère, par déclaration conjointe ou acte notarié.",
-        "declaration_hors_delai": "Au-delà du délai légal de 3 mois, les parents doivent saisir le Tribunal de Première Instance pour obtenir un jugement supplétif de naissance."
-      }
-    },
     "cni": {
-      "nom": "Carte Nationale d'Identité (CNI)",
-      "description": "Pièce d'identité officielle et obligatoire pour tout citoyen ivoirien âgé de 16 ans et plus, délivrée par l'ONECI.",
-      "documents_requis": [
-        "Pièce d'identité de l'un des parents",
-        "Extrait de naissance",
-        "Certificat de nationalité datant de moins de 2 ans",
-        "Quittance ONECI (5 000 FCFA)"
-      ],
-      "lieu": "Centres d'enrôlement de l'ONECI, commissariats de police désignés, ou sous-préfectures",
-      "delai_legal": "Variable selon le traitement, généralement 2 à 4 semaines après l'enrôlement",
-      "cout": "5 000 FCFA pour le droit de timbre officiel fixé par l'ONECI",
-      "cas_particuliers": {
-        "acte_naissance_perdu": "La CNI ne peut pas être demandée sans acte de naissance valide. Il faut d'abord obtenir un jugement supplétif (voir démarche acte_naissance, cas_particulier acte_perdu) avant de poursuivre la demande de CNI.",
-        "premiere_demande": "Le demandeur doit obligatoirement fournir son certificat de nationalité d'origine et son extrait d'acte de naissance sécurisé.",
-        "renouvellement": "Présentation de l'ancienne CNI, d'un extrait de naissance sécurisé et du reçu d'achat du timbre d'enrôlement (5 000 FCFA)."
-      }
-    },
-    "cnps_allocations": {
-      "nom": "Allocation Familiale CNPS",
-      "organisme": "CNPS",
-      "description": "Prestation sociale payée par la Caisse Nationale de Prévoyance Sociale (CNPS) aux travailleurs salariés pour leurs enfants à charge.",
-      "documents_requis": {
-        "assure": [
-          "Demande de prestations familiales (formulaire à retirer à la CNPS)",
-          "Extrait d'acte de naissance ou jugement supplétif",
-          "Extrait d'acte de mariage",
-          "Attestation de travail précisant : la date d'embauche, la profession, le numéro CNPS du salarié, le numéro CNPS de l'employeur, le nom et les prénoms du signataire, la qualité du signataire, valable 6 mois, à fournir deux fois par an",
-          "Deux photos d'identité récentes du même tirage",
-          "Photocopie de la pièce d'identité"
-        ],
-        "conjoint": [
-          "Extrait d'acte de naissance ou jugement supplétif",
-          "Attestation de travail",
-          "Attestation de non-paiement des allocations familiales délivrée par la Direction de la Solde (si le conjoint est fonctionnaire)",
-          "Deux photos d'identité récentes",
-          "Photocopie de la pièce d'identité"
-        ],
-        "grossesse": [
-          "Certificat de grossesse du 3ᵉ mois",
-          "Certificat de grossesse du 6ᵉ mois",
-          "Certificat de grossesse du 7ᵉ mois et demi",
-          "Certificat médical d'accouchement ou photocopie légalisée/cachetée du carnet de santé",
-          "Extrait d'acte de naissance de l'enfant établi dans les 3 mois suivant la naissance",
-          "Certificats médicaux des visites obligatoires à : 2 mois, 4 mois, 6 mois, 8 mois, 10 mois, 12 mois ou photocopie légalisée/cachetée du carnet de santé"
-        ],
-        "enfants": [
-          "Extrait d'acte de naissance",
-          "Certificat médical annuel pour les enfants de 1 à 14 ans non scolarisés",
-          "Attestation de fréquentation scolaire (moins de 21 ans)",
-          "Certificat de vie et d'entretien",
-          "Certificat d'inaptitude permanent (si applicable)",
-          "Certificat d'apprentissage (si applicable)"
-        ],
-        "cas_particuliers": [
-          "Pour les chômeurs : Lettre de licenciement ou certificat de travail et Attestation de chômage valable 6 mois",
-          "Pour une femme salariée célibataire ayant un enfant à charge : Ordonnance de puissance paternelle délivrée par la justice"
-        ]
+      "id": "cni_enrolement_oneci",
+      "titre": "Demande et enrôlement pour la Carte Nationale d'Identité (CNI)",
+      "categorie": "Identité",
+      "sous_categorie": "CNI",
+      "description": "Procédure d'obtention de la Carte Nationale d'Identité ivoirienne biométrique officielle délivrée par l'ONECI.",
+      "evenement_declencheur": "Atteinte de l'âge de la majorité civile (16 ans), expiration de l'ancienne carte, perte, vol ou détérioration.",
+      "procedures_liees": ["acte_naissance", "certificat_nationalite"],
+      "institution": {
+        "institution": "Office National de l'État Civil et de l'Identité (ONECI)",
+        "organisme": "ONECI",
+        "guichet": "Centres d'enrôlement ONECI (présents dans les mairies, sous-préfectures et commissariats)",
+        "adresse": "Siège ONECI : Abidjan, Plateau / Centres locaux répartis sur tout le territoire national",
+        "ville": "Abidjan (Siège) / Toutes les localités",
+        "horaires": "Lundi–Vendredi 8h–16h (variable selon certains centres spécifiques)",
+        "telephone": "À vérifier (Numéro de téléphone d'assistance direct ou call-center officiel de l'ONECI à confirmer)",
+        "email": "",
+        "site_web": "https://www.oneci.ci"
       },
-      "notes": [
-        "Fournir les originaux des pièces d'état civil demandées.",
-        "Les attestations de travail sont valables six mois.",
-        "Certaines pièces doivent être renouvelées chaque année ou à chaque rentrée scolaire.",
-        "Les certificats médicaux doivent être délivrés conformément aux exigences de la CNPS."
+      "cout": {
+        "gratuit": false,
+        "montant": "5000",
+        "devise": "FCFA",
+        "notes": "Timbre d'enrôlement unique payable en ligne ou dans les banques partenaires (NSIA, BNI, etc.).",
+        "source": "oneci.ci / servicepublic.gouv.ci"
+      },
+      "delais": {
+        "delai_legal": "Obligatoire dès l'âge de 16 ans.",
+        "duree_traitement": "Variable (généralement plusieurs semaines à quelques mois après l'enrôlement physique).",
+        "resultat": "Carte Nationale d'Identité (CNI) biométrique officielle.",
+        "validite": "10 ans"
+      },
+      "documents": [
+        {
+          "nom": "Reçu d'achat du timbre d'enrôlement (5 000 FCFA)",
+          "obligatoire": true,
+          "conditionnel": false,
+          "description": "Reçu imprimé après paiement en ligne ou en banque.",
+          "validite": "Permanent pour la demande en cours",
+          "remarques": ""
+        },
+        {
+          "nom": "Extrait d'acte de naissance",
+          "obligatoire": true,
+          "conditionnel": false,
+          "description": "Datant de moins de 6 mois ou original de l'extrait sécurisé.",
+          "validite": "Moins de 6 mois",
+          "remarques": "Doit être sécurisé."
+        },
+        {
+          "nom": "Certificat de nationalité ivoirienne",
+          "obligatoire": true,
+          "conditionnel": false,
+          "description": "Document original délivré par les tribunaux.",
+          "validite": "Permanent sauf modification de la loi",
+          "remarques": "Délivré par le tribunal de naissance."
+        },
+        {
+          "nom": "Ancienne CNI",
+          "obligatoire": false,
+          "conditionnel": true,
+          "description": "Obligatoire uniquement s'il s'agit d'un renouvellement pour expiration.",
+          "validite": "Expirée",
+          "remarques": "À restituer lors de l'enrôlement."
+        },
+        {
+          "nom": "Certificat de perte ou de vol",
+          "obligatoire": false,
+          "conditionnel": true,
+          "description": "Obligatoire uniquement en cas de renouvellement pour perte ou vol.",
+          "validite": "Récent",
+          "remarques": "Délivré par le commissariat de police ou la brigade de gendarmerie."
+        }
       ],
-      "lieu": "Agence CNPS la plus proche du lieu de travail ou du domicile du demandeur",
-      "delai_legal": "Traitement sous 30 à 60 jours après le dépôt complet du dossier",
-      "cout": "Gratuit (service public obligatoire pour les salariés déclarés)",
-      "cas_particuliers": {
-        "deces_allocataire": "Le conjoint survivant non salarié peut demander le transfert des prestations familiales à son nom en fournissant l'acte de décès et un certificat de tutelle.",
-        "enfant_invalide": "L'allocation peut être prolongée au-delà de 21 ans si l'enfant est atteint d'une infirmité physique ou mentale permanente empêchant son autonomie."
+      "etapes": [
+        "1. Achat du timbre d'enrôlement de 5 000 FCFA en ligne sur le portail de l'ONECI ou dans une banque partenaire agréée.",
+        "2. Rassemblement des pièces justificatives physiques requises (Acte de naissance, Certificat de nationalité, etc.).",
+        "3. Présentation physique du demandeur dans un centre d'enrôlement ONECI de son choix pour la capture des données biométriques (empreintes et photo).",
+        "4. Remise d'un récépissé d'enrôlement comportant un numéro de suivi unique.",
+        "5. Suivi du statut de production de la carte en ligne sur la plateforme ONECI.",
+        "6. Retrait de la CNI physique dans le centre d'enrôlement initial sur présentation du récépissé."
+      ],
+      "cas_particuliers": [
+        {
+          "situation": "Perte ou Vol de la CNI",
+          "impact": "Nécessité de fournir un certificat de perte ou de vol légal délivré par un commissariat ou une brigade de gendarmerie avant de procéder à un nouvel enrôlement.",
+          "procedure_liee": "declaration_perte_police",
+          "remarques": "Doit être fait immédiatement après le constat de la perte."
+        },
+        {
+          "situation": "Changement de nom ou de statut matrimonial (Mariage/Divorce)",
+          "impact": "Joindre obligatoirement l'acte de mariage ou le jugement de divorce pour la mise à jour des données.",
+          "procedure_liee": "actes_etat_civil",
+          "remarques": "Permet de porter le nom d'épouse sur la nouvelle carte."
+        }
+      ],
+      "sources": {
+        "source_principale": "https://www.oneci.ci",
+        "source_secondaire": "https://servicepublic.gouv.ci",
+        "date_de_verification": "27/06/2026",
+        "informations_a_verifier": "Numéro de téléphone d'assistance direct ou call-center officiel de l'ONECI à confirmer",
+        "statut_de_verification": "Complet",
+        "verifie_par": "Mojaveli Smith"
+      },
+      "metadata": {
+        "version": "1.0",
+        "date_import": "2026-06-27",
+        "derniere_mise_a_jour": "2026-06-27",
+        "qualite_des_donnees": "Excellente",
+        "niveau_de_confiance": "Élevé"
       }
     },
-    "cmu_inscription": {
-      "nom": "CMU",
-      "description": "Système obligatoire de couverture sociale contre le risque maladie destiné à tous les résidents en Côte d'Ivoire, géré par la CNAM.",
-      "documents_requis": [
-        "Photocopie de la pièce d'identité",
-        "Si le demandeur est un élève : photocopie de la pièce d'identité de l'un des parents ou carte scolaire"
+    "casier_judiciaire": {
+      "id": "casier_judiciaire_ejustice",
+      "titre": "Demande en ligne du Casier Judiciaire (Bulletin n°3)",
+      "categorie": "Justice",
+      "sous_categorie": "Justice",
+      "description": "Demande et délivrance du Bulletin n°3 du Casier Judiciaire de manière dématérialisée sur le portail e-justice.ci.",
+      "evenement_declencheur": "Constitution d'un dossier administratif, candidature à un concours, embauche professionnelle, ou demande de visa.",
+      "procedures_liees": ["acte_naissance"],
+      "institution": {
+        "institution": "Ministère de la Justice et des Droits de l'Homme",
+        "organisme": "Administration Judiciaire",
+        "guichet": "Portail numérique de l'administration judiciaire / Tribunal de première instance du lieu de naissance",
+        "adresse": "Tribunaux de Côte d'Ivoire (selon la localité de naissance)",
+        "ville": "Variable selon le lieu de naissance",
+        "horaires": "En ligne : 24h/24, 7j/7. Retrait au tribunal : Lundi–Vendredi 8h–12h et 13h–16h",
+        "telephone": "NULL",
+        "email": "",
+        "site_web": "https://www.e-justice.ci"
+      },
+      "cout": {
+        "gratuit": false,
+        "montant": "2500",
+        "devise": "FCFA",
+        "notes": "Paiement électronique intégré sur la plateforme (via Mobile Money ou carte bancaire). Des frais de service d'opérateur mobile de l'ordre de 100 à 200 FCFA peuvent s'ajouter.",
+        "source": "e-justice.ci / servicepublic.gouv.ci"
+      },
+      "delais": {
+        "delai_legal": "Aucun délai de dépôt requis par la loi.",
+        "duree_traitement": "48 heures à 72 heures ouvrables en moyenne après validation du paiement.",
+        "resultat": "Bulletin n°3 du Casier Judiciaire signé.",
+        "validite": "3 mois (90 jours) à compter de sa date de délivrance"
+      },
+      "documents": [
+        {
+          "nom": "Copie numérique de l'Extrait d'acte de naissance",
+          "obligatoire": true,
+          "conditionnel": false,
+          "description": "À télécharger (format PDF, JPEG ou PNG) sur la plateforme.",
+          "validite": "Lisible et complet",
+          "remarques": ""
+        },
+        {
+          "nom": "Copie numérique d'une pièce d'identité (CNI ou Passeport)",
+          "obligatoire": true,
+          "conditionnel": false,
+          "description": "En cours de validité, à charger sur le site pour vérification de l'identité.",
+          "validite": "En cours de validité",
+          "remarques": ""
+        },
+        {
+          "nom": "Formulaire de demande en ligne renseigné",
+          "obligatoire": true,
+          "conditionnel": false,
+          "description": "Rempli directement à l'écran sur le portail d'enrôlement.",
+          "validite": "Permanent pour la demande en cours",
+          "remarques": ""
+        }
       ],
-      "lieu": "Points d'enrôlement de la CNAM (Mairies, agences CNAM, hôpitaux généraux, ou préfectures)",
-      "delai_legal": "Immédiat pour l'enrôlement ; production de la carte CMU sous 1 à 3 mois",
-      "cout": "Cotisation mensuelle obligatoire de 1 000 FCFA par personne.",
-      "cas_particuliers": {
-        "indigent": "Les personnes reconnues comme indigentes par le Ministère des Affaires Sociales sont exonérées du paiement de la cotisation mensuelle.",
-        "perte_carte": "En cas de perte, un duplicata de carte peut être obtenu dans un centre CNAM agréé contre paiement de frais administratifs de 2 000 FCFA."
+      "etapes": [
+        "1. Connexion sur le portail officiel de la justice via l'adresse e-justice.ci et création d'un compte citoyen (si premier accès).",
+        "2. Sélection du service 'Demande de Casier Judiciaire' et remplissage du formulaire électronique avec les informations personnelles conformes à l'état civil.",
+        "3. Téléchargement (upload) des pièces justificatives demandées (extrait de naissance et pièce d'identité scannés).",
+        "4. Paiement en ligne des frais de délivrance (2 500 FCFA) par le canal de paiement électronique de son choix (TrésorPay, Mobile Money).",
+        "5. Réception d'une notification de validation par SMS ou e-mail contenant le code de suivi et la date de disponibilité.",
+        "6. Présentation physique au tribunal indiqué (lieu de naissance ou guichet d'Abidjan selon l'option choisie) muni de la pièce d'identité d'origine pour retirer le document physique imprimé."
+      ],
+      "cas_particuliers": [
+        {
+          "situation": "Personnes nées à l'étranger (ivoiriennes ou étrangères ayant résidé en CI)",
+          "impact": "La demande doit obligatoirement être adressée au Casier Judiciaire Central situé au Ministère de la Justice à Abidjan (Plateau), et non dans un tribunal régional.",
+          "procedure_liee": "",
+          "remarques": "Délai de traitement éventuellement rallongé."
+        },
+        {
+          "situation": "Personnes ayant fait l'objet d'une condamnation antérieure (Réhabilitation)",
+          "impact": "Le casier ne sera pas vierge sauf si une procédure légale de réhabilitation a été prononcée et enregistrée par le greffe.",
+          "procedure_liee": "demande_rehabilitation_justice",
+          "remarques": ""
+        }
+      ],
+      "sources": {
+        "source_principale": "https://www.e-justice.ci",
+        "source_secondaire": "https://servicepublic.gouv.ci",
+        "date_de_verification": "27/06/2026",
+        "informations_a_verifier": "Numéro vert d'assistance de la plateforme e-justice à confirmer.",
+        "statut_de_verification": "Complet",
+        "verifie_par": "Mojaveli Smith"
+      },
+      "metadata": {
+        "version": "1.0",
+        "date_import": "2026-06-27",
+        "derniere_mise_a_jour": "2026-06-27",
+        "qualite_des_donnees": "Excellente",
+        "niveau_de_confiance": "Élevé"
       }
     },
     "certificat_nationalite": {
-      "nom": "Certificat de nationalité ivoirienne",
-      "organisme": "Tribunal",
-      "description": "Document officiel prouvant l'appartenance juridique d'un individu à l'État de Côte d'Ivoire, délivré par les autorités judiciaires.",
+      "id": "certificat_nationalite_ejustice",
+      "titre": "Demande en ligne du Certificat de Nationalité Ivoirienne",
+      "categorie": "Identité / Justice",
+      "sous_categorie": "Nationalité",
+      "description": "Obtention légale du certificat officiel prouvant la nationalité ivoirienne, délivré en ligne ou au tribunal.",
+      "evenement_declencheur": "Établissement d'un premier dossier d'identité (CNI, Passeport), inscription à un concours de la Fonction Publique, ou constitution de dossiers officiels.",
+      "procedures_liees": ["acte_naissance", "cni"],
+      "institution": {
+        "institution": "Ministère de la Justice et des Droits de l'Homme",
+        "organisme": "Tribunaux de Côte d'Ivoire",
+        "guichet": "Portail numérique de l'administration judiciaire (e-justice.ci) / Tribunal de Première Instance ou Section de Tribunal du lieu de naissance",
+        "adresse": "Greffe du tribunal compétent selon la localité de naissance",
+        "ville": "Variable selon le lieu de naissance",
+        "horaires": "En ligne : 24h/24, 7j/7. Retrait au tribunal : Lundi–Vendredi 8h–12h et 13h–16h",
+        "telephone": "À confirmer",
+        "email": "",
+        "site_web": "https://www.e-justice.ci"
+      },
       "cout": {
-        "montant": "2500 FCFA",
-        "timbre_fiscal": "500 FCFA"
+        "gratuit": false,
+        "montant": "3000",
+        "devise": "FCFA",
+        "notes": "Montant de base légal pour le droit de timbre et d'établissement. Des frais techniques minimes liés au paiement Mobile Money ou bancaire s'appliquent lors de la transaction en ligne.",
+        "source": "e-justice.ci / servicepublic.gouv.ci"
       },
-      "documents_requis": {
-        "cas_general": [
-          "Fiche de demande (requête pour l'établissement du certificat de nationalité)",
-          "Original de l'extrait d'acte de naissance",
-          "Photocopie de la Carte Nationale d'Identité de l'un des parents"
-        ],
-        "par_filiation": [
-          "Original de l'extrait d'acte de naissance",
-          "Preuve de la nationalité ivoirienne du père ou de la mère : Certificat de nationalité ivoirienne ou Carte Nationale d'Identité"
-        ],
-        "par_acquisition_parent": [
-          "Extrait d'acte de naissance",
-          "Copie du document ayant permis au parent d'acquérir la nationalité ivoirienne : Décret de naturalisation, Certificat d'acquisition, ou Attestation d'acquisition par mariage"
-        ],
-        "enfant_trouve": [
-          "Extrait d'acte de naissance sans mention des parents",
-          "Ordonnance du juge reconnaissant la qualité d'enfant trouvé"
-        ],
-        "par_adoption": [
-          "Original de l'extrait d'acte de naissance",
-          "Jugement d'adoption ou jugement de légitimation adoptive",
-          "Certificat de nationalité ou Carte Nationale d'Identité d'un parent adoptif ivoirien"
-        ],
-        "par_mariage": [
-          "Extrait d'acte de mariage ou livret de famille",
-          "Certificat de nationalité ou Carte Nationale d'Identité du conjoint ivoirien",
-          "Attestation de non-déclination de la nationalité ivoirienne",
-          "Attestation de non-opposition ou de non-déchéance (si nécessaire)",
-          "Attestation d'absence d'arrêté d'expulsion (pour le conjoint étranger)"
-        ],
-        "par_declaration": [
-          "Extrait d'acte de naissance",
-          "Certificat ou attestation d'acquisition de la nationalité délivré par le Ministère de la Justice"
-        ],
-        "par_naturalisation": [
-          "Extrait d'acte de naissance",
-          "Décret de naturalisation ou attestation du Ministère de la Justice"
-        ],
-        "par_reintegration": [
-          "Extrait d'acte de naissance",
-          "Décret ou attestation de réintégration délivré par le Ministère de la Justice"
-        ]
+      "delais": {
+        "delai_legal": "Aucun délai d'expiration légal strict (le document reste valable tant que la situation juridique de l'individu ne change pas, mais les administrations demandent souvent un acte de moins de 6 mois ou 1 an).",
+        "duree_traitement": "3 à 5 jours ouvrables après validation de la demande en ligne.",
+        "resultat": "Certificat de Nationalité Ivoirienne officiel revêtu du sceau du tribunal et de la signature du magistrat.",
+        "validite": "Sans limite de validité théorique (sauf modification de la loi ou déchéance)"
       },
-      "notes": [
-        "Les originaux des actes d'état civil peuvent être exigés.",
-        "Les documents à fournir dépendent du mode d'acquisition de la nationalité.",
-        "Si l'usager ne connaît pas son cas (filiation, mariage, naturalisation, etc.), l'agent IA doit commencer par lui demander comment il a obtenu la nationalité ivoirienne avant d'afficher la liste des documents."
+      "documents": [
+        {
+          "nom": "Copie de l'Extrait d'acte de naissance du demandeur",
+          "obligatoire": true,
+          "conditionnel": false,
+          "description": "Version lisible scannée ou photographiée (PDF/JPEG).",
+          "validite": "Lisible et complet",
+          "remarques": ""
+        },
+        {
+          "nom": "Copie de la pièce d'identité du parent (Père ou Mère)",
+          "obligatoire": true,
+          "conditionnel": false,
+          "description": "CNI ou passeport ivoirien du parent prouvant la filiation et la nationalité d'origine.",
+          "validite": "En cours de validité",
+          "remarques": ""
+        },
+        {
+          "nom": "Certificat de nationalité d'un des parents",
+          "obligatoire": false,
+          "conditionnel": true,
+          "description": "Souvent exigé pour une première demande afin de consolider le dossier de filiation.",
+          "validite": "Original",
+          "remarques": "Facilite l'établissement des droits."
+        },
+        {
+          "nom": "Reçu de paiement en ligne",
+          "obligatoire": true,
+          "conditionnel": false,
+          "description": "Généré automatiquement après le règlement sur la plateforme.",
+          "validite": "Permanent pour le dossier en cours",
+          "remarques": ""
+        }
       ],
-      "lieu": "Tribunal de Première Instance (TPI) ou Section de Tribunal du lieu de naissance du demandeur",
-      "delai_legal": "Délai de délivrance généralement compris entre 1 et 3 semaines selon l'affluence du tribunal",
-      "cas_particuliers": {
-        "naissance_a_letranger": "Pour les ivoiriens nés à l'étranger, la demande doit être adressée directement au Tribunal de Première Instance d'Abidjan (Plateau).",
-        "nationalite_par_mariage": "Nécessite la présentation de l'acte de mariage enregistré à l'état civil ivoirien datant de plus de 2 ans, et du certificat de nationalité du conjoint d'origine."
+      "etapes": [
+        "1. Accès au portail officiel e-justice.ci et authentification sur son compte citoyen.",
+        "2. Sélection de la procédure 'Demande de Certificat de Nationalité'.",
+        "3. Renseignement exhaustif des données civiles du demandeur, de son père et de sa mère.",
+        "4. Téléchargement des pièces justificatives obligatoires (acte de naissance, pièces des parents) sur l'interface.",
+        "5. Paiement électronique des frais (3 000 FCFA) via le service de paiement intégré (Mobile Money ou TrésorPay).",
+        "6. Suivi de l'instruction du dossier en ligne, puis déplacement physique au tribunal de naissance (muni des pièces originales pour confrontation) afin de retirer le document signé."
+      ],
+      "cas_particuliers": [
+        {
+          "situation": "Nationalité acquise par mariage",
+          "impact": "Fournir obligatoirement l'acte de mariage original, le certificat de nationalité du conjoint ivoirien, et la preuve du décret ou de la déclaration officielle d'acquisition.",
+          "procedure_liee": "actes_etat_civil",
+          "remarques": ""
+        },
+        {
+          "situation": "Nationalité acquise par décret (Naturalisation)",
+          "impact": "Joindre une copie du décret de naturalisation publié au Journal Officiel de la République de Côte d'Ivoire.",
+          "procedure_liee": "",
+          "remarques": ""
+        }
+      ],
+      "sources": {
+        "source_principale": "https://www.e-justice.ci",
+        "source_secondaire": "https://servicepublic.gouv.ci",
+        "date_de_verification": "27/06/2026",
+        "informations_a_verifier": "Numéro d'assistance technique de la plateforme e-justice à confirmer.",
+        "statut_de_verification": "Complet",
+        "verifie_par": "Mojaveli Smith"
+      },
+      "metadata": {
+        "version": "1.0",
+        "date_import": "2026-06-27",
+        "derniere_mise_a_jour": "2026-06-27",
+        "qualite_des_donnees": "Excellente",
+        "niveau_de_confiance": "Élevé"
       }
     },
-    "etudiant": {
-      "nom": "Étudiant",
-      "description": "Statut d'étudiant pour les démarches administratives scolaires et universitaires.",
-      "documents_requis": [
-        "Photocopie de la pièce d'identité",
-        "Fiche d'inscription OU certificat de fréquentation"
-      ]
+    "actes_etat_civil": {
+      "id": "actes_etat_civil_documents_ci",
+      "titre": "Demande et livraison d'extraits d'actes d'État Civil via documents.ci",
+      "categorie": "État civil",
+      "sous_categorie": "Naissance — Mariage — Décès",
+      "description": "Demande et livraison postale d'extraits d'actes de naissance, de mariage ou de décès sans déplacement physique à la mairie d'origine.",
+      "evenement_declencheur": "Besoin d'un extrait d'acte de naissance, de mariage ou de décès récent pour des démarches administratives courantes sans déplacement à la mairie d'origine.",
+      "procedures_liees": ["cni", "casier_judiciaire", "certificat_nationalite"],
+      "institution": {
+        "institution": "La Poste de Côte d'Ivoire",
+        "organisme": "Mairies et Sous-préfectures adhérentes",
+        "guichet": "Portail en ligne documents.ci / Agences de La Poste pour le retrait physique ou livraison à domicile",
+        "adresse": "Siège de La Poste : Abidjan, Plateau",
+        "ville": "Abidjan (siège) / Localités partenaires",
+        "horaires": "En ligne : 24h/24, 7j/7. Agences postales : Lundi–Vendredi 7h30–16h30, Samedi 8h–12h",
+        "telephone": "À vérifier (Numéro du service client dédié à documents.ci à intégrer)",
+        "email": "",
+        "site_web": "https://documents.ci"
+      },
+      "cout": {
+        "gratuit": false,
+        "montant": "Variable",
+        "devise": "FCFA",
+        "notes": "Le prix varie selon la mairie d'origine (taxe municipale généralement entre 500 et 2 000 FCFA) avec des frais de traitement de La Poste et de livraison à partir de 1 500 FCFA.",
+        "source": "documents.ci"
+      },
+      "delais": {
+        "delai_legal": "Aucun",
+        "duree_traitement": "48 heures à 7 jours ouvrables, variable selon la réactivité de la mairie émettrice et le mode de livraison.",
+        "resultat": "Extrait d'acte officiel légalisé par l'officier d'état civil.",
+        "validite": "Généralement 3 mois pour les démarches administratives."
+      },
+      "documents": [
+        {
+          "nom": "Copie ou photo de l'ancien extrait d'acte",
+          "obligatoire": false,
+          "conditionnel": true,
+          "description": "Fortement recommandé (PDF/JPEG) pour accélérer le traitement.",
+          "validite": "Ancien acte",
+          "remarques": "Utile pour retrouver les références de registre."
+        },
+        {
+          "nom": "Formulaire de demande en ligne",
+          "obligatoire": true,
+          "conditionnel": false,
+          "description": "Formulaire d'identification de l'acte et du demandeur.",
+          "validite": "Permanent pour le dossier en cours",
+          "remarques": ""
+        },
+        {
+          "nom": "Pièce d'identité du demandeur",
+          "obligatoire": true,
+          "conditionnel": false,
+          "description": "Pour vérification de la légitimité de la demande.",
+          "validite": "En cours de validité",
+          "remarques": ""
+        }
+      ],
+      "etapes": [
+        "1. Connexion sur le site officiel documents.ci.",
+        "2. Sélection du type de document souhaité (naissance, mariage, décès).",
+        "3. Renseignement de la commune ou sous-préfecture d'enregistrement de l'acte.",
+        "4. Remplissage des informations d'identification de l'acte et téléchargement de la photo de l'ancien acte si disponible.",
+        "5. Choix du mode de délivrance : retrait en agence ou livraison à domicile.",
+        "6. Paiement sécurisé et suivi de l'acheminement avec un code de tracking."
+      ],
+      "cas_particuliers": [
+        {
+          "situation": "Mairie d'origine non connectée",
+          "impact": "Impossible de commander l'acte en ligne, déplacement physique nécessaire à la mairie de naissance.",
+          "procedure_liee": "",
+          "remarques": ""
+        },
+        {
+          "situation": "Acte introuvable ou erreur de registre",
+          "impact": "Demande rejetée, possibilité de remboursement partiel ou notification pour rectification administrative.",
+          "procedure_liee": "",
+          "remarques": ""
+        }
+      ],
+      "sources": {
+        "source_principale": "documents.ci",
+        "source_secondaire": "servicepublic.gouv.ci",
+        "date_de_verification": "27/06/2026",
+        "informations_a_verifier": "Grille tarifaire exacte par commune et frais de livraison à valider, Numéro du service client dédié à documents.ci à intégrer.",
+        "statut_de_verification": "Complet",
+        "verifie_par": "Mojaveli Smith"
+      },
+      "metadata": {
+        "version": "1.0",
+        "date_import": "2026-06-27",
+        "derniere_mise_a_jour": "2026-06-27",
+        "qualite_des_donnees": "Excellente",
+        "niveau_de_confiance": "Élevé"
+      }
     },
-    "declaration_naissance": {
-      "nom": "Déclaration de naissance",
-      "description": "Démarche pour déclarer la naissance d'un nouveau-né auprès de l'état civil.",
-      "documents_requis": [
-        "Photocopie de la pièce d'identité de l'un des parents OU photocopie de son extrait de naissance",
-        "Projet de naissance (fiche disponible à la mairie à renseigner)"
-      ]
+    "impots": {
+      "id": "impots_declaration_eimpots",
+      "titre": "Déclaration et paiement des impôts en ligne via E-Impôts",
+      "categorie": "Impôts / Finances / Économie",
+      "sous_categorie": "Impôts (DGI)",
+      "description": "Télédéclaration et paiement des taxes et obligations fiscales via la plateforme e-impots.gouv.ci.",
+      "evenement_declencheur": "Échéances fiscales périodiques (mensuelles, trimestrielles ou annuelles) pour les entreprises et les particuliers.",
+      "procedures_liees": ["creation_entreprise_cepici"],
+      "institution": {
+        "institution": "Direction Générale des Impôts (DGI) de Côte d'Ivoire",
+        "organisme": "Direction Générale des Impôts",
+        "guichet": "Portail web officiel e-impots.gouv.ci / Centres des Impôts de rattachement pour l'assistance physique",
+        "adresse": "Siège de la DGI : Abidjan, Plateau, Avenue de la République / Centres locaux",
+        "ville": "Abidjan / Toutes les communes",
+        "horaires": "En ligne : 24h/24, 7j/7. Bureaux physiques : Lundi–Vendredi 7h30–12h et 13h30–16h30",
+        "telephone": "À confirmer (Numéro d'assistance du centre d'appels de la DGI à confirmer)",
+        "email": "",
+        "site_web": "https://e-impots.gouv.ci"
+      },
+      "cout": {
+        "gratuit": true,
+        "montant": "0",
+        "devise": "FCFA",
+        "notes": "L'accès à la plateforme et la soumission des déclarations sont gratuits. Le contribuable ne paie que la valeur réelle de ses impôts et taxes calculés.",
+        "source": "e-impots.gouv.ci / servicepublic.gouv.ci"
+      },
+      "delais": {
+        "delai_legal": "Dépend de la taxe (généralement avant le 10, le 15 ou le 20 du mois suivant l'exercice fiscal selon le régime d'imposition).",
+        "duree_traitement": "Immédiat (génération automatique de l'accusé de réception et du reçu de paiement après validation).",
+        "resultat": "Accusé de réception de déclaration fiscale / Quittance officielle de paiement.",
+        "validite": "Permanent"
+      },
+      "documents": [
+        {
+          "nom": "Numéro de Compte Contribuable (NCC)",
+          "obligatoire": true,
+          "conditionnel": false,
+          "description": "Identifiant unique fiscal de l'entreprise ou du particulier.",
+          "validite": "Permanent",
+          "remarques": ""
+        },
+        {
+          "nom": "États Financiers / Éléments de Comptabilité",
+          "obligatoire": true,
+          "conditionnel": false,
+          "description": "Justificatifs de revenus ou de chiffre d'affaires nécessaires aux calculs.",
+          "validite": "Exercice fiscal concerné",
+          "remarques": ""
+        },
+        {
+          "nom": "Code d'Activation de l'Espace E-Impôts",
+          "obligatoire": true,
+          "conditionnel": false,
+          "description": "Requis pour la première connexion et l'activation du compte.",
+          "validite": "Usage unique",
+          "remarques": "Fourni par le centre d'impôts d'affiliation."
+        }
+      ],
+      "etapes": [
+        "1. Connexion sur la plateforme officielle e-impots.gouv.ci à l'aide de ses identifiants de connexion sécurisés.",
+        "2. Sélection du module de déclaration correspondant à la taxe à acquitter (ex: TVA, Impôt sur les Traitements et Salaires).",
+        "3. Saisie des données financières requises dans le formulaire électronique dédié.",
+        "4. Validation et télédéclaration des informations saisies (le système calcule automatiquement le montant dû).",
+        "5. Sélection du mode de paiement électronique (Virement bancaire initié sur la plateforme, Mobile Money ou prélèvement automatique).",
+        "6. Téléchargement immédiat de l'accusé de réception de la télédéclaration et de la quittance de paiement sécurisée."
+      ],
+      "cas_particuliers": [
+        {
+          "situation": "Déclaration Hors Délai",
+          "impact": "Application automatique par le système de pénalités de retard et d'intérêts de moratoire sur les montants déclarés.",
+          "procedure_liee": "",
+          "remarques": ""
+        },
+        {
+          "situation": "Constat d'une Erreur Après Validation",
+          "impact": "Nécessité de produire une déclaration rectificative (ou complémentaire) directement sur l'interface avant toute action de contrôle de l'administration.",
+          "procedure_liee": "",
+          "remarques": ""
+        }
+      ],
+      "sources": {
+        "source_principale": "e-impots.gouv.ci",
+        "source_secondaire": "servicepublic.gouv.ci",
+        "date_de_verification": "27/06/2026",
+        "informations_a_verifier": "Numéro d'assistance du centre d'appels de la DGI à confirmer.",
+        "statut_de_verification": "Complet",
+        "verifie_par": "Mojaveli Smith"
+      },
+      "metadata": {
+        "version": "1.0",
+        "date_import": "2026-06-27",
+        "derniere_mise_a_jour": "2026-06-27",
+        "qualite_des_donnees": "Excellente",
+        "niveau_de_confiance": "Élevé"
+      }
     },
-    "acte_mariage": {
-      "nom": "Acte de mariage",
-      "description": "Document officiel attestant l'union légale entre deux conjoints.",
-      "documents_requis": [
-        "À compléter ultérieurement (couple légal)"
-      ]
+    "cmu": {
+      "id": "cmu_enrolement_ips_cnam",
+      "titre": "Enrôlement et immatriculation à la Couverture Maladie Universelle (CMU)",
+      "categorie": "Santé / Sécurité sociale",
+      "sous_categorie": "CMU",
+      "description": "Système obligatoire national de couverture sociale contre le risque maladie en Côte d'Ivoire.",
+      "evenement_declencheur": "Obligation nationale d'adhésion au système d'assurance maladie pour toute personne résidant en Côte d'Ivoire.",
+      "procedures_liees": ["cni", "acte_naissance"],
+      "institution": {
+        "institution": "Institution de Prévoyance Sociale - Caisse Nationale d'Assurance Maladie (IPS-CNAM)",
+        "organisme": "IPS-CNAM",
+        "guichet": "Centres d'enrôlement IPS-CNAM (déployés dans les hôpitaux, mairies et agences CNAM)",
+        "adresse": "Siège de la CNAM à Abidjan et centres locaux de proximité",
+        "ville": "Abidjan (Siège) / National",
+        "horaires": "Lundi–Vendredi 8h–16h",
+        "telephone": "NULL",
+        "email": "",
+        "site_web": "https://www.ips-cnam.ci"
+      },
+      "cout": {
+        "gratuit": true,
+        "montant": "0",
+        "devise": "FCFA",
+        "notes": "L'enrôlement biométrique et la délivrance de la carte initiale sont gratuits. Les prestations de soins sont ensuite conditionnées par une cotisation mensuelle obligatoire de 1 000 FCFA par personne.",
+        "source": "servicepublic.gouv.ci / ips-cnam.ci"
+      },
+      "delais": {
+        "delai_legal": "Obligatoire dès la résidence ou la majorité civile.",
+        "duree_traitement": "Production immédiate ('In Situ') dans les centres équipés, ou sous quelques semaines pour les centres classiques.",
+        "resultat": "Carte d'assuré CMU portant un Numéro d'Immatriculation Unique.",
+        "validite": "Permanente (liée au paiement régulier des cotisations mensuelles)."
+      },
+      "documents": [
+        {
+          "nom": "Pièce d'identité d'origine (CNI, Passeport ou Attestation d'identité)",
+          "obligatoire": true,
+          "conditionnel": false,
+          "description": "Pour les personnes majeures de nationalité ivoirienne.",
+          "validite": "En cours de validité",
+          "remarques": ""
+        },
+        {
+          "nom": "Extrait d'acte de naissance",
+          "obligatoire": true,
+          "conditionnel": false,
+          "description": "Indispensable pour l'enrôlement des enfants mineurs (moins de 16 ans).",
+          "validite": "Permanent",
+          "remarques": ""
+        },
+        {
+          "nom": "Carte de résident ou Passeport avec visa",
+          "obligatoire": false,
+          "conditionnel": true,
+          "description": "Obligatoire uniquement pour les requérants de nationalité étrangère.",
+          "validite": "En cours de validité",
+          "remarques": ""
+        },
+        {
+          "nom": "Récépissé d'enrôlement ONECI",
+          "obligatoire": false,
+          "conditionnel": true,
+          "description": "Accepté à la place de la CNI si celle-ci est en cours de production.",
+          "validite": "En cours de validité",
+          "remarques": ""
+        }
+      ],
+      "etapes": [
+        "1. Présentation physique obligatoire du demandeur (et de ses dépendants mineurs) dans l'un des centres d'enrôlement officiels de l'IPS-CNAM.",
+        "2. Remise des documents d'état civil et d'identité à l'agent d'enrôlement pour contrôle de conformité.",
+        "3. Saisie informatique des informations civiles et du numéro de téléphone mobile de l'assuré.",
+        "4. Capture des données biométriques sur place (prise de photo numérique et numérisation des empreintes digitales).",
+        "5. Délivrance immédiate d'un récépissé d'enrôlement sécurisé sur lequel figure le numéro d'immatriculation.",
+        "6. Retrait de la carte CMU définitive en agence sur présentation du récépissé (ou notification par SMS pour disponibilité)."
+      ],
+      "cas_particuliers": [
+        {
+          "situation": "Étudiants des universités et grandes écoles",
+          "impact": "L'immatriculation ou la présentation du numéro CMU est exigée pour finaliser les inscriptions académiques annuelles.",
+          "procedure_liee": "inscription_scolaire",
+          "remarques": ""
+        },
+        {
+          "situation": "Personnes reconnues indigentes (sans ressources)",
+          "impact": "Prise en charge intégrale des mensualités de 1 000 FCFA par l'État après enquête sociale validée.",
+          "procedure_liee": "",
+          "remarques": ""
+        }
+      ],
+      "sources": {
+        "source_principale": "https://servicepublic.gouv.ci",
+        "source_secondaire": "CNAM / Site de la CMU (ips-cnam.ci)",
+        "date_de_verification": "27/06/2026",
+        "informations_a_verifier": "Numéro d'assistance téléphonique officiel à valider.",
+        "statut_de_verification": "Complet",
+        "verifie_par": "Mojaveli Smith"
+      },
+      "metadata": {
+        "version": "1.0",
+        "date_import": "2026-06-27",
+        "derniere_mise_a_jour": "2026-06-27",
+        "qualite_des_donnees": "Excellente",
+        "niveau_de_confiance": "Élevé"
+      }
+    },
+    "permis_conduire": {
+      "id": "permis_conduire_quipux_amuga",
+      "titre": "Demande d'établissement ou de renouvellement du Permis de Conduire biométrique",
+      "categorie": "Transport et Mobilité",
+      "sous_categorie": "Permis de conduire",
+      "description": "Délivrance et mise à jour du permis de conduire biométrique par le biais du Centre de Gestion Intégrée (CGI).",
+      "evenement_declencheur": "Réussite à l'examen pratique de conduite (premier établissement), expiration de la validité du titre actuel, perte, vol ou détérioration.",
+      "procedures_liees": ["cni"],
+      "institution": {
+        "institution": "Ministère des Transports / AMUGA / Quipux Afrique",
+        "organisme": "Quipux Afrique (Opérateur du CGI)",
+        "guichet": "Agences des Centres de Gestion Intégrée (CGI) de Quipux Afrique",
+        "adresse": "Siège Quipux : Abidjan, Cocody Deux-Plateaux / Centres CGI répartis à Abidjan et à l'intérieur du pays",
+        "ville": "Abidjan / Principales villes de Côte d'Ivoire",
+        "horaires": "Lundi–Vendredi 8h–16h. Samedi 8h–12h (selon les agences)",
+        "telephone": "À vérifier (Numéro unique du call-center Quipux Afrique à confirmer)",
+        "email": "",
+        "site_web": "https://www.quipuxafrique.ci"
+      },
+      "cout": {
+        "gratuit": false,
+        "montant": "Variable",
+        "devise": "FCFA",
+        "notes": "Le coût de la carte de permis (droit de timbre) varie selon la nature de la démarche. Environ 24 500 FCFA pour un renouvellement standard (hors frais d'examen médical ou d'auto-école pour un premier établissement).",
+        "source": "quipuxafrique.ci / servicepublic.gouv.ci"
+      },
+      "delais": {
+        "delai_legal": "Obligation de renouvellement avant la date d'expiration indiquée sur le titre (généralement tous les 5 ou 10 ans selon la catégorie et l'âge du conducteur).",
+        "duree_traitement": "Délai variable (remise d'un permis provisoire immédiatement après l'enrôlement, document définitif disponible sous quelques semaines).",
+        "resultat": "Permis de conduire biométrique au format carte bancaire.",
+        "validite": "5 ans ou 10 ans (selon la catégorie de permis et l'âge du titulaire)."
+      },
+      "documents": [
+        {
+          "nom": "Pièce d'identité d'origine en cours de validité (CNI ou Passeport)",
+          "obligatoire": true,
+          "conditionnel": false,
+          "description": "Pour authentifier le demandeur.",
+          "validite": "En cours de validité",
+          "remarques": ""
+        },
+        {
+          "nom": "Certificat d'aptitude médicale à la conduite",
+          "obligatoire": true,
+          "conditionnel": false,
+          "description": "Délivré par un médecin agréé après examen (généralement effectué au sein ou à proximité du CGI).",
+          "validite": "Récent",
+          "remarques": ""
+        },
+        {
+          "nom": "Ancien permis de conduire",
+          "obligatoire": false,
+          "conditionnel": true,
+          "description": "Obligatoire uniquement pour un renouvellement ou une extension de catégorie.",
+          "validite": "Expiré",
+          "remarques": ""
+        },
+        {
+          "nom": "Certificat de perte ou de vol",
+          "obligatoire": false,
+          "conditionnel": true,
+          "description": "Obligatoire uniquement en cas de demande de duplicata.",
+          "validite": "Récent",
+          "remarques": "Obtenu en commissariat ou gendarmerie."
+        },
+        {
+          "nom": "Attestation de réussite à l'examen (Certificat d'examen)",
+          "obligatoire": false,
+          "conditionnel": true,
+          "description": "Obligatoire pour un premier établissement.",
+          "validite": "Récent",
+          "remarques": ""
+        }
+      ],
+      "etapes": [
+        "1. Prise de rendez-vous en ligne sur la plateforme Quipux ou présentation directe dans un Centre de Gestion Intégrée (CGI).",
+        "2. Passage de la visite médicale obligatoire auprès du médecin agréé présent sur le site pour valider l'aptitude physique et visuelle.",
+        "3. Paiement des frais administratifs et d'établissement au guichet de caisse intégré du CGI.",
+        "4. Passage au box d'enrôlement pour la capture de la photo numérique, de la signature électronique et des empreintes.",
+        "5. Délivrance d'un titre provisoire de conduite (valable 3 mois) permettant de circuler légalement.",
+        "6. Réception d'une notification SMS invitant à venir retirer le permis de conduire biométrique définitif au centre d'enrôlement sur présentation du titre provisoire."
+      ],
+      "cas_particuliers": [
+        {
+          "situation": "Conversion d'un permis de conduire étranger en permis ivoirien",
+          "impact": "Nécessité de fournir le permis étranger original authentifié, une attestation de validité délivrée par le pays émetteur (ou l'ambassade), et de s'acquitter d'une taxe spécifique de conversion.",
+          "procedure_liee": "",
+          "remarques": ""
+        },
+        {
+          "situation": "Conducteurs professionnels (Poids lourds, transports en commun)",
+          "impact": "La validité du titre est réduite (souvent 1 à 3 ans) et les examens médicaux requis sont plus stricts.",
+          "procedure_liee": "",
+          "remarques": ""
+        }
+      ],
+      "sources": {
+        "source_principale": "https://servicepublic.gouv.ci",
+        "source_secondaire": "Portail officiel de Quipux Afrique",
+        "date_de_verification": "27/06/2026",
+        "informations_a_verifier": "Numéro unique du call-center Quipux Afrique à confirmer.",
+        "statut_de_verification": "Complet",
+        "verifie_par": "Mojaveli Smith"
+      },
+      "metadata": {
+        "version": "1.0",
+        "date_import": "2026-06-27",
+        "derniere_mise_a_jour": "2026-06-27",
+        "qualite_des_donnees": "Excellente",
+        "niveau_de_confiance": "Élevé"
+      }
+    },
+    "passeport": {
+      "id": "passeport_ivoirien_snedai",
+      "titre": "Pré-enrôlement et enrôlement pour le Passeport Ivoirien Biométrique",
+      "categorie": "Identité / Voyage",
+      "sous_categorie": "Passeport",
+      "description": "Procédure officielle d'obtention ou de renouvellement du passeport biométrique ivoirien délivré par le Ministère de l'Intérieur en collaboration avec la SNEDAI.",
+      "evenement_declencheur": "Volonté de voyager hors de l'espace CEDEAO, expiration du passeport actuel, épuisement des pages du livret, perte ou vol.",
+      "procedures_liees": ["certificat_nationalite", "acte_naissance"],
+      "institution": {
+        "institution": "Ministère de l'Intérieur et de la Sécurité / SNEDAI",
+        "organisme": "SNEDAI",
+        "guichet": "Plateforme en ligne de la SNEDAI / Sites d'enrôlement physique (Abidjan : Plateau, Cocody, Marcory ; et délégations régionales)",
+        "adresse": "Siège de la SNEDAI : Abidjan, Plateau / Centres de collecte dédiés",
+        "ville": "Abidjan / Centres régionaux",
+        "horaires": "En ligne : 24h/24, 7j/7. Centres physiques : Lundi–Vendredi 8h–15h30",
+        "telephone": "À vérifier (Numéro du service client SNEDAI à confirmer)",
+        "email": "",
+        "site_web": "https://snedai.com"
+      },
+      "cout": {
+        "gratuit": false,
+        "montant": "40000",
+        "devise": "FCFA",
+        "notes": "Prix unique fixé par décret pour l'achat du timbre de passeport. Le paiement s'effectue en ligne via Mobile Money ou par carte bancaire sur le portail sécurisé.",
+        "source": "snedai.com / servicepublic.gouv.ci"
+      },
+      "delais": {
+        "delai_legal": "Aucun délai d'obligation nationale (le passeport n'est requis que pour les déplacements internationaux).",
+        "duree_traitement": "72 heures à 15 jours ouvrables (délai indicatif après la capture des données biométriques).",
+        "resultat": "Passeport biométrique de la République de Côte d'Ivoire.",
+        "validite": "5 ans (non renouvelable par prorogation, un nouveau livret doit être produit à l'expiration)."
+      },
+      "documents": [
+        {
+          "nom": "Reçu de paiement du timbre (40 000 FCFA)",
+          "obligatoire": true,
+          "conditionnel": false,
+          "description": "Reçu généré en ligne après le paiement.",
+          "validite": "Usage unique",
+          "remarques": ""
+        },
+        {
+          "nom": "Fiche de pré-enrôlement imprimée",
+          "obligatoire": true,
+          "conditionnel": false,
+          "description": "Formulaire complété sur le site web.",
+          "validite": "Usage unique",
+          "remarques": ""
+        },
+        {
+          "nom": "Extrait d'acte de naissance",
+          "obligatoire": true,
+          "conditionnel": false,
+          "description": "Original datant de moins de 1 an.",
+          "validite": "Moins de 1 an",
+          "remarques": ""
+        },
+        {
+          "nom": "Certificat de nationalité ivoirienne",
+          "obligatoire": true,
+          "conditionnel": false,
+          "description": "Original revêtu du sceau du tribunal.",
+          "validite": "Original",
+          "remarques": ""
+        },
+        {
+          "nom": "Ancien passeport",
+          "obligatoire": false,
+          "conditionnel": true,
+          "description": "Obligatoire uniquement en cas de renouvellement.",
+          "validite": "Expiré",
+          "remarques": ""
+        },
+        {
+          "nom": "Attestation de fonction ou profession",
+          "obligatoire": false,
+          "conditionnel": true,
+          "description": "Justificatif si le demandeur souhaite mentionner sa profession.",
+          "validite": "Récent",
+          "remarques": ""
+        }
+      ],
+      "etapes": [
+        "1. Connexion sur le site de la SNEDAI pour effectuer le paiement en ligne du timbre de 40 000 FCFA.",
+        "2. Remplissage du formulaire de pré-enrôlement en ligne et choix du centre physique ainsi que de la date et heure du rendez-vous.",
+        "3. Impression de la fiche de pré-enrôlement et du reçu de paiement.",
+        "4. Présentation physique au centre d'enrôlement avec les pièces justificatives originales.",
+        "5. Vérification du dossier par les agents de police, suivie de la capture biométrique.",
+        "6. Retrait du passeport physique au centre, après réception du SMS de confirmation."
+      ],
+      "cas_particuliers": [
+        {
+          "situation": "Demande pour un enfant mineur (moins de 18 ans)",
+          "impact": "Obligation de fournir une autorisation parentale légalisée, accompagnée d'une copie de la pièce d'identité du parent signataire.",
+          "procedure_liee": "",
+          "remarques": ""
+        },
+        {
+          "situation": "Perte ou Vol du passeport en cours de validité",
+          "impact": "Joindre un certificat de perte ou de vol original délivré par les autorités policières.",
+          "procedure_liee": "",
+          "remarques": ""
+        }
+      ],
+      "sources": {
+        "source_principale": "Portails officiels de la SNEDAI (snedai.com)",
+        "source_secondaire": "https://servicepublic.gouv.ci",
+        "date_de_verification": "27/06/2026",
+        "informations_a_verifier": "Numéro du service client SNEDAI à confirmer.",
+        "statut_de_verification": "Complet",
+        "verifie_par": "Mojaveli Smith"
+      },
+      "metadata": {
+        "version": "1.0",
+        "date_import": "2026-06-27",
+        "derniere_mise_a_jour": "2026-06-27",
+        "qualite_des_donnees": "Excellente",
+        "niveau_de_confiance": "Élevé"
+      }
+    },
+    "concours_fonction_publique": {
+      "id": "concours_fonction_publique",
+      "titre": "Inscription aux concours directs et professionnels de la Fonction Publique",
+      "categorie": "Emploi et Fonction Publique",
+      "sous_categorie": "Concours administratifs",
+      "description": "Processus d'inscription aux concours administratifs ivoiriens de recrutement des agents de l'État.",
+      "evenement_declencheur": "Ouverture annuelle des sessions de concours de recrutement des agents de l'État par arrêté ministériel.",
+      "procedures_liees": ["casier_judiciaire", "certificat_nationalite", "cmu"],
+      "institution": {
+        "institution": "Ministère d'État, Ministère de la Fonction Publique et de la Modernisation de l'Administration",
+        "organisme": "Fonction Publique",
+        "guichet": "Portail en ligne officiel du ministère / Antenne de dépôt physique des dossiers (selon la ville choisie)",
+        "adresse": "Abidjan, Plateau, Boulevard de la République",
+        "ville": "Abidjan / Centres régionaux",
+        "horaires": "En ligne : 24h/24, 7j/7. Guichets physiques : Lundi–Vendredi 8h–16h",
+        "telephone": "À vérifier (numéro vert ou call-center d'assistance aux candidats)",
+        "email": "",
+        "site_web": "https://fonctionpublique.gouv.ci"
+      },
+      "cout": {
+        "gratuit": false,
+        "montant": "Variable",
+        "devise": "FCFA",
+        "notes": "Les frais incluent les droits d'inscription (exemple : 23 500 FCFA pour la Fonction Publique de base), les frais de cours de préparation optionnels et la visite médicale obligatoire (environ 25 000 FCFA).",
+        "source": "fonctionpublique.gouv.ci / servicepublic.gouv.ci"
+      },
+      "delais": {
+        "delai_legal": "Candidature autorisée uniquement pendant la période d'ouverture officielle.",
+        "duree_traitement": "Plusieurs mois.",
+        "resultat": "Convocation aux épreuves / Statut d'admission au concours.",
+        "validite": "Admission confère un droit d'accès permanent au statut de fonctionnaire stagiaire."
+      },
+      "documents": [
+        {
+          "nom": "Diplôme requis certifié conforme",
+          "obligatoire": true,
+          "conditionnel": false,
+          "description": "Diplôme requis pour le grade du concours concerné.",
+          "validite": "Conforme",
+          "remarques": ""
+        },
+        {
+          "nom": "Extrait d'acte de naissance",
+          "obligatoire": true,
+          "conditionnel": false,
+          "description": "Datant de moins de 6 mois.",
+          "validite": "Moins de 6 mois",
+          "remarques": ""
+        },
+        {
+          "nom": "Certificat de nationalité ivoirienne",
+          "obligatoire": true,
+          "conditionnel": false,
+          "description": "Original datant de moins d'un an.",
+          "validite": "Moins de 1 an",
+          "remarques": ""
+        },
+        {
+          "nom": "Casier judiciaire (Bulletin n°3)",
+          "obligatoire": true,
+          "conditionnel": false,
+          "description": "Datant de moins de 3 mois.",
+          "validite": "Moins de 3 mois",
+          "remarques": ""
+        },
+        {
+          "nom": "Attestation d'enrôlement ou Carte CMU",
+          "obligatoire": true,
+          "conditionnel": false,
+          "description": "Preuve d'affiliation à la Couverture Maladie Universelle.",
+          "validite": "Valide",
+          "remarques": ""
+        }
+      ],
+      "etapes": [
+        "1. Création d'un espace candidat sur le site officiel.",
+        "2. Remplissage du formulaire d'inscription en ligne.",
+        "3. Prise de rendez-vous pour les examens médicaux.",
+        "4. Paiement en ligne des droits d'inscription.",
+        "5. Dépôt physique du dossier de candidature complet.",
+        "6. Impression de la convocation en ligne et participation aux examens."
+      ],
+      "cas_particuliers": [
+        {
+          "situation": "Candidats handicapés",
+          "impact": "Dispositions ou quotas spécifiques peuvent s'appliquer.",
+          "procedure_liee": "",
+          "remarques": ""
+        }
+      ],
+      "sources": {
+        "source_principale": "fonctionpublique.gouv.ci",
+        "source_secondaire": "servicepublic.gouv.ci",
+        "date_de_verification": "27/06/2026",
+        "informations_a_verifier": "Numéro vert ou call-center d'assistance aux candidats à confirmer.",
+        "statut_de_verification": "Partiel",
+        "verifie_par": "Béni"
+      },
+      "metadata": {
+        "version": "1.0",
+        "date_import": "2026-06-27",
+        "derniere_mise_a_jour": "2026-06-27",
+        "qualite_des_donnees": "Partielle",
+        "niveau_de_confiance": "Moyen"
+      }
+    },
+    "inscription_scolaire": {
+      "id": "inscription_scolaire_mena",
+      "titre": "Inscription en ligne des élèves du secondaire public et privé",
+      "categorie": "Éducation",
+      "sous_categorie": "Scolarité",
+      "description": "Inscription annuelle obligatoire des élèves dans l'enseignement secondaire en Côte d'Ivoire.",
+      "evenement_declencheur": "Rentre scolaire annuelle obligatoire.",
+      "procedures_liees": [],
+      "institution": {
+        "institution": "Ministère de l'Éducation Nationale et de l'Alphabétisation (MENA)",
+        "organisme": "MENA",
+        "guichet": "Plateforme mobile d'inscription / Établissement scolaire de l'élève",
+        "adresse": "Abidjan, Plateau (Siège du MENA)",
+        "ville": "Abidjan / National",
+        "horaires": "Service mobile et en ligne accessible 24h/24",
+        "telephone": "NULL",
+        "email": "",
+        "site_web": "https://education.gouv.ci"
+      },
+      "cout": {
+        "gratuit": false,
+        "montant": "Variable",
+        "devise": "FCFA",
+        "notes": "Frais d'inscription nationale généralement à 6 000 FCFA pour les lycées et collèges publics.",
+        "source": "education.gouv.ci"
+      },
+      "delais": {
+        "delai_legal": "À effectuer avant la date de clôture nationale.",
+        "duree_traitement": "Immédiat.",
+        "resultat": "Reçu officiel d'inscription scolaire en ligne.",
+        "validite": "1 an"
+      },
+      "documents": [
+        {
+          "nom": "Numéro matricule national de l'élève",
+          "obligatoire": true,
+          "conditionnel": false,
+          "description": "Identifiant unique de l'élève attribué par le MENA.",
+          "validite": "Permanent",
+          "remarques": ""
+        },
+        {
+          "nom": "Compte Mobile Money approvisionné",
+          "obligatoire": true,
+          "conditionnel": false,
+          "description": "Pour effectuer le paiement en ligne par le téléphone mobile.",
+          "validite": "Usage immédiat",
+          "remarques": ""
+        },
+        {
+          "nom": "Extrait de naissance ou bulletin de notes précédent",
+          "obligatoire": false,
+          "conditionnel": true,
+          "description": "Peut être demandé par l'établissement pour vérification physique.",
+          "validite": "Récent",
+          "remarques": ""
+        }
+      ],
+      "etapes": [
+        "1. Accès au menu d'inscription scolaire via téléphone mobile.",
+        "2. Saisie du numéro matricule de l'élève.",
+        "3. Vérification des données de l'élève.",
+        "4. Validation de la transaction et paiement via Mobile Money.",
+        "5. Réception d'un SMS de confirmation.",
+        "6. Présentation de la preuve d'inscription à l'administration scolaire."
+      ],
+      "cas_particuliers": [
+        {
+          "situation": "Élève sans numéro matricule national",
+          "impact": "Inscription en ligne impossible, nécessité de se rendre à la DREN (Direction Régionale de l'Éducation Nationale).",
+          "procedure_liee": "",
+          "remarques": ""
+        }
+      ],
+      "sources": {
+        "source_principale": "education.gouv.ci",
+        "source_secondaire": "servicepublic.gouv.ci",
+        "date_de_verification": "27/06/2026",
+        "informations_a_verifier": "",
+        "statut_de_verification": "Complet",
+        "verifie_par": "Mojaveli Smith"
+      },
+      "metadata": {
+        "version": "1.0",
+        "date_import": "2026-06-27",
+        "derniere_mise_a_jour": "2026-06-27",
+        "qualite_des_donnees": "Excellente",
+        "niveau_de_confiance": "Élevé"
+      }
+    },
+    "dedouanement_sydam": {
+      "id": "dedouanement_marchandises_sydam",
+      "titre": "Déclaration en douane et dédouanement via le système automatisé SYDAM",
+      "categorie": "Finances / Économie",
+      "sous_categorie": "Douanes",
+      "description": "Système douanier automatisé de traitement et dédouanement des marchandises importées ou exportées en Côte d'Ivoire.",
+      "evenement_declencheur": "Arrivée d'une marchandise importée ou expédition à l'exportation.",
+      "procedures_liees": [],
+      "institution": {
+        "institution": "Direction Générale des Douanes Ivoiriennes",
+        "organisme": "Douanes Ivoiriennes",
+        "guichet": "Système SYDAM World / Bureaux de douane physiques",
+        "adresse": "Abidjan (Port Autonome / Aéroport)",
+        "ville": "Abidjan / Bureaux frontaliers",
+        "horaires": "En ligne 24h/24, bureaux physiques Lundi–Vendredi 7h30–12h et 13h30–16h30",
+        "telephone": "NULL",
+        "email": "",
+        "site_web": "https://www.douanes.ci"
+      },
+      "cout": {
+        "gratuit": false,
+        "montant": "Variable",
+        "devise": "FCFA",
+        "notes": "Basé sur la nomenclature tarifaire de la marchandise, valeur en douane, et taxes applicables.",
+        "source": "douanes.ci / servicepublic.gouv.ci"
+      },
+      "delais": {
+        "delai_legal": "Déclaration à faire dans les délais réglementaires.",
+        "duree_traitement": "De quelques heures à quelques jours.",
+        "resultat": "Bon à Enlever (BAE) douanier.",
+        "validite": "Spécifique à la cargaison"
+      },
+      "documents": [
+        {
+          "nom": "Facture commerciale finale",
+          "obligatoire": true,
+          "conditionnel": false,
+          "description": "Facture officielle détaillant la marchandise et sa valeur.",
+          "validite": "Permanent",
+          "remarques": ""
+        },
+        {
+          "nom": "Titre de transport",
+          "obligatoire": true,
+          "conditionnel": false,
+          "description": "Connaissement (Bill of Lading) ou Lettre de Voiture.",
+          "validite": "Permanent",
+          "remarques": ""
+        },
+        {
+          "nom": "Document de Déclaration Anticipée d'Importation",
+          "obligatoire": true,
+          "conditionnel": false,
+          "description": "Fiche préalable obligatoire pour l'importation.",
+          "validite": "Permanent",
+          "remarques": ""
+        },
+        {
+          "nom": "Liste de colisage",
+          "obligatoire": true,
+          "conditionnel": false,
+          "description": "Description physique détaillée des colis.",
+          "validite": "Permanent",
+          "remarques": ""
+        },
+        {
+          "nom": "Certificat d'origine",
+          "obligatoire": false,
+          "conditionnel": true,
+          "description": "Requis pour bénéficier de préférences tarifaires (CEDEAO, etc.).",
+          "validite": "Permanent",
+          "remarques": ""
+        }
+      ],
+      "etapes": [
+        "1. Saisie et enregistrement de la Déclaration en Détail.",
+        "2. Attachement des pièces justificatives numérisées.",
+        "3. Liquidation automatique des droits et taxes.",
+        "4. Paiement des droits de douane.",
+        "5. Orientation du dossier vers un circuit de contrôle.",
+        "6. Émission du 'Bon à Enlever'."
+      ],
+      "cas_particuliers": [
+        {
+          "situation": "Marchandises exonérées ou sous régime suspensif",
+          "impact": "Code de régime douanier spécifique et autorisation d'exonération requise.",
+          "procedure_liee": "",
+          "remarques": ""
+        }
+      ],
+      "sources": {
+        "source_principale": "douanes.ci",
+        "source_secondaire": "servicepublic.gouv.ci",
+        "date_de_verification": "27/06/2026",
+        "informations_a_verifier": "",
+        "statut_de_verification": "Complet",
+        "verifie_par": "Mojaveli Smith"
+      },
+      "metadata": {
+        "version": "1.0",
+        "date_import": "2026-06-27",
+        "derniere_mise_a_jour": "2026-06-27",
+        "qualite_des_donnees": "Excellente",
+        "niveau_de_confiance": "Élevé"
+      }
+    },
+    "acte_naissance": {
+      "id": "acte_naissance_mairie",
+      "titre": "Déclaration de naissance et établissement de l'acte de naissance à la Mairie",
+      "categorie": "État civil",
+      "sous_categorie": "Naissance",
+      "description": "Déclaration et obtention de l'acte de naissance officiel d'un nouveau-né.",
+      "evenement_declencheur": "Naissance d'un enfant.",
+      "procedures_liees": ["cmu", "allocations_cnps"],
+      "institution": {
+        "institution": "Mairie",
+        "organisme": "Service de l'État Civil",
+        "guichet": "Bureau de l'état civil de la mairie du lieu de naissance",
+        "adresse": "Mairie de la commune de naissance",
+        "ville": "Variable selon le lieu de naissance",
+        "horaires": "Lundi–Vendredi 8h–16h",
+        "telephone": "Non applicable",
+        "email": "",
+        "site_web": "https://servicepublic.gouv.ci"
+      },
+      "cout": {
+        "gratuit": true,
+        "montant": "0",
+        "devise": "FCFA",
+        "notes": "Gratuit dans le délai légal de 3 mois suivant la naissance. Au-delà, un jugement supplétif payant est requis auprès d'un tribunal.",
+        "source": "servicepublic.gouv.ci"
+      },
+      "delais": {
+        "delai_legal": "Dans les 3 mois suivant la naissance",
+        "duree_traitement": "Immédiat à 48 heures (selon l'affluence de la mairie)",
+        "resultat": "Acte de naissance officiel",
+        "validite": "Sans limite (les copies conformes demandées pour les dossiers administratifs doivent souvent dater de moins de 3 ou 6 mois)."
+      },
+      "documents": [
+        {
+          "nom": "Certificat de déclaration de naissance (Volet 1)",
+          "obligatoire": true,
+          "conditionnel": false,
+          "description": "Délivré par la maternité, la sage-femme ou le médecin ayant assisté à l'accouchement.",
+          "validite": "Récent",
+          "remarques": ""
+        },
+        {
+          "nom": "Pièce d'identité des parents (CNI ou Passeport)",
+          "obligatoire": true,
+          "conditionnel": false,
+          "description": "Originaux et photocopies pour l'enregistrement de la filiation.",
+          "validite": "En cours de validité",
+          "remarques": ""
+        },
+        {
+          "nom": "Livret de famille",
+          "obligatoire": false,
+          "conditionnel": true,
+          "description": "Requis uniquement si les parents sont mariés légalement devant l'officier d'état civil.",
+          "validite": "Original",
+          "remarques": ""
+        },
+        {
+          "nom": "Pièce d'identité du déclarant",
+          "obligatoire": false,
+          "conditionnel": true,
+          "description": "Obligatoire si la déclaration est faite par un tiers autre que le père ou la mère.",
+          "validite": "En cours de validité",
+          "remarques": ""
+        }
+      ],
+      "etapes": [
+        "1. Récupération du certificat de naissance à la maternité dès l'accouchement.",
+        "2. Présentation physique du déclarant (le père, la mère, un proche ou l'accoucheur) au bureau de l'état civil de la mairie de la commune où l'enfant est né.",
+        "3. Remise du certificat médical de naissance et des pièces d'identité des parents à l'agent de l'état civil.",
+        "4. Renseignement des registres d'état civil par l'agent (choix des prénoms, vérification de l'orthographe des noms).",
+        "5. Signature du registre par le déclarant et par l'officier d'état civil.",
+        "6. Délivrance immédiate ou différée (sous 24h-48h) des premiers extraits d'acte de naissance gratuits."
+      ],
+      "cas_particuliers": [
+        {
+          "situation": "Dépassement du délai légal de 3 mois",
+          "impact": "L'officier d'état civil de la mairie ne peut plus enregistrer la naissance directement. Le parent doit engager une procédure de demande de jugement supplétif de naissance auprès du tribunal compétent.",
+          "procedure_liee": "jugement_suppletif",
+          "remarques": ""
+        }
+      ],
+      "sources": {
+        "source_principale": "https://servicepublic.gouv.ci",
+        "source_secondaire": "",
+        "date_de_verification": "27/06/2026",
+        "informations_a_verifier": "",
+        "statut_de_verification": "Complet",
+        "verifie_par": "Mojaveli Smith"
+      },
+      "metadata": {
+        "version": "1.0",
+        "date_import": "2026-06-27",
+        "derniere_mise_a_jour": "2026-06-27",
+        "qualite_des_donnees": "Excellente",
+        "niveau_de_confiance": "Élevé"
+      }
+    },
+    "allocations_cnps": {
+      "id": "allocations_familiales_cnps",
+      "titre": "Demande d'allocations familiales pour les travailleurs du secteur privé",
+      "categorie": "Sécurité sociale",
+      "sous_categorie": "CNPS",
+      "description": "Prestation sociale payée par la CNPS aux travailleurs salariés du secteur privé pour leurs enfants à charge.",
+      "evenement_declencheur": "Naissance d'un enfant à charge au sein de la famille d'un travailleur salarié affilié.",
+      "procedures_liees": ["acte_naissance"],
+      "institution": {
+        "institution": "Caisse Nationale de Prévoyance Sociale (CNPS)",
+        "organisme": "IPS-CNPS",
+        "guichet": "Agence de prévoyance sociale de rattachement de l'employeur / Espace 'Assuré' en ligne",
+        "adresse": "Agence IPS-CNPS territoriale compétente (selon la zone géographique de l'entreprise)",
+        "ville": "Variable selon l'entreprise",
+        "horaires": "En ligne : 24h/24. En agence : Lundi–Vendredi 7h30–12h et 13h30–16h30",
+        "telephone": "NULL",
+        "email": "",
+        "site_web": "https://www.cnps.ci"
+      },
+      "cout": {
+        "gratuit": true,
+        "montant": "0",
+        "devise": "FCFA",
+        "notes": "L'introduction du dossier de prestation familiale et son traitement par la caisse sont entièrement gratuits.",
+        "source": "cnps.ci"
+      },
+      "delais": {
+        "delai_legal": "Les allocations sont dues à compter de la date de naissance. La demande doit idéalement être déposée le plus tôt possible pour éviter les prescriptions périodiques.",
+        "duree_traitement": "30 à 45 jours ouvrables après validation complète du dossier d'allocations.",
+        "resultat": "Notification d'attribution des droits et versement périodique des allocations (généralement par trimestre).",
+        "validite": "Les allocations sont versées jusqu'aux limites d'âge de l'enfant prévues par le Code de prévoyance sociale (généralement 14 ans, prolongé jusqu'à 21 ans en cas d'études)."
+      },
+      "documents": [
+        {
+          "nom": "Formulaire de demande de prestations familiales (imprimé CNPS)",
+          "obligatoire": true,
+          "conditionnel": false,
+          "description": "Dûment renseigné par l'assuré et certifié par l'employeur actuel.",
+          "validite": "Usage unique",
+          "remarques": ""
+        },
+        {
+          "nom": "Extrait d'acte de naissance de l'enfant",
+          "obligatoire": true,
+          "conditionnel": false,
+          "description": "Original ou copie certifiée conforme datant de moins de 6 mois.",
+          "validite": "Moins de 6 mois",
+          "remarques": ""
+        },
+        {
+          "nom": "Certificat de vie et d'entretien de l'enfant",
+          "obligatoire": true,
+          "conditionnel": false,
+          "description": "Délivré par la mairie ou les autorités compétentes.",
+          "validite": "Récent",
+          "remarques": ""
+        },
+        {
+          "nom": "Attestation de travail ou bulletin de salaire de l'assuré",
+          "obligatoire": true,
+          "conditionnel": false,
+          "description": "Pour prouver l'activité salariée continue et l'affiliation active.",
+          "validite": "Récent",
+          "remarques": ""
+        },
+        {
+          "nom": "Relevé d'Identité Bancaire (RIB)",
+          "obligatoire": true,
+          "conditionnel": false,
+          "description": "Pour le virement direct des prestations de l'assuré.",
+          "validite": "Permanent",
+          "remarques": ""
+        },
+        {
+          "nom": "Certificat de scolarité",
+          "obligatoire": false,
+          "conditionnel": true,
+          "description": "Obligatoire uniquement pour les enfants d'âge scolaire (6 ans et plus) afin de maintenir les droits.",
+          "validite": "Année scolaire en cours",
+          "remarques": ""
+        }
+      ],
+      "etapes": [
+        "1. Retrait du formulaire de demande en agence CNPS ou téléchargement sur le portail officiel de la CNPS.",
+        "2. Remplissage de la section réservée à l'assuré et soumission du formulaire à son employeur pour signature et apposition du cachet de l'entreprise.",
+        "3. Rassemblement des pièces justificatives de l'enfant (acte de naissance, certificat de vie).",
+        "4. Dépôt du dossier physique complet au guichet de l'agence CNPS de rattachement ou chargement des fichiers scannés sur l'espace assuré en ligne.",
+        "5. Instruction du dossier par les agents de la CNPS (vérification de la conformité des droits et de la régularité des cotisations de l'employeur).",
+        "6. Réception de la notification d'accord et suivi du paiement des allocations familiales par virement bancaire ou mobile money selon la périodicité de la caisse."
+      ],
+      "cas_particuliers": [
+        {
+          "situation": "Mère salariée et Père salarié en même temps",
+          "impact": "Les deux parents ne peuvent pas cumuler les allocations pour les mêmes enfants. Le droit est généralement attribué prioritairement au père, ou à celui qui formule la demande avec l'accord express de l'autre conjoint (certificat de non-cumul).",
+          "procedure_liee": "",
+          "remarques": ""
+        }
+      ],
+      "sources": {
+        "source_principale": "Portail officiel de la CNPS (https://www.cnps.ci)",
+        "source_secondaire": "https://servicepublic.gouv.ci",
+        "date_de_verification": "27/06/2026",
+        "informations_a_verifier": "",
+        "statut_de_verification": "Complet",
+        "verifie_par": "Mojaveli Smith"
+      },
+      "metadata": {
+        "version": "1.0",
+        "date_import": "2026-06-27",
+        "derniere_mise_a_jour": "2026-06-27",
+        "qualite_des_donnees": "Excellente",
+        "niveau_de_confiance": "Élevé"
+      }
+    },
+    "jugement_suppletif": {
+      "id": "jugement_suppletif_naissance_tribunal",
+      "titre": "Demande de Jugement Supplétif de Naissance",
+      "categorie": "État civil / Justice",
+      "sous_categorie": "Naissance",
+      "description": "Procédure judiciaire permettant d'établir un acte de naissance pour une personne après le dépassement du délai légal de 3 mois.",
+      "evenement_declencheur": "Non-déclaration d'une naissance dans le délai légal de 3 mois, perte de l'acte de naissance sans registre disponible.",
+      "procedures_liees": ["acte_naissance"],
+      "institution": {
+        "institution": "Ministère de la Justice et des Droits de l'Homme",
+        "organisme": "Tribunal de Première Instance ou Section de Tribunal",
+        "guichet": "Greffe civil du tribunal compétent (lieu de naissance)",
+        "adresse": "Tribunal de la localité de naissance",
+        "ville": "Variable selon le lieu de naissance",
+        "horaires": "Lundi–Vendredi 8h–12h et 13h–16h",
+        "telephone": "",
+        "email": "",
+        "site_web": "https://www.e-justice.ci"
+      },
+      "cout": {
+        "gratuit": false,
+        "montant": "5000",
+        "devise": "FCFA",
+        "notes": "Frais d'établissement au tribunal (généralement entre 5 000 et 10 000 FCFA comprenant le timbre fiscal et les frais de greffe).",
+        "source": "e-justice.ci"
+      },
+      "delais": {
+        "delai_legal": "Requis si la naissance n'a pas été déclarée dans les 3 mois.",
+        "duree_traitement": "1 à 2 mois (nécessite une audience et des témoins).",
+        "resultat": "Ordonnance de jugement supplétif de naissance (permettant la transcription à l'état civil).",
+        "validite": "Permanente (permet d'établir un acte de naissance définitif)."
+      },
+      "documents": [
+        {
+          "nom": "Certificat médical d'accouchement ou certificat d'âge apparent",
+          "obligatoire": true,
+          "conditionnel": false,
+          "description": "Pour prouver la réalité de la naissance et estimer l'âge.",
+          "validite": "Permanent",
+          "remarques": ""
+        },
+        {
+          "nom": "Attestation de non-existence de registre (certificat de non-inscription)",
+          "obligatoire": true,
+          "conditionnel": false,
+          "description": "Délivré par la mairie du lieu de naissance attestant qu'aucun acte n'a été enregistré.",
+          "validite": "Moins de 3 mois",
+          "remarques": ""
+        },
+        {
+          "nom": "Pièce d'identité des parents",
+          "obligatoire": true,
+          "conditionnel": false,
+          "description": "Pour l'établissement de la filiation.",
+          "validite": "En cours de validité",
+          "remarques": ""
+        },
+        {
+          "nom": "Deux témoins majeurs",
+          "obligatoire": true,
+          "conditionnel": false,
+          "description": "Présence physique de deux témoins munis de leurs pièces d'identité d'origine.",
+          "validite": "En cours de validité",
+          "remarques": ""
+        }
+      ],
+      "etapes": [
+        "1. Demande du certificat de non-inscription auprès de la mairie du lieu de naissance.",
+        "2. Constitution du dossier avec le certificat médical d'accouchement et les pièces d'identité.",
+        "3. Dépôt de la requête de jugement supplétif au greffe du tribunal compétent.",
+        "4. Comparution devant le juge avec les deux témoins pour l'audience d'homologation.",
+        "5. Délivrance du jugement supplétif (ordonnance).",
+        "6. Présentation du jugement à la mairie du lieu de naissance pour transcription dans les registres et délivrance de l'acte de naissance."
+      ],
+      "cas_particuliers": [],
+      "sources": {
+        "source_principale": "https://www.e-justice.ci",
+        "source_secondaire": "servicepublic.gouv.ci",
+        "date_de_verification": "27/06/2026",
+        "informations_a_verifier": "",
+        "statut_de_verification": "Complet",
+        "verifie_par": "Mojaveli Smith"
+      },
+      "metadata": {
+        "version": "1.0",
+        "date_import": "2026-06-27",
+        "derniere_mise_a_jour": "2026-06-27",
+        "qualite_des_donnees": "Excellente",
+        "niveau_de_confiance": "Élevé"
+      }
     }
   },
   "_dependances": {
     "cni": ["acte_naissance", "certificat_nationalite"],
-    "cnps_allocations": ["acte_naissance"],
-    "cmu_inscription": ["acte_naissance"],
-    "certificat_nationalite": ["acte_naissance"]
+    "casier_judiciaire": ["acte_naissance"],
+    "certificat_nationalite": ["acte_naissance"],
+    "concours_fonction_publique": ["casier_judiciaire", "certificat_nationalite", "cmu"],
+    "allocations_cnps": ["acte_naissance"],
+    "passeport": ["certificat_nationalite", "acte_naissance"]
   }
 }

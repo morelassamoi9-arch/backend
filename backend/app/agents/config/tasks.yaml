@@ -23,10 +23,20 @@ documenter_demarche:
     le contexte ci-dessus.
 
     Consulte la base de connaissances pour la démarche identifiée via ton
-    outil. Si un cas particulier est signalé, vérifie s'il correspond à un
-    cas documenté et adapte ta réponse en conséquence. Si la démarche a des
-    démarches préalables requises, consulte-les aussi et explique l'ordre
-    à suivre.
+    outil (consulter_procedure). La base retourne un format JSON structuré complexe :
+    - Les documents requis sont dans une liste d'objets "documents". Analyse chaque document :
+      si un document a "conditionnel": true, vérifie s'il s'applique à la situation du citoyen
+      (ex: renouvellement, élève/étudiant, perte/vol, étranger). N'inclus dans les documents requis
+      que les documents pertinents.
+    - Le coût est un objet "cout" contenant "gratuit", "montant", "devise", "notes" et "source".
+      Formate une chaîne claire décrivant le coût en t'appuyant sur tous ces détails.
+    - Les délais sont dans l'objet "delais" contenant "delai_legal", "duree_traitement", "resultat"
+      et "validite". Synthetise-les clairement.
+    - Les cas particuliers sont dans la liste d'objets "cas_particuliers". Si la situation du citoyen
+      correspond à l'un d'eux, extrait l'impact et précise la note correspondante dans "note_cas_particulier".
+    
+    Si la démarche a des démarches préalables requises (visibles via l'outil ou le champ
+    "demarches_prealables_requises"), consulte-les aussi et explique l'ordre exact à suivre.
   expected_output: >
     Une réponse structurée au format JSON exact demandé, sans texte
     additionnel, listant : la démarche concernée, les documents requis,

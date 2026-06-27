@@ -1,0 +1,1004 @@
+--- PAGE 1 ---
+Proc dure
+é
+d'Enr lement
+ô
+pour la CNI
+GUIDE COMPLET SUR LA DEMANDE ET L'ENREGISTREMENT DE LA CARTE
+NATIONALE D'IDENTITÉ
+FICHE DE RECUEIL N°1 : Carte
+Nationale d'Identité (CNI)
+SECTION 1 — Identification de la procédure
+ID unique : cni_enrolement_oneci
+Titre complet : Demande et enrôlement pour la Carte Nationale d'Identité (CNI)
+Catégorie : Identité
+Sous-catégorie : CNI
+Événement déclencheur : Atteinte de l'âge de la majorité civile (16 ans), expiration de
+l'ancienne carte, perte, vol ou détérioration.
+Procédures liées : acte_naissance_mairie (nécessaire pour obtenir le document de base)
+SECTION 2 — Lieu et institution
+Institution : ONECI (Office National de l'État Civil et de l'Identité)
+Bureau / guichet : Centres d'enrôlement ONECI (présents dans les mairies, sous-
+préfectures et commissariats)
+Horaires d'ouverture : Lundi–Vendredi 8h–16h (variable selon certains centres spécifiques)
+Adresse : Siège ONECI : Abidjan, Plateau / Centres locaux répartis sur tout le territoire
+national.
+Contact téléphonique : À vérifier (Numéro de téléphone d'assistance direct ou call-center
+officiel de l'ONECI à confirmer)
+SECTION 3 — Coût
+Montant : 5 000 FCFA
+Notes sur le coût : Timbre d'enrôlement unique payable en ligne ou dans les banques
+partenaires (NSIA, BNI, etc.).
+Source du montant : oneci.ci / servicepublic.gouv.ci
+SECTION 4 — Délai légal et traitement
+
+--- PAGE 2 ---
+Délai légal : Obligatoire dès l'âge de 16 ans.
+Durée de traitement : Variable (généralement plusieurs semaines à quelques mois après
+l'enrôlement physique).
+Résultat produit : Carte Nationale d'Identité (CNI) biométrique officielle.
+Validité du document : 10 ans
+SECTION 5 — Documents requis
+Reçu d'achat du timbre d'enrôlement (5 000 FCFA) | Obligatoire | Reçu imprimé après
+paiement en ligne ou en banque.
+Extrait d'acte de naissance | Obligatoire | Datant de moins de 6 mois ou original de
+l'extrait sécurisé.
+Certificat de nationalité ivoirienne | Obligatoire | Document original délivré par les
+tribunaux.
+Ancienne CNI | Conditionnel | Obligatoire uniquement s'il s'agit d'un renouvellement pour
+expiration.
+Certificat de perte ou de vol | Conditionnel | Obligatoire uniquement en cas de
+renouvellement pour perte ou vol.
+SECTION 6 — Étapes de la procédure
+1. Achat du timbre d'enrôlement de 5 000 FCFA en ligne sur le portail de l'ONECI ou dans une
+banque partenaire agréée.
+2. Rassemblement des pièces justificatives physiques requises (Acte de naissance, Certificat de
+nationalité, etc.).
+3. Présentation physique du demandeur dans un centre d'enrôlement ONECI de son choix
+pour la capture des données biométriques (empreintes et photo).
+4. Remise d'un récépissé d'enrôlement comportant un numéro de suivi unique.
+5. Suivi du statut de production de la carte en ligne sur la plateforme ONECI.
+6. Retrait de la CNI physique dans le centre d'enrôlement initial sur présentation du récépissé.
+SECTION 7 — Cas particuliers
+Situation particulière : Perte ou Vol de la CNI.
+Impact sur la procédure : Nécessité de fournir un certificat de perte ou de vol légal
+délivré par un commissariat ou une brigade de gendarmerie avant de procéder à un
+nouvel enrôlement.
+Procédure liée (ID) : declaration_perte_police
+Situation particulière : Changement de nom ou de statut matrimonial (Mariage/Divorce).
+Impact sur la procédure : Joindre obligatoirement l'acte de mariage ou le jugement de
+divorce pour la mise à jour des données.
+Procédure liée (ID) : acte_mariage_mairie
+SECTION 8 — Sources et vérification
+Source principale : https://www.oneci.ci
+Source secondaire : https://servicepublic.gouv.ci
+
+--- PAGE 3 ---
+Date de vérification : 27/06/2026
+Statut global : Complet
+Fiche de Recueil N°2 : Casier
+Judiciaire (Bulletin n°3)
+Section 1 — Identification de la procédure
+ID unique : casier_judiciaire_ejustice
+Titre complet : Demande en ligne du Casier Judiciaire (Bulletin n°3)
+Catégorie : Justice
+Sous-catégorie : Justice
+Événement déclencheur : Constitution d'un dossier administratif, candidature à un
+concours, embauche professionnelle, ou demande de visa.
+Procédures liées : acte_naissance_mairie (nécessaire pour renseigner les informations de
+naissance).
+Section 2 — Lieu et institution
+Institution : Ministère de la Justice et des Droits de l'Homme
+Bureau / guichet : Portail numérique de l'administration judiciaire / Tribunal de première
+instance du lieu de naissance (pour le retrait ou le traitement physique sous-jacent).
+Horaires d'ouverture :
+En ligne : 24h/24, 7j/7
+Retrait au tribunal : Lundi–Vendredi 8h–12h et 13h–16h
+Adresse (si connue) : Site officiel : e-justice.ci / Tribunaux de Côte d'Ivoire (selon la localité
+de naissance).
+Contact téléphonique : NULL
+☑
+À vérifier ? : Oui — Préciser : Numéro vert d'assistance de la plateforme e-justice à
+confirmer.
+Section 3 — Coût
+Montant : 2 500 FCFA
+Notes sur le coût : Paiement électronique intégré sur la plateforme (via Mobile Money ou
+carte bancaire). Des frais de service d'opérateur mobile de l'ordre de 100 à 200 FCFA
+peuvent s'ajouter.
+Source du montant : e-justice.ci / servicepublic.gouv.ci
+À vérifier ? : ☐ Oui ☑ Non
+Section 4 — Délai légal et traitement
+Délai légal : Aucun délai de dépôt requis par la loi.
+
+--- PAGE 4 ---
+Durée de traitement : 48 heures à 72 heures ouvrables en moyenne après validation du
+paiement.
+Résultat produit : Bulletin n°3 du Casier Judiciaire signé.
+Validité du document : 3 mois (90 jours) à compter de sa date de délivrance.
+Section 5 — Documents requis
+☑
+Copie numérique de l'Extrait d'acte de naissance : Obligatoire | À télécharger (format
+PDF, JPEG ou PNG) sur la plateforme.
+☑
+Copie numérique d'une pièce d'identité (CNI ou Passeport) : Obligatoire | En cours
+de validité, à charger sur le site pour vérification de l'identité.
+☑
+Formulaire de demande en ligne renseigné : Obligatoire | Rempli directement à
+l'écran sur le portail d'enrôlement.
+Section 6 — Étapes de la procédure
+1. Connexion sur le portail officiel de la justice via l'adresse e-justice.ci et création d'un compte
+citoyen (si premier accès).
+2. Sélection du service "Demande de Casier Judiciaire" et remplissage du formulaire
+électronique avec les informations personnelles conformes à l'état civil.
+3. Téléchargement (upload) des pièces justificatives demandées (extrait de naissance et pièce
+d'identité scannés).
+4. Paiement en ligne des frais de délivrance (2 500 FCFA) par le canal de paiement électronique
+de son choix (TrésorPay, Mobile Money).
+5. Réception d'une notification de validation par SMS ou e-mail contenant le code de suivi et la
+date de disponibilité.
+6. Présentation physique au tribunal indiqué (lieu de naissance ou guichet d'Abidjan selon
+l'option choisie) muni de la pièce d'identité d'origine pour retirer le document physique
+imprimé.
+Section 7 — Cas particuliers
+Situation particulière : Personnes nées à l'étranger (ivoiriennes ou étrangères ayant résidé
+en CI).
+Impact sur la procédure : La demande doit obligatoirement être adressée au Casier
+Judiciaire Central situé au Ministère de la Justice à Abidjan (Plateau), et non dans un
+tribunal régional.
+Situation particulière : Personnes ayant fait l'objet d'une condamnation antérieure
+(Réhabilitation).
+Impact sur la procédure : Le casier ne sera pas vierge sauf si une procédure légale de
+réhabilitation a été prononcée et enregistrée par le greffe.
+Procédure liée (ID) : demande_rehabilitation_justice
+Section 8 — Sources et vérification
+Source principale : https://www.e-justice.ci
+Source secondaire : https://servicepublic.gouv.ci
+
+--- PAGE 5 ---
+Date de vérification : 27/06/2026
+☑
+Statut global : Complet
+FICHE DE RECUEIL N°3 : Certificat
+de Nationalité Ivoirienne
+SECTION 1 — Identification de la procédure
+ID unique : certificat_nationalite_ejustice
+Titre complet : Demande en ligne du Certificat de Nationalité Ivoirienne
+Catégorie : Identité / Justice
+Sous-catégorie : Nationalité
+Événement déclencheur : Établissement d'un premier dossier d'identité (CNI, Passeport),
+inscription à un concours de la Fonction Publique, ou constitution de dossiers officiels.
+Procédures liées :
+acte_naissance_mairie (nécessaire comme pièce justificative de base)
+cni_enrolement_oneci (procédure qui découle souvent de celle-ci).
+SECTION 2 — Lieu et institution
+Institution : Ministère de la Justice et des Droits de l'Homme
+Bureau / guichet : Portail numérique de l'administration judiciaire (e-justice.ci) / Tribunal de
+Première Instance ou Section de Tribunal du lieu de naissance.
+Horaires d'ouverture :
+En ligne : 24h/24, 7j/7
+Retrait au tribunal : Lundi–Vendredi 8h–12h et 13h–16h
+Adresse (si connue) :
+Site web : e-justice.ci
+Greffe du tribunal compétent selon la localité de naissance.
+Contact téléphonique : À confirmer
+☑
+À vérifier ? : Oui — Numéro d'assistance technique de la plateforme e-justice à confirmer.
+SECTION 3 — Coût
+
+--- PAGE 6 ---
+Montant : 3 000 FCFA
+Notes sur le coût : Montant de base légal pour le droit de timbre et d'établissement. Des frais
+techniques minimes liés au paiement Mobile Money ou bancaire s'appliquent lors de la
+transaction en ligne.
+Source du montant : e-justice.ci / servicepublic.gouv.ci
+À vérifier ? : ☐ Oui ☑ Non
+SECTION 4 — Délai légal et traitement
+Délai légal : Aucun délai d'expiration légal strict (le document reste valable tant que la situation
+juridique de l'individu ne change pas, mais les administrations demandent souvent un acte de
+moins de 6 mois ou 1 an).
+Durée de traitement : 3 à 5 jours ouvrables après validation de la demande en ligne.
+Résultat produit : Certificat de Nationalité Ivoirienne officiel revêtu du sceau du tribunal et de la
+signature du magistrat.
+Validité du document : Sans limite de validité théorique (sauf modification de la loi ou
+déchéance).
+SECTION 5 — Documents requis
+☑
+Copie de l'Extrait d'acte de naissance du demandeur | Obligatoire | Version lisible
+scannée ou photographiée (PDF/JPEG).
+☑
+Copie de la pièce d'identité du parent (Père ou Mère) | Obligatoire | CNI ou
+passeport ivoirien du parent prouvant la filiation et la nationalité d'origine.
+Certificat de nationalité d'un des parents | ☐ Conditionnel | Souvent exigé pour une
+première demande afin de consolider le dossier de filiation.
+☑
+Reçu de paiement en ligne | Obligatoire | Généré automatiquement après le
+règlement sur la plateforme.
+SECTION 6 — Étapes de la procédure
+1. Accès au portail officiel e-justice.ci et authentification sur son compte citoyen.
+2. Sélection de la procédure "Demande de Certificat de Nationalité".
+3. Renseignement exhaustif des données civiles du demandeur, de son père et de sa mère.
+4. Téléchargement des pièces justificatives obligatoires (acte de naissance, pièces des parents)
+sur l'interface.
+5. Paiement électronique des frais (3 000 FCFA) via le service de paiement intégré (Mobile
+Money ou TrésorPay).
+6. Suivi de l'instruction du dossier en ligne, puis déplacement physique au tribunal de
+naissance (muni des pièces originales pour confrontation) afin de retirer le document signé.
+
+--- PAGE 7 ---
+SECTION 7 — Cas particuliers
+Situation particulière : Nationalité acquise par mariage.
+Impact sur la procédure : Fournir obligatoirement l'acte de mariage original, le certificat de
+nationalité du conjoint ivoirien, et la preuve du décret ou de la déclaration officielle
+d'acquisition.
+Procédure liée (ID) : acte_mariage_mairie
+Situation particulière : Nationalité acquise par décret (Naturalisation).
+Impact sur la procédure : Joindre une copie du décret de naturalisation publié au Journal
+Officiel de la République de Côte d'Ivoire.
+Procédure liée (ID) : NULL
+SECTION 8 — Sources et vérification
+Source principale : https://www.e-justice.ci
+Source secondaire : https://servicepublic.gouv.ci
+Date de vérification : 27/06/2026
+Fiche de Recueil N°4 : Actes d'État
+Civil en Ligne (Naissance,
+Mariage, Décès)
+SECTION 1 — Identification de la Procédure
+ID unique : actes_etat_civil_documents_ci
+Titre complet : Demande et livraison d'extraits d'actes d'État Civil via documents.ci
+Catégorie : État civil
+Sous-catégorie : Naissance — Mariage — Décès
+Événement déclencheur : Besoin d'un extrait d'acte de naissance, de mariage ou de
+décès récent pour des démarches administratives courantes sans déplacement à la
+mairie d'origine.
+Procédures liées :
+Enrôlement CNI : cni_enrolement_oneci
+Casier judiciaire : casier_judiciaire_ejustice
+Certificat de nationalité : certificat_nationalite_ejustice
+
+--- PAGE 8 ---
+SECTION 2 — Lieu et Institution
+Institution : La Poste de Côte d'Ivoire (en partenariat avec les Mairies et Sous-
+préfectures adhérentes)
+Bureau / guichet : Portail en ligne documents.ci / Agences de La Poste pour le retrait
+physique ou livraison à domicile.
+Horaires d'ouverture :
+En ligne : 24h/24, 7j/7
+Agences postales : Lundi–Vendredi 7h30–16h30, Samedi 8h–12h
+Adresse :
+Site officiel : documents.ci
+Siège de La Poste : Abidjan, Plateau
+Contact téléphonique : À vérifier (Numéro du service client dédié à documents.ci à
+intégrer).
+SECTION 3 — Coût
+Montant : À vérifier
+Notes sur le coût : Le prix varie selon la mairie d'origine (taxe municipale
+généralement entre 500 et 2 000 FCFA) avec des frais de traitement de La Poste et de
+livraison à partir de 1 500 FCFA.
+Source du montant : documents.ci
+À vérifier : Grille tarifaire exacte par commune et frais de livraison à valider.
+SECTION 4 — Délai Légal et Traitement
+Délai légal : Aucun
+Durée de traitement : 48 heures à 7 jours ouvrables, variable selon la réactivité de la
+mairie émettrice et le mode de livraison.
+Résultat produit : Extrait d'acte officiel légalisé par l'officier d'état civil.
+Validité du document : Généralement 3 mois pour les démarches administratives.
+SECTION 5 — Documents Requis
+Copie ou photo de l'ancien extrait d'acte : Fortement recommandé (PDF/JPEG)
+Formulaire de demande en ligne : Obligatoire
+Pièce d'identité du demandeur : Obligatoire
+SECTION 6 — Étapes de la Procédure
+1. Connexion sur le site officiel documents.ci.
+2. Sélection du type de document souhaité.
+3. Renseignement de la commune ou sous-préfecture d'enregistrement de l'acte.
+4. Remplissage des informations d'identification de l'acte et téléchargement de la photo
+de l'ancien acte si disponible.
+5. Choix du mode de délivrance : retrait ou livraison.
+
+--- PAGE 9 ---
+6. Paiement sécurisé et suivi de l'acheminement avec un code de tracking.
+SECTION 7 — Cas Particuliers
+Mairie d'origine non connectée : Impossible de commander l'acte en ligne,
+déplacement nécessaire.
+Acte introuvable ou erreur : Demande rejetée, possibilité de remboursement partiel
+ou notification pour rectification administrative.
+SECTION 8 — Sources et Vérification
+Source principale : documents.ci
+Source secondaire : servicepublic.gouv.ci
+Date de vérification : 27/06/2026
+Déclaration et Paiement Fiscal en
+Ligne via E-Impôts
+Identification de la Procédure
+ID Unique : impots_declaration_eimpots
+Titre Complet : Déclaration et paiement des impôts en ligne via E-Impôts
+Catégorie : Impôts / Finances / Économie
+Sous-catégorie : Impôts (DGI)
+Événement Déclencheur : Échéances fiscales périodiques (mensuelles, trimestrielles
+ou annuelles) pour les entreprises et les particuliers.
+Procédures Liées : creation_entreprise_cepici (nécessaire pour obtenir un Numéro
+d'Identifiant Unique - NCC avant toute démarche fiscale).
+Lieu et Institution
+Institution : Direction Générale des Impôts (DGI) de Côte d'Ivoire
+Bureau / Guichet : Portail web officiel e-impots.gouv.ci / Centres des Impôts de
+rattachement pour l'assistance physique.
+Horaires d'Ouverture :
+En ligne : 24h/24, 7j/7
+Bureaux physiques : Lundi–Vendredi 7h30–12h et 13h30–16h30
+Adresse : Siège de la DGI : Abidjan, Plateau, Avenue de la République / Centres des
+impôts par commune/région.
+Contact Téléphonique : Numéro d'assistance du centre d'appels de la DGI à confirmer.
+Coût
+Montant : Gratuit
+
+--- PAGE 10 ---
+Notes sur le Coût : L'accès à la plateforme et la soumission des déclarations sont
+gratuits. Le citoyen ou l'entreprise ne paie que la valeur réelle de ses impôts et taxes
+calculés (TVA, ITS, Impôt sur les bénéfices, etc.).
+Source du Montant : e-impots.gouv.ci / servicepublic.gouv.ci
+Délai Légal et Traitement
+Délai Légal : Dépend de la taxe (généralement avant le 10, le 15 ou le 20 du mois
+suivant l'exercice fiscal selon le régime d'imposition).
+Durée de Traitement : Immédiat (génération automatique de l'accusé de réception et
+du reçu de paiement après validation).
+Résultat Produit : Accusé de réception de déclaration fiscale / Quittance officielle de
+paiement.
+Validité du Document : Permanent (valeur de preuve fiscale pour la période
+concernée).
+Documents Requis
+☑
+Numéro de Compte Contribuable (NCC) : Obligatoire
+☑
+États Financiers / Éléments de Comptabilité : Obligatoire
+☑
+Code d'Activation de l'Espace E-Impôts : Obligatoire
+Étapes de la Procédure
+1. Connexion sur la plateforme officielle e-impots.gouv.ci à l'aide de ses identifiants de
+connexion sécurisés.
+2. Sélection du module de déclaration correspondant à la taxe à acquitter (ex: TVA,
+Impôt sur les Traitements et Salaires).
+3. Saisie des données financières requises dans le formulaire électronique dédié.
+4. Validation et télédéclaration des informations saisies (le système calcule
+automatiquement le montant dû).
+5. Sélection du mode de paiement électronique (Virement bancaire initié sur la
+plateforme, Mobile Money ou prélèvement automatique).
+6. Téléchargement immédiat de l'accusé de réception de la télédéclaration et de la
+quittance de paiement sécurisée.
+Cas Particuliers
+Déclaration Hors Délai
+Impact sur la Procédure : Application automatique par le système de pénalités de
+retard et d'intérêts de moratoire sur les montants déclarés.
+Constat d'une Erreur Après Validation
+Impact sur la Procédure : Nécessité de produire une déclaration rectificative (ou
+complémentaire) directement sur l'interface avant toute action de contrôle de
+
+--- PAGE 11 ---
+l'administration.
+Sources et Vérification
+Source Principale : e-impots.gouv.ci
+Source Secondaire : servicepublic.gouv.ci
+Date de Vérification : 27/06/2026
+Fiche de Recueil N°6 : Couverture
+Maladie Universelle (CMU)
+SECTION 1 — Identification de la procédure
+ID unique : cmu_enrolement_ips_cnam
+Titre complet : Enrôlement et immatriculation à la Couverture Maladie Universelle
+(CMU)
+Catégorie : Santé / Sécurité sociale
+Sous-catégorie : CMU
+Événement déclencheur : Obligation légale pour tout résident en Côte d'Ivoire
+(national ou étranger) d'adhérer au système national d'assurance maladie pour
+accéder aux soins subventionnés.
+Procédures liées : cni_enrolement_oneci (la pièce d'identité ou le récépissé est
+nécessaire pour l'enrôlement).
+SECTION 2 — Lieu et institution
+Institution : IPS-CNAM (Institution de Prévoyance Sociale - Caisse Nationale
+d'Assurance Maladie)
+Bureau / guichet : Sites d'enrôlement CMU dédiés (déployés dans les hôpitaux publics,
+mairies, universités et agences CNAM).
+Horaires d'ouverture : Lundi–Vendredi 8h–16h.
+Adresse : Siège de la CNAM : Abidjan, Plateau / Centres d'enrôlement de proximité
+répartis sur le territoire national.
+Contact téléphonique : NULL
+☑
+À vérifier ? : Oui — Préciser : Numéro court d'assistance de la CNAM à confirmer.
+SECTION 3 — Coût
+Montant : Gratuit
+Notes sur le coût : L'opération de délivrance de la carte et l'enrôlement biométrique
+sont entièrement gratuits. Cependant, le bénéfice des prestations est conditionné par
+le paiement d'une cotisation mensuelle obligatoire de 1 000 FCFA par personne.
+Source du montant : servicepublic.gouv.ci / ips-cnam.ci
+☐ ☑
+À vérifier ? : Oui Non
+
+--- PAGE 12 ---
+SECTION 4 — Délai légal et traitement
+Délai légal : Obligatoire pour tous les citoyens et résidents depuis l'entrée en vigueur
+des décrets d'application.
+Durée de traitement : Production de la carte en mode "In Situ" immédiat dans
+certains centres VIP/pilotes, ou sous quelques semaines dans les centres standards.
+Résultat produit : Carte d'assuré CMU contenant le Numéro d'Immatriculation
+Unique.
+Validité du document : Permanente (sous réserve du paiement régulier des
+cotisations mensuelles).
+SECTION 5 — Documents requis
+☑
+Pièce d'identité d'origine (CNI, Passeport ou Attestation d'identité) | Obligatoire |
+Pour les nationaux majeurs (16 ans et plus).
+☑
+Extrait d'acte de naissance | Obligatoire | Obligatoire pour les mineurs (moins de
+16 ans) ne possédant pas de pièce d'identité.
+☐
+Carte de résident ou Passeport avec visa | Conditionnel | Obligatoire uniquement
+pour les résidents de nationalité étrangère.
+☐
+Récépissé d'enrôlement ONECI | Conditionnel | Accepté si la CNI physique n'est pas
+encore disponible.
+SECTION 6 — Étapes de la procédure
+1. Présentation physique obligatoire du demandeur (ainsi que des mineurs à sa charge)
+dans un centre d'enrôlement agréé IPS-CNAM.
+2. Remise des pièces justificatives (acte de naissance ou pièce d'identité) à l'agent
+d'enrôlement pour vérification.
+3. Saisie des données civiles et enregistrement des coordonnées de contact (numéro de
+téléphone mobile).
+4. Prise de vue (photo numérique) et capture des empreintes digitales du demandeur
+sur le dispositif biométrique.
+5. Délivrance immédiate d'un récépissé d'enrôlement portant le numéro
+d'immatriculation.
+6. Retrait de la carte CMU physique (immédiat ou sur notification par SMS selon les
+capacités techniques du centre choisi).
+SECTION 7 — Cas particuliers
+Situation particulière : Étudiants inscrits dans les universités et grandes écoles.
+Impact sur la procédure : L'enrôlement ou la présentation du numéro CMU est
+devenu obligatoire lors de l'inscription académique annuelle. Des caravanes
+d'enrôlement spécifiques sont déployées sur les campus.
+Procédure liée (ID) : inscription_universite_mesrs
+Situation particulière : Indigents (personnes sans ressources).
+
+--- PAGE 13 ---
+Impact sur la procédure : Après enquête sociale des services du Ministère de la
+Solidarité, l'État prend en charge l'intégralité de la cotisation mensuelle de 1 000
+FCFA.
+Procédure liée (ID) : NULL
+SECTION 8 — Sources et vérification
+Source principale : https://servicepublic.gouv.ci
+Source secondaire : Portail officiel de l'IPS-CNAM
+Date de vérification : 27/06/2026
+Fiche de Recueil N°7 : Permis de
+Conduire (Format Biométrique)
+SECTION 1 — Identification de la procédure
+ID unique : permis_conduire_quipux_amuga
+Titre complet : Demande d'établissement ou de renouvellement du Permis de
+Conduire biométrique
+Catégorie : Transport et Mobilité
+Sous-catégorie : Permis de conduire
+Événement déclencheur :
+Réussite à l'examen pratique de conduite (premier établissement)
+Expiration de la validité du titre actuel
+Perte, vol ou détérioration
+Procédures liées :
+cni_enrolement_oneci (la pièce d'identité est requise)
+visite_medicale_permis (étape préalable obligatoire)
+SECTION 2 — Lieu et institution
+Institution : Ministère des Transports / AMUGA / Quipux Afrique (Opérateur du Centre
+de Gestion Intégrée)
+Bureau / guichet : Agences des Centres de Gestion Intégrée (CGI) de Quipux Afrique
+Horaires d'ouverture :
+Lundi–Vendredi 8h–16h
+Samedi 8h–12h (selon les agences)
+Adresse :
+Siège Quipux : Abidjan, Cocody Deux-Plateaux
+Centres CGI répartis à Abidjan (Vridi, Yopougon, Angré) et à l'intérieur du pays
+Contact téléphonique : À vérifier — Numéro unique du call-center Quipux Afrique à
+confirmer.
+
+--- PAGE 14 ---
+SECTION 3 — Coût
+Montant : À vérifier
+Notes sur le coût :
+Le coût de la carte de permis (droit de timbre) varie selon la nature de la démarche
+Environ 24 500 FCFA pour un renouvellement standard (hors frais d'examen
+médical ou d'auto-école pour un premier établissement)
+Source du montant : quipuxafrique.ci / servicepublic.gouv.ci
+SECTION 4 — Délai légal et traitement
+Délai légal : Obligation de renouvellement avant la date d'expiration indiquée sur le
+titre (généralement tous les 5 ou 10 ans selon la catégorie et l'âge du conducteur).
+Durée de traitement : Délai variable (remise d'un permis provisoire immédiatement
+après l'enrôlement, document définitif disponible sous quelques semaines).
+Résultat produit : Permis de conduire biométrique au format carte bancaire.
+Validité du document : 5 ans ou 10 ans (selon la catégorie de permis et l'âge du
+titulaire).
+SECTION 5 — Documents requis
+☑
+Pièce d'identité d'origine en cours de validité (CNI ou Passeport) | Obligatoire |
+Pour authentifier le demandeur.
+☑
+Certificat d'aptitude médicale à la conduite | Obligatoire | Délivré par un médecin
+agréé après examen (généralement effectué au sein ou à proximité du CGI).
+☐
+Ancien permis de conduire | Conditionnel | Obligatoire uniquement pour un
+renouvellement ou une extension de catégorie.
+☐
+Certificat de perte ou de vol | Conditionnel | Obligatoire uniquement en cas de
+demande de duplicata.
+☐
+Attestation de réussite à l'examen (Certificat d'examen) | Conditionnel | Obligatoire
+pour un premier établissement.
+SECTION 6 — Étapes de la procédure
+1. Prise de rendez-vous en ligne sur la plateforme Quipux ou présentation directe dans
+un Centre de Gestion Intégrée (CGI).
+2. Passage de la visite médicale obligatoire auprès du médecin agréé présent sur le site
+pour valider l'aptitude physique et visuelle.
+3. Paiement des frais administratifs et d'établissement au guichet de caisse intégré du
+CGI.
+4. Passage au box d'enrôlement pour la capture de la photo numérique, de la signature
+électronique et des empreintes.
+5. Délivrance d'un titre provisoire de conduite (valable 3 mois) permettant de circuler
+légalement.
+6. Réception d'une notification SMS invitant à venir retirer le permis de conduire
+biométrique définitif au centre d'enrôlement sur présentation du titre provisoire.
+
+--- PAGE 15 ---
+SECTION 7 — Cas particuliers
+Situation particulière : Conversion d'un permis de conduire étranger en permis
+ivoirien.
+Impact sur la procédure : Nécessité de fournir le permis étranger original
+authentifié, une attestation de validité délivrée par le pays émetteur (ou
+l'ambassade), et de s'acquitter d'une taxe spécifique de conversion.
+Procédure liée (ID) : conversion_permis_etranger
+Situation particulière : Conducteurs professionnels (Poids lourds, transports en
+commun).
+Impact sur la procédure : La validité du titre est réduite (souvent 1 à 3 ans) et les
+examens médicaux requis sont plus stricts.
+Procédure liée (ID) : NULL
+SECTION 8 — Sources et vérification
+Source principale : https://servicepublic.gouv.ci
+Source secondaire : Portail officiel de Quipux Afrique
+Date de vérification : 27/06/2026
+Fiche de Recueil N°8 : Passeport
+Ivoirien Biométrique
+SECTION 1 — Identification de la procédure
+ID unique : passeport_ivoirien_snedai
+Titre complet : Pré-enrôlement et enrôlement pour le Passeport Ivoirien Biométrique
+Catégorie : Identity / Voyage
+Sous-catégorie : Passeport
+Événement déclencheur : Volonté de voyager hors de l'espace CEDEAO, expiration du
+passeport actuel, épuisement des pages du livret, perte ou vol.
+Procédures liées : certificat_nationalite_ejustice (pièce fondamentale pour la première
+demande), acte_naissance_mairie (justificatif d'état civil).
+SECTION 2 — Lieu et institution
+Institution : Ministère de l'Intérieur et de la Sécurité / SNEDAI
+Bureau / guichet : Plateforme en ligne de la SNEDAI / Sites d'enrôlement physique
+(Abidjan : Plateau, Cocody, Marcory ; et délégations régionales).
+Horaires d'ouverture :
+En ligne : 24h/24, 7j/7
+
+--- PAGE 16 ---
+Centres physiques : Lundi–Vendredi 8h–15h30
+Adresse (si connue) : Siège de la SNEDAI : Abidjan, Plateau / Centres de collecte dédiés.
+Contact téléphonique : À vérifier (Numéro du service client SNEDAI à confirmer)
+SECTION 3 — Coût
+Montant : 40 000 FCFA
+Notes sur le coût : Prix unique fixé par décret pour l'achat du timbre de passeport. Le
+paiement s'effectue en ligne via Mobile Money ou par carte bancaire sur le portail
+sécurisé.
+Source du montant : snedai.com / servicepublic.gouv.ci
+SECTION 4 — Délai légal et traitement
+Délai légal : Aucun délai d'obligation nationale (le passeport n'est requis que pour les
+déplacements internationaux).
+Durée de traitement : 72 heures à 15 jours ouvrables (délai indicatif après la capture
+des données biométriques).
+Résultat produit : Passeport biométrique de la République de Côte d'Ivoire.
+Validité du document : 5 ans (non renouvelable par prorogation, un nouveau livret
+doit être produit à l'expiration).
+SECTION 5 — Documents requis
+☑
+Reçu de paiement du timbre (40 000 FCFA) | Obligatoire | Reçu généré en ligne
+après le paiement.
+☑
+Fiche de pré-enrôlement imprimée | Obligatoire | Formulaire complété sur le site
+web.
+☑
+Extrait d'acte de naissance | Obligatoire | Original datant de moins de 1 an.
+☑
+Certificat de nationalité ivoirienne | Obligatoire | Original revêtu du sceau du
+tribunal.
+☐
+Ancien passeport | Conditionnel | Obligatoire uniquement en cas de
+renouvellement.
+☐
+Attestation de fonction ou profession | Conditionnel | Justificatif si le demandeur
+souhaite mentionner sa profession.
+SECTION 6 — Étapes de la procédure
+1. Connexion sur le site de la SNEDAI pour effectuer le paiement en ligne du timbre de
+40 000 FCFA.
+2. Remplissage du formulaire de pré-enrôlement en ligne et choix du centre physique
+ainsi que de la date et heure du rendez-vous.
+3. Impression de la fiche de pré-enrôlement et du reçu de paiement.
+4. Présentation physique au centre d'enrôlement avec les pièces justificatives
+originales.
+5. Vérification du dossier par les agents de police, suivie de la capture biométrique.
+6. Retrait du passeport physique au centre, après réception du SMS de confirmation.
+
+--- PAGE 17 ---
+SECTION 7 — Cas particuliers
+Demande pour un enfant mineur (moins de 18 ans) : Obligation de fournir une
+autorisation parentale légalisée, accompagnée d'une copie de la pièce d'identité du
+parent signataire.
+Perte ou Vol du passeport en cours de validité : Joindre un certificat de perte ou de vol
+original délivré par les autorités policières.
+SECTION 8 — Sources et vérification
+Source principale : Portails officiels de la SNEDAI
+Source secondaire : https://servicepublic.gouv.ci
+Date de vérification : 27/06/2026
+Fiche de Recueil N°9 : Inscription
+aux Concours Administratifs
+Section 1 — Identification de la procédure
+ID unique : concours_fonction_publique
+Titre complet : Inscription aux concours directs et professionnels de la Fonction
+Publique
+Catégorie : Emploi et Fonction Publique
+Sous-catégorie : Concours administratifs
+Événement déclencheur : Ouverture annuelle des sessions de concours de
+recrutement des agents de l'État par arrêté ministériel.
+Procédures liées : casier_judiciaire_ejustice, certificat_nationalite_ejustice,
+cmu_enrolement_ips_cnam (pièces indispensables à fournir dans le dossier).
+Section 2 — Lieu et institution
+Institution : Ministère d'État, Ministère de la Fonction Publique et de la Modernisation
+de l'Administration
+Bureau / guichet : Portail en ligne officiel du ministère / Antenne de dépôt physique
+des dossiers (selon la ville choisie).
+Horaires d'ouverture :
+En ligne : 24h/24, 7j/7
+Guichets physiques : Lundi–Vendredi 8h–16h
+Adresse : Abidjan, Plateau, Boulevard de la République.
+Contact téléphonique : À vérifier (numéro vert ou call-center d'assistance aux
+candidats).
+Section 3 — Coût
+
+--- PAGE 18 ---
+Montant : À vérifier
+Notes sur le coût : Les frais incluent les droits d'inscription (exemple : 23 500 FCFA
+pour la Fonction Publique de base), frais de cours de préparation optionnels et visite
+médicale obligatoire (environ 25 000 FCFA).
+Source du montant : fonctionpublique.gouv.ci / servicepublic.gouv.ci
+Section 4 — Délai légal et traitement
+Délai légal : Candidature autorisée uniquement pendant la période d'ouverture
+officielle.
+Durée de traitement : Plusieurs mois.
+Résultat produit : Convocation aux épreuves / Statut d'admission au concours.
+Validité du document : Admission confère un droit d'accès permanent au statut de
+fonctionnaire stagiaire.
+Section 5 — Documents requis
+Diplôme requis : Obligatoire, certifié conforme.
+Extrait d'acte de naissance : Obligatoire, datant de moins de 6 mois.
+Certificat de nationalité ivoirienne : Obligatoire, original datant de moins d'un an.
+Casier judiciaire (Bulletin n°3) : Obligatoire, datant de moins de 3 mois.
+Attestation d'enrôlement ou Carte CMU : Obligatoire.
+Section 6 — Étapes de la procédure
+1. Création d'un espace candidat sur le site officiel.
+2. Remplissage du formulaire d'inscription en ligne.
+3. Prise de rendez-vous pour les examens médicaux.
+4. Paiement en ligne des droits d'inscription.
+5. Dépôt physique du dossier de candidature complet.
+6. Impression de la convocation en ligne et participation aux examens.
+Section 7 — Cas particuliers
+Situation particulière : Candidats handicapés.
+Impact sur la procédure : Dispositions ou quotas spécifiques peuvent s'appliquer.
+Section 8 — Sources et vérification
+Source principale : fonctionpublique.gouv.ci
+Source secondaire : servicepublic.gouv.ci
+Date de vérification : 27/06/2026
+Vérifié par : Béni
+Statut global : Partiel
+
+--- PAGE 19 ---
+Fiche de Recueil N°10 : Inscription
+Scolaire en Ligne
+Section 1 — Identification de la procédure
+ID unique : inscription_scolaire_mena
+Titre complet : Inscription en ligne des élèves du secondaire public et privé
+Catégorie : Éducation
+Sous-catégorie : Scolarité
+Événement déclencheur : Rentrée scolaire annuelle obligatoire.
+Section 2 — Lieu et institution
+Institution : Ministère de l'Éducation Nationale et de l'Alphabétisation (MENA)
+Bureau / guichet : Plateforme mobile d'inscription / Établissement scolaire de l'élève.
+Horaires d'ouverture : Service mobile et en ligne accessible 24h/24.
+Adresse : Abidjan, Plateau (Siège du MENA).
+Section 3 — Coût
+Montant : À vérifier
+Notes sur le coût : Frais d'inscription nationale généralement à 6 000 FCFA pour les
+lycées et collèges publics.
+Section 4 — Délai légal et traitement
+Délai légal : À effectuer avant la date de clôture nationale.
+Durée de traitement : Immédiat.
+Résultat produit : Reçu officiel d'inscription scolaire en ligne.
+Section 5 — Documents requis
+Numéro matricule national de l'élève : Obligatoire.
+Compte Mobile Money approvisionné : Obligatoire.
+Extrait de naissance ou bulletin de notes précédent : Conditionnel.
+Section 6 — Étapes de la procédure
+1. Accès au menu d'inscription scolaire via téléphone mobile.
+2. Saisie du numéro matricule de l'élève.
+3. Vérification des données de l'élève.
+4. Validation de la transaction et paiement via Mobile Money.
+5. Réception d'un SMS de confirmation.
+
+--- PAGE 20 ---
+6. Présentation de la preuve d'inscription à l'administration scolaire.
+Section 7 — Cas particuliers
+Situation particulière : Élève sans numéro matricule national.
+Impact sur la procédure : Inscription en ligne impossible, nécessité de se rendre à la
+DREN.
+Section 8 — Sources et vérification
+Source principale : education.gouv.ci
+Source secondaire : servicepublic.gouv.ci
+Date de vérification : 27/06/2026
+Fiche de Recueil N°11 :
+Dédouanement de Marchandises
+(Système SYDAM)
+Section 1 — Identification de la procédure
+ID unique : dedouanement_marchandises_sydam
+Titre complet : Déclaration en douane et dédouanement via le système automatisé
+SYDAM
+Catégorie : Finances / Économie
+Sous-catégorie : Douanes
+Événement déclencheur : Arrivée d'une marchandise importée ou expédition à
+l'exportation.
+Section 2 — Lieu et institution
+Institution : Direction Générale des Douanes Ivoiriennes
+Bureau / guichet : Système SYDAM World / Bureaux de douane physiques.
+Horaires d'ouverture : En ligne 24h/24, bureaux physiques Lundi–Vendredi 7h30–12h
+et 13h30–16h30.
+Section 3 — Coût
+Montant : À vérifier
+Notes sur le coût : Basé sur la nomenclature tarifaire de la marchandise, valeur en
+douane, et taxes applicables.
+
+--- PAGE 21 ---
+Section 4 — Délai légal et traitement
+Délai légal : Déclaration à faire dans les délais réglementaires.
+Durée de traitement : De quelques heures à quelques jours.
+Résultat produit : Bon à Enlever (BAE) douanier.
+Section 5 — Documents requis
+Facture commerciale finale : Obligatoire.
+Titre de transport : Obligatoire.
+Document de Déclaration Anticipée d'Importation : Obligatoire.
+Liste de colisage : Obligatoire.
+Certificat d'origine : Conditionnel.
+Section 6 — Étapes de la procédure
+1. Saisie et enregistrement de la Déclaration en Détail.
+2. Attachement des pièces justificatives numérisées.
+3. Liquidation automatique des droits et taxes.
+4. Paiement des droits de douane.
+5. Orientation du dossier vers un circuit de contrôle.
+6. Émission du "Bon à Enlever".
+Section 7 — Cas particuliers
+Situation particulière : Marchandises exonérées ou sous régime suspensif.
+Impact sur la procédure : Code de régime douanier spécifique et autorisation
+d'exonération requise.
+Section 8 — Sources et vérification
+Source principale : douanes.ci
+Source secondaire : servicepublic.gouv.ci
+Date de vérification : 27/06/2026
+Fiche de Recueil N°12 :
+Déclaration de Naissance à la
+Mairie
+Section 1 — Identification de la procédure
+
+--- PAGE 22 ---
+ID unique : acte_naissance_mairie
+Titre complet : Déclaration de naissance et établissement de l'acte de naissance à la
+Mairie
+Catégorie : État civil
+Sous-catégorie : Naissance
+Événement déclencheur : Naissance d'un enfant
+Procédures liées : cmu_enrolement_ips_cnam, allocations_familiales_cnps
+Section 2 — Lieu et institution
+Institution : Mairie
+Bureau / guichet : Service de l'État Civil
+Horaires d'ouverture : Lundi–Vendredi 8h–16h
+Adresse : Mairie du lieu de naissance de l'enfant
+Contact téléphonique : Non applicable
+Section 3 — Coût
+Montant : Gratuit
+Notes sur le coût : Gratuit dans le délai légal de 3 mois suivant la naissance. Au-delà,
+un jugement supplétif payant est requis auprès d'un tribunal.
+Source du montant : servicepublic.gouv.ci
+Section 4 — Délai légal et traitement
+Délai légal : Dans les 3 mois suivant la naissance
+Durée de traitement : Immédiat à 48 heures (selon l'affluence de la mairie)
+Résultat produit : Acte de naissance officiel
+Validité du document : Sans limite (les copies conformes demandées pour les dossiers
+administratifs doivent souvent dater de moins de 3 ou 6 mois).
+Section 5 — Documents requis
+☑
+1. Certificat de déclaration de naissance (Volet 1) | Obligatoire | Délivré par la
+maternité, la sage-femme ou le médecin ayant assisté à l'accouchement.
+☑
+2. Pièce d'identité des parents (CNI ou Passeport) | Obligatoire | Originaux et
+photocopies pour l'enregistrement de la filiation.
+☐
+3. Livret de famille | Conditionnel | Requis uniquement si les parents sont mariés
+légalement devant l'officier d'état civil.
+☐
+4. Pièce d'identité du déclarant | Conditionnel | Obligatoire si la déclaration est faite
+par un tiers autre que le père ou la mère.
+Section 6 — Étapes de la procédure
+1. Récupération du certificat de naissance à la maternité dès l'accouchement.
+2. Présentation physique du déclarant (le père, la mère, un proche ou l'accoucheur) au
+bureau de l'état civil de la mairie de la commune où l'enfant est né.
+
+--- PAGE 23 ---
+3. Remise du certificat médical de naissance et des pièces d'identité des parents à
+l'agent de l'état civil.
+4. Renseignement des registres d'état civil par l'agent (choix des prénoms, vérification
+de l'orthographe des noms).
+5. Signature du registre par le déclarant et par l'officier d'état civil.
+6. Délivrance immédiate ou différée (sous 24h-48h) des premiers extraits d'acte de
+naissance gratuits.
+Section 7 — Cas particuliers
+Situation particulière : Dépassement du délai légal de 3 mois.
+Impact sur la procédure : L'officier d'état civil de la mairie ne peut plus enregistrer la
+naissance directement. Le parent doit engager une procédure de demande de
+jugement supplétif de naissance auprès du tribunal compétent.
+Procédure liée (ID) : jugement_suppletif_naissance_tribunal
+Section 8 — Sources et vérification
+Source principale : https://servicepublic.gouv.ci
+Date de vérification : 27/06/2026
+Fiche de Recueil N°13 :
+Allocations Familiales CNPS
+Section 1 — Identification de la procédure
+ID unique : allocations_familiales_cnps
+Titre complet : Demande d'allocations familiales pour les travailleurs du secteur privé
+Catégorie : Sécurité sociale
+Sous-catégorie : CNPS
+Événement déclencheur : Naissance d'un enfant à charge au sein de la famille d'un
+travailleur salarié affilié.
+Procédures liées : acte_naissance_mairie (pièce maîtresse du dossier)
+Section 2 — Lieu et institution
+Institution : CNPS (Caisse Nationale de Prévoyance Sociale)
+Bureau / guichet : Agence de prévoyance sociale de rattachement de l'employeur /
+Espace "Assuré" en ligne.
+Horaires d'ouverture : En ligne : 24h/24. En agence : Lundi–Vendredi 7h30–12h et
+13h30–16h30.
+Adresse : Agence IPS-CNPS territoriale compétente (selon la zone géographique de
+l'entreprise).
+
+--- PAGE 24 ---
+Section 3 — Coût
+Montant : Gratuit
+Notes sur le coût : L'introduction du dossier de prestation familiale et son traitement
+par la caisse sont entièrement gratuits.
+Source du montant : cnps.ci
+Section 4 — Délai légal et traitement
+Délai légal : Les allocations sont dues à compter de la date de naissance. La demande
+doit idéalement être déposée le plus tôt possible pour éviter les prescriptions
+périodiques.
+Durée de traitement : 30 à 45 jours ouvrables après validation complète du dossier
+d'allocations.
+Résultat produit : Notification d'attribution des droits et versement périodique des
+allocations (généralement par trimestre).
+Validité du document : Les allocations sont versées jusqu'aux limites d'âge de l'enfant
+prévues par le Code de prévoyance sociale (généralement 14 ans, prolongé jusqu'à 21
+ans en cas d'études).
+Section 5 — Documents requis
+☑
+1. Formulaire de demande de prestations familiales (imprimé CNPS) | Obligatoire |
+Dûment renseigné par l'assuré et certifié par l'employeur actuel.
+☑
+2. Extrait d'acte de naissance de l'enfant | Obligatoire | Original ou copie certifiée
+conforme datant de moins de 6 mois.
+☑
+3. Certificat de vie et d'entretien de l'enfant | Obligatoire | Délivré par la mairie ou
+les autorités compétentes.
+☑
+4. Attestation de travail ou bulletin de salaire de l'assuré | Obligatoire | Pour prouver
+l'activité salariée continue et l'affiliation active.
+☑
+5. Relevé d'Identité Bancaire (RIB) | Obligatoire | Pour le virement direct des
+prestations de l'assuré.
+☐
+6. Certificat de scolarité | Conditionnel | Obligatoire uniquement pour les enfants
+d'âge scolaire (6 ans et plus) afin de maintenir les droits.
+Section 6 — Étapes de la procédure
+1. Retrait du formulaire de demande en agence CNPS ou téléchargement sur le portail
+officiel de la CNPS.
+2. Remplissage de la section réservée à l'assuré et soumission du formulaire à son
+employeur pour signature et apposition du cachet de l'entreprise.
+3. Rassemblement des pièces justificatives de l'enfant (acte de naissance, certificat de
+vie).
+4. Dépôt du dossier physique complet au guichet de l'agence CNPS de rattachement ou
+chargement des fichiers scannés sur l'espace assuré en ligne.
+
+--- PAGE 25 ---
+5. Instruction du dossier par les agents de la CNPS (vérification de la conformité des
+droits et de la régularité des cotisations de l'employeur).
+6. Réception de la notification d'accord et suivi du paiement des allocations familiales
+par virement bancaire ou mobile money selon la périodicité de la caisse.
+Section 7 — Cas particuliers
+Situation particulière : Mère salariée et Père salarié en même temps.
+Impact sur la procédure : Les deux parents ne peuvent pas cumuler les allocations
+pour les mêmes enfants. Le droit est généralement attribué prioritairement au père,
+ou à celui qui formule la demande avec l'accord express de l'autre conjoint (certificat
+de non-cumul).
+Section 8 — Sources et vérification
+Source principale : Portail officiel de la CNPS (https://www.cnps.ci)
+Source secondaire : https://servicepublic.gouv.ci
+Fiche de Recueil : Couverture
+Maladie Universelle (CMU)
+SECTION 1 — Identification de la procédure
+ID unique : cmu_enrolement_ips_cnam
+Titre complet : Enrôlement et immatriculation à la Couverture Maladie Universelle
+(CMU)
+Catégorie : Sécurité sociale
+Sous-catégorie : CMU
+Événement déclencheur : Obligation nationale d'adhésion au système d'assurance
+maladie pour toute personne résidant en Côte d'Ivoire.
+Procédures liées : cni_enrolement_oneci, acte_naissance_mairie
+SECTION 2 — Lieu et institution
+Institution : CMU / Tribunal / Mairie (via les sites d'enrôlement)
+Bureau / guichet : Centres d'enrôlement IPS-CNAM (déployés dans les hôpitaux,
+mairies et agences CNAM).
+Horaires d'ouverture : Lundi–Vendredi 8h–16h.
+Adresse (si connue) : Siège de la CNAM à Abidjan et centres locaux de proximité.
+Contact téléphonique : NULL
+☑
+À vérifier ? : Oui — Préciser : Numéro d'assistance téléphonique officiel à valider.
+
+--- PAGE 26 ---
+SECTION 3 — Coût
+Montant : Gratuit
+Notes sur le coût : L'enrôlement biométrique et la délivrance de la carte initiale sont
+gratuits. Les prestations de soins sont ensuite conditionnées par une cotisation
+mensuelle obligatoire de 1 000 FCFA par personne.
+Source du montant : servicepublic.gouv.ci / ips-cnam.ci
+☐ ☑
+À vérifier ? : Oui Non
+SECTION 4 — Délai légal et traitement
+Délai légal : Obligatoire dès la résidence ou la majorité civile.
+Durée de traitement : Production immédiate ("In Situ") dans les centres équipés, ou
+sous quelques semaines pour les centres classiques.
+Résultat produit : Carte d'assuré CMU portant un Numéro d'Immatriculation Unique.
+Validité du document : Permanente (liée au paiement régulier des cotisations
+mensuelles).
+SECTION 5 — Documents requis
+☑
+Pièce d'identité d'origine (CNI ou Passeport) | Obligatoire | Pour les personnes
+majeures de nationalité ivoirienne.
+☑
+Extrait d'acte de naissance | Obligatoire | Indispensable pour l'enrôlement des
+enfants mineurs (moins de 16 ans).
+☐
+Carte de résident ou Passeport avec visa | Conditionnel | Obligatoire uniquement
+pour les requérants de nationalité étrangère.
+☐
+Récépissé d'enrôlement ONECI | Conditionnel | Accepté à la place de la CNI si celle-
+ci est en cours de production.
+SECTION 6 — Étapes de la procédure
+1. Présentation physique obligatoire du demandeur (et de ses dépendants mineurs)
+dans l'un des centres d'enrôlement officiels de l'IPS-CNAM.
+2. Remise des documents d'état civil et d'identité à l'agent d'enrôlement pour contrôle
+de conformité.
+3. Saisie informatique des informations civiles et du numéro de téléphone mobile de
+l'assuré.
+4. Capture des données biométriques sur place (prise de photo numérique et
+numérisation des empreintes digitales).
+5. Délivrance immédiate d'un récépissé d'enrôlement sécurisé sur lequel figure le
+numéro d'immatriculation.
+6. Retrait de la carte CMU définitive en agence sur présentation du récépissé (ou
+notification par SMS pour disponibilité).
+SECTION 7 — Cas particuliers
+
+--- PAGE 27 ---
+Situation particulière : Étudiants des universités et grandes écoles.
+Impact sur la procédure : L'immatriculation ou la présentation du numéro CMU est
+exigée pour finaliser les inscriptions académiques annuelles.
+Procédure liée (ID) : inscription_universite_mesrs
+Situation particulière : Personnes reconnues indigentes (sans ressources).
+Impact sur la procédure : Prise en charge intégrale des mensualités de 1 000 FCFA
+par l'État après enquête sociale validée.
+Procédure liée (ID) : NULL
+SECTION 8 — Sources et vérification
+Source principale : https://servicepublic.gouv.ci
+Source secondaire : CNAM / Site de la CMU
+Date de verification : 27/06/2026
