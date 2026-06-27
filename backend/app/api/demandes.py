@@ -49,6 +49,7 @@ def process_demande_with_crew(demande_id: str, message: str):
         delay = 5.0
         resultat = None
         
+        fallback_used = False
         for attempt in range(max_retries):
             try:
                 logger.info(f"Lancement de kickoff CrewAI (tentative {attempt+1}/{max_retries})")
@@ -60,7 +61,7 @@ def process_demande_with_crew(demande_id: str, message: str):
                 break  # Succès, on sort de la boucle de retry
             except Exception as exc:
                 error_msg = str(exc).lower()
-                is_transient = "rate limit" in error_msg or "429" in error_msg or "overloaded" in error_msg or "timeout" in error_msg
+                is_transient = "rate limit" in error_msg or "429" in error_msg or "overloaded" in error_msg or "timeout" in error_msg or "resource_exhausted" in error_msg or "quota" in error_msg
                 if is_transient and attempt < max_retries - 1:
                     logger.warning(f"Erreur temporaire ou Rate limit Gemini détecté. Retrying dans {delay}s... (Détail: {exc})")
                     time.sleep(delay)
@@ -70,8 +71,27 @@ def process_demande_with_crew(demande_id: str, message: str):
                     time.sleep(delay)
                     delay *= 1.5
                 else:
-                    logger.error(f"Toutes les tentatives de traitement ont échoué pour la demande {demande_id}")
-                    raise exc
+                    # Plus de retries Gemini. Tentative de basculement vers Groq si la clé existe
+                    groq_key = os.getenv("GROQ_API_KEY")
+                    if groq_key and not fallback_used:
+                        logger.warning("Détection de surcharge Gemini. Basculement automatique vers le fournisseur de secours Groq...")
+                        try:
+                            from crewai import LLM
+                            fallback_llm = LLM(model="groq/llama-3.3-70b-versatile", api_key=groq_key)
+                            resultat = ECitoyenCrew(llm_override=fallback_llm).crew().kickoff(
+                                inputs={"demande_citoyen": message}
+                            )
+                            if resultat is None or resultat.pydantic is None:
+                                raise ValueError("Le crew de secours n'a pas produit de sortie structurée valide")
+                            fallback_used = True
+                            logger.info("Succès du traitement de la demande via le fournisseur de secours Groq.")
+                            break
+                        except Exception as fallback_exc:
+                            logger.error(f"Échec du traitement de secours via Groq : {fallback_exc}")
+                            raise fallback_exc
+                    else:
+                        logger.error(f"Toutes les tentatives de traitement ont échoué pour la demande {demande_id}")
+                        raise exc
 
         pydantic_res = resultat.pydantic
         crew_result = {
@@ -126,8 +146,18 @@ def process_demande_with_crew(demande_id: str, message: str):
             demande = db_session.query(Demande).filter(Demande.id == demande_id).first()
             if demande:
                 demande.status = DemandeStatus.ERREUR
+                
+                # Identifier si c'est un dépassement de quota (rate limit / resource exhausted)
+                error_msg = str(e).lower()
+                is_rate_limit = "rate_limit" in error_msg or "429" in error_msg or "resource_exhausted" in error_msg or "quota" in error_msg
+                
+                if is_rate_limit:
+                    user_error = "Toutes nos excuses, le service d'analyse IA connaît actuellement un fort trafic (limite de requêtes atteinte). Veuillez réessayer dans quelques minutes."
+                else:
+                    user_error = "Une erreur technique temporaire est survenue lors du traitement de votre demande. Veuillez réessayer."
+                
                 error_response = {
-                    "error": "Une erreur technique temporaire est survenue lors du traitement de votre demande. Veuillez réessayer.",
+                    "error": user_error,
                     "detail": str(e),
                     "is_technical": True
                 }

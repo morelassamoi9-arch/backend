@@ -84,6 +84,9 @@ class ReponseFinale(BaseModel):
 class ECitoyenCrew:
     """Crew principal du projet e-Citoyen CI"""
 
+    def __init__(self, llm_override=None):
+        self.llm_override = llm_override
+
     agents_config = "config/agents.yaml"
     tasks_config = "config/tasks.yaml"
 
@@ -91,7 +94,7 @@ class ECitoyenCrew:
     def accueil(self) -> Agent:
         return Agent(
             config=self.agents_config["accueil"],
-            llm=GEMINI_LLM,
+            llm=self.llm_override or GEMINI_LLM,
             verbose=True
         )
 
@@ -99,7 +102,7 @@ class ECitoyenCrew:
     def documentaliste(self) -> Agent:
         return Agent(
             config=self.agents_config["documentaliste"],
-            llm=GEMINI_LLM,
+            llm=self.llm_override or GEMINI_LLM,
             tools=[consulter_procedure],
             verbose=True
         )
@@ -108,7 +111,7 @@ class ECitoyenCrew:
     def redacteur(self) -> Agent:
         return Agent(
             config=self.agents_config["redacteur"],
-            llm=GEMINI_LLM,
+            llm=self.llm_override or GEMINI_LLM,
             verbose=True
         )
 
@@ -152,7 +155,8 @@ class ECitoyenCrew:
         return Crew(
             agents=self.agents,
             tasks=self.tasks,
-            verbose=True
+            verbose=True,
+            cache=True
         )
 
 

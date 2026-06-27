@@ -44,6 +44,7 @@ async def traiter_demande(request: Request, demande: DemandeCitoyen) -> ReponseC
     global _tokens_consommes_session, _requetes_reussies_session
 
     resultat = None
+    fallback_used = False
 
     for tentative in range(1, MAX_TENTATIVES + 1):
         try:
@@ -62,15 +63,44 @@ async def traiter_demande(request: Request, demande: DemandeCitoyen) -> ReponseC
                 MAX_TENTATIVES,
                 exc,
             )
+            
+            error_msg = str(exc).lower()
+            is_rate_limit = "rate limit" in error_msg or "429" in error_msg or "resource_exhausted" in error_msg or "quota" in error_msg
+            
             if tentative == MAX_TENTATIVES:
+                # Si Gemini a échoué sur toutes les tentatives, essayer le basculement vers Groq si dispo
+                groq_key = os.getenv("GROQ_API_KEY")
+                if groq_key and not fallback_used:
+                    logger.warning("Détection de surcharge Gemini. Tentative de basculement vers le fournisseur de secours Groq en synchrone...")
+                    try:
+                        from crewai import LLM
+                        fallback_llm = LLM(model="groq/llama-3.3-70b-versatile", api_key=groq_key)
+                        resultat = await asyncio.to_thread(
+                            ECitoyenCrew(llm_override=fallback_llm).crew().kickoff,
+                            inputs={"demande_citoyen": demande.message}
+                        )
+                        fallback_used = True
+                        break
+                    except Exception as fallback_exc:
+                        logger.error(f"Échec du traitement de secours via Groq : {fallback_exc}")
+                        raise HTTPException(
+                            status_code=500,
+                            detail="Le service d'analyse IA est temporairement indisponible. Veuillez réessayer dans quelques minutes."
+                        ) from fallback_exc
+
                 logger.exception(
                     "Échec du traitement de la demande citoyenne après %d tentatives",
                     MAX_TENTATIVES,
                 )
+                
+                if is_rate_limit:
+                    error_detail = "Toutes nos excuses, le service d'analyse IA connaît actuellement un fort trafic (limite de requêtes atteinte). Veuillez réessayer dans quelques minutes."
+                else:
+                    error_detail = "Une erreur est survenue lors du traitement de votre demande. Veuillez réessayer dans un instant."
+
                 raise HTTPException(
                     status_code=500,
-                    detail="Une erreur est survenue lors du traitement de votre demande. "
-                    "Veuillez réessayer dans un instant."
+                    detail=error_detail
                 ) from exc
 
             delai = extraire_delai_attente(str(exc))
