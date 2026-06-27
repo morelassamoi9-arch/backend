@@ -158,7 +158,6 @@ def process_demande_with_crew(demande_id: str, message: str):
                 
                 error_response = {
                     "error": user_error,
-                    "detail": str(e),
                     "is_technical": True
                 }
                 demande.reponse = json.dumps(error_response, ensure_ascii=False)
