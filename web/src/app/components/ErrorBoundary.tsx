@@ -1,28 +1,21 @@
-import React, { Component, ErrorInfo, ReactNode } from "react";
+import React, { Component } from "react";
 
-interface Props {
-  children?: ReactNode;
-}
+export class ErrorBoundary extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false };
+  }
 
-interface State {
-  hasError: boolean;
-}
-
-export class ErrorBoundary extends Component<Props, State> {
-  public state: State = {
-    hasError: false
-  };
-
-  public static getDerivedStateFromError(_: Error): State {
+  static getDerivedStateFromError(error) {
     return { hasError: true };
   }
 
-  public componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-    // Les exceptions techniques sont uniquement logguées de manière interne
+  componentDidCatch(error, errorInfo) {
+    // Les exceptions techniques sont logguées de manière interne
     // et ne sont jamais révélées à l'utilisateur dans l'interface.
   }
 
-  public render() {
+  render() {
     if (this.state.hasError) {
       return (
         <div className="min-h-screen bg-[#F5EFE3] flex flex-col items-center justify-center p-4">
@@ -45,6 +38,6 @@ export class ErrorBoundary extends Component<Props, State> {
       );
     }
 
-    return this.state.children;
+    return this.props.children;
   }
 }
