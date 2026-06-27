@@ -350,6 +350,11 @@ export default function AIResponse() {
                     ? (reponse as any).error || "Une erreur technique temporaire est survenue lors du traitement de votre demande."
                     : "L'analyse de votre demande est en cours. Les résultats apparaîtront ici."}
                 </p>
+                {demande.status === "erreur" && (reponse as any).detail && (
+                  <p className="text-xs text-red-500 mt-2 bg-red-100/50 p-2 rounded border border-red-200 font-mono text-left max-w-lg mx-auto overflow-auto">
+                    {(reponse as any).detail}
+                  </p>
+                )}
                 {demande.status !== "rejetee" && demande.status !== "erreur" && (
                   <Button 
                     className="mt-4" 

@@ -54,7 +54,7 @@ function mapDemande(data: any): Request {
     try { documents = typeof raw.documents_requis === 'string' ? JSON.parse(raw.documents_requis) : (raw.documents_requis ?? []); } catch {}
 
     aiResponse = {
-      situation: raw.resume ?? '',
+      situation: raw.error ? `${raw.error}\nDétail : ${raw.detail ?? ''}` : (raw.resume ?? ''),
       actionPlan,
       documents,
       location: raw.lieu ?? '',

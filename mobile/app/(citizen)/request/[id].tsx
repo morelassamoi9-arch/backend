@@ -299,6 +299,11 @@ export default function RequestDetailScreen() {
             <Text style={styles.pendingText}>
               Une erreur technique est survenue lors de l'analyse de votre demande. Veuillez réessayer.
             </Text>
+            {aiResponse?.situation ? (
+              <Text style={{ fontSize: 11, fontStyle: "italic", marginTop: 8, color: Colors.error, textAlign: "center" }} selectable>
+                {aiResponse.situation}
+              </Text>
+            ) : null}
             <TouchableOpacity 
               style={[styles.retryButton, { backgroundColor: Colors.error, marginTop: 12 }]} 
               onPress={() => useAppStore.getState().regenerateRequest(currentRequest.id)}
