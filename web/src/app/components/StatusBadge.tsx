@@ -1,7 +1,7 @@
 import { Badge } from "./ui/badge";
 import { cn } from "./ui/utils";
 
-export type RequestStatus = "pending" | "verified" | "confirmed" | "rejected" | "en_attente" | "en_cours" | "traitee" | "rejetee";
+export type RequestStatus = "pending" | "verified" | "confirmed" | "rejected" | "en_attente" | "en_cours" | "traitee" | "rejetee" | "erreur";
 
 interface StatusBadgeProps {
   status: RequestStatus;
@@ -42,7 +42,12 @@ export function StatusBadge({ status, className }: StatusBadgeProps) {
       label: "Rejetée",
       className: "bg-red-100 text-red-800 hover:bg-red-100",
     },
+    erreur: {
+      label: "Erreur",
+      className: "bg-orange-100 text-orange-800 hover:bg-orange-100",
+    },
   };
+
 
   const config = statusConfig[status] || statusConfig.pending;
 

@@ -25,6 +25,7 @@ def process_demande_with_crew(demande_id: str, message: str):
     """
     Tâche de fond pour traiter la demande avec CrewAI (YAML-based)
     """
+    import time
     try:
         from app.agents.crew import ECitoyenCrew
         from app.database.models import Demande, DemandeStatus, Reponse
@@ -43,12 +44,34 @@ def process_demande_with_crew(demande_id: str, message: str):
             db_session.close()
 
         logger.info(f"Traitement CrewAI unifié pour la demande {demande_id}")
-        resultat = ECitoyenCrew().crew().kickoff(
-            inputs={"demande_citoyen": message}
-        )
-
-        if resultat is None or resultat.pydantic is None:
-            raise ValueError("Le crew n'a pas produit de sortie structurée valide")
+        
+        max_retries = 3
+        delay = 5.0
+        resultat = None
+        
+        for attempt in range(max_retries):
+            try:
+                logger.info(f"Lancement de kickoff CrewAI (tentative {attempt+1}/{max_retries})")
+                resultat = ECitoyenCrew().crew().kickoff(
+                    inputs={"demande_citoyen": message}
+                )
+                if resultat is None or resultat.pydantic is None:
+                    raise ValueError("Le crew n'a pas produit de sortie structurée valide")
+                break  # Succès, on sort de la boucle de retry
+            except Exception as exc:
+                error_msg = str(exc).lower()
+                is_transient = "rate limit" in error_msg or "429" in error_msg or "overloaded" in error_msg or "timeout" in error_msg
+                if is_transient and attempt < max_retries - 1:
+                    logger.warning(f"Erreur temporaire ou Rate limit Groq détecté. Retrying dans {delay}s... (Détail: {exc})")
+                    time.sleep(delay)
+                    delay *= 2.0  # Backoff exponentiel
+                elif attempt < max_retries - 1:
+                    logger.warning(f"Erreur CrewAI/parsing temporaire. Retrying dans {delay}s... (Détail: {exc})")
+                    time.sleep(delay)
+                    delay *= 1.5
+                else:
+                    logger.error(f"Toutes les tentatives de traitement ont échoué pour la demande {demande_id}")
+                    raise exc
 
         pydantic_res = resultat.pydantic
         crew_result = {
@@ -60,6 +83,13 @@ def process_demande_with_crew(demande_id: str, message: str):
             "cout": pydantic_res.cout,
             "lettre": pydantic_res.contenu_lettre if pydantic_res.lettre_generee else None
         }
+
+        # Déterminer si c'est un rejet fonctionnel (demande vide, inconnue ou hors sujet)
+        is_functional_rejection = (
+            not pydantic_res.plan_action 
+            or "inconnu" in pydantic_res.demarche.lower() 
+            or "hors sujet" in pydantic_res.demarche.lower()
+        )
 
         # Sauvegarder la réponse
         db_session = next(get_db())
@@ -79,25 +109,35 @@ def process_demande_with_crew(demande_id: str, message: str):
 
             demande = db_session.query(Demande).filter(Demande.id == demande_id).first()
             if demande:
-                demande.status = DemandeStatus.TRAITEE
+                if is_functional_rejection:
+                    demande.status = DemandeStatus.REJETEE
+                else:
+                    demande.status = DemandeStatus.TRAITEE
                 demande.reponse = json.dumps(crew_result, ensure_ascii=False)
             db_session.commit()
-            logger.info(f"Réponse CrewAI sauvegardée pour la demande {demande_id}")
+            logger.info(f"Réponse CrewAI sauvegardée pour la demande {demande_id}. Statut final : {demande.status}")
         finally:
             db_session.close()
 
     except Exception as e:
-        logger.error(f"Erreur CrewAI pour demande {demande_id}: {str(e)}")
+        logger.error(f"Erreur technique CrewAI pour demande {demande_id}: {str(e)}")
         db_session = next(get_db())
         try:
             demande = db_session.query(Demande).filter(Demande.id == demande_id).first()
             if demande:
-                demande.status = DemandeStatus.REJETEE
+                demande.status = DemandeStatus.ERREUR
+                error_response = {
+                    "error": "Une erreur technique temporaire est survenue lors du traitement de votre demande. Veuillez réessayer.",
+                    "detail": str(e),
+                    "is_technical": True
+                }
+                demande.reponse = json.dumps(error_response, ensure_ascii=False)
                 db_session.commit()
         except Exception as db_err:
             logger.error(f"Erreur lors du marquage d'erreur pour {demande_id}: {db_err}")
         finally:
             db_session.close()
+
 
 @router.post(
     "/",

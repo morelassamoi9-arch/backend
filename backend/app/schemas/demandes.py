@@ -84,5 +84,6 @@ class DemandeStats(BaseModel):
     demandes_en_cours: int
     demandes_traitees: int
     demandes_rejetees: int
+    demandes_erreur: Optional[int] = 0
     par_categorie: Optional[dict] = {}
     derniere_activite: Optional[datetime] = None

@@ -71,6 +71,9 @@ export const demandes = {
   
   getStats: () =>
     request('/demandes/stats/overview'),
+  
+  regenerate: (id: string) =>
+    request(`/demandes/${id}/generate-response`, { method: 'POST' }),
 };
 
 // ============================================

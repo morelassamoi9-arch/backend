@@ -84,7 +84,8 @@ export default function RequestDetailScreen() {
     // Polling : vérifie toutes les 5 secondes si la réponse IA est disponible
     const interval = setInterval(() => {
       const state = useAppStore.getState();
-      if (state.currentRequest?.aiResponse) {
+      const req = state.currentRequest;
+      if (req?.status === "erreur" || req?.status === "rejetee" || req?.aiResponse?.situation) {
         clearInterval(interval);
         return;
       }
@@ -290,8 +291,25 @@ export default function RequestDetailScreen() {
           </View>
         )}
 
+        {/* Error state */}
+        {currentRequest.status === "erreur" && (
+          <View style={[styles.pendingCard, { borderColor: Colors.error, borderWidth: 1 }]}>
+            <Ionicons name="alert-circle-outline" size={32} color={Colors.error} />
+            <Text style={[styles.pendingTitle, { color: Colors.error }]}>Erreur technique</Text>
+            <Text style={styles.pendingText}>
+              Une erreur technique est survenue lors de l'analyse de votre demande. Veuillez réessayer.
+            </Text>
+            <TouchableOpacity 
+              style={[styles.retryButton, { backgroundColor: Colors.error, marginTop: 12 }]} 
+              onPress={() => useAppStore.getState().regenerateRequest(currentRequest.id)}
+            >
+              <Text style={styles.retryButtonText}>Réessayer le traitement</Text>
+            </TouchableOpacity>
+          </View>
+        )}
+
         {/* No AI Response yet */}
-        {!aiResponse && (
+        {currentRequest.status !== "erreur" && !aiResponse?.situation && (
           <View style={styles.pendingCard}>
             <ActivityIndicator size="small" color={Colors.stamp} />
             <Text style={styles.pendingTitle}>Traitement en cours</Text>

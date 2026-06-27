@@ -32,8 +32,25 @@ export default function AIResponse() {
   const [demande, setDemande] = useState<DemandeDetail | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [regenerating, setRegenerating] = useState(false);
+
+  const handleRegenerate = async () => {
+    if (!demande?.id) return;
+    try {
+      setRegenerating(true);
+      setError("");
+      const updated = await demandes.regenerate(demande.id);
+      setDemande(updated);
+    } catch (err: any) {
+      console.error("Erreur lors de la régénération:", err);
+      setError(err.message || "Échec de la relance du traitement");
+    } finally {
+      setRegenerating(false);
+    }
+  };
 
   useEffect(() => {
+
     // Si on a des données passées via state (depuis NewRequest)
     if (location.state?.reponse) {
       console.log("Données reçues via state:", location.state.reponse);
@@ -65,7 +82,7 @@ export default function AIResponse() {
     if (!targetId) return;
 
     // Pas de polling si le statut est déjà finalisé
-    if (demande?.status === "traitee" || demande?.status === "rejetee") {
+    if (demande?.status === "traitee" || demande?.status === "rejetee" || demande?.status === "erreur") {
       return;
     }
 
@@ -324,19 +341,30 @@ export default function AIResponse() {
           )}
 
           {etapes.length === 0 && documents.length === 0 && lieux.length === 0 && !reponse.delai && !reponse.cout && !reponse.lettre && (
-            <Card>
+            <Card className={demande.status === "erreur" ? "border-red-200 bg-red-50/50" : undefined}>
               <CardContent className="pt-6 text-center py-8">
-                <p className="text-muted-foreground">
+                <p className={demande.status === "erreur" ? "text-red-700 font-medium" : "text-muted-foreground"}>
                   {demande.status === "rejetee"
                     ? "Votre demande n'a pas pu être traitée par l'assistant. Veuillez vérifier vos informations ou réessayer plus tard."
+                    : demande.status === "erreur"
+                    ? (reponse as any).error || "Une erreur technique temporaire est survenue lors du traitement de votre demande."
                     : "L'analyse de votre demande est en cours. Les résultats apparaîtront ici."}
                 </p>
-                {demande.status !== "rejetee" && (
+                {demande.status !== "rejetee" && demande.status !== "erreur" && (
                   <Button 
                     className="mt-4" 
                     onClick={() => fetchDemande(demande.id)}
                   >
                     Actualiser
+                  </Button>
+                )}
+                {demande.status === "erreur" && (
+                  <Button 
+                    className="mt-4 bg-red-600 hover:bg-red-700 text-white" 
+                    onClick={handleRegenerate}
+                    disabled={regenerating}
+                  >
+                    {regenerating ? "Relance en cours..." : "Réessayer le traitement"}
                   </Button>
                 )}
               </CardContent>

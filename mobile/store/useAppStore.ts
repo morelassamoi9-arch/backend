@@ -29,11 +29,13 @@ export interface AppState {
   createRequest: (message: string, categorie?: string) => Promise<Request>;
   fetchRequests: () => Promise<void>;
   fetchRequestById: (id: string) => Promise<void>;
+  regenerateRequest: (id: string) => Promise<void>;
 
   // Utilitaires
   clearError: () => void;
   clearRequestError: () => void;
 }
+
 
 /** Mappe DemandeResponse backend → Request store */
 function mapDemande(data: any): Request {
@@ -222,6 +224,28 @@ export const useAppStore = create<AppState>()(
             headers: { Authorization: `Bearer ${user.token}` },
           });
           if (!res.ok) throw new Error('Demande introuvable');
+          const data = await res.json();
+          const request = mapDemande(data);
+          set((s) => ({
+            requests: s.requests.map((r) => (r.id === id ? request : r)),
+            currentRequest: request,
+            isLoadingRequests: false,
+          }));
+        } catch (e: any) {
+          set({ requestError: e.message, isLoadingRequests: false });
+        }
+      },
+
+      regenerateRequest: async (id) => {
+        const { user } = get();
+        if (!user) return;
+        set({ isLoadingRequests: true, requestError: null });
+        try {
+          const res = await fetch(`${API_BASE}/demandes/${id}/generate-response`, {
+            method: 'POST',
+            headers: { Authorization: `Bearer ${user.token}` },
+          });
+          if (!res.ok) throw new Error('Impossible de relancer le traitement');
           const data = await res.json();
           const request = mapDemande(data);
           set((s) => ({

@@ -17,6 +17,7 @@ class DemandeStatus(str, enum.Enum):
     EN_COURS = "en_cours"
     TRAITEE = "traitee"
     REJETEE = "rejetee"
+    ERREUR = "erreur"
 
 
 def enum_values(enum_class: type[enum.Enum]) -> list[str]:

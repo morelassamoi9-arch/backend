@@ -3,7 +3,7 @@
  * Aligned with backend DemandeStatus enum (en_attente/en_cours/traitee/rejetee)
  */
 
-export type DemandeStatus = 'en_attente' | 'en_cours' | 'traitee' | 'rejetee';
+export type DemandeStatus = 'en_attente' | 'en_cours' | 'traitee' | 'rejetee' | 'erreur';
 
 export interface User {
   id: string;
