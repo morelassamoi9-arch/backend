@@ -4,11 +4,13 @@ import re
 import time
 import os
 
-from fastapi import APIRouter, HTTPException, Request
+from fastapi import APIRouter, Depends, HTTPException, Request
 from app.database.base import Base
 from app.database.sessions import engine
 from app.database.migrations import ensure_sqlite_schema
 from app.api import auth, demandes, users
+from app.auth.dependencies import get_current_active_user
+from app.database.models import User
 from app.limiter import limiter
 from app.models.schemas import DemandeCitoyen, ReponseCitoyen
 
@@ -36,7 +38,11 @@ _requetes_reussies_session = 0
     summary="Traite la demande d'un citoyen via le crew multi-agents",
 )
 @limiter.limit("3/minute")
-async def traiter_demande(request: Request, demande: DemandeCitoyen) -> ReponseCitoyen:
+async def traiter_demande(
+    request: Request,
+    demande: DemandeCitoyen,
+    current_user: User = Depends(get_current_active_user),
+) -> ReponseCitoyen:
     """
     Reçoit le message du citoyen, le fait passer par le crew
     (Agent Accueil -> Agent Documentaliste -> Agent Rédacteur),

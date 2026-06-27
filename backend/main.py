@@ -10,10 +10,16 @@ from app.limiter import limiter
 from app.api.routes import router
 logging.basicConfig(level=logging.INFO)
 
+ENVIRONMENT = os.getenv("ENVIRONMENT", "development").lower()
+_is_production = ENVIRONMENT in {"production", "prod"}
+
 app = FastAPI(
     title="e-Citoyen CI API",
     description="API du copilote multi-agents pour les démarches administratives en Côte d'Ivoire",
     version="0.1.0",
+    docs_url=None if _is_production else "/docs",
+    redoc_url=None if _is_production else "/redoc",
+    openapi_url=None if _is_production else "/openapi.json",
 )
 
 # Rate limiting par IP pour protéger le quota Groq partagé (gratuit,
@@ -61,6 +67,8 @@ async def global_exception_handler(request: Request, exc: Exception):
 # CORS restreint aux origines connues (web local + web déployé, mobile
 # si besoin) via la variable d'environnement CORS_ORIGINS (liste séparée
 # par des virgules). Valeur par défaut: localhost de dev uniquement.
+# En production, le wildcard "*" est interdit pour éviter les fuites de
+# cookies/tokens vers des domaines tiers.
 origines_autorisees = [
     origine.strip()
     for origine in os.getenv(
@@ -69,15 +77,31 @@ origines_autorisees = [
     ).split(",")
     if origine.strip()
 ]
-allow_credentials = "*" not in origines_autorisees
+
+if _is_production and "*" in origines_autorisees:
+    logging.getLogger("e_citoyen_ci").critical(
+        "CORS_ORIGINS contient '*' en production — remplacement par défaut sécurisé"
+    )
+    origines_autorisees = ["http://localhost:5173"]
 
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origines_autorisees,
-    allow_credentials=allow_credentials,
+    allow_credentials="*" not in origines_autorisees,
     allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allow_headers=["Authorization", "Content-Type"],
 )
+
+# Security headers (defense-in-depth)
+@app.middleware("http")
+async def add_security_headers(request: Request, call_next):
+    response = await call_next(request)
+    response.headers["X-Content-Type-Options"] = "nosniff"
+    response.headers["X-Frame-Options"] = "DENY"
+    response.headers["X-XSS-Protection"] = "1; mode=block"
+    if _is_production:
+        response.headers["Strict-Transport-Security"] = "max-age=31536000; includeSubDomains"
+    return response
 
 app.include_router(router)
 
