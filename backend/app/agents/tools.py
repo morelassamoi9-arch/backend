@@ -5,7 +5,7 @@ from crewai.tools import tool
 KNOWLEDGE_PATH = Path(__file__).parent.parent / "knowledge" / "procedures.json"
 
 
-@tool("Consulter la base de connaissances administratives")
+@tool("consulter_procedure")
 def consulter_procedure(nom_demarche: str) -> str:
     """
     Recherche une démarche administrative dans la base de connaissances

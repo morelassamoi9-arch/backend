@@ -13,6 +13,110 @@ import logging
 
 logger = logging.getLogger(__name__)
 
+class FallbackResponse:
+    def __init__(self, data):
+        self.resume_situation = data["resume_situation"]
+        self.plan_action = data["plan_action"]
+        self.documents_a_apporter = data["documents_a_apporter"]
+        self.lieu = data["lieu"]
+        self.delai_estime = data["delai_estime"]
+        self.cout = data["cout"]
+        self.lettre_generee = data["lettre_generee"]
+        self.contenu_lettre = data["contenu_lettre"]
+
+class FallbackResult:
+    def __init__(self, data):
+        self.pydantic = FallbackResponse(data)
+
+def get_deterministic_fallback_response(message: str):
+    """
+    Parcourt le fichier procedures.json et extrait la démarche qui correspond le mieux
+    aux mots-clés du message de l'utilisateur.
+    """
+    import json
+    from pathlib import Path
+    
+    knowledge_path = Path(__file__).parent.parent / "knowledge" / "procedures.json"
+    
+    try:
+        with open(knowledge_path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        demarches = data.get("demarches", {})
+    except Exception as err:
+        logger.error(f"Erreur chargement local de procedures.json pour le fallback : {err}")
+        demarches = {}
+
+    msg = message.lower()
+    matched_key = None
+    
+    keywords_map = {
+        "cni": ["cni", "carte d'identité", "carte nationale", "identite", "carte d’identité"],
+        "casier_judiciaire": ["casier", "judiciaire", "bulletin 3", "bulletin n°3", "bulletin n3"],
+        "certificat_nationalite": ["nationalite", "certificat de nationalite", "ivoirien", "ivoirienne"],
+        "actes_etat_civil": ["etat civil", "extrait", "acte de mariage", "acte de deces", "documents.ci"],
+        "acte_naissance": ["acte de naissance", "declaration de naissance", "naissance", "declarer naissance", "nouveau-ne"],
+        "cmu": ["cmu", "couverture maladie", "assurance maladie", "immatriculation cmu", "carte cmu"],
+        "permis_conduire": ["permis", "conduire", "permis de conduire", "biometrique", "quipux"],
+        "passeport": ["passeport", "voyager", "visa", "snedai", "timbre passeport"],
+        "jugement_suppletif": ["jugement supplétif", "jugement suppletif", "suppletif", "tribunal naissance", "delai depasse"],
+        "impots": ["impot", "impôts", "e-impots", "declaration fiscale", "ncc", "contribuable"],
+        "dedouanement_sydam": ["douane", "dedouanement", "marchandise", "sydam", "colisage", "importation"],
+        "allocations_cnps": ["allocation", "cnps", "prestations familiales", "allocations familiales"],
+        "concours_fonction_publique": ["concours", "fonction publique", "recrutement etat", "visite medicale"],
+        "inscription_scolaire": ["inscription", "scolaire", "matricule", "lycee", "college", "frais scolarite", "ussd"]
+    }
+    
+    for key, keywords in keywords_map.items():
+        if any(kw in msg for kw in keywords):
+            matched_key = key
+            break
+            
+    if matched_key and matched_key in demarches:
+        proc = demarches[matched_key]
+        titre = proc.get("titre")
+        desc = proc.get("description")
+        inst = proc.get("institution", {})
+        guichet = inst.get("guichet", "Non spécifié")
+        
+        cout_info = proc.get("cout", {})
+        cout = f"{cout_info.get('montant', '0')} {cout_info.get('devise', 'FCFA')}" if not cout_info.get("gratuit") else "Gratuit"
+        if cout_info.get("notes"):
+            cout += f" ({cout_info.get('notes')})"
+            
+        delai_info = proc.get("delais", {})
+        delai = delai_info.get("duree_traitement", "Non spécifié")
+        
+        docs = [d["nom"] for d in proc.get("documents", []) if d.get("obligatoire")]
+        etapes = proc.get("etapes", [])
+        
+        resume_situation = f"Voici les instructions officielles de notre base de connaissances concernant votre demande pour : '{titre}'."
+        plan_action = etapes if etapes else ["Consulter le site officiel pour démarrer la procédure."]
+        
+        return {
+            "resume_situation": resume_situation,
+            "plan_action": plan_action,
+            "documents_a_apporter": docs,
+            "lieu": guichet,
+            "delai_estime": delai,
+            "cout": cout,
+            "lettre_generee": False,
+            "contenu_lettre": None
+        }
+        
+    return {
+        "resume_situation": "Nous n'avons pas pu identifier la démarche précise dans votre message. Veuillez reformuler votre besoin.",
+        "plan_action": [
+            "Visitez notre Centre d'Aide & Support (section 'Aides et Supports') pour consulter l'index des démarches.",
+            "Posez une question plus précise à notre assistant (ex: 'Quelles sont les pièces pour un passeport ?')."
+        ],
+        "documents_a_apporter": [],
+        "lieu": "Centres administratifs de Côte d'Ivoire",
+        "delai_estime": "Variable",
+        "cout": "Gratuit",
+        "lettre_generee": False,
+        "contenu_lettre": None
+    }
+
 router = APIRouter(
     prefix="/demandes",
     tags=["Demandes"],
@@ -78,7 +182,11 @@ def process_demande_with_crew(demande_id: str, message: str):
                         logger.warning("Détection de surcharge Gemini. Basculement automatique vers le fournisseur de secours Groq...")
                         try:
                             from crewai import LLM
-                            fallback_llm = LLM(model="groq/llama-3.3-70b-versatile", api_key=groq_key)
+                            fallback_llm = LLM(
+                                model="groq/llama-3.3-70b-versatile",
+                                api_key=groq_key,
+                                tool_choice="auto"
+                            )
                             resultat = ECitoyenCrew(llm_override=fallback_llm).crew().kickoff(
                                 inputs={"demande_citoyen": message}
                             )
@@ -88,11 +196,25 @@ def process_demande_with_crew(demande_id: str, message: str):
                             logger.info("Succès du traitement de la demande via le fournisseur de secours Groq.")
                             break
                         except Exception as fallback_exc:
-                            logger.error(f"Échec du traitement de secours via Groq : {fallback_exc}")
-                            raise fallback_exc
+                            logger.error(f"Échec du traitement de secours via Groq : {fallback_exc}. Lancement de la récupération déterministe locale...")
+                            try:
+                                fallback_data = get_deterministic_fallback_response(message)
+                                resultat = FallbackResult(fallback_data)
+                                fallback_used = True
+                                break
+                            except Exception as fallback_err:
+                                logger.error(f"Échec de la récupération déterministe locale : {fallback_err}")
+                                raise fallback_exc
                     else:
-                        logger.error(f"Toutes les tentatives de traitement ont échoué pour la demande {demande_id}")
-                        raise exc
+                        logger.warning("Gemini surchargé et aucun fallback Groq disponible ou fonctionnel. Lancement de la récupération déterministe locale...")
+                        try:
+                            fallback_data = get_deterministic_fallback_response(message)
+                            resultat = FallbackResult(fallback_data)
+                            fallback_used = True
+                            break
+                        except Exception as fallback_err:
+                            logger.error(f"Échec de la récupération déterministe locale : {fallback_err}")
+                            raise exc
 
         pydantic_res = resultat.pydantic
         crew_result = {

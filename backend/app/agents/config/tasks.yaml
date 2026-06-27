@@ -23,7 +23,10 @@ documenter_demarche:
     le contexte ci-dessus.
 
     Consulte la base de connaissances pour la démarche identifiée via ton
-    outil (consulter_procedure). La base retourne un format JSON structuré complexe :
+    outil (consulter_procedure). Utilise STRICTEMENT le format natif de function calling
+    de l'API. N'essaie jamais de générer ou d'écrire des formats d'appels libres
+    incompatibles (comme des balises <function=...> ou <tool_call>...). La base retourne
+    un format JSON structuré complexe :
     - Les documents requis sont dans une liste d'objets "documents". Analyse chaque document :
       si un document a "conditionnel": true, vérifie s'il s'applique à la situation du citoyen
       (ex: renouvellement, élève/étudiant, perte/vol, étranger). N'inclus dans les documents requis

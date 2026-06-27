@@ -151,3 +151,35 @@ def test_global_exception_handler_sanitization(client, auth_headers):
         assert "sqlite" not in detail_str
         assert "runtimeerror" not in detail_str
         assert "secret database" not in detail_str
+
+
+def test_deterministic_fallback_on_llm_failure(db_session, test_user):
+    from app.api.demandes import process_demande_with_crew
+    from app.database.models import Demande, DemandeStatus
+    import json
+    
+    # 1. Créer une demande
+    demande_in = DemandeCreate(
+        message="Je veux faire renouveler ma carte d'identité (cni) s'il vous plaît.",
+        categorie="CNI"
+    )
+    demande = DemandeService.create_demande(db_session, test_user, demande_in)
+    assert demande.status == DemandeStatus.EN_ATTENTE
+    
+    # 2. Simuler un échec complet de l'IA (Gemini et Groq lèvent des exceptions)
+    with patch("app.agents.crew.ECitoyenCrew.crew") as mock_crew:
+        mock_crew.side_effect = RuntimeError("All AI models are overloaded")
+        
+        # Lancer le traitement
+        process_demande_with_crew(str(demande.id), demande.message)
+        
+    # Recharger la demande depuis la base
+    db_session.refresh(demande)
+    
+    # 3. Vérifier que la demande a été traitée avec succès grâce au fallback local
+    assert demande.status == DemandeStatus.TRAITEE
+    reponse_data = json.loads(demande.reponse)
+    assert "cni" in reponse_data["resume"].lower() or "carte nationale" in reponse_data["resume"].lower()
+    assert len(reponse_data["etapes"]) > 0
+    assert "5 000 FCFA" in reponse_data["cout"]
+
