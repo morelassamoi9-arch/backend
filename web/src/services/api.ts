@@ -10,24 +10,56 @@ async function request<T = any>(url: string, options: RequestInit = {}): Promise
     ...options.headers,
   };
 
-  const response = await fetch(`${API_URL}${url}`, {
-    ...options,
-    headers,
-  });
+  try {
+    const response = await fetch(`${API_URL}${url}`, {
+      ...options,
+      headers,
+    });
 
-  if (response.status === 401) {
-    sessionStorage.removeItem('token');
-    sessionStorage.removeItem('user');
-    window.dispatchEvent(new CustomEvent('auth_unauthorized'));
-    throw new Error('Non authentifié');
+    if (response.status === 401) {
+      sessionStorage.removeItem('token');
+      sessionStorage.removeItem('user');
+      window.dispatchEvent(new CustomEvent('auth_unauthorized'));
+      throw new Error('Non authentifié');
+    }
+
+    if (!response.ok) {
+      const error = await response.json().catch(() => ({}));
+      const detail = error.detail;
+      
+      if (response.status >= 500) {
+        throw new Error("Une erreur est survenue. Veuillez réessayer ultérieurement.");
+      }
+      
+      const isTechnical = typeof detail === 'string' && (
+        detail.toLowerCase().includes("traceback") ||
+        detail.toLowerCase().includes("line ") ||
+        detail.toLowerCase().includes("exception") ||
+        detail.toLowerCase().includes("error") ||
+        detail.toLowerCase().includes("database") ||
+        detail.toLowerCase().includes("sqlite") ||
+        detail.toLowerCase().includes("nameerror")
+      );
+      
+      if (isTechnical) {
+        throw new Error("Une erreur est survenue. Veuillez réessayer ultérieurement.");
+      }
+      
+      throw new Error(detail || "Une erreur est survenue. Veuillez réessayer.");
+    }
+
+    return await response.json();
+  } catch (err: any) {
+    if (
+      err.message === "Une erreur est survenue. Veuillez réessayer ultérieurement." ||
+      err.message === "Non authentifié" ||
+      err.message === "Email ou mot de passe incorrect" ||
+      err.message === "Cet email est déjà utilisé"
+    ) {
+      throw err;
+    }
+    throw new Error("Une erreur est survenue. Veuillez réessayer ultérieurement.");
   }
-
-  if (!response.ok) {
-    const error = await response.json().catch(() => ({}));
-    throw new Error(error.detail || `Erreur ${response.status}`);
-  }
-
-  return response.json();
 }
 
 // ============================================

@@ -8,6 +8,7 @@ from app.schemas.demandes import DemandeCreate, DemandeResponse
 from app.services.demandes_services import DemandeService
 from app.auth.dependencies import get_current_user
 import json
+import os
 import logging
 
 logger = logging.getLogger(__name__)

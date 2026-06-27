@@ -139,3 +139,15 @@ def test_get_stats_overview_endpoint(client, auth_headers):
     data = response.json()
     assert "total_demandes" in data
     assert "demandes_en_attente" in data
+
+
+def test_global_exception_handler_sanitization(client, auth_headers):
+    with patch("app.services.demandes_services.DemandeService.get_statistics", side_effect=RuntimeError("Secret database engine failure: name 'sqlite' is not defined")):
+        response = client.get("/demandes/stats/overview", headers=auth_headers)
+        assert response.status_code == 500
+        data = response.json()
+        assert data["detail"] == "Une erreur est survenue. Veuillez réessayer ultérieurement."
+        detail_str = str(data).lower()
+        assert "sqlite" not in detail_str
+        assert "runtimeerror" not in detail_str
+        assert "secret database" not in detail_str
