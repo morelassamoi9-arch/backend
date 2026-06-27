@@ -87,8 +87,8 @@ def process_demande_with_crew(demande_id: str, message: str):
         # Déterminer si c'est un rejet fonctionnel (demande vide, inconnue ou hors sujet)
         is_functional_rejection = (
             not pydantic_res.plan_action 
-            or "inconnu" in pydantic_res.demarche.lower() 
-            or "hors sujet" in pydantic_res.demarche.lower()
+            or "inconnu" in pydantic_res.resume_situation.lower() 
+            or "hors sujet" in pydantic_res.resume_situation.lower()
         )
 
         # Sauvegarder la réponse
