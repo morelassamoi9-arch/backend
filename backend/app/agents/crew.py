@@ -2,7 +2,7 @@ import os
 from pathlib import Path
 from typing import Optional, List
 
-from crewai import Agent, Task, Crew
+from crewai import Agent, Task, Crew, LLM
 from crewai.project import CrewBase, agent, task, crew
 from dotenv import load_dotenv
 from pydantic import BaseModel, Field
@@ -21,7 +21,10 @@ from app.agents.tools import consulter_procedure
 _crewai_cache.mark_cache_breakpoint = lambda msg: msg
 
 # Modèle LLM partagé — Google Gemini via LiteLLM
-GEMINI_LLM = "gemini/gemini-1.5-flash"
+GEMINI_LLM = LLM(
+    model="gemini/gemini-1.5-flash",
+    api_key=os.getenv("GEMINI_API_KEY")
+)
 
 # Vérification au démarrage
 if not os.getenv("GEMINI_API_KEY"):

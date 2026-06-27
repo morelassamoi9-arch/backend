@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 # donc tout en haut, juste après les imports de base.
 import crewai.llms.cache as _crewai_cache
 
-from crewai import Agent, Task, Crew
+from crewai import Agent, Task, Crew, LLM
 
 _crewai_cache.mark_cache_breakpoint = lambda msg: msg
 
@@ -14,7 +14,7 @@ agent_test = Agent(
     role="Assistant administratif",
     goal="Répondre brièvement à une question simple sur les démarches administratives en Côte d'Ivoire",
     backstory="Tu es un agent IA de test pour valider la connexion technique du projet e-Citoyen CI.",
-    llm="gemini/gemini-1.5-flash",
+    llm=LLM(model="gemini/gemini-1.5-flash", api_key=os.getenv("GEMINI_API_KEY")),
     verbose=True
 )
 
