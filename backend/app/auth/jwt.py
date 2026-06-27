@@ -21,7 +21,7 @@ if not SECRET_KEY:
 
 ALGORITHM = "HS256"
 JWT_ISSUER = os.getenv("JWT_ISSUER", "e-citoyen-ci")
-ACCESS_TOKEN_EXPIRE_MINUTES = int(os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES", "10080"))
+ACCESS_TOKEN_EXPIRE_MINUTES = int(os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES", "30"))
 REFRESH_TOKEN_EXPIRE_DAYS = int(os.getenv("REFRESH_TOKEN_EXPIRE_DAYS", "30"))
 
 
@@ -77,21 +77,6 @@ def verify_token(token: str, token_type: str = "access") -> Optional[Dict[str, A
         logger.warning("Token JWT invalide: %s", str(exc))
         return None
 
-
-def decode_token_without_verification(token: str) -> Optional[Dict[str, Any]]:
-    if os.getenv("ALLOW_UNVERIFIED_JWT_DECODE", "false").lower() != "true":
-        logger.warning("Decodage JWT sans verification refuse")
-        return None
-
-    try:
-        return jwt.decode(
-            token,
-            SECRET_KEY,
-            algorithms=[ALGORITHM],
-            options={"verify_signature": False, "verify_exp": False},
-        )
-    except JWTError:
-        return None
 
 
 def get_token_expiration(token: str) -> Optional[datetime]:

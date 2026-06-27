@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Depends, HTTPException, Request, status
 from sqlalchemy.orm import Session
 from typing import List
 from app.database.sessions import get_db
@@ -7,6 +7,7 @@ from app.schemas.user import UserResponse, UserUpdate
 from app.schemas.password import PasswordChange
 from app.auth.dependencies import get_current_user
 from app.services.auth_services import AuthService
+from app.limiter import limiter
 
 router = APIRouter(
     prefix="/users",
@@ -58,7 +59,9 @@ def update_current_user(
     summary="Changer mon mot de passe",
     description="Change le mot de passe du citoyen connecté"
 )
+@limiter.limit("5/minute")
 def change_password(
+    request: Request,
     password_data: PasswordChange,
     current_user: User = Depends(get_current_user),
     db: Session = Depends(get_db)

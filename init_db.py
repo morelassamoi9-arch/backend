@@ -19,12 +19,9 @@ from sqlalchemy import inspect
 import os
 
 print("=" * 60)
-print("🔍 SÉCURITÉ ET CONFIGURATION BASE DE DONNÉES")
-print(f"   DATABASE_URL : {DATABASE_URL}")
-db_path = DATABASE_URL.replace('sqlite:///', '')
-print(f"   Chemin absolu : {os.path.abspath(db_path)}")
+print("CONFIGURATION BASE DE DONNÉES")
 print("=" * 60)
-print("🗄️  CRÉATION DES TABLES")
+print("CRÉATION DES TABLES")
 print("=" * 60)
 
 # Créer les tables
