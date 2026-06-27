@@ -88,21 +88,6 @@ def verify_token(token: str, token_type: TokenType = TokenType.ACCESS) -> Option
         return None
 
 
-def decode_token_without_verification(token: str) -> Optional[Dict[str, Any]]:
-    if os.getenv("ALLOW_UNVERIFIED_JWT_DECODE", "false").lower() != "true":
-        logger.warning("Decodage JWT sans verification refuse")
-        return None
-
-    try:
-        return jwt.decode(
-            token,
-            SECRET_KEY,
-            algorithms=[ALGORITHM],
-            options={"verify_signature": False, "verify_exp": False},
-        )
-    except JWTError:
-        return None
-
 
 def get_token_expiration(token: str) -> Optional[datetime]:
     payload = verify_token(token)

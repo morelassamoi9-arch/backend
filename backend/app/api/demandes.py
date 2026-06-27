@@ -354,9 +354,11 @@ def get_demandes(
     Récupère l'historique des demandes :
     
     - **skip** : Nombre de demandes à sauter (pagination)
-    - **limit** : Nombre maximum de demandes à retourner
+    - **limit** : Nombre maximum de demandes à retourner (max 100)
     - **status_filter** : Filtrer par statut (en_attente, en_cours, traitee, rejetee)
     """
+    limit = min(limit, 100)
+    skip = max(skip, 0)
     demandes = DemandeService.get_user_demandes(
         db, current_user, skip=skip, limit=limit, status=status_filter
     )
