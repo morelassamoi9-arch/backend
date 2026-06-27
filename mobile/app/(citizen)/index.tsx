@@ -70,7 +70,7 @@ export default function CitizenDashboard() {
   return (
     <ScrollView style={styles.container} contentContainerStyle={{ paddingBottom: 32 }}>
       {/* Header */}
-      <View style={styles.header}>
+      <View style={[styles.header, { paddingTop: insets.top + 8 }]}>
         <View style={styles.headerContent}>
           <View style={styles.logoContainer}>
             <Text style={styles.logoText}>🇨🇮</Text>
@@ -204,9 +204,7 @@ export default function CitizenDashboard() {
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: Colors.background },
   header: {
-    paddingTop: insets.top + 8,
-    paddingHorizontal: 16,
-    paddingBottom: 12,
+    padding: 16,
     backgroundColor: '#FFFFFF',
     borderBottomWidth: 1,
     borderBottomColor: '#E5E7EB',
