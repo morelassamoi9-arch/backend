@@ -20,13 +20,13 @@ from app.agents.tools import consulter_procedure
 
 _crewai_cache.mark_cache_breakpoint = lambda msg: msg
 
-# Modèle LLM partagé — Groq via LiteLLM
-GROQ_LLM = "groq/llama-3.3-70b-versatile"
+# Modèle LLM partagé — Google Gemini via LiteLLM
+GEMINI_LLM = "gemini/gemini-1.5-flash"
 
 # Vérification au démarrage
-if not os.getenv("GROQ_API_KEY"):
+if not os.getenv("GEMINI_API_KEY"):
     raise EnvironmentError(
-        "GROQ_API_KEY manquante. Vérifiez le fichier backend/.env"
+        "GEMINI_API_KEY manquante. Vérifiez le fichier backend/.env"
     )
 
 BASE_DIR = Path(__file__).parent
@@ -88,7 +88,7 @@ class ECitoyenCrew:
     def accueil(self) -> Agent:
         return Agent(
             config=self.agents_config["accueil"],
-            llm=GROQ_LLM,
+            llm=GEMINI_LLM,
             verbose=True
         )
 
@@ -96,7 +96,7 @@ class ECitoyenCrew:
     def documentaliste(self) -> Agent:
         return Agent(
             config=self.agents_config["documentaliste"],
-            llm=GROQ_LLM,
+            llm=GEMINI_LLM,
             tools=[consulter_procedure],
             verbose=True
         )
@@ -105,7 +105,7 @@ class ECitoyenCrew:
     def redacteur(self) -> Agent:
         return Agent(
             config=self.agents_config["redacteur"],
-            llm=GROQ_LLM,
+            llm=GEMINI_LLM,
             verbose=True
         )
 

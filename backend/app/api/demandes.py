@@ -62,7 +62,7 @@ def process_demande_with_crew(demande_id: str, message: str):
                 error_msg = str(exc).lower()
                 is_transient = "rate limit" in error_msg or "429" in error_msg or "overloaded" in error_msg or "timeout" in error_msg
                 if is_transient and attempt < max_retries - 1:
-                    logger.warning(f"Erreur temporaire ou Rate limit Groq détecté. Retrying dans {delay}s... (Détail: {exc})")
+                    logger.warning(f"Erreur temporaire ou Rate limit Gemini détecté. Retrying dans {delay}s... (Détail: {exc})")
                     time.sleep(delay)
                     delay *= 2.0  # Backoff exponentiel
                 elif attempt < max_retries - 1:

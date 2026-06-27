@@ -14,7 +14,7 @@ agent_test = Agent(
     role="Assistant administratif",
     goal="Répondre brièvement à une question simple sur les démarches administratives en Côte d'Ivoire",
     backstory="Tu es un agent IA de test pour valider la connexion technique du projet e-Citoyen CI.",
-    llm="groq/llama-3.3-70b-versatile",
+    llm="gemini/gemini-1.5-flash",
     verbose=True
 )
 

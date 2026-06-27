@@ -18,11 +18,11 @@ MAX_TENTATIVES = 2
 ATTENTE_PAR_DEFAUT = 2.0
 ATTENTE_MAX = 10.0
 
-# Plafond gratuit Groq pour llama-3.3-70b-versatile (tokens par jour).
+# Plafond gratuit Gemini (tokens par jour, estimé).
 # Ce compteur est en mémoire process uniquement: il repart à zéro si le
-# serveur redémarre, et ne reflète donc pas le vrai compteur Groq côté
+# serveur redémarre, et ne reflète donc pas le vrai compteur Gemini côté
 # serveur si le serveur a été relancé entre deux sessions de test.
-PLAFOND_TPD_GROQ = 100_000
+PLAFOND_TPD_GEMINI = 1_500_000
 SEUIL_ALERTE_TPD = 0.8  # alerte à partir de 80% du plafond
 
 _tokens_consommes_session = 0
@@ -90,22 +90,22 @@ async def traiter_demande(request: Request, demande: DemandeCitoyen) -> ReponseC
     _tokens_consommes_session += tokens_cette_requete
     _requetes_reussies_session += 1
 
-    pourcentage_plafond = (_tokens_consommes_session / PLAFOND_TPD_GROQ) * 100
+    pourcentage_plafond = (_tokens_consommes_session / PLAFOND_TPD_GEMINI) * 100
 
     logger.info(
         "TOKENS - Cette requête: %d | Cumul session: %d/%d (%.1f%% du plafond gratuit TPD) | "
         "Requêtes réussies cette session: %d",
         tokens_cette_requete,
         _tokens_consommes_session,
-        PLAFOND_TPD_GROQ,
+        PLAFOND_TPD_GEMINI,
         pourcentage_plafond,
         _requetes_reussies_session,
     )
 
     if pourcentage_plafond >= SEUIL_ALERTE_TPD * 100:
         logger.warning(
-            "ALERTE QUOTA - %.1f%% du plafond journalier Groq atteint sur cette session. "
-            "Espacez les tests ou activez le tier Developer Groq.",
+            "ALERTE QUOTA - %.1f%% du plafond journalier Gemini atteint sur cette session. "
+            "Espacez les tests.",
             pourcentage_plafond,
         )
 
@@ -123,7 +123,7 @@ async def traiter_demande(request: Request, demande: DemandeCitoyen) -> ReponseC
 
 def extraire_delai_attente(message_erreur: str) -> float:
     """
-    Cherche un délai suggéré par Groq dans le message d'erreur, ex:
+    Cherche un délai suggéré par le LLM (Gemini/Groq) dans le message d'erreur, ex:
     "Please try again in 6.97s" ou "Please try again in 430ms".
     """
     if re.search(r"try again in \d+m", message_erreur):
