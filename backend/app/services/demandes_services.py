@@ -114,37 +114,44 @@ class DemandeService:
         """
         Calcule les statistiques des demandes d'un utilisateur
         """
-        stats = {}
-        
-        # Total des demandes
-        stats["total_demandes"] = db.query(Demande).filter(
-            Demande.user_id == user.id
-        ).count()
-        
-        # Par statut
-        for status_enum in DemandeStatus:
-            count = db.query(Demande).filter(
-                Demande.user_id == user.id,
-                Demande.status == status_enum
-            ).count()
-            stats[f"demandes_{status_enum.value}"] = count
+        try:
+            stats = {}
             
-        # Par catégorie
-        categories = db.query(
-            Demande.categorie,
-            func.count(Demande.id)
-        ).filter(
-            Demande.user_id == user.id,
-            Demande.categorie.isnot(None)
-        ).group_by(Demande.categorie).all()
-        
-        stats["par_categorie"] = {cat: count for cat, count in categories}
-        
-        # Dernière activité
-        derniere_demande = db.query(Demande).filter(
-            Demande.user_id == user.id
-        ).order_by(desc(Demande.created_at)).first()
-        
-        stats["derniere_activite"] = derniere_demande.created_at if derniere_demande else None
-        
-        return stats
+            # Total des demandes
+            stats["total_demandes"] = db.query(Demande).filter(
+                Demande.user_id == user.id
+            ).count()
+            
+            # Par statut
+            for status_enum in DemandeStatus:
+                count = db.query(Demande).filter(
+                    Demande.user_id == user.id,
+                    Demande.status == status_enum
+                ).count()
+                stats[f"demandes_{status_enum.value}"] = count
+                
+            # Par catégorie
+            categories = db.query(
+                Demande.categorie,
+                func.count(Demande.id)
+            ).filter(
+                Demande.user_id == user.id,
+                Demande.categorie.isnot(None)
+            ).group_by(Demande.categorie).all()
+            
+            stats["par_categorie"] = {cat: count for cat, count in categories}
+            
+            # Dernière activité
+            derniere_demande = db.query(Demande).filter(
+                Demande.user_id == user.id
+            ).order_by(desc(Demande.created_at)).first()
+            
+            stats["derniere_activite"] = derniere_demande.created_at if derniere_demande else None
+            
+            return stats
+        except Exception as e:
+            logger.exception("Erreur lors du calcul des statistiques")
+            raise HTTPException(
+                status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                detail="Une erreur interne est survenue lors du calcul des statistiques"
+            )

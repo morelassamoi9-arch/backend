@@ -167,8 +167,16 @@ class AuthService:
         if update_data.telephone is not None:
             user.telephone = sanitize_string(update_data.telephone) if update_data.telephone else None
         
-        db.commit()
-        db.refresh(user)
+        try:
+            db.commit()
+            db.refresh(user)
+        except Exception as e:
+            db.rollback()
+            logger.exception("Erreur lors de la mise à jour du profil")
+            raise HTTPException(
+                status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                detail="Une erreur interne est survenue lors de la mise à jour du profil"
+            )
         return user
     
     @staticmethod
@@ -199,7 +207,15 @@ class AuthService:
         
         # Mettre à jour le mot de passe
         user.password_hash = hash_password(new_password)
-        db.commit()
+        try:
+            db.commit()
+        except Exception as e:
+            db.rollback()
+            logger.exception("Erreur lors du changement de mot de passe")
+            raise HTTPException(
+                status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                detail="Une erreur interne est survenue lors du changement de mot de passe"
+            )
     
     @staticmethod
     def delete_user(db: Session, user: User) -> None:

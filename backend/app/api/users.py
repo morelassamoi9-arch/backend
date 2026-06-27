@@ -1,12 +1,15 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 from typing import List
+import logging
 from app.database.sessions import get_db
 from app.database.models import User
 from app.schemas.user import UserResponse, UserUpdate
 from app.schemas.password import PasswordChange
 from app.auth.dependencies import get_current_user
 from app.services.auth_services import AuthService
+
+logger = logging.getLogger(__name__)
 
 router = APIRouter(
     prefix="/users",
@@ -50,8 +53,17 @@ def update_current_user(
     - **prenom** : Nouveau prénom
     - **telephone** : Nouveau téléphone
     """
-    updated_user = AuthService.update_user(db, current_user.id, user_update)
-    return updated_user
+    try:
+        updated_user = AuthService.update_user(db, current_user.id, user_update)
+        return updated_user
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.exception("Erreur lors de la mise à jour du profil")
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="Une erreur interne est survenue lors de la mise à jour du profil"
+        )
 
 @router.put(
     "/me/password",
@@ -69,8 +81,17 @@ def change_password(
     - **old_password** : Ancien mot de passe
     - **new_password** : Nouveau mot de passe (min 8 caractères)
     """
-    AuthService.change_password(db, current_user, password_data.old_password, password_data.new_password)
-    return {"message": "Mot de passe modifié avec succès"}
+    try:
+        AuthService.change_password(db, current_user, password_data.old_password, password_data.new_password)
+        return {"message": "Mot de passe modifié avec succès"}
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.exception("Erreur lors du changement de mot de passe")
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="Une erreur interne est survenue lors du changement de mot de passe"
+        )
 
 @router.delete(
     "/me",
@@ -84,6 +105,15 @@ def delete_account(
     """
     Supprime définitivement le compte et toutes les données associées
     """
-    AuthService.delete_user(db, current_user)
-    return {"message": "Compte supprimé avec succès"}
+    try:
+        AuthService.delete_user(db, current_user)
+        return {"message": "Compte supprimé avec succès"}
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.exception("Erreur lors de la suppression du compte")
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="Une erreur interne est survenue lors de la suppression du compte"
+        )
 
