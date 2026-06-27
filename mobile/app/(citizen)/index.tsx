@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { View, Text, TouchableOpacity, ScrollView, StyleSheet, ActivityIndicator } from "react-native";
+import { View, Text, TouchableOpacity, ScrollView, StyleSheet, ActivityIndicator, Image } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { router } from "expo-router";
 import { Colors } from "../../constants/Colors";
@@ -72,9 +72,7 @@ export default function CitizenDashboard() {
       {/* Header */}
       <View style={[styles.header, { paddingTop: insets.top + 8 }]}>
         <View style={styles.headerContent}>
-          <View style={styles.logoContainer}>
-            <Text style={styles.logoText}>🇨🇮</Text>
-          </View>
+          <Image source={require('../../assets/images/icon.png')} style={{ width: 36, height: 36, borderRadius: 8 }} />
           <View>
             <Text style={styles.headerTitle}>e-Citoyen CI</Text>
             <Text style={styles.headerSubtitle}>Tableau de bord</Text>
@@ -204,6 +202,9 @@ export default function CitizenDashboard() {
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: Colors.background },
   header: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
     padding: 16,
     backgroundColor: '#FFFFFF',
     borderBottomWidth: 1,
