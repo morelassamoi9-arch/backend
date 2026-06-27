@@ -1,74 +1,9 @@
 import pytest
 from unittest.mock import patch
 from fastapi import status
-from fastapi.testclient import TestClient
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
-from sqlalchemy.pool import StaticPool
-
-from main import app
-from app.database.base import Base
-from app.database.sessions import get_db
-from app.database.models import User, UserRole, DemandeStatus
-from app.auth.jwt import create_access_token
+from app.database.models import DemandeStatus
 from app.services.demandes_services import DemandeService
 from app.schemas.demandes import DemandeCreate
-
-# Configurer SQLite en mémoire pour les tests
-SQLALCHEMY_DATABASE_URL = "sqlite://"
-engine = create_engine(
-    SQLALCHEMY_DATABASE_URL,
-    connect_args={"check_same_thread": False},
-    poolclass=StaticPool,
-)
-TestingSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
-
-
-@pytest.fixture(name="db_session")
-def fixture_db_session():
-    Base.metadata.create_all(bind=engine)
-    db = TestingSessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
-        Base.metadata.drop_all(bind=engine)
-
-
-@pytest.fixture(name="test_user")
-def fixture_test_user(db_session):
-    user = User(
-        nom="Soro",
-        prenom="Moussa",
-        email="moussa.soro@example.ci",
-        password_hash="fakehashedpassword",
-        role=UserRole.CLIENT,
-        is_active=True,
-    )
-    db_session.add(user)
-    db_session.commit()
-    db_session.refresh(user)
-    return user
-
-
-@pytest.fixture(name="auth_headers")
-def fixture_auth_headers(test_user):
-    token = create_access_token({"sub": test_user.id, "role": test_user.role.value})
-    return {"Authorization": f"Bearer {token}"}
-
-
-@pytest.fixture(name="client")
-def fixture_client(db_session):
-    def override_get_db():
-        try:
-            yield db_session
-        finally:
-            pass
-
-    app.dependency_overrides[get_db] = override_get_db
-    with TestClient(app) as test_client:
-        yield test_client
-    app.dependency_overrides.clear()
 
 
 # --- TESTS SERVICES ---
@@ -182,4 +117,3 @@ def test_deterministic_fallback_on_llm_failure(db_session, test_user):
     assert "cni" in reponse_data["resume"].lower() or "carte nationale" in reponse_data["resume"].lower()
     assert len(reponse_data["etapes"]) > 0
     assert "5 000 FCFA" in reponse_data["cout"]
-
