@@ -244,10 +244,10 @@ export default function History() {
                 aria-label="Retour à l'accueil"
                 className="flex items-center gap-3 cursor-pointer transition-all duration-200 hover:scale-[1.02] active:scale-95"
               >
-                <img src="/Icone.png" alt="e-Citoyen CI" className="w-10 h-10 object-contain" />
+                <img src="/Icone.png" alt="e-Citoyen CI" className="w-8 h-8 sm:w-10 sm:h-10 object-contain" />
                 <div>
-                  <h1 className="text-lg font-bold text-slate-800">Historique d'activité</h1>
-                  <p className="text-xs text-muted-foreground">
+                  <h1 className="text-base sm:text-lg font-bold text-slate-800">Historique d'activité</h1>
+                  <p className="text-xs text-muted-foreground hidden sm:block">
                     Suivi automatique de vos actions dans l'application
                   </p>
                 </div>
@@ -258,11 +258,11 @@ export default function History() {
               <Button
                 variant="destructive"
                 size="sm"
-                className="gap-2 active:scale-95 transition-transform"
+                className="gap-2 active:scale-95 transition-transform px-3 sm:px-4"
                 onClick={() => setShowClearConfirm(true)}
               >
                 <Trash className="w-4 h-4" />
-                Tout effacer
+                <span className="hidden sm:inline">Tout effacer</span>
               </Button>
             )}
           </div>
@@ -375,13 +375,10 @@ export default function History() {
                                 <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 border border-slate-200">
                                   {getActionLabel(item.action)}
                                 </span>
-                                
-                                {item.route && (
-                                  <span className="text-xs text-muted-foreground flex items-center gap-1">
-                                    <CornerDownRight className="w-3.5 h-3.5 text-slate-400" />
-                                    {item.route}
-                                  </span>
-                                )}
+                                <span className="text-xs text-muted-foreground flex items-center gap-1">
+                                  <Clock className="w-3.5 h-3.5 text-slate-400" />
+                                  {formatTime(item.createdAt)}
+                                </span>
                               </div>
                               <p className="font-semibold text-slate-800 text-sm md:text-base truncate">
                                 {item.description}
@@ -389,11 +386,7 @@ export default function History() {
                             </div>
                           </div>
 
-                          <div className="flex items-center gap-3">
-                            <span className="text-xs font-medium text-slate-400 whitespace-nowrap">
-                              {formatTime(item.createdAt)}
-                            </span>
-                            
+                          <div className="flex items-center gap-2">
                             {/* Status Bullet */}
                             <span className={`w-2.5 h-2.5 rounded-full ${
                               isSuccess ? "bg-emerald-500 shadow-emerald-200/50" :
@@ -401,7 +394,7 @@ export default function History() {
                               "bg-amber-500 shadow-amber-200/50"
                             } shadow-sm`} />
 
-                            <div className="flex items-center gap-1.5 border-l border-slate-100 pl-3">
+                            <div className="flex items-center gap-1 border-l border-slate-100 pl-2">
                               <Button
                                 variant="ghost"
                                 size="icon"
