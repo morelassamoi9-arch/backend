@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { View, Text, TouchableOpacity, ScrollView, StyleSheet, ActivityIndicator } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { router } from "expo-router";
 import { Colors } from "../../constants/Colors";
 import { useAppStore } from "../../store/useAppStore";
@@ -49,6 +50,7 @@ function QuickActionCard({ title, icon, iconColor, bgColor, onPress }: { title: 
 export default function CitizenDashboard() {
   const { user, requests, isLoading, fetchRequests, logout } = useAppStore();
   const [loadingStats, setLoadingStats] = useState(true);
+  const insets = useSafeAreaInsets();
 
   useEffect(() => {
     fetchRequests().finally(() => setLoadingStats(false));
@@ -202,10 +204,9 @@ export default function CitizenDashboard() {
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: Colors.background },
   header: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    padding: 16,
+    paddingTop: insets.top + 8,
+    paddingHorizontal: 16,
+    paddingBottom: 12,
     backgroundColor: '#FFFFFF',
     borderBottomWidth: 1,
     borderBottomColor: '#E5E7EB',
