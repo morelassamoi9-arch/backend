@@ -22,7 +22,7 @@ _crewai_cache.mark_cache_breakpoint = lambda msg: msg
 
 # Modèle LLM partagé — Google Gemini via LiteLLM
 GEMINI_LLM = LLM(
-    model="gemini/gemini-1.5-flash",
+    model="gemini/gemini-2.5-flash",
     api_key=os.getenv("GEMINI_API_KEY")
 )
 
