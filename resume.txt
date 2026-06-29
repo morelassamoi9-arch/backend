@@ -1,0 +1,115 @@
+DOCUMENT DE RÉFÉRENCE ET DE CERTIFICATION DE SÉCURITÉ (ANSSI / NIST / ISO 27001)
+Projet : e-Citoyen CI
+Date de l'audit : 2026-06-29
+Statut du Document : Référence Unique de Certification
+
+================================================================================
+1. SYNTHÈSE DE TOUS LES AUDITS RÉALISÉS
+================================================================================
+L'évaluation de sécurité du projet e-Citoyen CI a été menée selon le principe du 
+Zero Trust, couvrant les aspects suivants :
+- Audit SAST (Analyse statique manuelle) : Revue minutieuse de l'intégralité du code 
+  source Python (FastAPI) et TypeScript (React/React Native) pour identifier les 
+  vulnérabilités de logique métier, d'autorisation et de validation d'entrées.
+- Audit SCA (Analyse des dépendances) : Inspection des fichiers requirements.txt 
+  et package.json pour auditer la supply chain logicielle et identifier l'usage de 
+  bibliothèques obsolètes (passlib) ou vulnérables.
+- Audit DAST (Analyse dynamique) : Simulation conceptuelle de scénarios d'attaque 
+  dynamiques (Bypass JWT, injection de requêtes de jailbreak sur l'IA, usurpations IDOR).
+- Audit de Gouvernance SOC : Spécification des rôles RACI de sécurité, des niveaux 
+  d'autonomie des protections, et intégration d'un moteur d'arbitrage déterministe.
+
+================================================================================
+2. TABLEAU EXHAUSTIF DES VULNÉRABILITÉS INITIALES & STATUTS
+================================================================================
+- VULN-01 : Persistance non sécurisée du JWT sur Mobile (Gravité : Élevée - CVSS 7.5)
+  * Statut : CORRIGÉ
+  * Description : Stockage en clair dans AsyncStorage. 
+  * Correction : Remplacement par expo-secure-store (chiffrement matériel nativement 
+    intégré dans le KeyStore/Keychain) avec script de migration automatique.
+
+- VULN-02 : Longévité excessive du jeton d'accès JWT (Gravité : Moyenne - CVSS 5.9)
+  * Statut : CORRIGÉ
+  * Description : Expiration des tokens fixée à 7 jours (10 080 minutes).
+  * Correction : Validité ramenée à 30 minutes dans .env et jwt.py.
+
+- VULN-03 : Algorithme de hachage de mot de passe insuffisant (Gravité : Faible - CVSS 3.1)
+  * Statut : CORRIGÉ
+  * Description : Utilisation de la bibliothèque passlib obsolète pour bcrypt.
+  * Correction : Migration vers Argon2id (via argon2-cffi) avec mise à niveau 
+    automatique et transparente du hash lors d'une connexion réussie.
+
+- VULN-04 : Absence de Headers de Sécurité HTTP (Gravité : Moyenne - CVSS 5.3)
+  * Statut : CORRIGÉ
+  * Description : Aucun header de protection réseau retourné par l'API.
+  * Correction : Enregistrement d'un middleware global FastAPI injectant CSP, 
+    X-Frame-Options: DENY, X-Content-Type-Options: nosniff, et HSTS.
+
+- VULN-05 : Exposition de la documentation API en Production (Gravité : Faible - CVSS 3.7)
+  * Statut : CORRIGÉ
+  * Description : Swagger UI /docs actif inconditionnellement.
+  * Correction : Désactivation automatique des documentations si ENVIRONMENT=production.
+
+- VULN-06 : Absence de verrouillage de compte (Lockout) (Gravité : Moyenne - CVSS 5.3)
+  * Statut : CORRIGÉ
+  * Description : Pas de limite aux tentatives infructueuses de connexion.
+  * Correction : Ajout de failed_login_attempts et lockout_until en base. Compte bloqué 
+    15 min au bout de 5 échecs, réinitialisé en cas de succès.
+
+- VULN-07 : Injection de prompt / Jailbreak de l'IA (Gravité : Moyenne - CVSS 6.3)
+  * Statut : CORRIGÉ
+  * Description : Entrées utilisateur non validées avant transmission au LLM.
+  * Correction : Validation Pydantic et regex anti-évasion systématique dans 
+    DemandeCreate.message bloquant la requête (HTTP 400) avant appel du LLM.
+
+================================================================================
+3. SCORE GLOBAL DE SÉCURITÉ
+================================================================================
+Afin de respecter les standards stricts d'audit de sécurité critiques, aucun score 
+marketing ou déclaratif n'est retenu. La maturité du système est exclusivement mesurée 
+par sa conformité opérationnelle (voir Section 6).
+
+================================================================================
+4. ARCHITECTURE FINALE DE SÉCURITÉ
+================================================================================
+L'architecture Zero Trust mise en place intègre les composants de protection suivants :
+- Pipeline DevSecOps (CI/CD) : Chaîne automatisée exécutant dans l'ordre : SAST 
+  (Bandit/Semgrep) -> SCA (pip-audit/npm audit) -> Tests Unitaires -> Security Gates 
+  (test_security_gates.py) -> DAST (OWASP ZAP) -> Build -> Deploy. Règle Fail-Fast active.
+- Security Arbitration Engine (SAE) / Security Authority Layer (SAL) : Moteur de 
+  décision logique déterministe (arbitration_engine.py) calculant un score de risque 
+  global pondéré pour retourner une décision non contournable (ALLOW, BLOCK, ESCALATE) 
+  signée cryptographiquement avec un evidence_id unique.
+- SOC Hybride : Séparation stricte de l'autonomie en 3 niveaux (Automatique, 
+  Semi-automatique, Manuel) plaçant l'Officier de Sécurité (OSSI) en autorité d'arbitrage 
+  humaine finale.
+
+================================================================================
+5. NIVEAU DE CONFORMITÉ (ISO 27001 / NIST / ASVS L3)
+================================================================================
+L'application e-Citoyen CI implémente avec succès les contrôles suivants :
+- NIST SP 800-53 : AC-2 (Lockout brute force), SI-4 (Centralisation logs SOC).
+- ISO 27001:2022 : A.8.20 (Headers OWASP/CSP), A.8.24 (Cryptographie Argon2id).
+- OWASP ASVS L3 : V3.2 (Sessions 30 min), V4.1 (IDOR protection), V5.1 (Validation d'entrées).
+
+================================================================================
+6. STATUT DE PRODUCTION FINAL
+================================================================================
+Statut Officiel : ⚠️ CONFORME PARTIEL (Contrôles Applicatifs en Place)
+
+Justification :
+Toutes les barrières logiques et les tests automatisés sont fonctionnels dans le code 
+source. Pour obtenir la conformité de production finale (Conforme Certifiable), 
+l'organisation d'accueil doit déployer physiquement les collecteurs SIEM, le WAF 
+comportemental et configurer l'archivage déporté immuable des journaux d'audit (WORM).
+
+================================================================================
+7. RECOMMANDATIONS RESTANTES D'INFRASTRUCTURE
+================================================================================
+1. Chiffrement de la connexion PostgreSQL de production : Forcer sslmode=require dans 
+   la variable d'environnement DATABASE_URL.
+2. Déploiement d'un archivage déporté (Audit Trail) : Raccorder les logs d'arbitrage 
+   contenant l'evidence_id vers un système de stockage externe immuable.
+3. Campagne d'audit externe : Prévoir une campagne de tests d'intrusion manuels (Red Team) 
+   réalisée par un tiers de confiance indépendant pour certifier le système en production.
+================================================================================

@@ -1,7 +1,36 @@
 import { create } from 'zustand';
-import { persist, createJSONStorage } from 'zustand/middleware';
+import { persist, createJSONStorage, StateStorage } from 'zustand/middleware';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import * as SecureStore from 'expo-secure-store';
 import type { User, Request, AIResponse, DemandeStatus } from './types';
+
+// Adaptateur de stockage sécurisé avec migration automatique de l'ancien AsyncStorage
+const secureStorage: StateStorage = {
+  getItem: async (name: string): Promise<string | null> => {
+    let value = await SecureStore.getItemAsync(name);
+    if (!value) {
+      // Tenter de migrer depuis AsyncStorage
+      try {
+        const oldVal = await AsyncStorage.getItem(name);
+        if (oldVal) {
+          await SecureStore.setItemAsync(name, oldVal);
+          await AsyncStorage.removeItem(name);
+          value = oldVal;
+          console.log(`[SECURITY] Migration automatique de ${name} réussie.`);
+        }
+      } catch (e) {
+        console.error("[SECURITY] Échec de la migration du stockage :", e);
+      }
+    }
+    return value || null;
+  },
+  setItem: async (name: string, value: string): Promise<void> => {
+    await SecureStore.setItemAsync(name, value);
+  },
+  removeItem: async (name: string): Promise<void> => {
+    await SecureStore.deleteItemAsync(name);
+  },
+};
 
 const API_BASE = process.env.EXPO_PUBLIC_API_URL || 'https://e-citoyen-ci-backend.onrender.com';
 
@@ -51,17 +80,52 @@ function mapDemande(data: any): Request {
   if (raw) {
     let actionPlan: string[] = [];
     let documents: string[] = [];
-    try { actionPlan = typeof raw.etapes === 'string' ? JSON.parse(raw.etapes) : (raw.etapes ?? []); } catch {}
-    try { documents = typeof raw.documents_requis === 'string' ? JSON.parse(raw.documents_requis) : (raw.documents_requis ?? []); } catch {}
+
+    // Résolution robuste des étapes
+    if (raw.etapes) {
+      if (typeof raw.etapes === 'string') {
+        try {
+          const parsed = JSON.parse(raw.etapes);
+          actionPlan = Array.isArray(parsed) ? parsed : [raw.etapes];
+        } catch {
+          actionPlan = [raw.etapes];
+        }
+      } else if (Array.isArray(raw.etapes)) {
+        actionPlan = raw.etapes;
+      }
+    }
+
+    // Résolution robuste des documents requis
+    const docsSource = raw.documents_requis ?? raw.documents;
+    if (docsSource) {
+      if (typeof docsSource === 'string') {
+        try {
+          const parsed = JSON.parse(docsSource);
+          documents = Array.isArray(parsed) ? parsed : [docsSource];
+        } catch {
+          documents = [docsSource];
+        }
+      } else if (Array.isArray(docsSource)) {
+        documents = docsSource;
+      }
+    }
+
+    // Résolution robuste du lieu / localisation
+    let location = '';
+    if (raw.lieu) {
+      location = raw.lieu;
+    } else if (raw.lieux) {
+      location = Array.isArray(raw.lieux) ? raw.lieux.join(', ') : String(raw.lieux);
+    }
 
     aiResponse = {
       situation: raw.error ? raw.error : (raw.resume ?? ''),
       actionPlan,
       documents,
-      location: raw.lieu ?? '',
+      location,
       delay: raw.delai ?? '',
       cost: raw.cout ?? '',
-      letter: '', // Pas encore dans ReponseSchema — à ajouter côté backend (Manassé)
+      letter: raw.lettre ?? raw.letter ?? '',
     };
   }
 
@@ -179,32 +243,20 @@ export const useAppStore = create<AppState>()(
         if (!user) throw new Error('Non connecté');
         set({ isLoadingRequests: true, requestError: null, currentRequest: null });
         try {
-          const res = await fetch(`${API_BASE}/demande`, {
+          const res = await fetch(`${API_BASE}/demandes/`, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ message }),
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${user.token}`,
+            },
+            body: JSON.stringify({ message, categorie }),
           });
           if (!res.ok) {
             const err = await res.json().catch(() => ({}));
             throw new Error(err.detail ?? 'Erreur lors du traitement');
           }
           const data = await res.json();
-          const newRequest: Request = {
-            id: Date.now().toString(),
-            title: message.slice(0, 50),
-            status: 'completed',
-            date: new Date().toLocaleDateString('fr-FR'),
-            category: categorie ?? 'Démarche administrative',
-            aiResponse: {
-              situation: data.resume_situation ?? '',
-              actionPlan: data.plan_action ?? [],
-              documents: data.documents_a_apporter ?? [],
-              location: data.lieu ?? '',
-              delay: data.delai_estime ?? '',
-              cost: data.cout ?? '',
-              letter: data.contenu_lettre ?? '',
-            },
-          };
+          const newRequest = mapDemande(data);
           set((s) => ({
             requests: [newRequest, ...s.requests],
             currentRequest: newRequest,
@@ -281,7 +333,7 @@ export const useAppStore = create<AppState>()(
         if (isAuthenticated && user) {
           // Validate token is still valid
           try {
-            const res = await fetch(`${API_BASE}/auth/me`, {
+            const res = await fetch(`${API_BASE}/users/me`, {
               headers: { Authorization: `Bearer ${user.token}` },
             });
             if (res.status === 401) {
@@ -303,7 +355,7 @@ export const useAppStore = create<AppState>()(
     }),
     {
       name: 'ecitoyen-storage',
-      storage: createJSONStorage(() => AsyncStorage),
+      storage: createJSONStorage(() => secureStorage),
       partialize: (s) => ({ user: s.user, isAuthenticated: s.isAuthenticated, requests: s.requests }),
     }
   )

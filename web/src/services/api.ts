@@ -17,10 +17,12 @@ async function request<T = any>(url: string, options: RequestInit = {}): Promise
     });
 
     if (response.status === 401) {
-      sessionStorage.removeItem('token');
-      sessionStorage.removeItem('user');
-      window.dispatchEvent(new CustomEvent('auth_unauthorized'));
-      throw new Error('Non authentifié');
+      if (!url.includes('/auth/login')) {
+        sessionStorage.removeItem('token');
+        sessionStorage.removeItem('user');
+        window.dispatchEvent(new CustomEvent('auth_unauthorized'));
+        throw new Error('Non authentifié');
+      }
     }
 
     if (!response.ok) {
