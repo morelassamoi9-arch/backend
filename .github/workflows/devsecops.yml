@@ -23,7 +23,7 @@ jobs:
         run: pip install bandit
 
       - name: Run Bandit (Security Linter)
-        run: bandit -r backend/ -f txt
+        run: bandit -r backend/app/ -f txt
 
       - name: Run Semgrep (OWASP Rules)
         uses: semgrep/semgrep-action@v1

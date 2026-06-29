@@ -74,7 +74,7 @@ par sa conformité opérationnelle (voir Section 6).
 ================================================================================
 L'architecture Zero Trust mise en place intègre les composants de protection suivants :
 - Pipeline DevSecOps (CI/CD) : Chaîne automatisée exécutant dans l'ordre : SAST 
-  (Bandit/Semgrep) -> SCA (pip-audit/npm audit) -> Tests Unitaires -> Security Gates 
+  (Bandit appliqué sur backend/app/ uniquement / Semgrep) -> SCA (pip-audit/npm audit) -> Tests Unitaires -> Security Gates 
   (test_security_gates.py) -> DAST (OWASP ZAP) -> Build -> Deploy. Règle Fail-Fast active.
 - Security Arbitration Engine (SAE) / Security Authority Layer (SAL) : Moteur de 
   décision logique déterministe (arbitration_engine.py) calculant un score de risque 
