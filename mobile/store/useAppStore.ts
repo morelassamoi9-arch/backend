@@ -119,6 +119,10 @@ export const useAppStore = create<AppState>()(
           // Recharger les demandes après connexion réussie
           get().fetchRequests();
         } catch (e: any) {
+          // Clear stale session on 401 or "non reconnu" error
+          if (e.message?.includes('401') || e.message?.toLowerCase().includes('non reconnu')) {
+            set({ user: null, isAuthenticated: false });
+          }
           set({ error: e.message, isLoading: false });
           throw e;
         }
@@ -275,8 +279,16 @@ export const useAppStore = create<AppState>()(
       restoreSession: async () => {
         const { user, isAuthenticated } = get();
         if (isAuthenticated && user) {
-          // Recharger les demandes depuis le serveur
+          // Validate token is still valid
           try {
+            const res = await fetch(`${API_BASE}/auth/me`, {
+              headers: { Authorization: `Bearer ${user.token}` },
+            });
+            if (res.status === 401) {
+              get().logout();
+              return;
+            }
+            // Recharger les demandes depuis le serveur
             await get().fetchRequests();
           } catch (e) {
             console.log('Impossible de recharger les demandes:', e);
