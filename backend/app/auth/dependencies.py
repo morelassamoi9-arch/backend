@@ -4,7 +4,7 @@ from sqlalchemy.orm import Session
 from typing import Optional
 from app.database.sessions import get_db
 from app.database.models import User, UserRole
-from app.auth.jwt import verify_token
+from app.auth.jwt import verify_token, TokenType
 
 # Schéma de sécurité Bearer
 security = HTTPBearer(
@@ -31,7 +31,7 @@ async def get_current_user(
         HTTPException: Si le token est invalide ou l'utilisateur n'existe pas
     """
     token = credentials.credentials
-    payload = verify_token(token, token_type="access")
+    payload = verify_token(token, token_type=TokenType.ACCESS)
     
     if not payload:
         raise HTTPException(

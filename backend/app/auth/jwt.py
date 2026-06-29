@@ -23,6 +23,12 @@ if not SECRET_KEY:
     SECRET_KEY = secrets.token_urlsafe(48)
     logger.warning("JWT_SECRET_KEY absent: secret ephemere genere pour l'environnement local")
 
+from enum import Enum
+
+class TokenType(str, Enum):
+    ACCESS = "access"
+    REFRESH = "refresh"
+
 ALGORITHM = "HS256"
 JWT_ISSUER = os.getenv("JWT_ISSUER", "e-citoyen-ci")
 ACCESS_TOKEN_EXPIRE_MINUTES = int(os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES", "30"))
@@ -41,7 +47,7 @@ def create_access_token(
     to_encode.update({
         "exp": expire,
         "iat": datetime.utcnow(),
-        "type": "access",
+        "type": TokenType.ACCESS,
         "iss": JWT_ISSUER,
     })
 
@@ -55,14 +61,14 @@ def create_refresh_token(data: Dict[str, Any]) -> str:
     to_encode.update({
         "exp": expire,
         "iat": datetime.utcnow(),
-        "type": "refresh",
+        "type": TokenType.REFRESH,
         "iss": JWT_ISSUER,
     })
 
     return jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
 
 
-def verify_token(token: str, token_type: str = "access") -> Optional[Dict[str, Any]]:
+def verify_token(token: str, token_type: TokenType = TokenType.ACCESS) -> Optional[Dict[str, Any]]:
     try:
         payload = jwt.decode(
             token,

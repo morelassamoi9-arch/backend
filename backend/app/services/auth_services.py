@@ -1,7 +1,11 @@
 from sqlalchemy.orm import Session
 from fastapi import HTTPException, status
 from typing import Optional
+from enum import Enum
 import logging
+
+class AuthScheme(str, Enum):
+    BEARER = "bearer"
 from app.database.models import User, UserRole
 from app.schemas.user import UserCreate, UserLogin, UserUpdate
 from app.auth.security import (
@@ -172,7 +176,7 @@ class AuthService:
         return {
             "access_token": access_token,
             "refresh_token": refresh_token,
-            "token_type": "bearer",
+            "token_type": AuthScheme.BEARER,
             "user": user
         }
     
