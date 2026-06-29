@@ -175,23 +175,32 @@ export const useAppStore = create<AppState>()(
         if (!user) throw new Error('Non connecté');
         set({ isLoadingRequests: true, requestError: null, currentRequest: null });
         try {
-          const body: any = { message };
-          if (categorie) body.categorie = categorie;
-
-          const res = await fetch(`${API_BASE}/demandes/`, {
+          const res = await fetch(`${API_BASE}/demande`, {
             method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              Authorization: `Bearer ${user.token}`,
-            },
-            body: JSON.stringify(body),
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ message }),
           });
           if (!res.ok) {
             const err = await res.json().catch(() => ({}));
-            throw new Error(err.detail ?? 'Erreur lors de la création de la demande');
+            throw new Error(err.detail ?? 'Erreur lors du traitement');
           }
           const data = await res.json();
-          const newRequest = mapDemande(data);
+          const newRequest: Request = {
+            id: Date.now().toString(),
+            title: message.slice(0, 50),
+            status: 'completed',
+            date: new Date().toLocaleDateString('fr-FR'),
+            category: categorie ?? 'Démarche administrative',
+            aiResponse: {
+              situation: data.resume_situation ?? '',
+              actionPlan: data.plan_action ?? [],
+              documents: data.documents_a_apporter ?? [],
+              location: data.lieu ?? '',
+              delay: data.delai_estime ?? '',
+              cost: data.cout ?? '',
+              letter: data.contenu_lettre ?? '',
+            },
+          };
           set((s) => ({
             requests: [newRequest, ...s.requests],
             currentRequest: newRequest,
