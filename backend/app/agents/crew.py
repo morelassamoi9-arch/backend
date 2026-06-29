@@ -8,7 +8,9 @@ from dotenv import load_dotenv
 from pydantic import BaseModel, Field
 
 # Charger les variables d'environnement en premier
-load_dotenv()
+backend_dir = Path(__file__).resolve().parent.parent.parent
+env_path = backend_dir / ".env"
+load_dotenv(dotenv_path=env_path)
 
 # WORKAROUND CONNU : bug CrewAI 1.14.x où 'cache_breakpoint' est injecté
 # dans les messages système même pour des providers non-Anthropic (Groq).

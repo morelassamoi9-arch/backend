@@ -2,7 +2,8 @@ import re
 from typing import Tuple
 
 from passlib.context import CryptContext
-
+from argon2 import PasswordHasher
+from argon2.exceptions import VerifyMismatchError
 
 pwd_context = CryptContext(
     schemes=["bcrypt"],
@@ -10,13 +11,30 @@ pwd_context = CryptContext(
     bcrypt__rounds=12,
 )
 
+ph = PasswordHasher()
+
 
 def hash_password(password: str) -> str:
-    return pwd_context.hash(password[:72])
+    """Hache le mot de passe en utilisant Argon2id (recommandé par l'OWASP)"""
+    return ph.hash(password)
 
 
 def verify_password(plain_password: str, hashed_password: str) -> bool:
-    return pwd_context.verify(plain_password[:72], hashed_password)
+    """
+    Vérifie le mot de passe.
+    Supporte à la fois le hachage moderne Argon2id et l'ancien hachage bcrypt (migration progressive).
+    """
+    if hashed_password.startswith("$argon2"):
+        try:
+            return ph.verify(hashed_password, plain_password)
+        except VerifyMismatchError:
+            return False
+    else:
+        # Fallback pour les comptes existants hachés en bcrypt
+        try:
+            return pwd_context.verify(plain_password[:72], hashed_password)
+        except Exception:
+            return False
 
 
 def validate_password_strength(password: str) -> Tuple[bool, str]:
@@ -49,3 +67,18 @@ def validate_email(email: str) -> bool:
 def sanitize_string(value: str) -> str:
     value = value.strip()
     return value.replace("<", "&lt;").replace(">", "&gt;")
+
+
+def detect_prompt_injection(text: str) -> bool:
+    patterns = [
+        r"ignore\s+(all\s+)?previous\s+instructions",
+        r"ignore\s+(toutes\s+les\s+)?instructions\s+précédentes",
+        r"system\s+prompt",
+        r"jailbreak",
+        r"you\s+are\s+now\s+a\s+bot",
+        r"tu\s+es\s+maintenant\s+un\s+robot",
+        r"bypass\s+restrictions",
+        r"instructions\s+système"
+    ]
+    text_lower = text.lower()
+    return any(re.search(pat, text_lower) for pat in patterns)

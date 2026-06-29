@@ -1,5 +1,4 @@
-import os
-from dotenv import load_dotenv
+from pathlib import Path
 
 # Le monkey-patch doit être appliqué AVANT toute exécution de crew,
 # donc tout en haut, juste après les imports de base.
@@ -9,7 +8,9 @@ from crewai import Agent, Task, Crew, LLM
 
 _crewai_cache.mark_cache_breakpoint = lambda msg: msg
 
-load_dotenv()
+backend_dir = Path(__file__).resolve().parent
+env_path = backend_dir / ".env"
+load_dotenv(dotenv_path=env_path)
 
 agent_test = Agent(
     role="Assistant administratif",

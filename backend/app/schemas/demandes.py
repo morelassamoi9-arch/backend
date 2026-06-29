@@ -26,6 +26,12 @@ class DemandeCreate(BaseModel):
             raise ValueError('Le message ne peut pas être vide')
         if len(v.strip()) < 10:
             raise ValueError('Le message doit contenir au moins 10 caractères')
+        
+        # Détection d'injection de prompt pour la sécurité du CrewAI
+        from app.auth.security import detect_prompt_injection
+        if detect_prompt_injection(v):
+            raise ValueError('Le message contient des instructions ou mots-clés non autorisés.')
+            
         return v.strip()
     
     @validator('categorie')

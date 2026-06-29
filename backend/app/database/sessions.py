@@ -2,15 +2,35 @@ from sqlalchemy import create_engine, event
 from sqlalchemy.orm import sessionmaker, Session
 from typing import Generator
 import os
+from pathlib import Path
 from dotenv import load_dotenv
 import logging
 
-load_dotenv()
+# Résoudre le chemin absolu du fichier .env du backend
+backend_dir = Path(__file__).resolve().parent.parent.parent
+env_path = backend_dir / ".env"
+load_dotenv(dotenv_path=env_path)
+
 logger = logging.getLogger(__name__)
 
 DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./ecitoyen.db")
 
 is_sqlite = DATABASE_URL.startswith("sqlite")
+
+# Sécurité de Production : Avertir de l'utilisation de SQLite en production
+environment = os.getenv("ENVIRONMENT", "development").lower()
+if environment in {"production", "prod"} and is_sqlite:
+    logger.warning(
+        "[SECURITY][WARNING] L'utilisation de SQLite en production est active. "
+        "Attention aux limitations de verrous d'écriture et de concurrence."
+    )
+
+# Assurer que le chemin de la base de données SQLite est absolu et relatif au dossier backend
+if is_sqlite and DATABASE_URL.startswith("sqlite:///"):
+    db_file = DATABASE_URL.replace("sqlite:///./", "").replace("sqlite:///", "")
+    if not os.path.isabs(db_file):
+        DATABASE_URL = f"sqlite:///{backend_dir / db_file}"
+
 is_postgresql = DATABASE_URL.startswith(("postgresql://", "postgresql+"))
 
 if is_sqlite:

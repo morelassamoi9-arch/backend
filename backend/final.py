@@ -1,13 +1,24 @@
 import os
 import uuid
+from pathlib import Path
 from dotenv import load_dotenv
 from sqlalchemy import create_engine, Column, String, Text, ForeignKey, DateTime, Boolean, func
 from sqlalchemy.orm import declarative_base, relationship
 
-load_dotenv()
+# Résoudre le chemin absolu du fichier .env du backend
+backend_dir = Path(__file__).resolve().parent
+env_path = backend_dir / ".env"
+load_dotenv(dotenv_path=env_path)
 
 # Fallback sur SQLite en dev local
 DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./ecitoyen.db")
+
+# Assurer que le chemin de la base de données SQLite est absolu et relatif au dossier backend
+if DATABASE_URL.startswith("sqlite:///"):
+    db_file = DATABASE_URL.replace("sqlite:///./", "").replace("sqlite:///", "")
+    if not os.path.isabs(db_file):
+        DATABASE_URL = f"sqlite:///{backend_dir / db_file}"
+
 engine = create_engine(
     DATABASE_URL, 
     connect_args={"check_same_thread": False} if DATABASE_URL.startswith("sqlite") else {},

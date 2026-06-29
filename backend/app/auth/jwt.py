@@ -2,12 +2,16 @@ import logging
 import os
 import secrets
 from datetime import datetime, timedelta
+from pathlib import Path
 from typing import Any, Dict, Optional
 
 from dotenv import load_dotenv
 from jose import JWTError, jwt
 
-load_dotenv()
+# Résoudre le chemin absolu du fichier .env du backend
+backend_dir = Path(__file__).resolve().parent.parent.parent
+env_path = backend_dir / ".env"
+load_dotenv(dotenv_path=env_path)
 
 logger = logging.getLogger(__name__)
 
@@ -21,7 +25,7 @@ if not SECRET_KEY:
 
 ALGORITHM = "HS256"
 JWT_ISSUER = os.getenv("JWT_ISSUER", "e-citoyen-ci")
-ACCESS_TOKEN_EXPIRE_MINUTES = int(os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES", "10080"))
+ACCESS_TOKEN_EXPIRE_MINUTES = int(os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES", "30"))
 REFRESH_TOKEN_EXPIRE_DAYS = int(os.getenv("REFRESH_TOKEN_EXPIRE_DAYS", "30"))
 
 

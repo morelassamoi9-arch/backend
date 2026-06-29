@@ -5,6 +5,8 @@ from sqlalchemy.engine import Engine
 SQLITE_COLUMNS = {
     "users": [
         ("is_active", "BOOLEAN NOT NULL DEFAULT 1"),
+        ("failed_login_attempts", "INTEGER NOT NULL DEFAULT 0"),
+        ("lockout_until", "DATETIME"),
     ],
     "demandes": [
         ("reponse", "TEXT"),
@@ -46,6 +48,7 @@ def ensure_sqlite_schema(engine: Engine) -> None:
                     )
 
         connection.execute(text("UPDATE users SET is_active = 1 WHERE is_active IS NULL"))
+        connection.execute(text("UPDATE users SET failed_login_attempts = 0 WHERE failed_login_attempts IS NULL"))
         connection.execute(text("UPDATE users SET updated_at = created_at WHERE updated_at IS NULL"))
         connection.execute(text("UPDATE demandes SET updated_at = created_at WHERE updated_at IS NULL"))
         connection.execute(text("UPDATE reponses SET updated_at = created_at WHERE updated_at IS NULL"))

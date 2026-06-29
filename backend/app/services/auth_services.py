@@ -96,6 +96,7 @@ class AuthService:
         Returns:
             dict: Token d'accès et informations utilisateur
         """
+        from datetime import datetime, timedelta, timezone
         email = sanitize_string(credentials.email.lower())
         
         # Chercher l'utilisateur
@@ -113,13 +114,49 @@ class AuthService:
                 status_code=status.HTTP_403_FORBIDDEN,
                 detail="Ce compte est désactivé"
             )
+            
+        # Vérifier si le compte est temporairement verrouillé (Lockout)
+        if user.lockout_until:
+            now = datetime.now(timezone.utc) if user.lockout_until.tzinfo else datetime.utcnow()
+            if user.lockout_until > now:
+                logger.warning(f"[SECURITY] Tentative de connexion bloquée pour le compte verrouillé : {email}")
+                raise HTTPException(
+                    status_code=status.HTTP_403_FORBIDDEN,
+                    detail="Ce compte est temporairement verrouillé en raison de trop nombreuses tentatives de connexion échouées. Veuillez réessayer plus tard."
+                )
+
+        # Vérifier le mot de passe et déterminer s'il a besoin d'une mise à niveau de hachage
+        is_correct = verify_password(credentials.password, user.password_hash)
+        needs_hash_upgrade = is_correct and not user.password_hash.startswith("$argon2")
         
-        # Vérifier le mot de passe
-        if not verify_password(credentials.password, user.password_hash):
+        if not is_correct:
+            # Incrémenter le compteur de tentatives échouées
+            user.failed_login_attempts += 1
+            if user.failed_login_attempts >= 5:
+                user.lockout_until = datetime.utcnow() + timedelta(minutes=15)
+                logger.error(f"[SECURITY] Compte verrouillé pour 15 minutes en raison de tentatives infructueuses : {email}")
+            db.commit()
+            
             raise HTTPException(
                 status_code=status.HTTP_401_UNAUTHORIZED,
                 detail="Email ou mot de passe incorrect"
             )
+        
+        # Authentification réussie - Réinitialiser le compteur de verrouillage
+        if user.failed_login_attempts > 0 or user.lockout_until:
+            logger.info(f"[SECURITY] Compte déverrouillé après connexion réussie : {email}")
+            user.failed_login_attempts = 0
+            user.lockout_until = None
+            
+        # Upgrade du hachage de mot de passe vers Argon2id si nécessaire (migration transparente)
+        if needs_hash_upgrade:
+            try:
+                user.password_hash = hash_password(credentials.password)
+                logger.info(f"[SECURITY] Mot de passe de l'utilisateur {user.id} migré de bcrypt vers Argon2id.")
+            except Exception as e:
+                logger.error(f"[SECURITY] Échec de la mise à niveau du hachage pour {user.id}: {e}")
+                
+        db.commit()
         
         # Créer les tokens
         role_value = user.role.value if hasattr(user.role, "value") else user.role

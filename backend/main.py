@@ -10,11 +10,30 @@ from app.limiter import limiter
 from app.api.routes import router
 logging.basicConfig(level=logging.INFO)
 
+# Configurer l'exposition des documentations selon l'environnement
+environment = os.getenv("ENVIRONMENT", "development").lower()
+show_docs = environment not in {"production", "prod"}
+
 app = FastAPI(
     title="e-Citoyen CI API",
     description="API du copilote multi-agents pour les démarches administratives en Côte d'Ivoire",
     version="0.1.0",
+    docs_url="/docs" if show_docs else None,
+    redoc_url="/redoc" if show_docs else None,
+    openapi_url="/openapi.json" if show_docs else None,
 )
+
+# Middleware pour injecter les en-têtes HTTP de sécurité standards (OWASP)
+@app.middleware("http")
+async def add_security_headers(request: Request, call_next):
+    response = await call_next(request)
+    response.headers["X-Frame-Options"] = "DENY"
+    response.headers["X-Content-Type-Options"] = "nosniff"
+    response.headers["X-XSS-Protection"] = "1; mode=block"
+    response.headers["Content-Security-Policy"] = "default-src 'self'; frame-ancestors 'none';"
+    if environment in {"production", "prod"}:
+        response.headers["Strict-Transport-Security"] = "max-age=63072000; includeSubDomains; preload"
+    return response
 
 # Rate limiting par IP pour protéger le quota Groq partagé (gratuit,
 # fragile - voir mémoire projet). La route /api/demande déclenche un

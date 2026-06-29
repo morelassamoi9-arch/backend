@@ -106,7 +106,7 @@ def get_deterministic_fallback_response(message: str):
     return {
         "resume_situation": "Nous n'avons pas pu identifier la démarche précise dans votre message. Veuillez reformuler votre besoin.",
         "plan_action": [
-            "Visitez notre Centre d'Aide & Support (section 'Aides et Supports') pour consulter l'index des démarches.",
+            "Visitez notre Centre d'Aide & Support pour en savoir plus sur le fonctionnement de l'application.",
             "Posez une question plus précise à notre assistant (ex: 'Quelles sont les pièces pour un passeport ?')."
         ],
         "documents_a_apporter": [],
