@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react-native';
+import { render, screen, waitFor } from '@testing-library/react-native';
 import CitizenDashboard from '../../app/(citizen)/index';
 import { useAppStore } from '../../store/useAppStore';
 
@@ -14,7 +14,12 @@ jest.mock('../../store/useAppStore', () => {
       { id: '1', message: 'Je veux renouveler ma CNI', status: 'traitee', createdAt: '2026-06-26T12:00:00.000Z' }
     ],
     isLoading: false,
-    fetchRequests: jest.fn(),
+    fetchRequests: jest.fn(() => ({
+      finally: (cb) => {
+        cb();
+        return Promise.resolve();
+      }
+    })),
     logout: jest.fn(),
   };
   return {
@@ -23,20 +28,26 @@ jest.mock('../../store/useAppStore', () => {
 });
 
 describe('CitizenDashboard Screen Tests', () => {
-  it('devrait rendre l\'accueil citoyen avec le bon nom', () => {
+  it('devrait rendre l\'accueil citoyen avec le bon nom', async () => {
     render(<CitizenDashboard />);
-    expect(screen.getByText('Bonjour, Gbagbo 👋')).toBeTruthy();
+    await waitFor(() => {
+      expect(screen.getByText('Bienvenue, Gbagbo 👋')).toBeTruthy();
+    });
   });
 
-  it('devrait afficher les demandes existantes de la session', () => {
+  it('devrait afficher les demandes existantes de la session', async () => {
     render(<CitizenDashboard />);
-    expect(screen.getByText('Je veux renouveler ma CNI')).toBeTruthy();
-    expect(screen.getByText('Traitée')).toBeTruthy();
+    await waitFor(() => {
+      expect(screen.getByText('Je veux renouveler ma CNI')).toBeTruthy();
+      expect(screen.getByText('Traitée')).toBeTruthy();
+    });
   });
 
-  it('devrait lancer le chargement des demandes à l\'initialisation', () => {
+  it('devrait lancer le chargement des demandes à l\'initialisation', async () => {
     render(<CitizenDashboard />);
     const store = useAppStore();
-    expect(store.fetchRequests).toHaveBeenCalled();
+    await waitFor(() => {
+      expect(store.fetchRequests).toHaveBeenCalled();
+    });
   });
 });
