@@ -112,4 +112,6 @@ comportemental et configurer l'archivage déporté immuable des journaux d'audit
    contenant l'evidence_id vers un système de stockage externe immuable.
 3. Campagne d'audit externe : Prévoir une campagne de tests d'intrusion manuels (Red Team) 
    réalisée par un tiers de confiance indépendant pour certifier le système en production.
+4. Exception de sécurité CI/CD : La vulnérabilité PYSEC-2026-311 (chromadb) est temporairement 
+   ignorée (--ignore-vuln) en raison d'une contrainte stricte de version imposée par crewai.
 ================================================================================
