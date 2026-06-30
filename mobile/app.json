@@ -48,11 +48,9 @@
     "experiments": {
       "typedRoutes": true
     },
-    "extra": {
-      "router": {},
-      "eas": {
-        "projectId": "e3175840-ce86-4f16-9f60-d4d90dd9382f"
-      }
-    }
+   "extra": {
+      "router": {}
+    },
+    "owner": "morel-dev"
   }
 }
