@@ -141,9 +141,19 @@ def test_get_stats_overview_endpoint(client, auth_headers):
     assert "demandes_en_attente" in data
 
 
-def test_global_exception_handler_sanitization(client, auth_headers):
+def test_global_exception_handler_sanitization(db_session, auth_headers):
+    # Créer un client de test local pour ne pas propager directement les exceptions de test
+    def override_get_db():
+        try:
+            yield db_session
+        finally:
+            pass
+
+    app.dependency_overrides[get_db] = override_get_db
+    local_client = TestClient(app, raise_server_exceptions=False)
+
     with patch("app.services.demandes_services.DemandeService.get_statistics", side_effect=RuntimeError("Secret database engine failure: name 'sqlite' is not defined")):
-        response = client.get("/demandes/stats/overview", headers=auth_headers)
+        response = local_client.get("/demandes/stats/overview", headers=auth_headers)
         assert response.status_code == 500
         data = response.json()
         assert data["detail"] == "Une erreur est survenue. Veuillez réessayer ultérieurement."
@@ -151,6 +161,8 @@ def test_global_exception_handler_sanitization(client, auth_headers):
         assert "sqlite" not in detail_str
         assert "runtimeerror" not in detail_str
         assert "secret database" not in detail_str
+
+    app.dependency_overrides.clear()
 
 
 def test_deterministic_fallback_on_llm_failure(db_session, test_user):

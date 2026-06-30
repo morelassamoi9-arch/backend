@@ -22,14 +22,20 @@ from app.agents.tools import consulter_procedure
 
 _crewai_cache.mark_cache_breakpoint = lambda msg: msg
 
+import sys
+
+api_key_val = os.getenv("GEMINI_API_KEY")
+if not api_key_val and "pytest" in sys.modules:
+    api_key_val = "mock_key_for_testing"
+
 # Modèle LLM partagé — Google Gemini via LiteLLM
 GEMINI_LLM = LLM(
     model="gemini/gemini-2.5-flash",
-    api_key=os.getenv("GEMINI_API_KEY")
+    api_key=api_key_val
 )
 
-# Vérification au démarrage
-if not os.getenv("GEMINI_API_KEY"):
+# Vérification au démarrage (désactivée en mode test)
+if not os.getenv("GEMINI_API_KEY") and "pytest" not in sys.modules:
     raise EnvironmentError(
         "GEMINI_API_KEY manquante. Vérifiez le fichier backend/.env"
     )
