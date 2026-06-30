@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "e-Citoyen CI",
-    "slug": "ecitoyen-ci",
+    "slug": "ecitoyen-ci-2",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -48,9 +48,9 @@
     "experiments": {
       "typedRoutes": true
     },
-   "extra": {
+    "extra": {
       "router": {}
     },
-    "owner": "morel-dev"
+    "owner": "morel-assamoi-dev"
   }
 }
