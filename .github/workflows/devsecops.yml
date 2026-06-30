@@ -76,6 +76,8 @@ jobs:
         run: |
           cd backend
           pytest tests/test_auth.py tests/test_demandes.py
+        env:
+          PYTHONPATH: .
 
   security-gates:
     name: "4. Security Gates Verification"
@@ -99,6 +101,8 @@ jobs:
         run: |
           cd backend
           pytest tests/test_security_gates.py
+        env:
+          PYTHONPATH: .
 
   dast:
     name: "5. DAST (Dynamic API Security Scan)"
