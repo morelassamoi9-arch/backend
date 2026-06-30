@@ -85,9 +85,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     return result;
   };
 
-  const logout = () => {
-    sessionStorage.removeItem("token");
-    sessionStorage.removeItem("user");
+  const logout = async () => {
+    try {
+      await api.auth.logout();
+    } catch (err) {
+      console.error("Erreur lors de la déconnexion :", err);
+    }
     setUser(null);
   };
 

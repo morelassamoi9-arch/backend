@@ -31,6 +31,17 @@ async def get_current_user(
         HTTPException: Si le token est invalide ou l'utilisateur n'existe pas
     """
     token = credentials.credentials
+    
+    # Vérifier si le token est dans la blacklist
+    from app.database.models import TokenBlacklist
+    is_blacklisted = db.query(TokenBlacklist).filter(TokenBlacklist.token == token).first()
+    if is_blacklisted:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Session expirée ou déconnectée. Veuillez vous reconnecter.",
+            headers={"WWW-Authenticate": "Bearer"},
+        )
+        
     payload = verify_token(token, token_type=TokenType.ACCESS)
     
     if not payload:

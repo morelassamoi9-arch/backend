@@ -127,3 +127,13 @@ class Reponse(Base):
     __table_args__ = (
         Index("idx_reponses_created_at", "created_at"),
     )
+
+
+class TokenBlacklist(Base):
+    __tablename__ = "token_blacklist"
+
+    id = Column(String(36), primary_key=True, default=new_uuid)
+    token = Column(String(500), unique=True, nullable=False, index=True)
+    blacklisted_at = Column(DateTime(timezone=True), default=func.now(), server_default=func.now(), nullable=False)
+    expires_at = Column(DateTime(timezone=True), nullable=False)
+

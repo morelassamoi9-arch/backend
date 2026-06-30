@@ -226,7 +226,18 @@ export const useAppStore = create<AppState>()(
         }
       },
 
-      logout: () =>
+      logout: () => {
+        const { user } = get();
+        if (user && user.token) {
+          fetch(`${API_BASE}/auth/logout`, {
+            method: 'POST',
+            headers: {
+              'Authorization': `Bearer ${user.token}`,
+            },
+          }).catch((e) => {
+            console.error("[AUTH] Erreur déconnexion backend mobile:", e);
+          });
+        }
         set({
           user: null,
           isAuthenticated: false,
@@ -234,7 +245,8 @@ export const useAppStore = create<AppState>()(
           currentRequest: null,
           error: null,
           requestError: null,
-        }),
+        });
+      },
 
       // --- DEMANDES ---
 
@@ -251,6 +263,10 @@ export const useAppStore = create<AppState>()(
             },
             body: JSON.stringify({ message, categorie }),
           });
+          if (res.status === 401) {
+            get().logout();
+            throw new Error('Session expirée. Veuillez vous reconnecter.');
+          }
           if (!res.ok) {
             const err = await res.json().catch(() => ({}));
             throw new Error(err.detail ?? 'Erreur lors du traitement');
@@ -277,6 +293,10 @@ export const useAppStore = create<AppState>()(
           const res = await fetch(`${API_BASE}/demandes/`, {
             headers: { Authorization: `Bearer ${user.token}` },
           });
+          if (res.status === 401) {
+            get().logout();
+            return;
+          }
           if (!res.ok) throw new Error('Impossible de charger vos demandes');
           const data = await res.json();
           set({ requests: data.map(mapDemande), isLoadingRequests: false });
@@ -293,6 +313,10 @@ export const useAppStore = create<AppState>()(
           const res = await fetch(`${API_BASE}/demandes/${id}`, {
             headers: { Authorization: `Bearer ${user.token}` },
           });
+          if (res.status === 401) {
+            get().logout();
+            return;
+          }
           if (!res.ok) throw new Error('Demande introuvable');
           const data = await res.json();
           const request = mapDemande(data);
@@ -315,6 +339,10 @@ export const useAppStore = create<AppState>()(
             method: 'POST',
             headers: { Authorization: `Bearer ${user.token}` },
           });
+          if (res.status === 401) {
+            get().logout();
+            return;
+          }
           if (!res.ok) throw new Error('Impossible de relancer le traitement');
           const data = await res.json();
           const request = mapDemande(data);

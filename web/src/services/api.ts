@@ -74,10 +74,18 @@ export const auth = {
   register: (data: { nom: string; prenom?: string; email: string; password: string; telephone?: string }) =>
     request('/auth/register', { method: 'POST', body: JSON.stringify(data) }),
   
-  logout: () => {
-    sessionStorage.removeItem('token');
-    sessionStorage.removeItem('user');
-    window.location.href = '/login';
+  logout: async () => {
+    try {
+      await request('/auth/logout', { method: 'POST' });
+    } catch (err) {
+      console.error("Erreur lors de la déconnexion backend:", err);
+    } finally {
+      sessionStorage.removeItem('token');
+      sessionStorage.removeItem('user');
+      localStorage.removeItem('token');
+      localStorage.removeItem('user');
+      window.location.href = '/login';
+    }
   },
 };
 

@@ -106,4 +106,63 @@ describe('App Store Unit Tests', () => {
     expect(updatedState.user).toBeNull();
     expect(updatedState.requests).toEqual([]);
   });
+
+  it('devrait appeler l\'API logout backend en arrière-plan lors de la déconnexion', async () => {
+    useAppStore.setState({
+      isAuthenticated: true,
+      user: {
+        id: 'user_1',
+        nom: 'Koffi',
+        email: 'koffi@example.ci',
+        role: 'client',
+        token: 'token-12345',
+      },
+    });
+
+    (global.fetch as jest.Mock).mockResolvedValueOnce({
+      ok: true,
+      json: async () => ({ message: 'Déconnexion réussie' }),
+    });
+
+    useAppStore.getState().logout();
+
+    expect(global.fetch).toHaveBeenCalledWith(
+      expect.stringContaining('/auth/logout'),
+      expect.objectContaining({
+        method: 'POST',
+        headers: expect.objectContaining({
+          'Authorization': 'Bearer token-12345',
+        }),
+      })
+    );
+
+    const updatedState = useAppStore.getState();
+    expect(updatedState.isAuthenticated).toBe(false);
+    expect(updatedState.user).toBeNull();
+  });
+
+  it('devrait déconnecter l\'utilisateur automatiquement en cas de retour 401 de l\'API', async () => {
+    useAppStore.setState({
+      isAuthenticated: true,
+      user: {
+        id: 'user_1',
+        nom: 'Koffi',
+        email: 'koffi@example.ci',
+        role: 'client',
+        token: 'expired-token',
+      },
+    });
+
+    (global.fetch as jest.Mock).mockResolvedValueOnce({
+      ok: false,
+      status: 401,
+      json: async () => ({ detail: 'Token invalide ou expiré' }),
+    });
+
+    await useAppStore.getState().fetchRequests();
+
+    const updatedState = useAppStore.getState();
+    expect(updatedState.isAuthenticated).toBe(false);
+    expect(updatedState.user).toBeNull();
+  });
 });

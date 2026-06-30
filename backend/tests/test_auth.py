@@ -160,3 +160,32 @@ def test_register_and_login_flow(client):
     )
     assert verify_response.status_code == status.HTTP_200_OK
     assert verify_response.json()["valid"] is True
+
+
+def test_logout_and_token_invalidation(client):
+    user_payload = {
+        "nom": "Koffi",
+        "prenom": "Jean",
+        "email": "koffi.jean@example.ci",
+        "password": "Password123!",
+        "telephone": "+2250102030405",
+    }
+    # Inscription
+    reg_response = client.post("/auth/register", json=user_payload)
+    assert reg_response.status_code == status.HTTP_201_CREATED
+    token = reg_response.json()["access_token"]
+
+    # Vérifier que le token fonctionne
+    verify_response = client.get("/auth/verify", headers={"Authorization": f"Bearer {token}"})
+    assert verify_response.status_code == status.HTTP_200_OK
+    assert verify_response.json()["valid"] is True
+
+    # Se déconnecter
+    logout_response = client.post("/auth/logout", headers={"Authorization": f"Bearer {token}"})
+    assert logout_response.status_code == status.HTTP_200_OK
+    assert "Déconnexion réussie" in logout_response.json()["message"]
+
+    # Vérifier que le token ne fonctionne plus
+    verify_after_logout = client.get("/auth/verify", headers={"Authorization": f"Bearer {token}"})
+    assert verify_after_logout.status_code == status.HTTP_401_UNAUTHORIZED
+

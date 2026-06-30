@@ -88,20 +88,47 @@ def login(
             detail="Une erreur interne est survenue lors de la connexion"
         )
 
+from fastapi.security import HTTPAuthorizationCredentials
+from app.auth.dependencies import security
+from app.auth.jwt import verify_token, TokenType
+from app.database.models import TokenBlacklist
+from datetime import datetime, timezone
+
 @router.post(
     "/logout",
     summary="Déconnexion",
-    description="Déconnecte l'utilisateur (côté client, supprimer le token)"
+    description="Déconnecte l'utilisateur et invalide son token côté serveur"
 )
 def logout(
+    credentials: HTTPAuthorizationCredentials = Depends(security),
+    db: Session = Depends(get_db),
     current_user: User = Depends(get_current_user)
 ):
     """
-    Déconnexion - Le client doit supprimer le token JWT
+    Déconnexion - Le token JWT est invalidé côté serveur
     """
+    token = credentials.credentials
+    payload = verify_token(token, token_type=TokenType.ACCESS)
+    exp = payload.get("exp") if payload else None
+    
+    if exp:
+        expires_at = datetime.fromtimestamp(exp, tz=timezone.utc)
+    else:
+        from datetime import timedelta
+        expires_at = datetime.now(timezone.utc) + timedelta(minutes=30)
+        
+    # Blacklister le token
+    blacklist_entry = TokenBlacklist(token=token, expires_at=expires_at)
+    db.add(blacklist_entry)
+    
+    # Nettoyer les tokens expirés pour éviter l'accumulation
+    db.query(TokenBlacklist).filter(TokenBlacklist.expires_at < datetime.now(timezone.utc)).delete()
+    
+    db.commit()
+    
     return {
         "message": "Déconnexion réussie",
-        "info": "Veuillez supprimer le token côté client"
+        "info": "Token invalidé avec succès"
     }
 
 @router.get(

@@ -92,4 +92,38 @@ describe('Web API Client Unit Tests', () => {
     expect(sessionStorage.getItem('user')).toBeNull();
     expect(eventSpy).toHaveBeenCalled();
   });
+
+  it('devrait appeler l\'API logout backend, vider la session et localStorage, puis rediriger', async () => {
+    sessionStorage.setItem('token', 'active-token');
+    sessionStorage.setItem('user', JSON.stringify({ name: 'User' }));
+    localStorage.setItem('token', 'active-token');
+    localStorage.setItem('user', JSON.stringify({ name: 'User' }));
+
+    (global.fetch as any).mockResolvedValueOnce({
+      ok: true,
+      status: 200,
+      json: async () => ({ message: 'Déconnexion réussie' }),
+    });
+
+    const originalLocation = window.location;
+    delete (window as any).location;
+    window.location = { href: '' } as any;
+
+    await api.auth.logout();
+
+    expect(global.fetch).toHaveBeenCalledWith(
+      expect.stringContaining('/auth/logout'),
+      expect.objectContaining({
+        method: 'POST',
+      })
+    );
+
+    expect(sessionStorage.getItem('token')).toBeNull();
+    expect(sessionStorage.getItem('user')).toBeNull();
+    expect(localStorage.getItem('token')).toBeNull();
+    expect(localStorage.getItem('user')).toBeNull();
+    expect(window.location.href).toBe('/login');
+
+    window.location = originalLocation;
+  });
 });
