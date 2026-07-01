@@ -259,6 +259,10 @@ def process_demande_with_crew(demande_id: str, message: str):
                 demande.reponse = json.dumps(crew_result, ensure_ascii=False)
             db_session.commit()
             logger.info(f"Réponse CrewAI sauvegardée pour la demande {demande_id}. Statut final : {demande.status}")
+        except Exception as save_err:
+            db_session.rollback()
+            logger.error(f"Erreur lors de la sauvegarde de la réponse pour {demande_id}: {save_err}")
+            raise
         finally:
             db_session.close()
 
@@ -357,10 +361,42 @@ def get_demandes(
     - **limit** : Nombre maximum de demandes à retourner
     - **status_filter** : Filtrer par statut (en_attente, en_cours, traitee, rejetee)
     """
-    demandes = DemandeService.get_user_demandes(
-        db, current_user, skip=skip, limit=limit, status=status_filter
-    )
-    return demandes
+    try:
+        demandes = DemandeService.get_user_demandes(
+            db, current_user, skip=skip, limit=limit, status=status_filter
+        )
+        return demandes
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.exception("Erreur lors de la récupération des demandes")
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="Erreur lors de la récupération des demandes"
+        )
+
+@router.get(
+    "/stats/overview",
+    summary="Statistiques des demandes",
+    description="Retourne les statistiques des demandes du citoyen"
+)
+def get_demande_stats(
+    current_user: User = Depends(get_current_user),
+    db: Session = Depends(get_db)
+):
+    """
+    Retourne les statistiques des demandes
+    """
+    try:
+        return DemandeService.get_statistics(db, current_user)
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.exception("Erreur lors du calcul des statistiques")
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="Erreur lors de la récupération des statistiques"
+        )
 
 @router.get(
     "/{demande_id}",
@@ -378,8 +414,17 @@ def get_demande_detail(
     
     - **demande_id** : Identifiant unique de la demande
     """
-    demande = DemandeService.get_demande_detail(db, current_user, demande_id)
-    return demande
+    try:
+        demande = DemandeService.get_demande_detail(db, current_user, demande_id)
+        return demande
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.exception("Erreur lors de la récupération du détail de la demande")
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="Erreur lors de la récupération du détail de la demande"
+        )
 
 @router.delete(
     "/{demande_id}",
@@ -396,22 +441,17 @@ def delete_demande(
     
     - **demande_id** : Identifiant unique de la demande à supprimer
     """
-    DemandeService.delete_demande(db, current_user, demande_id)
-    return {"message": "Demande supprimée avec succès"}
-
-@router.get(
-    "/stats/overview",
-    summary="Statistiques des demandes",
-    description="Retourne les statistiques des demandes du citoyen"
-)
-def get_demande_stats(
-    current_user: User = Depends(get_current_user),
-    db: Session = Depends(get_db)
-):
-    """
-    Retourne les statistiques des demandes
-    """
-    return DemandeService.get_statistics(db, current_user)
+    try:
+        DemandeService.delete_demande(db, current_user, demande_id)
+        return {"message": "Demande supprimée avec succès"}
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.exception("Erreur lors de la suppression de la demande")
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="Erreur lors de la suppression de la demande"
+        )
 
 @router.post("/{demande_id}/generate-response")
 def generate_response(
@@ -421,16 +461,26 @@ def generate_response(
     db: Session = Depends(get_db)
 ):
     """Génère la vraie réponse IA en arrière-plan pour la demande spécifiée (ancien mock réorienté)"""
-    demande = db.query(Demande).filter(
-        Demande.id == str(demande_id),
-        Demande.user_id == current_user.id
-    ).first()
-    if not demande:
-        raise HTTPException(status_code=404, detail="Demande non trouvée")
-    
-    # Repasser la demande en statut EN_COURS
-    demande.status = DemandeStatus.EN_COURS
-    db.commit()
+    try:
+        demande = db.query(Demande).filter(
+            Demande.id == str(demande_id),
+            Demande.user_id == current_user.id
+        ).first()
+        if not demande:
+            raise HTTPException(status_code=404, detail="Demande non trouvée")
+        
+        # Repasser la demande en statut EN_COURS
+        demande.status = DemandeStatus.EN_COURS
+        db.commit()
+    except HTTPException:
+        raise
+    except Exception as e:
+        db.rollback()
+        logger.exception("Erreur lors du lancement de la génération de réponse")
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="Erreur lors du lancement de la génération de réponse"
+        )
     
     # Déclencher le traitement CrewAI réel en tâche de fond
     background_tasks.add_task(

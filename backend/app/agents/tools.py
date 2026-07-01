@@ -18,8 +18,11 @@ def consulter_procedure(nom_demarche: str) -> str:
     if not KNOWLEDGE_PATH.exists():
         return f"Erreur : base de connaissances introuvable au chemin {KNOWLEDGE_PATH}"
 
-    with open(KNOWLEDGE_PATH, "r", encoding="utf-8") as f:
-        data = json.load(f)
+    try:
+        with open(KNOWLEDGE_PATH, "r", encoding="utf-8") as f:
+            data = json.load(f)
+    except (OSError, json.JSONDecodeError) as e:
+        return f"Erreur lors de la lecture de la base de connaissances : {type(e).__name__}"
 
     demarches = data.get("demarches", {})
     dependances = data.get("_dependances", {})
