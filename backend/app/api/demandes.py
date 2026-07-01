@@ -7,8 +7,10 @@ from app.database.models import User, Demande, DemandeStatus
 from app.schemas.demandes import DemandeCreate, DemandeResponse
 from app.services.demandes_services import DemandeService
 from app.auth.dependencies import get_current_user
+from app.utils.db_context import get_background_db
+from app.utils.error_detection import is_rate_limit_error, user_facing_error_message
+from app.utils.llm_fallback import kickoff_with_fallback
 import json
-import os
 import logging
 
 logger = logging.getLogger(__name__)
@@ -130,91 +132,28 @@ def process_demande_with_crew(demande_id: str, message: str):
     """
     Tâche de fond pour traiter la demande avec CrewAI (YAML-based)
     """
-    import time
-    try:
-        from app.agents.crew import ECitoyenCrew
-        from app.database.models import Demande, DemandeStatus, Reponse
+    from app.database.models import Demande, DemandeStatus, Reponse
 
+    try:
         # Mettre à jour le statut en EN_COURS avant de lancer le kickoff
-        db_session = next(get_db())
-        try:
-            demande = db_session.query(Demande).filter(Demande.id == demande_id).first()
-            if demande:
-                demande.status = DemandeStatus.EN_COURS
-                db_session.commit()
-                logger.info(f"Statut de la demande {demande_id} mis à EN_COURS")
-        except Exception as db_err:
-            logger.error(f"Erreur lors du passage au statut EN_COURS pour {demande_id}: {db_err}")
-        finally:
-            db_session.close()
+        with get_background_db() as db_session:
+            try:
+                demande = db_session.query(Demande).filter(Demande.id == demande_id).first()
+                if demande:
+                    demande.status = DemandeStatus.EN_COURS
+                    db_session.commit()
+                    logger.info(f"Statut de la demande {demande_id} mis à EN_COURS")
+            except Exception as db_err:
+                logger.error(f"Erreur lors du passage au statut EN_COURS pour {demande_id}: {db_err}")
 
         logger.info(f"Traitement CrewAI unifié pour la demande {demande_id}")
-        
-        max_retries = 3
-        delay = 5.0
-        resultat = None
-        
-        fallback_used = False
-        for attempt in range(max_retries):
-            try:
-                logger.info(f"Lancement de kickoff CrewAI (tentative {attempt+1}/{max_retries})")
-                resultat = ECitoyenCrew().crew().kickoff(
-                    inputs={"demande_citoyen": message}
-                )
-                if resultat is None or resultat.pydantic is None:
-                    raise ValueError("Le crew n'a pas produit de sortie structurée valide")
-                break  # Succès, on sort de la boucle de retry
-            except Exception as exc:
-                error_msg = str(exc).lower()
-                is_transient = "rate limit" in error_msg or "429" in error_msg or "overloaded" in error_msg or "timeout" in error_msg or "resource_exhausted" in error_msg or "quota" in error_msg
-                if is_transient and attempt < max_retries - 1:
-                    logger.warning(f"Erreur temporaire ou Rate limit Gemini détecté. Retrying dans {delay}s... (Détail: {exc})")
-                    time.sleep(delay)
-                    delay *= 2.0  # Backoff exponentiel
-                elif attempt < max_retries - 1:
-                    logger.warning(f"Erreur CrewAI/parsing temporaire. Retrying dans {delay}s... (Détail: {exc})")
-                    time.sleep(delay)
-                    delay *= 1.5
-                else:
-                    # Plus de retries Gemini. Tentative de basculement vers Groq si la clé existe
-                    groq_key = os.getenv("GROQ_API_KEY")
-                    if groq_key and not fallback_used:
-                        logger.warning("Détection de surcharge Gemini. Basculement automatique vers le fournisseur de secours Groq...")
-                        try:
-                            from crewai import LLM
-                            fallback_llm = LLM(
-                                model="groq/llama-3.3-70b-versatile",
-                                api_key=groq_key,
-                                tool_choice="auto"
-                            )
-                            resultat = ECitoyenCrew(llm_override=fallback_llm).crew().kickoff(
-                                inputs={"demande_citoyen": message}
-                            )
-                            if resultat is None or resultat.pydantic is None:
-                                raise ValueError("Le crew de secours n'a pas produit de sortie structurée valide")
-                            fallback_used = True
-                            logger.info("Succès du traitement de la demande via le fournisseur de secours Groq.")
-                            break
-                        except Exception as fallback_exc:
-                            logger.error(f"Échec du traitement de secours via Groq : {fallback_exc}. Lancement de la récupération déterministe locale...")
-                            try:
-                                fallback_data = get_deterministic_fallback_response(message)
-                                resultat = FallbackResult(fallback_data)
-                                fallback_used = True
-                                break
-                            except Exception as fallback_err:
-                                logger.error(f"Échec de la récupération déterministe locale : {fallback_err}")
-                                raise fallback_exc
-                    else:
-                        logger.warning("Gemini surchargé et aucun fallback Groq disponible ou fonctionnel. Lancement de la récupération déterministe locale...")
-                        try:
-                            fallback_data = get_deterministic_fallback_response(message)
-                            resultat = FallbackResult(fallback_data)
-                            fallback_used = True
-                            break
-                        except Exception as fallback_err:
-                            logger.error(f"Échec de la récupération déterministe locale : {fallback_err}")
-                            raise exc
+
+        resultat = kickoff_with_fallback(
+            message,
+            max_retries=3,
+            initial_delay=5.0,
+            deterministic_fallback_fn=get_deterministic_fallback_response,
+        )
 
         pydantic_res = resultat.pydantic
         crew_result = {
@@ -227,16 +166,13 @@ def process_demande_with_crew(demande_id: str, message: str):
             "lettre": pydantic_res.contenu_lettre if pydantic_res.lettre_generee else None
         }
 
-        # Déterminer si c'est un rejet fonctionnel (demande vide, inconnue ou hors sujet)
         is_functional_rejection = (
             not pydantic_res.plan_action 
             or "inconnu" in pydantic_res.resume_situation.lower() 
             or "hors sujet" in pydantic_res.resume_situation.lower()
         )
 
-        # Sauvegarder la réponse
-        db_session = next(get_db())
-        try:
+        with get_background_db() as db_session:
             reponse = Reponse(
                 demande_id=demande_id,
                 resume=pydantic_res.resume_situation,
@@ -259,36 +195,22 @@ def process_demande_with_crew(demande_id: str, message: str):
                 demande.reponse = json.dumps(crew_result, ensure_ascii=False)
             db_session.commit()
             logger.info(f"Réponse CrewAI sauvegardée pour la demande {demande_id}. Statut final : {demande.status}")
-        finally:
-            db_session.close()
 
     except Exception as e:
         logger.error(f"Erreur technique CrewAI pour demande {demande_id}: {str(e)}")
-        db_session = next(get_db())
-        try:
-            demande = db_session.query(Demande).filter(Demande.id == demande_id).first()
-            if demande:
-                demande.status = DemandeStatus.ERREUR
-                
-                # Identifier si c'est un dépassement de quota (rate limit / resource exhausted)
-                error_msg = str(e).lower()
-                is_rate_limit = "rate_limit" in error_msg or "429" in error_msg or "resource_exhausted" in error_msg or "quota" in error_msg
-                
-                if is_rate_limit:
-                    user_error = "Toutes nos excuses, le service d'analyse IA connaît actuellement un fort trafic (limite de requêtes atteinte). Veuillez réessayer dans quelques minutes."
-                else:
-                    user_error = "Une erreur technique temporaire est survenue lors du traitement de votre demande. Veuillez réessayer."
-                
-                error_response = {
-                    "error": user_error,
-                    "is_technical": True
-                }
-                demande.reponse = json.dumps(error_response, ensure_ascii=False)
-                db_session.commit()
-        except Exception as db_err:
-            logger.error(f"Erreur lors du marquage d'erreur pour {demande_id}: {db_err}")
-        finally:
-            db_session.close()
+        with get_background_db() as db_session:
+            try:
+                demande = db_session.query(Demande).filter(Demande.id == demande_id).first()
+                if demande:
+                    demande.status = DemandeStatus.ERREUR
+                    error_response = {
+                        "error": user_facing_error_message(str(e)),
+                        "is_technical": True
+                    }
+                    demande.reponse = json.dumps(error_response, ensure_ascii=False)
+                    db_session.commit()
+            except Exception as db_err:
+                logger.error(f"Erreur lors du marquage d'erreur pour {demande_id}: {db_err}")
 
 
 @router.post(
