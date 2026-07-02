@@ -75,10 +75,14 @@ class AuthService:
             role=UserRole.CLIENT
         )
         
+        from app.database.sessions import DATABASE_URL
+        logger.info(f"[AUTH_DEBUG] Registering user in database. URL: {DATABASE_URL}")
+        
         try:
             db.add(user)
             db.commit()
             db.refresh(user)
+            logger.info(f"[AUTH_DEBUG] User registered successfully. ID: {user.id}, Email: {user.email}")
         except Exception as e:
             db.rollback()
             logger.exception("Erreur lors de la création du compte")
@@ -169,6 +173,10 @@ class AuthService:
             "email": user.email,
             "role": role_value
         }
+        
+        from app.database.sessions import DATABASE_URL
+        logger.info(f"[AUTH_DEBUG] User logged in. ID: {user.id}, Email: {user.email}, Database URL: {DATABASE_URL}")
+        logger.info(f"[AUTH_DEBUG] Token data: {token_data}")
         
         access_token = create_access_token(token_data)
         refresh_token = create_refresh_token(token_data)
