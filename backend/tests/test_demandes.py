@@ -178,8 +178,13 @@ def test_deterministic_fallback_on_llm_failure(db_session, test_user):
     demande = DemandeService.create_demande(db_session, test_user, demande_in)
     assert demande.status == DemandeStatus.EN_ATTENTE
     
+    # Patch get_db so the background function uses the same test session
+    def _override_get_db():
+        yield db_session
+
     # 2. Simuler un échec complet de l'IA (Gemini et Groq lèvent des exceptions)
-    with patch("app.agents.crew.ECitoyenCrew.crew") as mock_crew:
+    with patch("app.agents.crew.ECitoyenCrew.crew") as mock_crew, \
+         patch("app.api.demandes.get_db", _override_get_db):
         mock_crew.side_effect = RuntimeError("All AI models are overloaded")
         
         # Lancer le traitement
