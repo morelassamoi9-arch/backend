@@ -11,6 +11,7 @@ const STATUS_CONFIG: Record<DemandeStatus, { label: string; color: string; bg: s
   en_cours:   { label: "En cours",   color: Colors.inProgress, bg: "#FFF8E1" },
   traitee:    { label: "Traitée",    color: Colors.success,    bg: "#E8F5E9" },
   rejetee:    { label: "Rejetée",    color: Colors.error,      bg: "#FFEBEE" },
+  erreur:     { label: "Erreur",      color: Colors.error,      bg: "#FFEBEE" },
 };
 
 function StatusBadge({ status }: { status: DemandeStatus }) {
