@@ -243,38 +243,40 @@ export const useAppStore = create<AppState>()(
         if (!user) throw new Error('Non connecté');
         set({ isLoadingRequests: true, requestError: null, currentRequest: null });
         try {
-          const controller = new AbortController();
-          const timeoutId = setTimeout(() => controller.abort(), 120000);
-          const res = await fetch(`${API_BASE}/demande`, {
+          const createRes = await fetch(`${API_BASE}/demandes/`, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ message }),
-            signal: controller.signal,
-          });
-          clearTimeout(timeoutId);
-          if (!res.ok) {
-            const err = await res.json().catch(() => ({}));
-            throw new Error(err.detail ?? 'Erreur lors du traitement');
-          }
-          const data = await res.json();
-          const newRequest: Request = {
-            id: Date.now().toString(),
-            message,
-            categorie: categorie ?? 'Démarche administrative',
-            status: 'completed' as DemandeStatus,
-            createdAt: new Date().toISOString(),
-            aiResponse: {
-              situation: data.resume_situation ?? '',
-              actionPlan: data.plan_action ?? [],
-              documents: data.documents_a_apporter ?? [],
-              location: data.lieu ?? '',
-              delay: data.delai_estime ?? '',
-              cost: data.cout ?? '',
-              letter: data.contenu_lettre ?? '',
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${user.token}`,
             },
-          };
+            body: JSON.stringify({ message, categorie }),
+          });
+          if (!createRes.ok) {
+            const err = await createRes.json().catch(() => ({}));
+            throw new Error(err.detail ?? 'Erreur lors de la création de la demande');
+          }
+          let current = await createRes.json();
+          const demandeId = current.id;
+
+          const POLL_INTERVAL_MS = 3000;
+          const MAX_ATTEMPTS = 30;
+          const DONE_STATUSES = ['traitee', 'rejetee', 'erreur'];
+          for (let i = 0; i < MAX_ATTEMPTS; i++) {
+            if (DONE_STATUSES.includes(current.status)) break;
+            await new Promise((resolve) => setTimeout(resolve, POLL_INTERVAL_MS));
+            const pollRes = await fetch(`${API_BASE}/demandes/${demandeId}`, {
+              headers: { Authorization: `Bearer ${user.token}` },
+            });
+            if (pollRes.ok) current = await pollRes.json();
+          }
+
+          if (current.status === 'erreur') {
+            throw new Error('Le traitement de votre demande a échoué. Réessayez.');
+          }
+
+          const newRequest = mapDemande(current);
           set((s) => ({
-            requests: [newRequest, ...s.requests],
+            requests: [newRequest, ...s.requests.filter((r) => r.id !== newRequest.id)],
             currentRequest: newRequest,
             isLoadingRequests: false,
           }));
