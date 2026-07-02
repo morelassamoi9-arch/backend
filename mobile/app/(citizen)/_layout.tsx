@@ -60,6 +60,12 @@ export default function CitizenLayout() {
           href: null,
         }}
       />
+      <Tabs.Screen
+        name="help"
+        options={{
+          href: null,
+        }}
+      />
     </Tabs>
   );
 }

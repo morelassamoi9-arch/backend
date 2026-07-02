@@ -226,7 +226,16 @@ export const useAppStore = create<AppState>()(
         }
       },
 
-      logout: () =>
+      logout: () => {
+        const { user } = get();
+        if (user?.token) {
+          fetch(`${API_BASE}/auth/logout`, {
+            method: 'POST',
+            headers: {
+              'Authorization': `Bearer ${user.token}`,
+            },
+          }).catch((err) => console.warn('[AUTH] Échec de la déconnexion serveur:', err));
+        }
         set({
           user: null,
           isAuthenticated: false,
@@ -234,7 +243,8 @@ export const useAppStore = create<AppState>()(
           currentRequest: null,
           error: null,
           requestError: null,
-        }),
+        });
+      },
 
       // --- DEMANDES ---
 

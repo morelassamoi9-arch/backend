@@ -136,7 +136,7 @@ def logout(
     summary="Vérifier le token",
     description="Vérifie si le token JWT est valide"
 )
-def verify_token(
+def verify_user_token(
     current_user: User = Depends(get_current_user)
 ):
     """
