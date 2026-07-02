@@ -206,5 +206,5 @@ def test_deterministic_fallback_on_llm_failure(db_session, test_user):
     reponse_data = json.loads(demande.reponse)
     assert "cni" in reponse_data["resume"].lower() or "carte nationale" in reponse_data["resume"].lower()
     assert len(reponse_data["etapes"]) > 0
-    assert "5 000 FCFA" in reponse_data["cout"]
+    assert "5000 FCFA" in reponse_data["cout"]
 
