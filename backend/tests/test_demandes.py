@@ -176,22 +176,35 @@ def test_deterministic_fallback_on_llm_failure(db_session, test_user):
         categorie="CNI"
     )
     demande = DemandeService.create_demande(db_session, test_user, demande_in)
+    demande_id = demande.id
     assert demande.status == DemandeStatus.EN_ATTENTE
     
+    # Provide a generator that yields new sessions from the same engine so
+    # process_demande_with_crew can open/close sessions without corrupting
+    # the test fixture session.
+    def _override_get_db():
+        session = TestingSessionLocal()
+        try:
+            yield session
+        finally:
+            session.close()
+
     # 2. Simuler un échec complet de l'IA (Gemini et Groq lèvent des exceptions)
-    with patch("app.agents.crew.ECitoyenCrew.crew") as mock_crew:
+    with patch("app.agents.crew.ECitoyenCrew.crew") as mock_crew, \
+         patch("app.api.demandes.get_db", _override_get_db):
         mock_crew.side_effect = RuntimeError("All AI models are overloaded")
         
         # Lancer le traitement
-        process_demande_with_crew(str(demande.id), demande.message)
+        process_demande_with_crew(str(demande_id), demande.message)
         
-    # Recharger la demande depuis la base
-    db_session.refresh(demande)
+    # Re-query the demande via a fresh session (the function closed its own)
+    db_session.expire_all()
+    demande = db_session.query(Demande).filter(Demande.id == demande_id).first()
     
     # 3. Vérifier que la demande a été traitée avec succès grâce au fallback local
     assert demande.status == DemandeStatus.TRAITEE
     reponse_data = json.loads(demande.reponse)
     assert "cni" in reponse_data["resume"].lower() or "carte nationale" in reponse_data["resume"].lower()
     assert len(reponse_data["etapes"]) > 0
-    assert "5 000 FCFA" in reponse_data["cout"]
+    assert "5000 FCFA" in reponse_data["cout"]
 

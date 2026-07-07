@@ -39,7 +39,6 @@ SOURCE_EXTENSIONS = {
     ".cfg",
     ".css",
     ".dart",
-    ".env",
     ".gradle",
     ".html",
     ".ini",

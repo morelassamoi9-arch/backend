@@ -13,6 +13,7 @@ logging.basicConfig(level=logging.INFO)
 # Configurer l'exposition des documentations selon l'environnement
 environment = os.getenv("ENVIRONMENT", "development").lower()
 show_docs = environment not in {"production", "prod"}
+_is_production = not show_docs
 
 app = FastAPI(
     title="e-Citoyen CI API",
@@ -31,7 +32,7 @@ async def add_security_headers(request: Request, call_next):
     response.headers["X-Content-Type-Options"] = "nosniff"
     response.headers["X-XSS-Protection"] = "1; mode=block"
     response.headers["Content-Security-Policy"] = "default-src 'self'; frame-ancestors 'none';"
-    if environment in {"production", "prod"}:
+    if _is_production:
         response.headers["Strict-Transport-Security"] = "max-age=63072000; includeSubDomains; preload"
     return response
 
@@ -80,6 +81,8 @@ async def global_exception_handler(request: Request, exc: Exception):
 # CORS restreint aux origines connues (web local + web déployé, mobile
 # si besoin) via la variable d'environnement CORS_ORIGINS (liste séparée
 # par des virgules). Valeur par défaut: localhost de dev uniquement.
+# En production, le wildcard "*" est interdit pour éviter les fuites de
+# cookies/tokens vers des domaines tiers.
 origines_autorisees = [
     origine.strip()
     for origine in os.getenv(
@@ -88,12 +91,17 @@ origines_autorisees = [
     ).split(",")
     if origine.strip()
 ]
-allow_credentials = "*" not in origines_autorisees
+
+if _is_production and "*" in origines_autorisees:
+    logging.getLogger("e_citoyen_ci").critical(
+        "CORS_ORIGINS contient '*' en production — remplacement par défaut sécurisé"
+    )
+    origines_autorisees = ["http://localhost:5173"]
 
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origines_autorisees,
-    allow_credentials=allow_credentials,
+    allow_credentials="*" not in origines_autorisees,
     allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allow_headers=["Authorization", "Content-Type"],
 )

@@ -90,7 +90,7 @@ def login(
 
 from fastapi.security import HTTPAuthorizationCredentials
 from app.auth.dependencies import security
-from app.auth.jwt import verify_token, TokenType
+from app.auth.jwt import verify_token as jwt_verify_token, TokenType
 from app.database.models import TokenBlacklist
 from datetime import datetime, timezone
 
@@ -108,7 +108,7 @@ def logout(
     Déconnexion - Le token JWT est invalidé côté serveur
     """
     token = credentials.credentials
-    payload = verify_token(token, token_type=TokenType.ACCESS)
+    payload = jwt_verify_token(token, token_type=TokenType.ACCESS)
     exp = payload.get("exp") if payload else None
     
     if exp:
